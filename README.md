@@ -1,12 +1,12 @@
 # CSC-125 Python Programming
-#### INSTRUCTOR: Johnathan Oneal 
+#### Instructor: Johnathan Oneal 
 #### Email: johnathan.oneal@bhcc.edu
 #### Office Hours: TODO
 #### Semester: FALL 2025
 
-#### Course 
-- M 10:00 AM - 11:15 AM | 9/2/2025 - 12/18/2025 | Charlestown Campus, D Building D102A\
-- Asyncronous desgined to be done midweek (reowrd this to be more formal)
+#### Course Schedule
+- **In-Person Sessions:** Mondays, 10:00 AM - 11:15 AM | September 2, 2025 - December 18, 2025 | Charlestown Campus, Building D, Room D102A
+- **Asynchronous Components:** Online coursework designed for mid-week completion to supplement in-person instruction
 
 ---
 
@@ -32,13 +32,13 @@ By the end of this course, you will be able to:
 
 **Platform:** Kaggle Notebooks (free cloud-based platform - no software installation required)
 
-**Textbooks and Resources:** This course is designed to be completely free and accessible to all students. With the wealth of high-quality programming resources available online, we will use carefully selected free tutorials, documentation, and learning materials throughout the semester. All required readings and supplemental materials will be posted to the course site one week in advance, ensuring you have adequate time to access and review the content. No textbook purchases are required the goal is to eliminate any possible barriers while providing excellent educational resources.
+**Textbooks and Resources:** This course is designed to be completely free and accessible to all students. With the wealth of high-quality programming resources available online, we will use carefully selected free tutorials, documentation, and learning materials throughout the semester. All required readings and supplemental materials will be posted to the course site one week in advance, ensuring you have adequate time to access and review the content. No textbook purchases are required—the goal is to eliminate any possible barriers while providing excellent educational resources.
 
-Students are **strongly** encouraged to do furthur exploration for addtional materials that are not AI. Insert phrase hear about how ai resources arent designed to teach and finding additnal matterias that are meant to isnturct and are somethign you are curious about is a veyr important skill
+Students are **strongly** encouraged to seek out additional learning materials beyond AI-generated content. While AI tools can be helpful for quick answers, they are not designed as structured teaching resources. Developing the ability to identify and engage with high-quality instructional materials, particularly those aligned with your specific interests and learning goals, is a crucial skill for lifelong learning in programming and technology.
 
 **Primary Resource Sources:**
 - LearnPython.org - Interactive programming tutorials and exercises
-- Python 101 (python101.pythonlibrary.org) - Comprehensive Python reference and examples
+- Python 101 (python101.pythonlibrary.org) - High Quality Python reference and examples
 - Full Stack Python (fullstackpython.com) - Professional applications and career context
 - Official Python documentation and community resources
 
@@ -48,7 +48,7 @@ Students are **strongly** encouraged to do furthur exploration for addtional mat
 
 ## Teaching Methods
 
-This course uses a **hybrid approach** combining in-person instruction with asynchronous online work. **Monday classes are in-person** for live instruction, demonstrations, and periodic quizzes. The remainder of each week is **asynchronous distance learning** through cloud-based Kaggle Notebooks, allowing you to work at your own pace while meeting weekly deadlines.
+This course uses a **hybrid approach** combining in-person instruction with asynchronous online work. **Monday classes are in-person** for live instruction, demonstrations, and periodic quizzes. The remainder of each week is **asynchronous distance learning** with material uploaded a week in advance through moodle, allowing you to work at your own pace while meeting weekly deadlines.
 
 **Weekly Schedule:**
 - **Monday:** In-person class for new concept instruction and periodic assessments
@@ -79,14 +79,14 @@ You'll import pre-designed .ipynb notebook files containing exercises and comple
 
 **Homework Assignments (30%):**
 - Due every Friday by 11:59 PM (except weeks with pseudocode projects)
-- Submitted via .ipynb file upload (shared links)
+- Submitted via .ipynb file upload
 - **Lowest homework score will be dropped**
 - **Late Policy:** 25% penalty for one day late, 50% penalty for two days late, no submissions accepted after two days
 
 **Pseudocode/Program Design Projects (10%):**
 - Two algorithm design assignments replacing traditional homework
 - Week 6: Design algorithm for list manipulation problem using pseudocode
-- Week 12: Design algorithm for data processing using dictionaries (pseudocode)
+- Week 12: Design algorithm for the final project (data processing using dictionaries (pseudocode)
 - Focus on problem-solving and logical thinking before coding
 - Due Friday by 11:59 PM, will replace the homework assignment for the week
 - **Late Policy:** Same as homework (25% one day, 50% two days, then zero)
@@ -96,20 +96,19 @@ You'll import pre-designed .ipynb notebook files containing exercises and comple
 - Cover material from previous weeks
 - Focus on conceptual understanding and code reading
 - Designed to ensure students are engaging with distance education materials appropriately
+and completeing the homework . These are designed not to be challeneging ifyou complete all the materials and homework for the previous week
 - **Lowest two quiz scores will be dropped**
-- No make-up quizzes except for documented emergencies
+- No make-up quizzes except for excused absences
 
 **Midterm Exam (20%):**
 - Covers material from Weeks 1-9
 - Monday, November 3rd, 2025 (tentative) during regular class time
-- Mix of multiple choice, short answer, and code writing
-- Note: Week 10 also introduces final project planning concepts
+- Mix of multiple choice, short answer, and code writing (by hand)
 
 **Final Project (20%):**
-- Comprehensive programming project combining all course concepts
+- Overarching programming project combining all course concepts
 - Includes planning documentation and working code
-- Project proposal due Week 11
-- Technical design due Week 13
+- Technical design due Week 12
 - Final project due Week 15
 
 ## Detailed Course Schedule
@@ -125,7 +124,7 @@ You'll import pre-designed .ipynb notebook files containing exercises and comple
 | **7** | **Advanced List Operations** | • Advanced list methods: insert(), pop(), sort(), reverse()<br>• List searching with index() and count()<br>• List references vs copying concepts<br>• Shallow vs deep copying understanding<br>• Converting between strings and lists with split()/join()<br>• Introduction to iteration concepts<br>• Basic list comprehensions<br>• In-place vs returning methods | Homework |
 | **8** | **For Loops - Repetition and Iteration** | • For loop syntax and structure<br>• Iteration over sequences (lists, strings, tuples)<br>• Using range() function with start, stop, step<br>• Nested for loops and multi-level iteration<br>• Common loop patterns: accumulator, counter, finder<br>• Enumerate() function for index tracking<br>• Iterables and iterator concepts<br>• Loop variable scope and best practices | Homework |
 | **9** | **While Loops and Advanced Debugging** | • While loop syntax and condition-based repetition<br>• Loop control statements: break and continue<br>• Preventing infinite loops and safe termination<br>• Input validation patterns using loops<br>• Loop debugging and tracing execution<br>• Print debugging strategies for complex programs<br>• Boolean flags and sentinel values<br>• User interaction and menu-driven programs | Homework |
-| **10** | **MIDTERM EXAM + Project Planning** | • **Comprehensive exam covering Weeks 1-9**<br>• Software development lifecycle introduction<br>• Problem identification and user needs analysis<br>• Project scoping and MVP (Minimum Viable Product)<br>• Algorithm design and pseudocode concepts<br>• Breaking complex problems into smaller parts<br>• Planning and design before implementation<br>• Understanding project requirements | **MIDTERM** |
+| **10** | **MIDTERM EXAM + Project Planning** | • **Paper Exam covering Weeks 1-9**<br>• Software development lifecycle introduction<br>• Problem identification and user needs analysis<br>• Project scoping and MVP (Minimum Viable Product)<br>• Algorithm design and pseudocode concepts<br>• Breaking complex problems into smaller parts<br>• Planning and design before implementation<br>• Understanding project requirements | **MIDTERM** |
 | **11** | **Functions - Modular Programming** | • Function definition using def keyword<br>• Function parameters and argument passing<br>• Return statements and function output<br>• Local vs global variable scope<br>• Function documentation with docstrings<br>• Code organization and modular design principles<br>• Function testing and debugging strategies<br>• DRY principle (Don't Repeat Yourself) | Homework |
 | **12** | **Advanced Functions and Dictionaries** | • Default parameters and keyword arguments<br>• Functions returning multiple values with tuples<br>• Lambda functions for simple operations<br>• Dictionary creation and key-value relationships<br>• Dictionary methods: keys(), values(), items()<br>• Dictionary iteration and comprehensions<br>• Nested dictionaries for complex data<br>• Combining functions with data structures | **PSEUDOCODE PROJECT** |
 | **13** | **Libraries and Standard Modules** | • Python's "batteries included" standard library<br>• Import statements and module usage<br>• Random module: randint(), choice(), shuffle()<br>• Math module: sqrt(), ceil(), floor(), pi<br>• Datetime module: datetime, date, time objects<br>• Reading documentation and using help()<br>• Understanding module namespaces<br>• Introduction to third-party libraries | Homework |
@@ -167,3 +166,4 @@ You'll import pre-designed .ipynb notebook files containing exercises and comple
 ---
 
 *This syllabus is subject to change. Students will be notified of any modifications via course announcements.*
+
