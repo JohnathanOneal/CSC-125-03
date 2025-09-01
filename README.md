@@ -1,18 +1,19 @@
 # CSC-125 Python Programming
+
+#### Semester: Fall 2025
+#### Credits: 3
+#### Course Schedule
+- **In-Person Sessions:** Mondays, 10:00 AM - 11:15 AM | Charlestown Campus, Building D, Room D102A
+- **Asynchronous Components:** Online coursework designed for mid-week completion will be distributed through BHCC Moodle
 #### Instructor: Johnathan Oneal 
 #### Email: johnathan.oneal@bhcc.edu
-#### Office Hours: TODO
-#### Semester: FALL 2025
 
-#### Course Schedule
-- **In-Person Sessions:** Mondays, 10:00 AM - 11:15 AM | September 2, 2025 - December 18, 2025 | Charlestown Campus, Building D, Room D102A
-- **Asynchronous Components:** Online coursework designed for mid-week completion to supplement in-person instruction
 
 ---
 
 ## Course Description
 
-This is an introductory course designed for any student interested in learning computer programming concepts and hands on computational thinking, all in the context of the Python programming language. No prior experience in programming is necessary. Students will use their own problem solving abilities to implement programs in Python. This course will show the student how to create basic programming structures including decisions and loops. Further, students will explore unique Python data structures such as tuples and dictionaries. Students will also learn to perform basic debugging techniques. At the end of this course, the student will have learned enough concepts in computer science and programming to be able to write Python programs to solve problems on their own. This course will prepare the student to move on to the Advanced Python Programming course.
+This is an introductory course designed for any student interested in learning computer programming concepts and hands-on computational thinking, all in the context of the Python programming language. No prior programming experience is necessary. Students will use their problem-solving abilities to implement programs in Python. This course will show students how to create basic programming structures including decisions and loops. Furthermore, students will explore unique Python data structures such as tuples and dictionaries. Students will also learn to perform basic debugging techniques. At the end of this course, students will have learned enough computer science and programming concepts to write Python programs to solve problems on their own. This course will prepare students to move on to the Advanced Python Programming course.
 
 ## Learning Objectives
 
@@ -38,7 +39,7 @@ Students are **strongly** encouraged to seek out additional learning materials b
 
 **Primary Resource Sources:**
 - LearnPython.org - Interactive programming tutorials and exercises
-- Python 101 (python101.pythonlibrary.org) - High Quality Python reference and examples
+- Python 101 (python101.pythonlibrary.org) - High-quality Python reference and examples
 - Full Stack Python (fullstackpython.com) - Professional applications and career context
 - Official Python documentation and community resources
 
@@ -48,7 +49,7 @@ Students are **strongly** encouraged to seek out additional learning materials b
 
 ## Teaching Methods
 
-This course uses a **hybrid approach** combining in-person instruction with asynchronous online work. **Monday classes are in-person** for live instruction, demonstrations, and periodic quizzes. The remainder of each week is **asynchronous distance learning** with material uploaded a week in advance through moodle, allowing you to work at your own pace while meeting weekly deadlines.
+This course uses a **hybrid approach** combining in-person instruction with asynchronous online work. **Monday classes are in-person** for live instruction, demonstrations, and periodic quizzes. The remainder of each week is **asynchronous distance learning** with materials uploaded a week in advance through Moodle, allowing you to work at your own pace while meeting weekly deadlines.
 
 **Weekly Schedule:**
 - **Monday:** In-person class for new concept instruction and periodic assessments
@@ -56,6 +57,8 @@ This course uses a **hybrid approach** combining in-person instruction with asyn
 - **Friday:** Homework assignment deadline
 
 You'll import pre-designed .ipynb notebook files containing exercises and complete assignments directly in the cloud environment. The course emphasizes learning by doing, with extensive practice exercises and real-world applications.
+
+**Office Hours are available by appointment through email.**
 
 ## Grading and Assessment
 
@@ -65,15 +68,22 @@ You'll import pre-designed .ipynb notebook files containing exercises and comple
 | Homework Assignments | 30% | Weekly notebook exercises (lowest score dropped) |
 | Pseudocode/Program Design | 10% | Two algorithm design assignments |
 | Quizzes | 20% | Periodic in-person assessments (lowest two scores dropped) |
-| Midterm Exam | 20% | In person paper exam (Week 10) |
+| Midterm Exam | 20% | In-person paper exam (Week 10) |
 | Final Project | 20% | Independent programming project |
 
 ### Grading Scale
-- **A:** 90-100%
-- **B:** 80-89%
-- **C:** 70-79%
-- **D:** 60-69%
-- **F:** Below 60%
+
+| Grade | Numerical Range |
+|-------|-----------------|
+| A     | 94 - 100        |
+| A-    | 90 - 93         |
+| B+    | 87 - 89         |
+| B     | 83 - 86         |
+| B-    | 80 - 82         |
+| C+    | 77 - 79         |
+| C     | 70 - 76         |
+| D     | 60 - 69         |
+| F     | 0 - 59          |
 
 ### Assignment Details
 
@@ -86,17 +96,16 @@ You'll import pre-designed .ipynb notebook files containing exercises and comple
 **Pseudocode/Program Design Projects (10%):**
 - Two algorithm design assignments replacing traditional homework
 - Week 6: Design algorithm for list manipulation problem using pseudocode
-- Week 12: Design algorithm for the final project (data processing using dictionaries (pseudocode)
+- Week 12: Design algorithm for the final project (data processing using dictionaries) in pseudocode
 - Focus on problem-solving and logical thinking before coding
 - Due Friday by 11:59 PM, will replace the homework assignment for the week
 - **Late Policy:** Same as homework (25% one day, 50% two days, then zero)
 
 **Quizzes (20%):**
-- Administered during Monday in-person classes periodically throughout semester
+- Administered during Monday in-person classes periodically throughout the semester
 - Cover material from previous weeks
 - Focus on conceptual understanding and code reading
-- Designed to ensure students are engaging with distance education materials appropriately
-and completeing the homework . These are designed not to be challeneging ifyou complete all the materials and homework for the previous week
+- Designed to ensure students are engaging with distance education materials appropriately and completing the homework. These are designed not to be challenging if you complete all the materials and homework for the previous week
 - **Lowest two quiz scores will be dropped**
 - No make-up quizzes except for excused absences
 
@@ -120,7 +129,7 @@ and completeing the homework . These are designed not to be challeneging ifyou c
 | **3** | **String Operations & Basic Debugging** | • String creation, indexing, and immutability<br>• String slicing techniques and syntax<br>• Essential string methods: upper(), lower(), strip(), replace(), find()<br>• String formatting using f-strings and .format()<br>• String concatenation and repetition<br>• Reading and interpreting error messages<br>• Syntax errors vs runtime errors<br>• Basic debugging strategies with print statements | Homework |
 | **4** | **Math Operations and Operators** | • Arithmetic operators: +, -, *, /, //, %, **<br>• Comparison operators: ==, !=, <, >, <=, >=<br>• Assignment operators: =, +=, -=, *=, /=<br>• Operator precedence and parentheses usage<br>• Boolean expressions and truth values<br>• Integer vs float division concepts<br>• Mathematical expression evaluation<br>• Working with different number types | Homework |
 | **5** | **Conditional Logic and Decision Making** | • Boolean data type and boolean expressions<br>• Conditional statements: if, elif, else<br>• Logical operators: and, or, not<br>• Nested conditional statements and indentation<br>• Comparison and membership operators<br>• Truth tables and boolean algebra concepts<br>• Code blocks and proper indentation<br>• Building interactive decision-making programs | Homework |
-| **6** | **Lists and Tuples - Ordered Collections** | • Creating and initializing lists and tuples<br>• Zero-based indexing and negative indexing<br>• Sequence slicing syntax and step values<br>• Mutable vs immutable sequence types<br>• Basic list methods: append(), remove(), len(), count()<br>• List and tuple unpacking techniques<br>• When to choose lists vs tuples<br>• Understanding sequence operations |  Homework |
+| **6** | **Lists and Tuples - Ordered Collections** | • Creating and initializing lists and tuples<br>• Zero-based indexing and negative indexing<br>• Sequence slicing syntax and step values<br>• Mutable vs immutable sequence types<br>• Basic list methods: append(), remove(), len(), count()<br>• List and tuple unpacking techniques<br>• When to choose lists vs tuples<br>• Understanding sequence operations | PSEUDOCODE PROJECT |
 | **7** | **Advanced List Operations** | • Advanced list methods: insert(), pop(), sort(), reverse()<br>• List searching with index() and count()<br>• List references vs copying concepts<br>• Shallow vs deep copying understanding<br>• Converting between strings and lists with split()/join()<br>• Introduction to iteration concepts<br>• Basic list comprehensions<br>• In-place vs returning methods | Homework |
 | **8** | **For Loops - Repetition and Iteration** | • For loop syntax and structure<br>• Iteration over sequences (lists, strings, tuples)<br>• Using range() function with start, stop, step<br>• Nested for loops and multi-level iteration<br>• Common loop patterns: accumulator, counter, finder<br>• Enumerate() function for index tracking<br>• Iterables and iterator concepts<br>• Loop variable scope and best practices | Homework |
 | **9** | **While Loops and Advanced Debugging** | • While loop syntax and condition-based repetition<br>• Loop control statements: break and continue<br>• Preventing infinite loops and safe termination<br>• Input validation patterns using loops<br>• Loop debugging and tracing execution<br>• Print debugging strategies for complex programs<br>• Boolean flags and sentinel values<br>• User interaction and menu-driven programs | Homework |
@@ -133,34 +142,39 @@ and completeing the homework . These are designed not to be challeneging ifyou c
 
 ## Course Policies
 
-**Academic Integrity and AI Usage:** 
-- **Homework Assignments:** AI tools (ChatGPT, Copilot, etc.) are NOT allowed. All code must be written by you to ensure proper learning of fundamental concepts.
-- **Final Project:** AI tools ARE allowed and encouraged as learning aids and productivity tools, reflecting real-world professional development practices.
-- **Quizzes and Exams:** No AI assistance permitted.
-- While collaboration and discussion with classmates are encouraged, submitted code must be your own work.
+**Academic Integrity:** 
+Students are expected to uphold the highest standards of academic honesty throughout this course. All work submitted must represent your own understanding and effort. While collaboration and discussion with classmates are encouraged for learning purposes, all submitted assignments must be your own individual work. Copying code from classmates, online sources, or any other external source without proper attribution constitutes academic dishonesty.
 
-**Attendance:** Regular attendance at Monday in-person classes is required for live instruction and periodic assessments. ATTENDANCE POLICY HERE - FOLLOW INSTITUTIONAL GUIDELINES
+Students who violate academic integrity policies may receive a failing grade for the assignment or course, depending on the severity of the violation.
 
-**Communication:** Primary communication via EMAIL SYSTEM HERE. Check email and course announcements regularly. Email responses within 24-48 hours during business days.
+**AI Usage Policy:**
+Regardless of what tools or resources you use to assist in your learning, you are responsible for writing and understanding all code you submit. You must be able to explain any code you turn in and demonstrate your comprehension of how it works. If you cannot explain how your submitted code functions, it will be considered a violation of academic integrity.
 
-**Accommodations:** Students requiring accommodations should contact DISABILITY SERVICES OFFICE HERE as early as possible in the semester.
+**Attendance:** Regular attendance at Monday in-person classes is required for live instruction and periodic assessments. The Bunker Hill Community College Attendance Policy is as follows: Because poor attendance generally results in poor grades, students must attend all regularly scheduled classes and laboratory sessions. Students having attendance difficulties should discuss this matter with their course instructors and advisors.
+
+Students who know they will be absent for three or more consecutive class sessions because of a family emergency or personal illness should report the extended absence to the Office of the Dean of Students. The Associate Vice President will notify the course instructors of the absence. Upon returning to class, students are responsible for discussing completion of all course requirements with their course instructors. If the course instructor and student find it impossible to complete all assigned work, the student may need to withdraw from the course.
+
+**Communication:** Primary communication via email and the course Moodle. Check email and course announcements regularly.
+
+**Accommodations:** 
+Academic accommodations are handled through the Disability Support Services office. Students who have questions about how to register with the Disability Support Services Office can walk in to E222 to meet with an available DSS staff member or can call or email to schedule an appointment. To schedule an appointment, contact Disability Support Services at disabilitysupport@bhcc.edu or 617-228-2327.
 
 ## Distance Education Information
 
 **Course Delivery:** Hybrid format - Monday in-person classes with asynchronous online work throughout the week
 
-**Required Interactions for Course Completion:**
-- **Monday in-person attendance** for instruction and periodic assessments
-- **Asynchronous work** completed by Wednesday (self-paced target)
-- **Weekly homework assignments** submitted via Kaggle Notebooks by Friday
-- **Email communication** with instructor as needed
-- **Final project submission** by Week 15 Friday deadline
-
-**No forum participation or discussion grades** - quizzes serve as the primary accountability measure to ensure proper engagement with distance education materials.
+**Materials Distribution:**
+All asynchronous learning materials will be distributed through BHCC Moodle one week in advance of the target completion date. This includes:
+- Weekly instructional content and tutorials
+- Pre-designed .ipynb notebook files for exercises
+- Supplemental reading materials and resources
+- Assignment instructions and rubrics
+- Video demonstrations and coding examples
+- Practice exercises and self-assessment tools
 
 **Technology Requirements:**
-- Stable internet connection for asynchronous work
-- Web browser capable of running Kaggle Notebooks
+- Stable internet connection for asynchronous work and Moodle access
+- Web browser capable of running Kaggle Notebooks and accessing Moodle
 - Email access for course communications
 
 ---
