@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2 Asynchronous Materials Guide</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        .homework-topics {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .homework-topics ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .resource {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            background: #ffffff;
+        }
+        .resource-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .start-here {
+            background: #fff3cd;
+            border-color: #ffeaa7;
+        }
+        .resource a {
+            color: #3498db;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .resource a:hover {
+            text-decoration: underline;
+        }
+        .resource ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+        }
+        .quick-ref {
+            background: #f1f3f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .quick-ref h3 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+        pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .code-section {
+            margin: 15px 0;
+        }
+        .code-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 2 Asynchronous Materials Guide</h1>
+    <p><strong>Variables and Data Types</strong></p>
+
+    <div class="homework-topics">
+        <h2>Homework Topics Overview</h2>
+        <p>This week's homework covers:</p>
+        <ul>
+            <li>Creating variables with different data types (Part 1)</li>
+            <li>Variable naming rules (Part 2)</li>
+            <li>Data type exploration with type() (Part 3)</li>
+            <li>Type conversion: int(), float(), str() (Part 4)</li>
+            <li>User input with input() function (Part 5)</li>
+            <li>Basic arithmetic operations (Part 6)</li>
+            <li>Debugging common errors (Part 7)</li>
+        </ul>
+    </div>
+
+    <h2>Required Materials</h2>
+
+    <h3>Variables & Data Types</h3>
+
+    <div class="resource">
+        <div class="resource-title">LearnPython.org - Variables and Types</div>
+        <a href="https://www.learnpython.org/en/Variables_and_Types">https://www.learnpython.org/en/Variables_and_Types</a>
+        <ul>
+            <li>Variables store data (strings, numbers, booleans)</li>
+            <li>Complete interactive tutorial and exercises</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Python Variables</div>
+        <a href="https://www.w3schools.com/python/python_variables.asp">https://www.w3schools.com/python/python_variables.asp</a>
+        <ul>
+            <li>Variable creation and basic naming rules</li>
+            <li>Using type() function to check data types</li>
+        </ul>
+    </div>
+
+    <h3>Type Conversion</h3>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Python Casting</div>
+        <a href="https://www.w3schools.com/python/python_casting.asp">https://www.w3schools.com/python/python_casting.asp</a>
+        <ul>
+            <li>Use int(), float(), str() to convert between types</li>
+            <li>Always convert strings to numbers before math</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Programiz - Type Conversion</div>
+        <a href="https://www.programiz.com/python-programming/type-conversion-and-casting">https://www.programiz.com/python-programming/type-conversion-and-casting</a>
+        <ul>
+            <li>Python requires explicit conversion (no automatic string-to-number)</li>
+        </ul>
+    </div>
+
+    <h3>User Input</h3>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Python User Input</div>
+        <a href="https://www.w3schools.com/python/python_user_input.asp">https://www.w3schools.com/python/python_user_input.asp</a>
+        <ul>
+            <li>input() always returns strings, even for numbers</li>
+            <li>Combine input() with int()/float() to get numeric input</li>
+        </ul>
+    </div>
+
+    <h3>Naming Conventions & Style</h3>
+
+    <div class="resource">
+        <div class="resource-title">Real Python - PEP 8 Guide</div>
+        <a href="https://realpython.com/python-pep8/">https://realpython.com/python-pep8/</a>
+        <ul>
+            <li>Use snake_case for variables (my_variable not myVariable)</li>
+            <li>Avoid 'l', 'O', 'I' as single-character names</li>
+        </ul>
+    </div>
+
+    <h3>Basic Debugging</h3>
+
+    <div class="resource">
+        <div class="resource-title">15 Common Python Errors - Better Stack</div>
+        <a href="https://betterstack.com/community/guides/scaling-python/python-errors/">https://betterstack.com/community/guides/scaling-python/python-errors/</a>
+        <ul>
+            <li>Focus on the first 8 error types (read more if curious)</li>
+            <li>Understanding SyntaxError, NameError, TypeError basics</li>
+            <li>How to read error messages and find the problem line</li>
+        </ul>
+    </div>
+
+    <div class="quick-ref">
+        <h2>Quick Reference</h2>
+
+        <div class="code-section">
+            <div class="code-title">Variable Basics</div>
+            <pre><code># Creating variables
+hero_name = "Spider-Man"        # string
+power_level = 8.5              # float  
+years_active = 10              # integer
+from_outer_space = True        # boolean
+
+# Check data type
+print(type(hero_name))         # &lt;class 'str'&gt;
+print(type(power_level))       # &lt;class 'float'&gt;</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Variable Naming Rules</div>
+            <pre><code># GOOD names
+my_variable = 5
+user_age = 25
+hero_name = "Batman"
+
+# BAD names (will cause errors)
+2nd_variable = 5        # Can't start with number
+my-variable = 5         # No dashes allowed
+my variable = 5         # No spaces allowed</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Type Conversion</div>
+            <pre><code># String to number
+age_text = "25"
+age_number = int(age_text)      # Convert to integer
+price_text = "19.99" 
+price_number = float(price_text) # Convert to float
+
+# Number to string
+score = 100
+score_text = str(score)         # Convert to string
+
+# For math operations, convert first!
+user_input = input("Enter a number: ")  # Always a string
+number = int(user_input)                # Convert for math
+result = number + 10</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">User Input</div>
+            <pre><code># Getting text input
+name = input("What's your name? ")
+
+# Getting number input (convert!)
+age = int(input("Enter your age: "))
+height = float(input("Enter height: "))
+
+# Using the input
+print("Hello", name)
+print("Next year you'll be", age + 1)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Basic Arithmetic</div>
+            <pre><code># Math with variables
+x = 10
+y = 3
+
+addition = x + y        # 13
+subtraction = x - y     # 7
+multiplication = x * y  # 30
+division = x / y        # 3.333...</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Common Error Types</div>
+            <ul style="margin-top: 10px;">
+                <li><strong>SyntaxError:</strong> Missing quotes, colons, parentheses</li>
+                <li><strong>NameError:</strong> Typo in variable name or undefined variable</li>
+                <li><strong>TypeError:</strong> Trying to add string + number without converting</li>
+                <li><strong>ValueError:</strong> Can't convert invalid string to number</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
