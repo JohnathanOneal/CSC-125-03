@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 Asynchronous Materials Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        .homework-topics {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .homework-topics ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .resource {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            background: #ffffff;
+        }
+        .resource-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .start-here {
+            background: #fff3cd;
+            border-color: #ffeaa7;
+        }
+        .video-resource {
+            background: #e8f5e8;
+            border-color: #4caf50;
+        }
+        .resource a {
+            color: #3498db;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .resource a:hover {
+            text-decoration: underline;
+        }
+        .resource ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+        }
+        .quick-ref {
+            background: #f1f3f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .quick-ref h3 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+        .debugging-section {
+            background: #fff2f2;
+            border: 2px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .debugging-section h3 {
+            color: #d63384;
+            margin-top: 0;
+        }
+        .error-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        .error-highlight {
+            background: #722f37;
+            color: #fbb6ce;
+        }
+        .solution {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .solution-title {
+            font-weight: bold;
+            color: #155724;
+        }
+        pre {
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .code-section {
+            margin: 15px 0;
+        }
+        .code-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .diagram {
+            background: #f8f9fa;
+            border: 2px dashed #6c757d;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .diagram h4 {
+            margin-top: 0;
+            color: #495057;
+        }
+        .string-visual {
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin: 10px 0;
+        }
+        .index-numbers {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 3 Asynchronous Materials Guide</h1>
+    <p><strong>String Operations and Debugging</strong></p>
+
+    <div class="homework-topics">
+        <h2>This Week's Topics Overview</h2>
+        <p>Building on Week 2's variables, you'll now learn to:</p>
+        <ul>
+            <li>Use important string methods: upper(), lower(), strip(), replace()</li>
+            <li>Access parts of strings using indexing [0] and slicing [start:end]</li>
+            <li>Format strings with f-strings for dynamic output</li>
+            <li>Read and understand error messages</li>
+            <li>Debug common string-related errors</li>
+        </ul>
+    </div>
+
+    <h2>Start Here: Video Tutorial</h2>
+
+    <div class="resource video-resource start-here">
+        <div class="resource-title">Corey Schafer Python Strings Tutorial</div>
+        <a href="https://www.youtube.com/watch?v=k9TUPpGqYTo">Python Tutorial for Beginners 2: Strings Working with Textual Data</a>
+        <ul>
+            <li><strong>Duration:</strong> About 30 minutes</li>
+            <li><strong>What you will learn:</strong> String basics, methods, formatting, and slicing</li>
+            <li><strong>Why this helps:</strong> Shows examples with real code</li>
+            <li><strong>Study approach:</strong> Pause and code along</li>
+        </ul>
+    </div>
+
+    <h2>String Methods and Operations</h2>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools Modify Strings</div>
+        <a href="https://www.w3schools.com/python/python_strings_modify.asp">https://www.w3schools.com/python/python_strings_modify.asp</a>
+        <ul>
+            <li>Important string methods: upper(), lower(), strip(), replace()</li>
+            <li>Examples you can test right away</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">LearnPython.org Basic String Operations</div>
+        <a href="https://www.learnpython.org/en/Basic_String_Operations">https://www.learnpython.org/en/Basic_String_Operations</a>
+        <ul>
+            <li>Tutorial with exercises</li>
+            <li>Covers indexing, slicing, and string methods</li>
+            <li>Complete the exercise at the end</li>
+        </ul>
+    </div>
+
+    <h2>String Indexing and Slicing</h2>
+
+    <div class="diagram">
+        <h4>Visual Guide: String Indexing</h4>
+        <div class="string-visual">H  e  l  l  o</div>
+        <div class="index-numbers">0  1  2  3  4  (positive indexes)</div>
+        <div class="index-numbers">-5 -4 -3 -2 -1  (negative indexes)</div>
+        <p><strong>Key Point:</strong> Python starts counting at 0, not 1. Use negative numbers to count from the end.</p>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools Slicing Strings</div>
+        <a href="https://www.w3schools.com/python/python_strings_slicing.asp">https://www.w3schools.com/python/python_strings_slicing.asp</a>
+        <ul>
+            <li>Learn [start:end] syntax with examples</li>
+            <li>Shows different slice combinations</li>
+        </ul>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">String Indexing and Slicing Examples</div>
+        <pre><code class="language-python"># String indexing getting single characters
+word = "Python"
+print(word[0])    # P (first character)
+print(word[1])    # y (second character)  
+print(word[5])    # n (last character at index 5)
+print(word[2])    # t (character at index 2)
+
+# Check length first to avoid errors
+print(f"Length: {len(word)}")  # Length: 6
+print(f"Last index: {len(word) - 1}")  # Last index: 5
+
+# String slicing getting multiple characters
+sentence = "Hello World"
+print(sentence[0:5])    # "Hello" (characters 0 through 4)
+print(sentence[6:11])   # "World" (characters 6 through 10)
+print(sentence[6:])     # "World" (from 6 to end)
+print(sentence[:5])     # "Hello" (from start to 4)
+
+# Practical slicing examples
+email = "student@college.edu"
+username = email[:email.index("@")]  # "student"
+domain = email[email.index("@") + 1:]  # "college.edu"
+print(f"Username: {username}, Domain: {domain}")
+
+# Getting initials from a name
+full_name = "Alice Johnson"
+space_position = full_name.index(" ")
+first_initial = full_name[0]
+last_initial = full_name[space_position + 1]
+print(f"Initials: {first_initial}.{last_initial}.")  # "A.J."</code></pre>
+    </div>
+
+    <div class="diagram">
+        <h4>Slicing Visualization</h4>
+        <div class="string-visual">"Hello World"</div>
+        <div class="index-numbers">H e l l o   W o r l d</div>
+        <div class="index-numbers">0 1 2 3 4 5 6 7 8 9 10</div>
+        <p><strong>sentence[0:5]</strong> gives "Hello" (positions 0,1,2,3,4)</p>
+        <p><strong>sentence[6:]</strong> gives "World" (position 6 to end)</p>
+        <p><strong>sentence[:5]</strong> gives "Hello" (start to position 4)</p>
+    </div>
+
+    <h2>F-String Formatting</h2>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools String Formatting</div>
+        <a href="https://www.w3schools.com/python/python_string_formatting.asp">https://www.w3schools.com/python/python_string_formatting.asp</a>
+        <ul>
+            <li>Basic f-string syntax</li>
+            <li>Shows how to put variables inside strings</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Real Python F-Strings Guide</div>
+        <a href="https://realpython.com/python-f-strings/">https://realpython.com/python-f-strings/</a>
+        <ul>
+            <li>More f-string examples</li>
+            <li>Read when you want more details</li>
+        </ul>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">F-String Examples</div>
+        <pre><code class="language-python"># Basic f-string formatting
+name = "Sarah"
+age = 22
+city = "Boston"
+
+# Simple variable insertion
+greeting = f"Hello, my name is {name}"
+print(greeting)  # "Hello, my name is Sarah"
+
+# Multiple variables in one string
+info = f"I am {name}, I am {age} years old, and I live in {city}"
+print(info)
+
+# Using expressions inside f-strings
+next_year = f"Next year I will be {age + 1} years old"
+print(next_year)  # "Next year I will be 23 years old"
+
+# Combining f-strings with string methods
+message = f"Welcome {name.upper()}!"
+print(message)  # "Welcome SARAH!"
+
+# Using f-strings with user input
+user_name = input("What is your name? ").strip()
+user_age = int(input("How old are you? "))
+result = f"Nice to meet you, {user_name}! You are {user_age} years old."
+print(result)
+
+# F-strings with calculations
+price = 19.99
+tax_rate = 0.08
+total = f"Price: ${price}, Tax: ${price * tax_rate:.2f}, Total: ${price * (1 + tax_rate):.2f}"
+print(total)</code></pre>
+    </div>
+
+    <div class="diagram">
+        <h4>F-String Format Examples</h4>
+        <div class="string-visual">name = "Alice"</div>
+        <div class="string-visual">age = 25</div>
+        <div class="index-numbers">f"My name is {name}" gives "My name is Alice"</div>
+        <div class="index-numbers">f"I am {age} years old" gives "I am 25 years old"</div>
+        <div class="index-numbers">f"{name} is {age}" gives "Alice is 25"</div>
+        <div class="index-numbers">f"Next year: {age + 1}" gives "Next year: 26"</div>
+    </div>
+
+    <div class="debugging-section">
+        <h3>Understanding Error Messages -- Do Not Skip This Section</h3>
+        
+        <p>When you start working with strings, you will see error messages. This is normal and happens to every programmer. The key is learning to read these messages instead of giving up.</p>
+
+        <h4>Error Type 1: String Index Out of Range</h4>
+        <p>This error happens when you try to access a character that does not exist in the string.</p>
+
+        <div class="error-example">
+<span class="error-highlight">IndexError                                Traceback (most recent call last)
+Cell In[3], line 3
+      1 name = "Alice"
+      2 print(len(name))  # This shows 5
+----> 3 print(name[10])   # Error! Alice only has 5 characters (indexes 0-4)
+
+IndexError: string index out of range</span>
+        </div>
+
+        <div class="solution">
+            <div class="solution-title">How to read this error:</div>
+            <ul>
+                <li><strong>Cell In[3], line 3:</strong> The error happened in cell 3 on line 3 of your code</li>
+                <li><strong>IndexError:</strong> You tried to access an index that does not exist</li>
+                <li><strong>Fix:</strong> Check the string length with len() before accessing indexes</li>
+            </ul>
+        </div>
+
+        <h4>Error Type 2: TypeError with String Operations</h4>
+        <p>This happens when you try to do math with strings and numbers without converting first.</p>
+
+        <div class="error-example">
+<span class="error-highlight">TypeError                                 Traceback (most recent call last)
+Cell In[5], line 3
+      1 age = input("Enter your age: ")  # input() always gives you a string!
+      2 print(f"Age type: {type(age)}")  # This will show &lt;class 'str'&gt;
+----> 3 result = age + 10  # Error! Can't add string + number
+
+TypeError: can only concatenate str (not "int") to str</span>
+        </div>
+
+        <div class="solution">
+            <div class="solution-title">How to read this error:</div>
+            <ul>
+                <li><strong>TypeError:</strong> You mixed up data types</li>
+                <li><strong>"can only concatenate str (not int) to str":</strong> Python is telling you exactly what went wrong</li>
+                <li><strong>Fix:</strong> Convert the string to a number first: age = int(input("Enter your age: "))</li>
+            </ul>
+        </div>
+
+        <h4>Error Type 3: Attribute Error with String Methods</h4>
+        <p>This happens when you try to use a method that does not exist or call it incorrectly.</p>
+
+        <div class="error-example">
+<span class="error-highlight">AttributeError                            Traceback (most recent call last)
+Cell In[2], line 2
+      1 name = "alice"
+----> 2 print(name.Upper())  # Error! Python is case-sensitive
+
+AttributeError: 'str' object has no attribute 'Upper'</span>
+        </div>
+
+        <div class="solution">
+            <div class="solution-title">How to read this error:</div>
+            <ul>
+                <li><strong>AttributeError:</strong> The method name is wrong</li>
+                <li><strong>'str' object has no attribute 'Upper':</strong> There is no method called 'Upper'</li>
+                <li><strong>Fix:</strong> Use the correct method name: name.upper() (lowercase)</li>
+            </ul>
+        </div>
+
+        <h4>Error Type 4: NameError</h4>
+        <p>This happens when you make a typo in a variable name or forget to define it.</p>
+
+        <div class="error-example">
+<span class="error-highlight">NameError                                 Traceback (most recent call last)
+Cell In[4], line 3
+      1 name = "Alice"
+      2 print("Setting up variables...")
+----> 3 print(f"Hello {nme}")  # Error! Typo in variable name
+
+NameError: name 'nme' is not defined</span>
+        </div>
+
+        <div class="solution">
+            <div class="solution-title">How to read this error:</div>
+            <ul>
+                <li><strong>NameError:</strong> Variable name is wrong or not defined</li>
+                <li><strong>name 'nme' is not defined:</strong> Python cannot find a variable called 'nme'</li>
+                <li><strong>Fix:</strong> Check spelling: change 'nme' to 'name'</li>
+            </ul>
+        </div>
+
+        <div class="solution">
+            <div class="solution-title">General Debugging Tips:</div>
+            <ul>
+                <li><strong>Read the last line first:</strong> This tells you what type of error happened</li>
+                <li><strong>Look at the line number:</strong> This tells you where to look in your code</li>
+                <li><strong>Check for typos:</strong> Most errors are simple spelling mistakes</li>
+                <li><strong>Use print() to check values:</strong> Print variables to see what they contain</li>
+                <li><strong>Check data types:</strong> Use type() to see if variables are strings, numbers, etc.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="quick-ref">
+        <h2>Quick Reference</h2>
+
+        <div class="code-section">
+            <div class="code-title">Important String Methods</div>
+            <pre><code class="language-python"># Basic string methods
+text = "  Hello World  "
+print(text.upper())        # "  HELLO WORLD  "
+print(text.lower())        # "  hello world  "
+print(text.strip())        # "Hello World" (removes spaces)
+print(text.replace("Hello", "Hi"))  # "  Hi World  "
+
+# Method chaining
+clean_text = text.strip().upper()  # "HELLO WORLD"
+
+# Checking string content
+message = "Python Programming"
+print(message.startswith("Python"))  # True
+print(message.endswith("ing"))       # True
+print(message.count("o"))            # 2
+print(message.index("Pro"))          # 7</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Combining All Concepts</div>
+            <pre><code class="language-python"># Real example: Processing user input
+full_name = input("Enter your full name: ").strip().title()
+age = int(input("Enter your age: "))
+
+# Extract first name (up to first space)
+space_pos = full_name.index(" ")
+first_name = full_name[:space_pos]
+
+# Create a personalized message
+message = f"Hello {first_name}! You are {age} years old."
+print(message.upper())
+
+# Get nickname using slicing
+nickname = first_name[:3]
+print(f"Your nickname could be {nickname}")</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Debugging Your Code</div>
+            <pre><code class="language-python"># Always check your variables
+name = input("Enter name: ")
+print(f"Name: '{name}' (length: {len(name)}, type: {type(name)})")
+
+# Check string length before slicing
+print(f"First 3 letters: {name[:3]}")
+
+# Convert input before math to avoid TypeError
+age_text = input("Enter age: ")
+print(f"As text: {age_text} (type: {type(age_text)})")
+age_number = int(age_text)
+print(f"As number: {age_number} (type: {type(age_number)})")
+
+# Use print() to debug step by step
+text = "hello world"
+print(f"Original: {text}")
+print(f"Uppercase: {text.upper()}")
+print(f"After strip: '{text.strip()}'")
+print(f"Length: {len(text)}")</code></pre>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>
