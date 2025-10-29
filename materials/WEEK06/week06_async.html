@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 Asynchronous Materials Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        .homework-topics {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #ffc107;
+        }
+        .homework-topics h2 {
+            margin-top: 0;
+            border-left: none;
+            color: #856404;
+        }
+        .homework-topics ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .resource {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            background: #ffffff;
+        }
+        .resource-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .start-here {
+            background: #fff3cd;
+            border-color: #ffeaa7;
+        }
+        .video-resource {
+            background: #e8f5e8;
+            border-color: #4caf50;
+        }
+        .resource a {
+            color: #3498db;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .resource a:hover {
+            text-decoration: underline;
+        }
+        .resource ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+        }
+        .quick-ref {
+            background: #f1f3f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .quick-ref h3 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+        .comparison-section {
+            background: #e8f4f8;
+            border: 2px solid #4fc3f7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .comparison-section h3 {
+            color: #0277bd;
+            margin-top: 0;
+        }
+        .comparison-table {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .comparison-table th {
+            background: #e9ecef;
+            font-weight: bold;
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        pre {
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .code-section {
+            margin: 15px 0;
+        }
+        .code-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .visual-diagram {
+            background: #f8f9fa;
+            border: 2px dashed #6c757d;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+        }
+        .visual-diagram h4 {
+            margin-top: 0;
+            color: #495057;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .example-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .lecture-review {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .extending-concept {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 6 Asynchronous Materials Guide - Lists and Tuples</h1>
+
+    <div class="homework-topics">
+        <h2>This Week's Assignment: Pseudocode Project</h2>
+        <p>Instead of regular homework, you'll design an algorithm using pseudocode and the materials below. After you finish the asynchronous guide look at the homework assignment for more details</div>
+
+    <h2>Start Here: Video Tutorial</h2>
+
+    <div class="resource video-resource start-here">
+        <div class="resource-title">Corey Schafer Python Lists Tutorial</div>
+        <a href="https://www.youtube.com/watch?v=W8KRzm-HUcc">Python Tutorial: Lists, Sets, and Tuples</a>
+        <ul>
+            <li><strong>Duration:</strong> Watch 0:00 - 205:00 (25 minutes - just the list and tuple sections)</li>
+            <li><strong>What you will learn:</strong> List creation, indexing, slicing, and common methods</li>
+            <li><strong>Why this helps:</strong> Reinforces lecture concepts with different examples</li>
+            <li><strong>Study approach:</strong> Pause and try each example in Kaggle yourself</li>
+        </ul>
+    </div>
+
+    <h2>Creating Lists - Beyond the Basics</h2>
+
+    <div class="lecture-review">
+        <p>Monday's lecture covered basic list creation. These materials add more techniques.</p>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools Python Lists</div>
+        <a href="https://www.w3schools.com/python/python_lists.asp">https://www.w3schools.com/python/python_lists.asp</a>
+        <ul>
+            <li>Review basic list syntax</li>
+            <li>Try the interactive "Try it Yourself" examples</li>
+            <li>Test different list operations</li>
+        </ul>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Advanced List Creation Techniques</div>
+        <pre><code class="language-python"># Creating from strings
+sentence = "Python is amazing"
+words = sentence.split()  # ["Python", "is", "amazing"]
+print(f"Words: {words}")
+
+# Split with different separator
+csv_data = "apple,banana,cherry"
+fruits = csv_data.split(",")  # ["apple", "banana", "cherry"]
+print(f"Fruits: {fruits}")
+
+# Creating from range
+numbers = list(range(5))  # [0, 1, 2, 3, 4]
+print(f"Range: {numbers}")
+
+countdown = list(range(10, 0, -1))  # [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+print(f"Countdown: {countdown}")
+
+evens = list(range(0, 11, 2))  # [0, 2, 4, 6, 8, 10]
+print(f"Evens: {evens}")
+
+# Repetition with multiplication
+zeros = [0] * 5  # [0, 0, 0, 0, 0]
+print(f"Zeros: {zeros}")
+
+pattern = ["A", "B"] * 3  # ["A", "B", "A", "B", "A", "B"]
+print(f"Pattern: {pattern}")
+
+dashes = ["-"] * 10  # ["−", "−", "−", "−", "−", "−", "−", "−", "−", "−"]
+separator = "".join(dashes)  # Convert list to string
+print(f"Separator: {separator}")
+
+# Lists can hold different types
+mixed = [1, "hello", 3.14, True, [1, 2, 3]]
+print(f"Mixed types: {mixed}")
+
+# Nested lists (lists inside lists)
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+print(f"Matrix: {matrix}")
+print(f"First row: {matrix[0]}")
+print(f"Middle element: {matrix[1][1]}")  # 5</code></pre>
+    </div>
+
+    <h2>Indexing - Edge Cases and Best Practices</h2>
+
+    <div class="lecture-review">
+        <p>Monday's lecture covered positive and negative indexing. These materials add safe indexing practices.</p>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Real Python - List Indexing</div>
+        <a href="https://realpython.com/python-lists-tuples/#list-elements-can-be-accessed-by-index">https://realpython.com/python-lists-tuples/#list-elements-can-be-accessed-by-index</a>
+        <ul>
+            <li>Deep dive into indexing mechanics</li>
+            <li>Understanding IndexError</li>
+            <li>Safe indexing practices</li>
+        </ul>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Safe Indexing Practices</div>
+        <pre><code class="language-python"># Always check length before indexing
+scores = [85, 92, 78]
+print(f"Length: {len(scores)}")
+
+# Safe way to access last element
+if len(scores) > 0:
+    last_score = scores[-1]
+    print(f"Last score: {last_score}")
+else:
+    print("List is empty!")
+
+# Check if index exists
+index = 5
+if index < len(scores):
+    value = scores[index]
+    print(f"Value at {index}: {value}")
+else:
+    print(f"Index {index} doesn't exist!")
+
+# Getting last index
+last_index = len(scores) - 1  # 2
+print(f"Last valid index: {last_index}")
+
+# Modifying elements safely
+if len(scores) >= 2:
+    scores[1] = 95  # Change second score
+    print(f"Updated scores: {scores}")
+
+# Using max/min with indices
+numbers = [10, 25, 5, 30, 15]
+max_value = max(numbers)
+min_value = min(numbers)
+max_index = numbers.index(max_value)
+min_index = numbers.index(min_value)
+
+print(f"Max: {max_value} at index {max_index}")
+print(f"Min: {min_value} at index {min_index}")</code></pre>
+    </div>
+
+    <h2>Slicing - The Step Parameter</h2>
+
+    <div class="lecture-review">
+        <p>Monday's lecture covered basic slicing with start and end. These materials add the step parameter.</p>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Python Slicing Tutorial</div>
+        <a href="https://www.programiz.com/python-programming/methods/list/slice">https://www.programiz.com/python-programming/methods/list/slice</a>
+        <ul>
+            <li>Complete slicing reference</li>
+            <li>Step parameter explained</li>
+            <li>Advanced slicing patterns</li>
+        </ul>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Advanced Slicing with Step</div>
+        <pre><code class="language-python"># Working with a list
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(f"Original: {numbers}")
+print()
+
+# Using step to skip elements
+every_second = numbers[::2]  # [0, 2, 4, 6, 8]
+print(f"Every second [::2]: {every_second}")
+
+every_third = numbers[::3]   # [0, 3, 6, 9]
+print(f"Every third [::3]: {every_third}")
+
+# Start at different position with step
+odds = numbers[1::2]  # [1, 3, 5, 7, 9]
+print(f"Odds [1::2]: {odds}")
+print()
+
+# Combining start, end, and step
+subset = numbers[2:8:2]  # [2, 4, 6]
+print(f"From 2 to 8, every 2nd [2:8:2]: {subset}")
+print()
+
+# REVERSING with negative step
+reversed_all = numbers[::-1]  # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+print(f"Reversed [::-1]: {reversed_all}")
+
+reversed_evens = numbers[::-2]  # [9, 7, 5, 3, 1]
+print(f"Reversed, every 2nd [::-2]: {reversed_evens}")
+print()
+
+# Practical string reversal
+word = "Python"
+letters = list(word)  # ["P", "y", "t", "h", "o", "n"]
+reversed_letters = letters[::-1]  # ["n", "o", "h", "t", "y", "P"]
+reversed_word = "".join(reversed_letters)  # "nohtyP"
+print(f"{word} reversed: {reversed_word}")
+print()
+
+# Checking palindromes
+def is_palindrome(text):
+    letters = list(text.lower())
+    return letters == letters[::-1]
+
+print(f"'racecar' is palindrome: {is_palindrome('racecar')}")
+print(f"'python' is palindrome: {is_palindrome('python')}")</code></pre>
+    </div>
+
+    <div class="example-box">
+        <h4>Practical Slicing Patterns</h4>
+        <pre><code class="language-python"># Get first N items
+top_5 = [100, 95, 90, 88, 85, 82, 80][:5]
+print(f"Top 5: {top_5}")
+
+# Get last N items  
+last_3 = [1, 2, 3, 4, 5, 6, 7, 8][-3:]
+print(f"Last 3: {last_3}")
+
+# Remove first and last
+middle_only = [10, 20, 30, 40, 50][1:-1]
+print(f"Middle only: {middle_only}")
+
+# Copy a list
+original = [1, 2, 3]
+copy = original[:]
+copy[0] = 999
+print(f"Original: {original}")  # Unchanged!
+print(f"Copy: {copy}")</code></pre>
+    </div>
+
+    <h2>List Methods - Beyond the Basics</h2>
+
+    <div class="lecture-review">
+        <p>Monday's lecture covered <code>.append()</code>, <code>.pop()</code>, <code>.remove()</code>, and <code>len()</code>. These materials add more methods.</p>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools List Methods Reference</div>
+        <a href="https://www.w3schools.com/python/python_lists_methods.asp">https://www.w3schools.com/python/python_lists_methods.asp</a>
+        <ul>
+            <li>Complete list of all methods</li>
+            <li>Examples for each</li>
+            <li>Try them interactively</li>
+        </ul>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Additional List Methods</div>
+        <pre><code class="language-python"># INSERT at specific position
+fruits = ["apple", "cherry"]
+print(f"Before insert: {fruits}")
+
+fruits.insert(1, "banana")  # Insert at index 1
+print(f"After insert(1, 'banana'): {fruits}")
+
+fruits.insert(0, "apricot")  # Insert at beginning
+print(f"After insert(0, 'apricot'): {fruits}")
+print()
+
+# EXTEND - add multiple items
+numbers = [1, 2, 3]
+print(f"Before extend: {numbers}")
+
+numbers.extend([4, 5, 6])
+print(f"After extend([4,5,6]): {numbers}")
+
+# Difference between extend and append
+list1 = [1, 2]
+list1.append([3, 4])  # Adds the list as ONE item
+print(f"After append([3,4]): {list1}")  # [1, 2, [3, 4]]
+
+list2 = [1, 2]
+list2.extend([3, 4])  # Adds items individually
+print(f"After extend([3,4]): {list2}")  # [1, 2, 3, 4]
+print()
+
+# INDEX - find position of item
+colors = ["red", "blue", "green", "blue", "yellow"]
+position = colors.index("blue")  # Finds FIRST occurrence
+print(f"First 'blue' at index: {position}")
+
+# Check if item exists before using index
+if "purple" in colors:
+    pos = colors.index("purple")
+else:
+    print("'purple' not in list")
+print()
+
+# COUNT - how many times item appears
+numbers = [1, 2, 3, 2, 4, 2, 5]
+count = numbers.count(2)
+print(f"Number 2 appears {count} times")
+print()
+
+# CLEAR - remove all items
+temp = [1, 2, 3, 4, 5]
+print(f"Before clear: {temp}")
+temp.clear()
+print(f"After clear: {temp}")
+print()
+
+# REVERSE - flip the order
+letters = ["A", "B", "C", "D"]
+print(f"Before reverse: {letters}")
+letters.reverse()
+print(f"After reverse: {letters}")
+print()
+
+# SORT - organize items
+scores = [85, 92, 78, 95, 88]
+print(f"Before sort: {scores}")
+
+scores.sort()
+print(f"After sort: {scores}")
+
+scores.sort(reverse=True)
+print(f"Descending: {scores}")
+
+# Sorting strings (alphabetical)
+names = ["Charlie", "Alice", "Bob"]
+names.sort()
+print(f"Sorted names: {names}")</code></pre>
+    </div>
+
+    <div class="warning-box">
+        <h4>Critical Difference: Modify vs Return</h4>
+        <p>Some methods <strong>modify the list in place</strong> and return <code>None</code>:</p>
+        <ul>
+            <li><code>.append()</code>, <code>.insert()</code>, <code>.extend()</code>, <code>.remove()</code>, <code>.pop()</code></li>
+            <li><code>.sort()</code>, <code>.reverse()</code>, <code>.clear()</code></li>
+        </ul>
+        <p>Others <strong>return a new value</strong> without changing the original:</p>
+        <ul>
+            <li><code>sorted(list)</code> - returns new sorted list</li>
+            <li><code>len(list)</code>, <code>.index()</code>, <code>.count()</code> - return information</li>
+        </ul>
+        <pre><code class="language-python"># WRONG - sort() returns None!
+numbers = [3, 1, 4]
+sorted_numbers = numbers.sort()
+print(sorted_numbers)  # None!
+
+# CORRECT approach 1: sort in place
+numbers = [3, 1, 4]
+numbers.sort()
+print(numbers)  # [1, 3, 4]
+
+# CORRECT approach 2: create sorted copy
+numbers = [3, 1, 4]
+sorted_numbers = sorted(numbers)
+print(f"Original: {numbers}")  # [3, 1, 4]
+print(f"Sorted: {sorted_numbers}")  # [1, 3, 4]</code></pre>
+    </div>
+
+    <h2>Tuples</h2>
+
+    <div class="lecture-review">
+        <p>Monday's lecture covered tuple basics: use parentheses <code>()</code>, cannot be modified. These materials add unpacking and use cases.</p>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Real Python Tuples Guide</div>
+        <a href="https://realpython.com/python-lists-tuples/#python-tuples">https://realpython.com/python-lists-tuples/#python-tuples</a>
+        <ul>
+            <li>Comprehensive tuple tutorial</li>
+            <li>Tuple packing and unpacking</li>
+            <li>When to choose tuples over lists</li>
+        </ul>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Working with Tuples</div>
+        <pre><code class="language-python"># Creating tuples
+empty_tuple = ()
+single_item = (42,)  # Note comma! Without it (42) is just an int
+coordinates = (10, 20)
+rgb_color = (255, 128, 0)
+person = ("Alice", 25, "Engineer")
+
+print(f"Person: {person}")
+print()
+
+# Tuple packing (no parentheses needed)
+point = 5, 10  # Same as (5, 10)
+print(f"Point: {point}, Type: {type(point)}")
+print()
+
+# Indexing and slicing (same as lists!)
+name = person[0]      # "Alice"
+age = person[1]       # 25
+first_two = person[:2]  # ("Alice", 25)
+
+print(f"Name: {name}, Age: {age}")
+print(f"First two: {first_two}")
+print()
+
+# TUPLE UNPACKING - very powerful!
+x, y = coordinates
+print(f"x = {x}, y = {y}")
+
+name, age, job = person
+print(f"{name} is {age} and works as a {job}")
+print()
+
+# Swapping values with tuple unpacking
+a = 5
+b = 10
+print(f"Before swap: a={a}, b={b}")
+
+a, b = b, a  # Swap!
+print(f"After swap: a={a}, b={b}")
+print()
+
+# Tuples are IMMUTABLE
+try:
+    coordinates[0] = 15  # This will error!
+except TypeError as e:
+    print(f"Error: {e}")
+    print("Cannot modify tuples!")
+print()
+
+# What tuples CAN do
+print(f"Length: {len(person)}")
+print(f"Count 'Alice': {person.count('Alice')}")
+print(f"Index of 25: {person.index(25)}")
+print(f"25 in tuple: {25 in person}")
+print()
+
+# Returning multiple values from functions
+def get_user_stats():
+    username = "alice123"
+    score = 9500
+    level = 15
+    return username, score, level  # Returns a tuple!
+
+user, points, lvl = get_user_stats()
+print(f"User: {user}, Points: {points}, Level: {lvl}")</code></pre>
+    </div>
+
+    <div class="comparison-section">
+        <h3>Lists vs Tuples - Complete Comparison</h3>
+        
+        <div class="comparison-table">
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Lists <code>[]</code></th>
+                    <th>Tuples <code>()</code></th>
+                </tr>
+                <tr>
+                    <td><strong>Mutable</strong></td>
+                    <td>✅ Can change after creation</td>
+                    <td>❌ Cannot change (immutable)</td>
+                </tr>
+                <tr>
+                    <td><strong>Syntax</strong></td>
+                    <td>Square brackets: <code>[1, 2, 3]</code></td>
+                    <td>Parentheses: <code>(1, 2, 3)</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Methods</strong></td>
+                    <td>Many: append, insert, remove, pop, sort, reverse, extend, clear</td>
+                    <td>Only two: count, index</td>
+                </tr>
+                <tr>
+                    <td><strong>Speed</strong></td>
+                    <td>Slightly slower</td>
+                    <td>Slightly faster</td>
+                </tr>
+                <tr>
+                    <td><strong>Memory</strong></td>
+                    <td>Uses more memory</td>
+                    <td>Uses less memory</td>
+                </tr>
+                <tr>
+                    <td><strong>Use Cases</strong></td>
+                    <td>Shopping carts, game scores, user inputs - data that changes</td>
+                    <td>Coordinates, RGB values, database records - fixed data</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="example-box">
+            <h4>Decision Guide: Which Should I Use?</h4>
+            <p><strong>Use Lists when:</strong></p>
+            <ul>
+                <li>You need to add, remove, or modify elements</li>
+                <li>The data will change over time</li>
+                <li>Order might need to change (sorting)</li>
+                <li>Examples: shopping cart items, player inventory, test scores, to-do list</li>
+            </ul>
+            <p><strong>Use Tuples when:</strong></p>
+            <ul>
+                <li>Data should never change (x,y coordinates, RGB colors)</li>
+                <li>Returning multiple values from a function</li>
+                <li>You want to protect data from accidental modification</li>
+                <li>Examples: (latitude, longitude), (year, month, day), database row, configuration settings</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Common Mistakes to Avoid</h2>
+
+    <div class="warning-box">
+        <h4>Mistake 1: Forgetting End Index is Excluded</h4>
+        <pre><code class="language-python">numbers = [0, 1, 2, 3, 4]
+subset = numbers[1:3]  # Gets indices 1 and 2, NOT 3!
+print(subset)  # [1, 2]
+
+# If you want indices 1, 2, 3:
+subset = numbers[1:4]  # End is 4, not 3!
+print(subset)  # [1, 2, 3]</code></pre>
+    </div>
+
+    <div class="warning-box">
+        <h4>Mistake 2: Assigning sort() Result</h4>
+        <pre><code class="language-python"># WRONG
+numbers = [3, 1, 4]
+sorted_numbers = numbers.sort()
+print(sorted_numbers)  # None!
+
+# CORRECT
+numbers.sort()  # Modifies in place
+print(numbers)  # [1, 3, 4]
+
+# OR use sorted()
+numbers = [3, 1, 4]
+sorted_numbers = sorted(numbers)
+print(sorted_numbers)  # [1, 3, 4]</code></pre>
+    </div>
+
+    <div class="warning-box">
+        <h4>Mistake 3: Modifying While Checking</h4>
+        <pre><code class="language-python"># Be careful when index might not exist
+colors = ["red", "blue"]
+
+# UNSAFE
+# color = colors[5]  # IndexError!
+
+# SAFE
+if len(colors) > 5:
+    color = colors[5]
+else:
+    print("Index doesn't exist")
+
+# Or use get-like pattern
+index = 5
+color = colors[index] if index < len(colors) else "Not found"
+print(color)</code></pre>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">LearnPython.org Interactive Practice</div>
+        <a href="https://www.learnpython.org/en/Lists">https://www.learnpython.org/en/Lists</a>
+        <ul>
+            <li>Interactive exercises</li>
+            <li>Immediate feedback</li>
+            <li>Test your understanding</li>
+        </ul>
+    </div>
+
+    <div class="quick-ref">
+        <h2>Quick Reference Cheat Sheet</h2>
+
+        <div class="code-section">
+            <div class="code-title">List Operations Summary</div>
+            <pre><code class="language-python"># Creating
+my_list = [1, 2, 3]
+my_list = list(range(5))  # [0, 1, 2, 3, 4]
+my_list = [0] * 5  # [0, 0, 0, 0, 0]
+
+# Accessing
+first = my_list[0]
+last = my_list[-1]
+subset = my_list[1:3]
+reversed = my_list[::-1]
+
+# Modifying
+my_list[0] = 10           # Change element
+my_list.append(4)         # Add to end
+my_list.insert(0, 0)      # Insert at position
+my_list.extend([5, 6])    # Add multiple
+
+# Removing
+my_list.remove(10)        # Remove first occurrence
+item = my_list.pop()      # Remove and return last
+item = my_list.pop(0)     # Remove and return at index
+
+# Searching
+index = my_list.index(3)  # Find position
+count = my_list.count(2)  # Count occurrences
+exists = 3 in my_list     # Check existence
+
+# Organizing
+my_list.sort()            # Sort in place
+my_list.reverse()         # Reverse in place
+sorted_copy = sorted(my_list)  # Return sorted copy
+
+# Info
+length = len(my_list)
+maximum = max(my_list)
+minimum = min(my_list)
+total = sum(my_list)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Tuple Operations Summary</div>
+            <pre><code class="language-python"># Creating
+my_tuple = (1, 2, 3)
+my_tuple = 1, 2, 3        # Tuple packing
+single = (42,)            # Single item (note comma!)
+
+# Accessing (same as lists)
+first = my_tuple[0]
+last = my_tuple[-1]
+
+# Unpacking
+a, b, c = my_tuple
+x, y = (10, 20)
+
+# Operations
+length = len(my_tuple)
+count = my_tuple.count(2)
+index = my_tuple.index(3)
+exists = 2 in my_tuple
+
+# CANNOT modify!
+# my_tuple[0] = 10        # ERROR
+# my_tuple.append(4)      # ERROR</code></pre>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>
