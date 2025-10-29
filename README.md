@@ -57,7 +57,7 @@ You'll import pre-designed .ipynb notebook files containing exercises and comple
 
 ### Student Success Philosophy
 
-I believe in rewarding effort and genuine engagement with the material. I am committed to helping students who demonstrate they are putting in the work and making an honest attempt to learn. However, I cannot provide meaningful assistance to students who consistently submit late work or assignments that show little to no effort. Students are encouraged to reach out if they are struggling or have questions about the course material. I also value and encourage curiosity—students who ask thoughtful questions, explore beyond the basic requirements, or show genuine interest in learning will find that enthusiasm recognized and supported.
+I believe in rewarding effort and genuine engagement with the material. I am committed to helping students who demonstrate they are putting in the work and making an honest attempt to learn. However, I cannot provide meaningful assistance to students who consistently submit late work or assignments that show little to no effort. Students are encouraged to reach out if they are struggling or have questions about the course material. I also value and encourage curiosity, students who ask thoughtful questions, explore beyond the basic requirements, or show genuine interest in learning will find that enthusiasm recognized and supported.
 
 ## Grading and Assessment
 
