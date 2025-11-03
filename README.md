@@ -134,10 +134,10 @@ I believe in rewarding effort and genuine engagement with the material. I am com
 | **8** | For Loops | For loop syntax, range(), nested loops, enumerate(), iteration patterns | Homework |
 | **9** | While Loops & Advanced Debugging | While loops, break/continue, input validation, debugging strategies | Homework |
 | **10** | Midterm + Project Planning | Exam (Weeks 1-9), software development lifecycle, project scoping | **MIDTERM** |
-| **11** | Functions | def keyword, parameters/arguments, return values, scope, docstrings | Homework |
-| **12** | Advanced Functions & Dictionaries | Default parameters, lambda functions, dictionaries, key-value pairs | **PSEUDOCODE** |
-| **13** | Libraries and Modules | Import statements, random/math/datetime modules, documentation | Homework |
-| **14** | Error Handling | try/except blocks, exception types, debugging methodology | **FINAL PROJECT** |
+| **11** | Dictionaries | dictionaries, key-value pairs | Homework |
+| **12** | Functions| def keyword, parameters/arguments, return values, scope, docstrings | **PSEUDOCODE** |
+| **13** | Error Handling | try/except blocks, exception types, debugging methodology| Homework |
+| **14** | Libraries and Modules | Import statements, random/math/datetime modules, documentation | **FINAL PROJECT** |
 | **15** | Final Project | Project integration, documentation, testing, code quality | **FINAL PROJECT** |
 
 ## Course Policies
