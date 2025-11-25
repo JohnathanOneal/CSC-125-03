@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 11 Quiz: Dictionaries</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 18px;
+        line-height: 1.4;
+        color: #333;
+        font-size: 14px;
+    }
+    h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 50px;
+        font-size: 28px;
+        margin: 10px 0;
+    }
+    h2 {
+        color: #34495e;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        border-left: 3px solid #3498db;
+        padding-left: 10px;
+        font-size: 22px;
+    }
+    .quiz-header {
+        background: #f8f9fa;
+        padding: 8px;
+        border-radius: 5px;
+        margin: 10px 0;
+        font-size: 16px;
+    }
+    .question {
+        margin: 12px 0;
+        padding: 10px;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+        background: #ffffff;
+    }
+    .choices {
+        margin: 8px 0;
+        padding-left: 15px;
+        font-size: 13px;
+    }
+    pre {
+        border-radius: 3px;
+        overflow-x: auto;
+        margin: 4px 0;
+        padding: 3px 5px;
+        background: #f8f9fa;
+    }
+    code {
+        font-size: 12px;
+        line-height: 1.3;
+        padding: 0;
+        background: none;
+    }
+    .total {
+        background: #e7f3ff;
+        border: 2px solid #2196f3;
+        padding: 15px;
+        margin: 20px 0;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+</style>
+
+</head>
+<body>
+    <h2>Week 11 Quiz: Dictionaries</h2>
+    
+    <div class="quiz-header">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+                <p><strong>Name:</strong> _________________________ <strong>Date:</strong> _____________</p>
+                <p><strong>Instructions:</strong></p>
+                <ul>
+                    <li>10-minute quiz on paper</li>
+                    <li>No computers, phones, or notes allowed</li>
+                </ul>
+            </div>
+            <div style="border: 2px solid #333; padding: 5px; background: #fff; margin-left: 20px;">
+                <strong>Score: _____ / 30</strong>
+            </div>
+        </div>
+    </div>
+
+    <h2>Part 1: Multiple Choice (4 points each)</h2>
+
+    <div class="question">
+        <strong>1. What gets printed FIRST?</strong>
+        <pre><code class="language-python">grades = {"Alice": 92, "Bob": 85, "Charlie": 78}
+for name, grade in grades.items():
+    print(name)</code></pre>
+        <div class="choices">
+            a) 92<br>
+            b) "Alice"<br>
+            c) 3<br>
+            d) ("Alice", 92)
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>2. What is the output?</strong>
+        <pre><code class="language-python">inventory = {"apples": 50}
+print(inventory.get("bananas"))</code></pre>
+        <div class="choices">
+            a) 0<br>
+            b) KeyError<br>
+            c) None<br>
+            d) "Not in stock"
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>3. After this code runs, what is in the product dictionary?</strong>
+        <pre><code class="language-python">product = {"name": "Laptop", "price": 999.99}
+product["price"] = product["price"] * 2</code></pre>
+        <div class="choices">
+            a) {"name": "Laptop", "price": 999.99}<br>
+            b) {"name": "Laptop", "price": 1999.98}<br>
+            c) {"name": "Laptop", "price": 999.99, "price": 1999.98}<br>
+            d) Error
+        </div>
+    </div>
+
+    <h2>Part 2: Fill in the Code (3 points each)</h2>
+
+    <div class="question">
+        <strong>4. Loop through dictionary and print both fruit names AND prices:</strong>
+        <pre><code class="language-python">prices = {"apple": 1.50, "banana": 0.75}
+for fruit, price in prices._______:
+    print(f"{fruit}: ${price}")</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>5. Build a dictionary counting each letter (skip spaces):</strong>
+        <pre><code class="language-python">text = "hi mom"
+letter_count = {}
+for char in text:
+    if char != " ":
+        if char in letter_count:
+            letter_count[char] _______ 1
+        else:
+            letter_count[char] = 1</code></pre>
+    </div>
+
+    <h2>Part 3: Fix the Errors (4 points each)</h2>
+
+    <div class="question">
+        <strong>6. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">contacts = {"Alice": "555-1234", "Bob": "555-5678"}
+for name in contacts:
+    print(f"{name}: {contacts{name}}")</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>7. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">student = {"name": "Bob", "age": 19, "major": "Math"}
+student["age"] = 20
+student("gpa") = 3.6</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>8. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">scores = {"Alice": 92, "Bob": 85, "Eve": 95}
+total = 0
+for score in scores:
+    total = score</code></pre>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+</body>
+</html>

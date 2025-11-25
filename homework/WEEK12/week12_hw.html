@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 12: Final Project Design Document</title>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px;
+    line-height: 1.4;
+    color: #333;
+    font-size: 12px;
+}
+h1 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 6px;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+h2 {
+    color: #34495e;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+h3 {
+    color: #2980b9;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    font-size: 13px;
+}
+h4 {
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+.header-info {
+    background: #e3f2fd;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-size: 12px;
+}
+.important-note {
+    background: #fff3cd;
+    border-left: 3px solid #ffc107;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-size: 12px;
+}
+.critical {
+    background: #ffebee;
+    border-left: 3px solid #f44336;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-size: 12px;
+}
+.rubric {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 12px;
+}
+.rubric-item {
+    border-bottom: 1px solid #eee;
+    padding: 6px 0;
+}
+.rubric-item:last-child {
+    border-bottom: none;
+}
+.points {
+    color: #3498db;
+    font-weight: bold;
+}
+.tip {
+    background: #e8f5e9;
+    padding: 8px;
+    margin: 8px 0;
+    border-left: 3px solid #4caf50;
+    font-size: 12px;
+}
+.requirements-box {
+    background: #f9f9f9;
+    border: 1px solid #4caf50;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-size: 12px;
+}
+.example-section {
+    background: #f8f9fa;
+    border-left: 3px solid #6c757d;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 11px;
+}
+p, ul, li {
+    font-size: 12px;
+}
+ul {
+    margin-left: 12px;
+    padding-left: 8px;
+}
+li {
+    margin-bottom: 2px;
+}
+pre {
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 11px;
+    line-height: 1.3;
+}
+</style>
+
+</head>
+<body>
+    <h1>Week 12: Final Project Design Document</h1>
+
+    <div class="header-info">
+        <p><strong>Due:</strong> Monday, November 24th, 11:59 PM via Moodle (PDF only)</p>
+        <p><strong>Weight:</strong> Half of the Program Design Grade (With the first Psuedocode Project, 10% of final course grade)</p>
+        <p><strong>This replaces:</strong> Regular Week 12 homework</p>
+    </div>
+
+    <div class="critical">
+        <p><strong>Important:</strong> This design document is your roadmap for the final project you will code in Weeks 13-15. A well-planned design makes coding easier. A poorly planned design leads to frustration and major revisions. This is an important skill and a summary of the whole semester so any signs of AI usage will be throughly penalized.</p>
+    </div>
+
+    <h2>Overview</h2>
+    <p>You will design your own Python program from scratch. This is your chance to create something useful, interesting, or fun that demonstrates everything you have learned this semester. Unlike Week 6 where you chose from preset problems, this time you have complete creative freedom within the technical requirements.</p>
+
+    <p>Your program must solve a real problem, provide useful information, or create an engaging interaction. Think about:</p>
+    <ul>
+        <li>What tasks could be automated or simplified?</li>
+        <li>What calculations would be helpful to have ready?</li>
+        <li>What information would be useful to organize and retrieve?</li>
+        <li>What would be fun or educational to interact with?</li>
+    </ul>
+
+    <h2>Required Technical Components</h2>
+
+    <div class="requirements-box">
+        <p><strong>Your program MUST include all of these:</strong></p>
+        <ul>
+            <li><strong>Dictionary:</strong> Store and retrieve data using at least one dictionary (with at least 3 key-value pairs)</li>
+            <li><strong>Function:</strong> At least one custom function you create (must have parameters and/or return value)</li>
+            <li><strong>Loop:</strong> Use for or while loop for repetition (processing data, menu system, or validation)</li>
+            <li><strong>Conditional Logic:</strong> if/elif/else statements for decision making</li>
+            <li><strong>User Input:</strong> Accept input from the user (with validation when appropriate)</li>
+            <li><strong>Meaningful Output:</strong> Display results, calculations, or information clearly</li>
+        </ul>
+    </div>
+
+    <div class="important-note">
+        <p><strong>Scope Guidelines:</strong> Your program should be substantial enough to demonstrate your skills but not so complex that you cannot complete it in 2-3 weeks. Aim for 75-150 lines of code when finished. Programs that are too simple (under 50 lines) or overly ambitious (over 200 lines) will receive feedback to adjust scope.</p>
+    </div>
+
+    <h2>Thinking About Dictionaries</h2>
+    <p>Since dictionaries are required, plan how you will use them effectively:</p>
+
+    <div class="tip">
+        <p><strong>Good dictionary uses:</strong></p>
+        <ul>
+            <li>Menu items with prices: {"burger": 12.99, "fries": 4.99, "soda": 2.99}</li>
+            <li>Student records: {"Alice": {"gpa": 3.8, "major": "CS"}, "Bob": {...}}</li>
+            <li>Quiz questions and answers: {"What is 2+2?": "4", "Capital of France?": "Paris"}</li>
+            <li>Product inventory: {"laptop": {"price": 999, "quantity": 5}, ...}</li>
+            <li>Translation tool: {"hello": "hola", "goodbye": "adiós", ...}</li>
+        </ul>
+    </div>
+
+    <h2>Thinking About Functions</h2>
+    <p>Functions organize your code and make it reusable. Consider what tasks can be separated into functions:</p>
+
+    <div class="tip">
+        <p><strong>Good function examples:</strong></p>
+        <ul>
+            <li>Calculation function: calculate_total(price, quantity, tax_rate)</li>
+            <li>Validation function: is_valid_choice(choice, options)</li>
+            <li>Processing function: find_highest_grade(grades_dict)</li>
+            <li>Display function: print_menu(items_dict)</li>
+            <li>Conversion function: celsius_to_fahrenheit(temp)</li>
+        </ul>
+    </div>
+
+    <h2>Project Ideas (Optional Starting Points)</h2>
+    <p>You are free to choose any topic, but here are ideas if you need inspiration:</p>
+
+    <ul>
+        <li><strong>Restaurant Order System:</strong> Menu with items/prices, calculate total with tax/tip, track multiple orders</li>
+        <li><strong>Study Quiz Program:</strong> Store questions/answers in dictionary, quiz user, track score, provide feedback</li>
+        <li><strong>Budget Tracker:</strong> Store spending categories, track expenses, calculate totals, warn about overspending</li>
+        <li><strong>Recipe Scaler:</strong> Store recipes with ingredients/amounts, scale up/down, calculate costs</li>
+        <li><strong>Fitness Tracker:</strong> Store exercises with calories burned, log workouts, calculate totals</li>
+        <li><strong>Grade Calculator:</strong> Store assignments with weights, calculate final grade, determine letter grade</li>
+        <li><strong>Inventory Manager:</strong> Track products with prices/quantities, process sales, alert on low stock</li>
+        <li><strong>Travel Planner:</strong> Store destinations with costs/info, calculate trip budget, compare options</li>
+        <li><strong>Movie Recommender:</strong> Store movies with genres/ratings, filter by preferences, display matches</li>
+    </ul>
+
+    <h2>What to Submit (5 Required Sections)</h2>
+
+    <div class="rubric">
+        <div class="rubric-item">
+            <strong>Section 1: Program Overview</strong> <span class="points">10 pts</span>
+            <p>Write 6-8 sentences describing your program:</p>
+            <ul>
+                <li>What problem does this solve or what does it do?</li>
+                <li>Who would use this and why?</li>
+                <li>What makes this program useful, interesting, or educational?</li>
+                <li>What are the main features?</li>
+            </ul>
+        </div>
+
+        <div class="rubric-item">
+            <strong>Section 2: Technical Requirements</strong> <span class="points">15 pts</span>
+            <p>Clearly list how your program uses each required component:</p>
+            <p><strong>Dictionary Usage:</strong> Describe what your dictionary stores (keys and values) and how the program uses it<br>
+            <strong>Function Usage:</strong> Name your function(s), what parameters they take, what they return<br>
+            <strong>Loop Usage:</strong> Describe where/why you use loops<br>
+            <strong>User Inputs:</strong> List all inputs the user will provide<br>
+            <strong>Outputs:</strong> List all information the program will display</p>
+        </div>
+
+        <div class="rubric-item">
+            <strong>Section 3: Detailed Pseudocode</strong> <span class="points">40 pts</span>
+            <p>Step-by-step plan in plain English. Must be detailed enough that someone could follow it to code your program.</p>
+            <p><strong>Requirements:</strong></p>
+            <ul>
+                <li>Show how dictionary is created and used (15 pts)</li>
+                <li>Show where function is defined and called (10 pts)</li>
+                <li>Show loop logic clearly (10 pts)</li>
+                <li>Steps in logical order with clear transitions (5 pts)</li>
+            </ul>
+            <p><em>See pseudocode guidelines below for details</em></p>
+        </div>
+
+        <div class="rubric-item">
+            <strong>Section 4: Test Cases</strong> <span class="points">25 pts</span>
+            <p>Provide 3 complete test scenarios that demonstrate different paths through your program. Each test case must include:</p>
+            <ul>
+                <li>Description of what the test demonstrates</li>
+                <li>Specific inputs the user provides</li>
+                <li>Expected outputs and calculations</li>
+                <li>Why this test is important</li>
+            </ul>
+            <p>At least one test should demonstrate error handling or edge cases.</p>
+        </div>
+
+        <div class="rubric-item">
+            <strong>Section 5: Design Rationale</strong> <span class="points">10 pts</span>
+            <p>Write 5-6 sentences explaining your design decisions:</p>
+            <ul>
+                <li>Why did you choose this topic?</li>
+                <li>Why did you structure the program this way?</li>
+                <li>What was challenging about planning this?</li>
+                <li>How does your dictionary make the program better than using lists?</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Pseudocode Guidelines</h2>
+
+    <div class="tip">
+        <p><strong>Good pseudocode is specific but not code:</strong> Write steps someone could follow, using plain English, not Python syntax.</p>
+    </div>
+
+    <p><strong>Use action verbs:</strong> Ask, Store, Calculate, Display, Check, Compare, Loop through, Call function</p>
+    <p><strong>Be specific about data:</strong> Not "get input" but "Ask user for item name and store in variable"</p>
+    <p><strong>Show dictionary operations clearly:</strong> "Create dictionary with menu items as keys and prices as values"</p>
+    <p><strong>Show function calls:</strong> "Call calculate_total function with price and quantity, store returned value"</p>
+    <p><strong>Avoid being too vague:</strong> Not "process the data" but "Loop through each key in dictionary and calculate sum of values"</p>
+    <p><strong>Avoid Python syntax:</strong> Not "for item in menu:" but "For each item in the menu dictionary"</p>
+
+    <h3>Pseudocode Example</h3>
+    <div class="example-section">
+        <p><strong>Bad pseudocode (too vague):</strong></p>
+        <pre>Get menu
+Process order
+Calculate total
+Show result</pre>
+
+        <p><strong>Good pseudocode (specific and clear):</strong></p>
+        <pre>Create dictionary called menu with items as keys and prices as values:
+    "burger" maps to 12.99
+    "fries" maps to 4.99
+    "soda" maps to 2.99
+
+Display "Welcome to Restaurant Order System"
+
+Create empty list called order_items
+
+Ask user "How many items do you want to order?" and store in num_items
+
+Loop num_items times:
+    Display all menu items with their prices
+    Ask user to enter an item name
+    Check if item exists in menu dictionary:
+        If yes: add item to order_items list
+        If no: display "Item not found" and ask again
+    
+Define function calculate_total that takes order_items list and menu dictionary:
+    Set subtotal to 0
+    For each item in order_items:
+        Look up price in menu dictionary
+        Add price to subtotal
+    Calculate tax as subtotal times 0.08
+    Calculate final_total as subtotal plus tax
+    Return final_total
+
+Call calculate_total function with order_items and menu
+Store returned value in total
+
+Display "Order Summary:"
+Display each item in order_items
+Display subtotal
+Display tax amount
+Display final total</pre>
+    </div>
+
+    <h2>Academic Integrity for This Assignment</h2>
+
+    <div class="critical">
+        <p><strong>You must be able to explain every part of your design document.</strong> In Week 13, you may be asked to verbally explain your pseudocode, why you made certain design decisions, or how your dictionary/function will work. If you cannot explain your own design, it will be considered a violation of academic integrity.</p>
+        
+        <p><strong>Acceptable resources:</strong> Course materials, lecture notes, homework examples, W3Schools, Python documentation</p>
+        
+        <p><strong>Not acceptable:</strong> Having AI write your pseudocode, copying another student's design, using pre-written project templates</p>
+        
+        <p><strong>AI Usage:</strong> You may use AI to brainstorm ideas or ask questions about concepts, but the design document must be your own work in your own words. If AI language appears in your submission, you must be able to explain it in detail.</p>
+    </div>
+
+    <h2>Tips for Success</h2>
+    <ul>
+        <li>Start by deciding what your dictionary will store (this often drives the whole program)</li>
+        <li>Plan your function early (what calculation or task can be separated out?)</li>
+        <li>Write pseudocode that YOU can understand and follow when you start coding</li>
+        <li>Test cases should cover normal use, edge cases, and potential errors</li>
+        <li>Simple and complete is better than complex and unfinished</li>
+        <li>If you cannot explain how something works, you need to revise it</li>
+    </ul>
+
+</body>
+</html>

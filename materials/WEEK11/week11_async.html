@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 11 Asynchronous Materials Guide - Dictionaries</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        .focus {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .focus ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .resource {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            background: #ffffff;
+        }
+        .resource-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .resource a {
+            color: #3498db;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .resource a:hover {
+            text-decoration: underline;
+        }
+        .resource ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+        }
+        .quick-ref {
+            background: #f1f3f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .quick-ref h3 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+        pre {
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .code-section {
+            margin: 15px 0;
+        }
+        .code-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .example-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .lecture-review {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .critical-section {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .critical-section h3 {
+            color: #c62828;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 11 Asynchronous Materials Guide - Dictionaries</h1>
+
+    <div class="focus">
+        <h2>This Week's Focus</h2>
+        <p><strong>Building on lecture:</strong> The lecture introduced basic dictionary operations. This guide expands into nested dictionaries, advanced patterns, and common use cases.</p>
+        <ul>
+            <li>Review: Creating, accessing, and modifying dictionaries</li>
+            <li>New: Nested dictionaries for complex data</li>
+            <li>New: Dictionary comprehensions</li>
+            <li>New: Common patterns (counting, grouping, lookups)</li>
+            <li>New: Combining dictionaries with lists</li>
+        </ul>
+    </div>
+
+    <h2>Start Here - 10 Minutes</h2>
+
+    <div class="resource">
+        <div class="resource-title">Video: Python Dictionaries</div>
+        <a href="https://www.youtube.com/watch?v=daefaLgNkw0">Corey Schafer - Dictionaries</a>
+        <ul>
+            <li>Quick reminder of the in person lecture</li>
+            <li>Watch through video, paying attention to the examples</li>
+	    <li>Understand key:value data</li>
+        </ul>
+    </div>
+
+    <h2>Core References</h2>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Python Dictionaries</div>
+        <a href="https://www.w3schools.com/python/python_dictionaries.asp">https://www.w3schools.com/python/python_dictionaries.asp</a>
+        <ul>
+            <li>Quick reference for syntax</li>
+            <li>Interactive examples</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Real Python - Dictionaries</div>
+        <a href="https://realpython.com/python-dicts/">https://realpython.com/python-dicts/</a>
+        <ul>
+            <li>Comprehensive guide</li>
+            <li>Read up to but not Creating Custom Dictionary-Like Classes</li>
+            <li>Pay attention to the Built in functions and Iterations</li>
+        </ul>
+    </div>
+
+    <h2>Review: Dictionary Basics</h2>
+
+    <div class="lecture-review">
+        <p>This was covered in lecture. Quick review before moving to new material.</p>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Creating and Accessing</div>
+        <pre><code class="language-python"># Create dictionary
+student = {
+    "name": "Alice",
+    "age": 20,
+    "major": "CS"
+}
+
+# Access values
+print(student["name"])  # "Alice"
+print(student.get("email", "No email"))  # Safe access
+
+# Add or update
+student["gpa"] = 3.8
+student["age"] = 21
+
+# Check if key exists
+if "name" in student:
+    print("Name exists")
+    
+# Get length
+print(len(student))  # Number of key-value pairs</code></pre>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Looping Through Dictionaries</div>
+        <pre><code class="language-python">grades = {"Alice": 92, "Bob": 85, "Charlie": 78}
+
+# Loop through keys
+for name in grades:
+    print(name)
+
+# Loop through values
+for grade in grades.values():
+    print(grade)
+
+# Loop through key-value pairs (most common)
+for name, grade in grades.items():
+    print(f"{name}: {grade}")</code></pre>
+    </div>
+
+    <h2>Nested Dictionaries</h2>
+
+    <div class="lecture-review">
+        <p>Dictionaries can contain other dictionaries! This is powerful for organizing complex data.</p>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Nested Dictionaries</div>
+        <a href="https://www.w3schools.com/python/python_dictionaries_nested.asp">https://www.w3schools.com/python/python_dictionaries_nested.asp</a>
+        <ul>
+            <li>Simple examples of nested structures</li>
+            <li>How to access nested values</li>
+        </ul>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Basic Nested Dictionary</div>
+        <pre><code class="language-python"># Each student is a dictionary
+students = {
+    "Alice": {
+        "age": 20,
+        "major": "CS",
+        "gpa": 3.8
+    },
+    "Bob": {
+        "age": 19,
+        "major": "Math",
+        "gpa": 3.6
+    }
+}
+
+# Access nested data
+print(students["Alice"])  # Whole dictionary
+print(students["Alice"]["major"])  # "CS"
+
+# Modify nested data
+students["Alice"]["gpa"] = 3.9
+
+# Add new nested dictionary
+students["Charlie"] = {
+    "age": 21,
+    "major": "Physics",
+    "gpa": 3.7
+}</code></pre>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Looping Through Nested Dictionaries</div>
+        <pre><code class="language-python">students = {
+    "Alice": {"age": 20, "major": "CS", "gpa": 3.8},
+    "Bob": {"age": 19, "major": "Math", "gpa": 3.6}
+}
+
+# Loop through nested structure
+for name, info in students.items():
+    print(f"\n{name}:")
+    print(f"  Age: {info['age']}")
+    print(f"  Major: {info['major']}")
+    print(f"  GPA: {info['gpa']}")
+
+# Calculate average GPA
+total_gpa = 0
+for info in students.values():
+    total_gpa += info["gpa"]
+average = total_gpa / len(students)
+print(f"\nAverage GPA: {average:.2f}")</code></pre>
+    </div>
+
+    <div class="example-box">
+        <h4>Practical Example: Restaurant Menu</h4>
+        <pre><code class="language-python">menu = {
+    "burger": {
+        "price": 12.99,
+        "calories": 850,
+        "category": "main"
+    },
+    "fries": {
+        "price": 4.99,
+        "calories": 400,
+        "category": "side"
+    },
+    "soda": {
+        "price": 2.99,
+        "calories": 150,
+        "category": "drink"
+    }
+}
+
+# Display menu
+print("MENU")
+print("=" * 40)
+for item, details in menu.items():
+    print(f"\n{item.title()}")
+    print(f"  Price: ${details['price']}")
+    print(f"  Calories: {details['calories']}")
+
+# Find all main dishes
+print("\nMain Dishes:")
+for item, details in menu.items():
+    if details["category"] == "main":
+        print(f"  {item}: ${details['price']}")</code></pre>
+    </div>
+
+    <h2>Common Patterns with Dictionaries</h2>
+
+    <div class="code-section">
+        <div class="code-title">Pattern 1: Counting Occurrences</div>
+        <pre><code class="language-python"># Count how many times each item appears
+votes = ["Alice", "Bob", "Alice", "Charlie", "Bob", "Alice"]
+
+vote_count = {}
+for name in votes:
+    if name in vote_count:
+        vote_count[name] += 1
+    else:
+        vote_count[name] = 1
+
+print(f"Vote counts: {vote_count}")
+
+# Find winner
+max_votes = 0
+winner = ""
+for name, count in vote_count.items():
+    if count > max_votes:
+        max_votes = count
+        winner = name
+
+print(f"Winner: {winner} with {max_votes} votes")</code></pre>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Pattern 2: Grouping Data</div>
+        <pre><code class="language-python"># Group students by major
+students = [
+    {"name": "Alice", "major": "CS"},
+    {"name": "Bob", "major": "Math"},
+    {"name": "Charlie", "major": "CS"},
+    {"name": "Diana", "major": "Physics"},
+    {"name": "Eve", "major": "Math"}
+]
+
+# Build dictionary of lists
+by_major = {}
+for student in students:
+    major = student["major"]
+    name = student["name"]
+    
+    if major not in by_major:
+        by_major[major] = []
+    
+    by_major[major].append(name)
+
+# Display grouped results
+for major, names in by_major.items():
+    print(f"{major}: {names}")</code></pre>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Pattern 3: Lookup Tables</div>
+        <pre><code class="language-python"># Quick lookups with dictionaries
+phone_book = {
+    "Alice": "555-1234",
+    "Bob": "555-5678",
+    "Charlie": "555-9012"
+}
+
+# Fast lookup (much faster than searching a list!)
+name = "Bob"
+if name in phone_book:
+    print(f"{name}'s phone: {phone_book[name]}")
+else:
+    print(f"{name} not found")
+
+# Reverse lookup (slower, but possible)
+target_phone = "555-5678"
+for name, phone in phone_book.items():
+    if phone == target_phone:
+        print(f"{target_phone} belongs to {name}")
+        break</code></pre>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Pattern 4: Aggregating Data</div>
+        <pre><code class="language-python"># Calculate statistics by category
+sales = [
+    {"item": "laptop", "category": "electronics", "price": 999},
+    {"item": "mouse", "category": "electronics", "price": 25},
+    {"item": "desk", "category": "furniture", "price": 299},
+    {"item": "chair", "category": "furniture", "price": 199}
+]
+
+# Sum prices by category
+category_totals = {}
+for sale in sales:
+    category = sale["category"]
+    price = sale["price"]
+    
+    if category not in category_totals:
+        category_totals[category] = 0
+    
+    category_totals[category] += price
+
+# Display results
+for category, total in category_totals.items():
+    print(f"{category}: ${total}")</code></pre>
+    </div>
+
+    <h2>Combining Dictionaries and Lists</h2>
+
+    <div class="example-box">
+        <h4>List of Dictionaries</h4>
+        <pre><code class="language-python"># Common pattern: list of records
+inventory = [
+    {"name": "Laptop", "price": 999, "quantity": 5},
+    {"name": "Mouse", "price": 25, "quantity": 50},
+    {"name": "Keyboard", "price": 75, "quantity": 30}
+]
+
+# Display inventory
+print("INVENTORY")
+print("-" * 40)
+for item in inventory:
+    print(f"{item['name']}: ${item['price']} ({item['quantity']} in stock)")
+
+# Calculate total inventory value
+total_value = 0
+for item in inventory:
+    item_value = item["price"] * item["quantity"]
+    total_value += item_value
+
+print(f"\nTotal inventory value: ${total_value}")</code></pre>
+    </div>
+
+    <div class="example-box">
+        <h4>Dictionary of Lists</h4>
+        <pre><code class="language-python"># Store multiple values per key
+grade_book = {
+    "Alice": [85, 92, 88, 90],
+    "Bob": [78, 85, 80, 82],
+    "Charlie": [92, 95, 89, 94]
+}
+
+# Calculate averages
+print("Student Averages:")
+for student, grades in grade_book.items():
+    avg = sum(grades) / len(grades)
+    print(f"{student}: {avg:.1f}")
+
+# Find highest single grade
+highest = 0
+top_student = ""
+for student, grades in grade_book.items():
+    max_grade = max(grades)
+    if max_grade > highest:
+        highest = max_grade
+        top_student = student
+
+print(f"\nHighest grade: {top_student} with {highest}")</code></pre>
+    </div>
+
+    <h2>Dictionary Methods Reference</h2>
+
+    <div class="quick-ref">
+        <h3>Essential Dictionary Methods</h3>
+        <pre><code class="language-python"># Create
+my_dict = {"key": "value"}
+
+# Access
+value = my_dict["key"]              # Raises KeyError if missing
+value = my_dict.get("key")          # Returns None if missing
+value = my_dict.get("key", "default")  # Returns default if missing
+
+# Add/Update
+my_dict["new_key"] = "new_value"
+
+# Remove
+value = my_dict.pop("key")          # Remove and return value
+my_dict.clear()                     # Remove all items
+
+# Check
+if "key" in my_dict:                # Check if key exists
+    print("Found")
+
+# Iterate
+for key in my_dict:                 # Loop through keys
+for value in my_dict.values():      # Loop through values
+for key, value in my_dict.items():  # Loop through pairs
+
+# Information
+len(my_dict)                        # Number of key-value pairs
+list(my_dict.keys())                # Get all keys as list
+list(my_dict.values())              # Get all values as list
+list(my_dict.items())               # Get all pairs as list</code></pre>
+    </div>
+
+    <h2>Common Mistakes and Solutions</h2>
+
+    <div class="critical-section">
+        <h3>Mistake 1: KeyError When Accessing</h3>
+        <pre><code class="language-python"># WRONG - crashes if key doesn't exist
+student = {"name": "Alice", "age": 20}
+print(student["email"])  # KeyError!
+
+# CORRECT - use get() for safe access
+email = student.get("email", "No email")
+print(email)
+
+# CORRECT - check first
+if "email" in student:
+    print(student["email"])
+else:
+    print("No email")</code></pre>
+    </div>
+
+    <div class="warning-box">
+        <h4>Mistake 2: Modifying Dictionary While Looping</h4>
+        <pre><code class="language-python"># WRONG - causes problems
+inventory = {"apple": 5, "banana": 0, "orange": 3}
+for item, qty in inventory.items():
+    if qty == 0:
+        inventory.pop(item)  # ERROR!
+
+# CORRECT - loop through copy of keys
+inventory = {"apple": 5, "banana": 0, "orange": 3}
+for item in list(inventory.keys()):
+    if inventory[item] == 0:
+        inventory.pop(item)
+
+print(inventory)  # {"apple": 5, "orange": 3}</code></pre>
+    </div>
+
+    <div class="warning-box">
+        <h4>Mistake 3: Forgetting Dictionary Keys Are Case-Sensitive</h4>
+        <pre><code class="language-python"># These are DIFFERENT keys!
+student = {
+    "Name": "Alice",
+    "name": "Bob"
+}
+
+print(student["Name"])  # "Alice"
+print(student["name"])  # "Bob"
+
+# Be consistent with your key names!</code></pre>
+    </div>
+
+    <h2>When to Use Dictionaries</h2>
+
+    <div class="lecture-review">
+        <h3>Dictionaries vs Lists</h3>
+        
+        <p><strong>Use Dictionaries When:</strong></p>
+        <ul>
+            <li>You need to look things up by name/key</li>
+            <li>Data has named attributes</li>
+            <li>You need fast lookups</li>
+            <li>Relationships between data matter more than order</li>
+        </ul>
+
+        <p><strong>Use Lists When:</strong></p>
+        <ul>
+            <li>Order matters</li>
+            <li>Simple sequence of similar items</li>
+            <li>You need to access by position</li>
+            <li>Items are all the same type of thing</li>
+        </ul>
+    </div>
+
+    <div class="example-box">
+        <h4>Comparison Example</h4>
+        <pre><code class="language-python"># List - good for ordered data
+test_scores = [85, 92, 78, 95, 88]
+print(f"First test: {test_scores[0]}")
+print(f"Average: {sum(test_scores) / len(test_scores):.1f}")
+
+# Dictionary - good for labeled data
+student = {
+    "name": "Alice",
+    "id": 12345,
+    "major": "CS",
+    "gpa": 3.8
+}
+print(f"Student: {student['name']}")
+print(f"Major: {student['major']}")
+
+# List of dictionaries - structured records
+students = [
+    {"name": "Alice", "gpa": 3.8},
+    {"name": "Bob", "gpa": 3.6},
+    {"name": "Charlie", "gpa": 3.9}
+]
+for student in students:
+    print(f"{student['name']}: {student['gpa']}")</code></pre>
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>
