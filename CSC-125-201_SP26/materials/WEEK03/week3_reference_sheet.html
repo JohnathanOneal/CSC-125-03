@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 Reference Sheet: String Operations & Debugging</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            line-height: 1.4;
+            color: var(--espresso);
+            font-size: 13px;
+            background: var(--warm-white);
+        }
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--espresso);
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 4px;
+            margin: 8px 0 4px 0;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--dark-roast);
+            margin: 12px 0 4px 0;
+            border-left: 3px solid var(--caramel);
+            padding-left: 10px;
+            font-size: 15px;
+            font-weight: 400;
+        }
+        h3 {
+            color: var(--medium-roast);
+            margin: 10px 0 2px 0;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        p { margin: 4px 0; }
+        ul { margin: 2px 0; padding-left: 20px; }
+        li { margin-bottom: 1px; }
+        li::marker { color: var(--caramel); }
+        strong { color: var(--rust); font-weight: 600; }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: var(--dark-roast);
+        }
+        pre {
+            margin: 4px 0;
+            border-radius: 6px;
+            border-left: 3px solid var(--caramel);
+            overflow-x: auto;
+        }
+        pre code, pre code.hljs {
+            background: var(--code-bg);
+            border: none;
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            line-height: 1.5;
+            display: block;
+        }
+        .homework-topics {
+            background: var(--latte);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        .homework-topics h2 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+        }
+        .homework-topics ul { margin: 0; }
+        .resource {
+            margin: 6px 0;
+            padding: 6px 10px;
+            border: 1px solid var(--table-border);
+            border-radius: 6px;
+            background: var(--cream);
+        }
+        .resource-title {
+            font-weight: 600;
+            color: var(--dark-roast);
+            margin-bottom: 2px;
+        }
+        .resource a {
+            color: var(--caramel);
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 12px;
+        }
+        .resource a:hover { text-decoration: underline; color: var(--amber); }
+        .resource ul { margin: 2px 0 0 0; }
+        .quick-ref {
+            background: var(--cream);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .quick-ref h2 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+            color: var(--dark-roast);
+        }
+        .code-section { margin: 8px 0; }
+        .code-title {
+            font-weight: 600;
+            color: var(--dark-roast);
+            margin-bottom: 2px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 4px 0;
+            font-size: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 3px 8px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+    </style>
+</head>
+<body>
+
+    <h1>Week 3 Reference Sheet: String Operations &amp; Debugging</h1>
+    <p><strong>CSC-125-201 | Use this as a reference when completing Homework 3</strong></p>
+
+    <div class="homework-topics">
+        <h2>Homework Topics</h2>
+        <ul>
+            <li>String methods: <code>strip()</code>, <code>upper()</code>, <code>lower()</code>, <code>title()</code>, <code>replace()</code></li>
+            <li>Method chaining</li>
+            <li>String indexing with positive and negative indexes</li>
+            <li>String slicing with <code>[start:end]</code></li>
+            <li>F-string formatting</li>
+            <li>Reading and debugging error messages</li>
+        </ul>
+    </div>
+
+    <div class="quick-ref">
+        <h2>Quick Reference</h2>
+
+        <div class="code-section">
+            <div class="code-title">String Methods</div>
+            <p>Strings have built-in methods that return a new modified copy of the string. The original string is not changed.</p>
+            <pre><code class="language-python">message = "  Hello, World!  "
+
+message.strip()      # "Hello, World!"   — removes leading/trailing whitespace
+message.upper()      # "  HELLO, WORLD!  "
+message.lower()      # "  hello, world!  "
+message.title()      # "  Hello, World!  "
+
+name = "alice smith"
+name.upper()         # "ALICE SMITH"
+name.lower()         # "alice smith"
+name.title()         # "Alice Smith"
+
+greeting = "Hello, World!"
+greeting.replace("World", "Python")   # "Hello, Python!"
+greeting.replace("l", "L")           # "HeLLo, WorLd!"</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Method Chaining</div>
+            <p>Since each method returns a new string, you can call multiple methods in a row. Each method operates on the result of the previous one.</p>
+            <pre><code class="language-python">user_input = "   jOhN DOe   "
+
+# Chain strip() and title() together
+cleaned = user_input.strip().title()
+print(cleaned)   # "John Doe"
+
+# Chain multiple methods
+text = "  hello world  "
+result = text.strip().upper().replace("WORLD", "PYTHON")
+print(result)    # "HELLO PYTHON"</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">String Indexing</div>
+            <p>Each character in a string has a position (index). Positive indexes count from the left starting at 0. Negative indexes count from the right starting at -1.</p>
+            <pre><code class="language-python">word = "Python"
+#        P  y  t  h  o  n
+#        0  1  2  3  4  5    (positive indexes)
+#       -6 -5 -4 -3 -2 -1   (negative indexes)
+
+word[0]     # "P"   — first character
+word[1]     # "y"   — second character
+word[5]     # "n"   — last character
+word[-1]    # "n"   — last character
+word[-2]    # "o"   — second to last
+
+# len() returns the number of characters
+len(word)   # 6</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">String Slicing</div>
+            <p>Slicing extracts a portion of a string using <code>[start:end]</code>. The start index is included, but the <strong>end index is NOT included</strong>.</p>
+            <pre><code class="language-python">word = "Python"
+#        P  y  t  h  o  n
+#        0  1  2  3  4  5
+
+word[0:3]   # "Pyt"   — index 0, 1, 2 (stops before 3)
+word[2:5]   # "tho"   — index 2, 3, 4 (stops before 5)
+
+# Omit start — defaults to 0 (beginning)
+word[:4]    # "Pyth"  — same as word[0:4]
+
+# Omit end — defaults to end of string
+word[2:]    # "thon"  — index 2 through the end
+
+# Omit both — copies the entire string
+word[:]     # "Python"
+
+# Negative indexes work with slicing too
+word[-3:]   # "hon"   — last 3 characters
+word[:-2]   # "Pyth"  — everything except last 2</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Finding Positions</div>
+            <p>The <code>.index()</code> method returns the position of the first occurrence of a substring. This is useful for dynamic slicing.</p>
+            <pre><code class="language-python">email = "student@college.edu"
+
+# Find the position of the @ symbol
+at_pos = email.index("@")
+print(at_pos)          # 7
+
+# Use .index() with slicing to extract parts
+username = email[:at_pos]
+print(username)        # "student"
+
+domain = email[at_pos + 1:]
+print(domain)          # "college.edu"</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">F-String Formatting</div>
+            <p>F-strings let you embed expressions directly inside string literals by prefixing the string with <code>f</code> and placing expressions inside curly braces <code>{}</code>.</p>
+            <pre><code class="language-python">name = "Alice"
+age = 20
+
+# Basic variable insertion
+print(f"Hello, {name}")           # "Hello, Alice"
+
+# Expressions inside curly braces
+print(f"Next year: {age + 1}")    # "Next year: 21"
+
+# Method calls inside curly braces
+print(f"Name: {name.upper()}")    # "Name: ALICE"
+print(f"Name: {name.lower()}")    # "Name: alice"
+
+# Decimal formatting with :.2f (2 decimal places)
+price = 9.5
+print(f"Total: ${price:.2f}")     # "Total: $9.50"
+
+tax = 0.7825
+print(f"Tax: ${tax:.2f}")         # "Tax: $0.78"</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Common Errors</div>
+            <p>When your code produces an error, Python tells you the type of error and where it occurred. Here are common errors you may encounter with strings.</p>
+            <table>
+                <tr>
+                    <th>Error</th>
+                    <th>Cause</th>
+                    <th>Fix</th>
+                </tr>
+                <tr>
+                    <td><code>IndexError</code></td>
+                    <td>Accessing an index that does not exist (e.g., <code>word[10]</code> on a 6-character string)</td>
+                    <td>Check the string length with <code>len()</code> and make sure your index is within range</td>
+                </tr>
+                <tr>
+                    <td><code>AttributeError</code></td>
+                    <td>Calling a method that does not exist on the data type (e.g., <code>num.upper()</code> on an integer)</td>
+                    <td>Verify the variable is a string before calling string methods</td>
+                </tr>
+                <tr>
+                    <td><code>NameError</code></td>
+                    <td>Using a variable that has not been defined yet or is misspelled</td>
+                    <td>Check for typos in variable names and make sure the variable is assigned before use</td>
+                </tr>
+                <tr>
+                    <td><code>TypeError</code></td>
+                    <td>Performing an unsupported operation between types (e.g., <code>"age: " + 20</code>)</td>
+                    <td>Use <code>str()</code> to convert non-strings, or use an f-string instead</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <h2>Additional Resources</h2>
+
+    <div class="resource">
+        <div class="resource-title">Corey Schafer - Python Strings Tutorial</div>
+        <a href="https://www.youtube.com/watch?v=k9TUPpGqYTo" target="_blank">https://www.youtube.com/watch?v=k9TUPpGqYTo</a>
+        <ul>
+            <li>Video tutorial covering string basics, methods, and formatting</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Modify Strings</div>
+        <a href="https://www.w3schools.com/python/python_strings_modify.asp" target="_blank">https://www.w3schools.com/python/python_strings_modify.asp</a>
+        <ul>
+            <li>Reference for upper, lower, strip, and replace methods</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Slicing Strings</div>
+        <a href="https://www.w3schools.com/python/python_strings_slicing.asp" target="_blank">https://www.w3schools.com/python/python_strings_slicing.asp</a>
+        <ul>
+            <li>Indexing and slicing syntax with examples</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - String Formatting</div>
+        <a href="https://www.w3schools.com/python/python_string_formatting.asp" target="_blank">https://www.w3schools.com/python/python_string_formatting.asp</a>
+        <ul>
+            <li>F-string syntax and formatting options</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Real Python - F-Strings Guide</div>
+        <a href="https://realpython.com/python-f-strings/" target="_blank">https://realpython.com/python-f-strings/</a>
+        <ul>
+            <li>Detailed f-string examples and advanced usage</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">LearnPython.org - Basic String Operations</div>
+        <a href="https://www.learnpython.org/en/Basic_String_Operations" target="_blank">https://www.learnpython.org/en/Basic_String_Operations</a>
+        <ul>
+            <li>Interactive exercises for practicing string operations</li>
+        </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body>
+</html>

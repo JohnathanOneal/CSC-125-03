@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSC-125 Midterm Programming Practice - Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px;
+            line-height: 1.3;
+            color: #333;
+            font-size: 13px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 6px;
+            text-align: center;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 15px;
+            border-left: 3px solid #3498db;
+            padding-left: 10px;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .exam-header {
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border: 1px solid #dee2e6;
+            font-size: 12px;
+        }
+        .exam-header ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+        .exam-header li {
+            margin: 2px 0;
+        }
+        .coverage {
+            background: #e7f3ff;
+            border: 1px solid #2196f3;
+            padding: 6px;
+            margin: 10px 0;
+            border-radius: 3px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 13px;
+        }
+        .question {
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px solid #e9ecef;
+            border-radius: 3px;
+            background: #ffffff;
+            page-break-inside: avoid;
+        }
+        .question strong {
+            font-size: 13px;
+        }
+        .task-description {
+            margin: 5px 0;
+            padding: 5px;
+            background: #f8f9fa;
+            border-left: 3px solid #28a745;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .answer-section {
+            margin: 8px 0;
+            padding: 8px;
+            background: #d4edda;
+            border: 1px solid #28a745;
+            border-radius: 3px;
+        }
+        .answer-label {
+            font-weight: bold;
+            color: #155724;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .hint {
+            font-size: 11px;
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 3px;
+        }
+        pre {
+            border-radius: 3px;
+            overflow-x: auto;
+            font-size: 11px;
+            background: #f6f8fa;
+            padding: 6px;
+            margin: 5px 0;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 11px;
+        }
+        .alternative-note {
+            font-size: 11px;
+            color: #856404;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 5px;
+            margin-top: 5px;
+            border-radius: 3px;
+        }
+        @media print {
+            .question {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSC-125 Python Programming<br>Midterm Programming Practice - Solutions</h1>
+    
+    <div class="coverage">
+        Covers Weeks 1-9: Variables, Data Types, Strings, Operators, Conditionals, Lists, Tuples, and Loops
+    </div>
+
+    <div class="exam-header">
+        <p><strong>This document contains complete solutions to all programming problems.</strong></p>
+        <p><strong>Note:</strong> Some problems may have multiple correct solutions. The answers provided here are example solutions that meet all requirements.</p>
+    </div>
+
+    <h2>Part 1: Variables and Basic Operations (Weeks 1-4)</h2>
+
+    <div class="question">
+        <strong>1. Temperature Converter</strong>
+        <div class="task-description">
+            Write a program that converts a temperature from Fahrenheit to Celsius. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Ask the user to enter a temperature in Fahrenheit</li>
+                <li>Convert it to Celsius using the formula: C = (F - 32) * 5/9</li>
+                <li>Print the result with a descriptive message</li>
+            </ul>
+            <div class="hint">Hint: Remember to convert the input to a float!</div>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">fahrenheit = float(input("Enter temperature in Fahrenheit: "))
+celsius = (fahrenheit - 32) * 5/9
+print(f"Temperature in Celsius: {celsius}")</code></pre>
+            <div class="alternative-note">
+                <strong>Alternative:</strong> You could also use print with commas: <code>print("Temperature in Celsius:", celsius)</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>2. Age Calculator</strong>
+        <div class="task-description">
+            Write a program that calculates how old someone will be in 10 years. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Ask the user for their current age</li>
+                <li>Calculate their age in 10 years</li>
+                <li>Print a message showing their future age</li>
+            </ul>
+            <div class="hint">Hint: Use int() to convert the input to an integer</div>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">current_age = int(input("Enter your current age: "))
+future_age = current_age + 10
+print(f"In 10 years, you will be {future_age} years old")</code></pre>
+            <div class="alternative-note">
+                <strong>Alternative:</strong> You could also use print with commas: <code>print("In 10 years, you will be", future_age, "years old")</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>3. Rectangle Area</strong>
+        <div class="task-description">
+            Write a program that calculates the area of a rectangle. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Ask the user for the length of the rectangle</li>
+                <li>Ask the user for the width of the rectangle</li>
+                <li>Calculate the area (length * width)</li>
+                <li>Print the result</li>
+            </ul>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">length = float(input("Enter the length: "))
+width = float(input("Enter the width: "))
+area = length * width
+print(f"The area is {area}")</code></pre>
+            <div class="alternative-note">
+                <strong>Alternative:</strong> You could also use print with commas: <code>print("The area is", area)</code>
+            </div>
+        </div>
+    </div>
+
+    <h2>Part 2: Strings (Week 3)</h2>
+
+    <div class="question">
+        <strong>4. Name Formatter</strong>
+        <div class="task-description">
+            Write a program that formats a person's name. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Ask the user for their first name</li>
+                <li>Ask the user for their last name</li>
+                <li>Print their full name in the format: "Last, First" (all uppercase)</li>
+            </ul>
+            <div class="hint">Hint: Use the .upper() method</div>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">first_name = input("Enter your first name: ")
+last_name = input("Enter your last name: ")
+formatted_name = last_name + ", " + first_name
+print(formatted_name.upper())</code></pre>
+            <div class="alternative-note">
+                <strong>Alternative:</strong> Could also convert each name to uppercase first: <code>print(last_name.upper() + ", " + first_name.upper())</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>5. Initials</strong>
+        <div class="task-description">
+            Write a program that gets a person's initials. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Ask the user for their first name</li>
+                <li>Ask the user for their last name</li>
+                <li>Print their initials (first letter of each name, uppercase)</li>
+            </ul>
+            <div class="hint">Hint: Use indexing [0] and .upper()</div>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">first_name = input("Enter your first name: ")
+last_name = input("Enter your last name: ")
+initials = first_name[0].upper() + last_name[0].upper()
+print(f"Your initials are: {initials}")</code></pre>
+            <div class="alternative-note">
+                <strong>Alternative:</strong> You could also use print with commas: <code>print("Your initials are:", initials)</code>
+            </div>
+        </div>
+    </div>
+
+    <h2>Part 3: Conditionals (Week 5)</h2>
+
+    <div class="question">
+        <strong>6. Grade Checker</strong>
+        <div class="task-description">
+            Write a program that determines if a student passed or failed. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Ask the user for a test score</li>
+                <li>If the score is 60 or above, print "Pass"</li>
+                <li>Otherwise, print "Fail"</li>
+            </ul>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">score = int(input("Enter your test score: "))
+if score >= 60:
+    print("Pass")
+else:
+    print("Fail")</code></pre>
+            <div class="alternative-note">
+                <strong>Note:</strong> Could also use float() if decimal scores are allowed.
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>7. Even or Odd</strong>
+        <div class="task-description">
+            Write a program that determines if a number is even or odd. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Ask the user for a number</li>
+                <li>If the number is even, print "Even"</li>
+                <li>If the number is odd, print "Odd"</li>
+            </ul>
+            <div class="hint">Hint: Use the modulo operator (%) to check if a number is divisible by 2</div>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">number = int(input("Enter a number: "))
+if number % 2 == 0:
+    print("Even")
+else:
+    print("Odd")</code></pre>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>8. Letter Grade</strong>
+        <div class="task-description">
+            Write a program that converts a numeric score to a letter grade. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Ask the user for a score (0-100)</li>
+                <li>Print "A" if score >= 90</li>
+                <li>Print "B" if score >= 80</li>
+                <li>Print "C" if score >= 70</li>
+                <li>Print "D" if score >= 60</li>
+                <li>Otherwise print "F"</li>
+            </ul>
+            <div class="hint">Hint: Use elif statements</div>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">score = int(input("Enter your score: "))
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+elif score >= 60:
+    print("D")
+else:
+    print("F")</code></pre>
+            <div class="alternative-note">
+                <strong>Important:</strong> Order matters! Must check from highest to lowest score.
+            </div>
+        </div>
+    </div>
+
+    <h2>Part 4: Lists (Weeks 6-7)</h2>
+
+    <div class="question">
+        <strong>9. List Statistics</strong>
+        <div class="task-description">
+            Write a program that analyzes a list of numbers. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Create a list: numbers = [10, 25, 30, 15, 40]</li>
+                <li>Print the length of the list</li>
+                <li>Print the maximum value in the list</li>
+                <li>Print the minimum value in the list</li>
+            </ul>
+            <div class="hint">Hint: Use len(), max(), and min() functions</div>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">numbers = [10, 25, 30, 15, 40]
+print(f"Length: {len(numbers)}")
+print(f"Maximum: {max(numbers)}")
+print(f"Minimum: {min(numbers)}")</code></pre>
+            <div class="alternative-note">
+                <strong>Alternative:</strong> You could also use print with commas: <code>print("Length:", len(numbers))</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>10. Shopping List</strong>
+        <div class="task-description">
+            Write a program that manages a shopping list. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Create an empty list called shopping_list</li>
+                <li>Add "milk" to the list</li>
+                <li>Add "bread" to the list</li>
+                <li>Add "eggs" to the list</li>
+                <li>Print the complete shopping list</li>
+                <li>Print how many items are on the list</li>
+            </ul>
+            <div class="hint">Hint: Use .append() method</div>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">shopping_list = []
+shopping_list.append("milk")
+shopping_list.append("bread")
+shopping_list.append("eggs")
+print(f"Shopping list: {shopping_list}")
+print(f"Number of items: {len(shopping_list)}")</code></pre>
+            <div class="alternative-note">
+                <strong>Alternative:</strong> You could also use print with commas: <code>print("Shopping list:", shopping_list)</code>
+            </div>
+        </div>
+    </div>
+
+    <h2>Part 5: For Loops (Week 8)</h2>
+
+    <div class="question">
+        <strong>11. Countdown</strong>
+        <div class="task-description">
+            Write a program that counts down from 5 to 1. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Use a for loop to print numbers from 5 down to 1</li>
+                <li>Print "Blastoff!" after the countdown</li>
+            </ul>
+            <div class="hint">Hint: Use range(5, 0, -1)</div>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">for i in range(5, 0, -1):
+    print(i)
+print("Blastoff!")</code></pre>
+            <div class="alternative-note">
+                <strong>Note:</strong> Make sure "Blastoff!" is NOT indented - it should print after the loop ends.
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>12. Sum Calculator</strong>
+        <div class="task-description">
+            Write a program that calculates the sum of numbers from 1 to 10. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Create a variable called total and set it to 0</li>
+                <li>Use a for loop to add each number from 1 to 10 to total</li>
+                <li>Print the final total</li>
+            </ul>
+            <div class="hint">Hint: Use range(1, 11)</div>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">total = 0
+for i in range(1, 11):
+    total = total + i
+print(f"Total: {total}")</code></pre>
+            <div class="alternative-note">
+                <strong>Alternative:</strong> You could use <code>total += i</code> instead of <code>total = total + i</code>, or use print with commas
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>13. List Doubler</strong>
+        <div class="task-description">
+            Write a program that doubles each number in a list. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Create a list: numbers = [2, 4, 6, 8]</li>
+                <li>Use a for loop to print each number multiplied by 2</li>
+            </ul>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">numbers = [2, 4, 6, 8]
+for num in numbers:
+    print(num * 2)</code></pre>
+            <div class="alternative-note">
+                <strong>Alternative:</strong> Could also use indexed loop: <code>for i in range(len(numbers)): print(numbers[i] * 2)</code>
+            </div>
+        </div>
+    </div>
+
+    <h2>Part 6: While Loops (Week 9)</h2>
+
+    <div class="question">
+        <strong>14. Password Checker</strong>
+        <div class="task-description">
+            Write a program that keeps asking for a password until correct. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Set a correct password (you choose the password)</li>
+                <li>Use a while loop to keep asking the user for the password</li>
+                <li>If the password is correct, print "Access granted!" and exit the loop</li>
+                <li>If incorrect, print "Try again" and ask again</li>
+            </ul>
+            <div class="hint">Hint: The loop should continue while the password is incorrect</div>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">correct_password = "python123"
+password = input("Enter password: ")
+while password != correct_password:
+    print("Try again")
+    password = input("Enter password: ")
+print("Access granted!")</code></pre>
+            <div class="alternative-note">
+                <strong>Alternative Solution:</strong> Could also use a flag variable or <code>while True:</code> with <code>break</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>15. Number Guesser</strong>
+        <div class="task-description">
+            Write a program that counts how many guesses it takes. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Set a secret number (you choose the number)</li>
+                <li>Create a counter variable starting at 0</li>
+                <li>Use a while loop to keep asking the user to guess</li>
+                <li>Increment the counter each time they guess</li>
+                <li>When they guess correctly, print how many guesses it took</li>
+            </ul>
+        </div>
+        <div class="answer-section">
+            <div class="answer-label">ANSWER:</div>
+            <pre><code class="language-python">secret_number = 42
+counter = 0
+guess = int(input("Guess the number: "))
+counter = counter + 1
+while guess != secret_number:
+    guess = int(input("Try again: "))
+    counter = counter + 1
+print(f"Correct! It took you {counter} guesses")</code></pre>
+            <div class="alternative-note">
+                <strong>Alternative:</strong> You could use print with commas: <code>print("Correct! It took you", counter, "guesses")</code> or use <code>counter += 1</code>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>

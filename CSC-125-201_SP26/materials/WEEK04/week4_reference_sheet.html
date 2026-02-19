@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4 Reference Sheet: Math Operations &amp; Operators</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            line-height: 1.4;
+            color: var(--espresso);
+            font-size: 13px;
+            background: var(--warm-white);
+        }
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--espresso);
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 4px;
+            margin: 8px 0 4px 0;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--dark-roast);
+            margin: 12px 0 4px 0;
+            border-left: 3px solid var(--caramel);
+            padding-left: 10px;
+            font-size: 15px;
+            font-weight: 400;
+        }
+        h3 {
+            color: var(--medium-roast);
+            margin: 10px 0 2px 0;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        p { margin: 4px 0; }
+        ul { margin: 2px 0; padding-left: 20px; }
+        li { margin-bottom: 1px; }
+        li::marker { color: var(--caramel); }
+        strong { color: var(--rust); font-weight: 600; }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: var(--dark-roast);
+        }
+        pre {
+            margin: 4px 0;
+            border-radius: 6px;
+            border-left: 3px solid var(--caramel);
+            overflow-x: auto;
+        }
+        pre code, pre code.hljs {
+            background: var(--code-bg);
+            border: none;
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            line-height: 1.5;
+            display: block;
+        }
+        .homework-topics {
+            background: var(--latte);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        .homework-topics h2 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+        }
+        .homework-topics ul { margin: 0; }
+        .resource {
+            margin: 6px 0;
+            padding: 6px 10px;
+            border: 1px solid var(--table-border);
+            border-radius: 6px;
+            background: var(--cream);
+        }
+        .resource-title {
+            font-weight: 600;
+            color: var(--dark-roast);
+            margin-bottom: 2px;
+        }
+        .resource a {
+            color: var(--caramel);
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 12px;
+        }
+        .resource a:hover { text-decoration: underline; color: var(--amber); }
+        .resource ul { margin: 2px 0 0 0; }
+        .quick-ref {
+            background: var(--cream);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .quick-ref h2 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+            color: var(--dark-roast);
+        }
+        .code-section { margin: 8px 0; }
+        .code-title {
+            font-weight: 600;
+            color: var(--dark-roast);
+            margin-bottom: 2px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 4px 0;
+            font-size: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 3px 8px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+    </style>
+</head>
+<body>
+
+    <h1>Week 4 Reference Sheet: Math Operations &amp; Operators</h1>
+    <p><strong>CSC-125-201 | Use this as a reference when completing Homework 4</strong></p>
+
+    <div class="homework-topics">
+        <h2>Homework Topics</h2>
+        <ul>
+            <li>Arithmetic operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>, <code>**</code></li>
+            <li>Floor division and modulo practical uses</li>
+            <li>Operator precedence (PEMDAS)</li>
+            <li>Comparison operators: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+            <li>Boolean expressions</li>
+            <li>Assignment operators: <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code></li>
+        </ul>
+    </div>
+
+    <div class="quick-ref">
+        <h2>Quick Reference</h2>
+
+        <div class="code-section">
+            <div class="code-title">Arithmetic Operators</div>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Name</th>
+                    <th>Example</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td><code>+</code></td>
+                    <td>Addition</td>
+                    <td><code>17 + 5</code></td>
+                    <td>22</td>
+                </tr>
+                <tr>
+                    <td><code>-</code></td>
+                    <td>Subtraction</td>
+                    <td><code>17 - 5</code></td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td><code>*</code></td>
+                    <td>Multiplication</td>
+                    <td><code>17 * 5</code></td>
+                    <td>85</td>
+                </tr>
+                <tr>
+                    <td><code>/</code></td>
+                    <td>Division</td>
+                    <td><code>17 / 5</code></td>
+                    <td>3.4</td>
+                </tr>
+                <tr>
+                    <td><code>//</code></td>
+                    <td>Floor Division</td>
+                    <td><code>17 // 5</code></td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td><code>%</code></td>
+                    <td>Modulo</td>
+                    <td><code>17 % 5</code></td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td><code>**</code></td>
+                    <td>Exponentiation</td>
+                    <td><code>17 ** 5</code></td>
+                    <td>1419857</td>
+                </tr>
+            </table>
+            <pre><code class="language-python">a = 17
+b = 5
+a + b     # 22
+a - b     # 12
+a * b     # 85
+a / b     # 3.4
+a // b    # 3
+a % b     # 2
+a ** b    # 1419857</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Division Types</div>
+            <p>Python has three division-related operators. Regular division always returns a float. Floor division rounds down to a whole number. Modulo returns the remainder.</p>
+            <pre><code class="language-python">10 / 3    # 3.3333... (always float)
+10 // 3   # 3 (rounds down to whole number)
+10 % 3    # 1 (remainder)
+# Relationship: 10 = (10 // 3) * 3 + (10 % 3)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Practical Uses of // and %</div>
+            <p>Floor division and modulo are commonly used for time conversions, checking divisibility, and extracting digits.</p>
+            <pre><code class="language-python"># Time conversion
+total_minutes = 135
+hours = total_minutes // 60      # 2
+minutes = total_minutes % 60     # 15
+
+# Even/odd check
+number = 17
+number % 2 == 0    # False (odd)
+number % 2 != 0    # True (odd)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Operator Precedence</div>
+            <p>Python follows standard math order of operations (PEMDAS). When in doubt, use parentheses to make your intent clear.</p>
+            <table>
+                <tr>
+                    <th>Priority</th>
+                    <th>Operator(s)</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>1 (highest)</td>
+                    <td><code>()</code></td>
+                    <td>Parentheses</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><code>**</code></td>
+                    <td>Exponentiation</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><code>*</code>, <code>/</code>, <code>//</code>, <code>%</code></td>
+                    <td>Multiplication, Division, Floor Div, Modulo</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><code>+</code>, <code>-</code></td>
+                    <td>Addition, Subtraction</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></td>
+                    <td>Comparisons</td>
+                </tr>
+                <tr>
+                    <td>6 (lowest)</td>
+                    <td><code>=</code>, <code>+=</code>, <code>-=</code>, etc.</td>
+                    <td>Assignment</td>
+                </tr>
+            </table>
+            <pre><code class="language-python">2 + 3 * 4          # 14 (not 20)
+(2 + 3) * 4        # 20
+
+# Use parentheses for clarity
+average = (score1 + score2 + score3) / 3
+total = price * (1 + tax_rate)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Comparison Operators</div>
+            <p>Comparison operators compare two values and return a boolean (<code>True</code> or <code>False</code>).</p>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td><code>==</code></td>
+                    <td>Equal to</td>
+                    <td><code>20 == 18</code></td>
+                    <td>False</td>
+                </tr>
+                <tr>
+                    <td><code>!=</code></td>
+                    <td>Not equal to</td>
+                    <td><code>20 != 18</code></td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;</code></td>
+                    <td>Less than</td>
+                    <td><code>20 &lt; 65</code></td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td><code>&gt;</code></td>
+                    <td>Greater than</td>
+                    <td><code>20 &gt; 18</code></td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;=</code></td>
+                    <td>Less than or equal to</td>
+                    <td><code>20 &lt;= 21</code></td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td><code>&gt;=</code></td>
+                    <td>Greater than or equal to</td>
+                    <td><code>20 &gt;= 18</code></td>
+                    <td>True</td>
+                </tr>
+            </table>
+            <pre><code class="language-python">age = 20
+age == 18     # False
+age != 18     # True
+age > 18      # True
+age < 65      # True
+age >= 18     # True
+age <= 21     # True
+
+# Chained comparisons (Python feature)
+18 <= age <= 30    # True</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Boolean Expressions</div>
+            <p>Comparisons return boolean values that can be stored in variables for later use.</p>
+            <pre><code class="language-python">age = 20
+score = 85
+
+can_vote = age >= 18           # True
+is_passing = score >= 70       # True
+is_perfect = score == 100      # False
+is_teen = 13 <= age <= 19      # False
+
+print(f"Can vote: {can_vote}")
+print(f"Passing: {is_passing}")</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Assignment Operators</div>
+            <p>Assignment operators update a variable by combining an arithmetic operation with assignment.</p>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Example</th>
+                    <th>Equivalent To</th>
+                </tr>
+                <tr>
+                    <td><code>+=</code></td>
+                    <td><code>score += 10</code></td>
+                    <td><code>score = score + 10</code></td>
+                </tr>
+                <tr>
+                    <td><code>-=</code></td>
+                    <td><code>score -= 3</code></td>
+                    <td><code>score = score - 3</code></td>
+                </tr>
+                <tr>
+                    <td><code>*=</code></td>
+                    <td><code>score *= 2</code></td>
+                    <td><code>score = score * 2</code></td>
+                </tr>
+                <tr>
+                    <td><code>/=</code></td>
+                    <td><code>score /= 7</code></td>
+                    <td><code>score = score / 7</code></td>
+                </tr>
+            </table>
+            <pre><code class="language-python">score = 0
+score += 10    # score = score + 10 → 10
+score -= 3     # score = score - 3 → 7
+score *= 2     # score = score * 2 → 14
+score /= 7     # score = score / 7 → 2.0</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Common Errors</div>
+            <p>Here are common errors you may encounter when working with math operations and operators.</p>
+            <table>
+                <tr>
+                    <th>Error</th>
+                    <th>Cause</th>
+                    <th>Fix</th>
+                </tr>
+                <tr>
+                    <td>Wrong result</td>
+                    <td>Missing parentheses in expressions</td>
+                    <td>Use <code>()</code> to control operator precedence</td>
+                </tr>
+                <tr>
+                    <td><code>TypeError</code></td>
+                    <td>Doing math with strings from <code>input()</code></td>
+                    <td>Convert with <code>int()</code> or <code>float()</code> first</td>
+                </tr>
+                <tr>
+                    <td>Confusion</td>
+                    <td>Using <code>=</code> instead of <code>==</code> for comparison</td>
+                    <td><code>=</code> assigns, <code>==</code> compares</td>
+                </tr>
+                <tr>
+                    <td><code>ZeroDivisionError</code></td>
+                    <td>Dividing by zero</td>
+                    <td>Check the divisor before dividing</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <h2>Additional Resources</h2>
+
+    <div class="resource">
+        <div class="resource-title">Corey Schafer - Python Operators</div>
+        <a href="https://www.youtube.com/watch?v=v5MR5JnKcZI" target="_blank">https://www.youtube.com/watch?v=v5MR5JnKcZI</a>
+        <ul>
+            <li>Video tutorial covering arithmetic, comparison, and assignment operators</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Python Operators</div>
+        <a href="https://www.w3schools.com/python/python_operators.asp" target="_blank">https://www.w3schools.com/python/python_operators.asp</a>
+        <ul>
+            <li>Reference for all Python operator types with examples</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">LearnPython.org - Basic Operators</div>
+        <a href="https://www.learnpython.org/en/Basic_Operators" target="_blank">https://www.learnpython.org/en/Basic_Operators</a>
+        <ul>
+            <li>Interactive exercises for practicing arithmetic and comparison operators</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Real Python - Operators and Expressions</div>
+        <a href="https://realpython.com/python-operators-expressions/" target="_blank">https://realpython.com/python-operators-expressions/</a>
+        <ul>
+            <li>In-depth guide to operator precedence and expression evaluation</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Python Booleans</div>
+        <a href="https://www.w3schools.com/python/python_booleans.asp" target="_blank">https://www.w3schools.com/python/python_booleans.asp</a>
+        <ul>
+            <li>Reference for boolean values and comparison results</li>
+        </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body>
+</html>

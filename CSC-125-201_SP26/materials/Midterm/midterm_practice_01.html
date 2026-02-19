@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSC-125 Midterm Exam Practice Questions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px;
+            line-height: 1.3;
+            color: #333;
+            font-size: 13px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 6px;
+            text-align: center;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 15px;
+            border-left: 3px solid #3498db;
+            padding-left: 10px;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .exam-header {
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border: 1px solid #dee2e6;
+            font-size: 12px;
+        }
+        .exam-header ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+        .exam-header li {
+            margin: 2px 0;
+        }
+        .coverage {
+            background: #e7f3ff;
+            border: 1px solid #2196f3;
+            padding: 6px;
+            margin: 10px 0;
+            border-radius: 3px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 13px;
+        }
+        .question {
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px solid #e9ecef;
+            border-radius: 3px;
+            background: #ffffff;
+            page-break-inside: avoid;
+        }
+        .question strong {
+            font-size: 13px;
+        }
+        .choices {
+            margin: 5px 0;
+            padding-left: 15px;
+            line-height: 1.4;
+            font-size: 12px;
+        }
+        pre {
+            border-radius: 3px;
+            overflow-x: auto;
+            font-size: 11px;
+            background: #f6f8fa;
+            padding: 6px;
+            margin: 5px 0;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 11px;
+        }
+        @media print {
+            .question {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSC-125 Python Programming<br>Midterm Exam Practice Questions</h1>
+    
+    <div class="coverage">
+        Covers Weeks 1-9: Variables, Data Types, Strings, Operators, Conditionals, Lists, Tuples, and Loops
+    </div>
+
+    <div class="exam-header">
+        <p><strong>Name:</strong> _________________________ <strong>Date:</strong> _____________</p>
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li>This practice exam contains 50 questions similar to the actual midterm</li>
+            <li>The actual midterm will be on paper with no computers, phones, or notes allowed</li>
+        </ul>
+    </div>
+
+    <h2>Part 1: Multiple Choice</h2>
+
+    <div class="question">
+        <strong>1. What data type is "42"?</strong>
+        <div class="choices">
+            a) integer<br>
+            b) string<br>
+            c) float<br>
+            d) boolean
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>2. Which is a valid variable name?</strong>
+        <div class="choices">
+            a) 3total<br>
+            b) total_score<br>
+            c) total-score<br>
+            d) total score
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>3. What does input() always return?</strong>
+        <div class="choices">
+            a) integer<br>
+            b) string<br>
+            c) float<br>
+            d) depends on user input
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>4. What is the output of: print(5 + 3 * 2)?</strong>
+        <div class="choices">
+            a) 16<br>
+            b) 11<br>
+            c) 13<br>
+            d) Error
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>5. What does "python"[0] return?</strong>
+        <div class="choices">
+            a) "p"<br>
+            b) "P"<br>
+            c) 0<br>
+            d) Error
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>6. What is the result of: 10 % 3?</strong>
+        <div class="choices">
+            a) 3<br>
+            b) 1<br>
+            c) 0<br>
+            d) 3.33
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>7. What does len([10, 20, 30]) return?</strong>
+        <div class="choices">
+            a) 2<br>
+            b) 3<br>
+            c) 60<br>
+            d) Error
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>8. Which creates a tuple?</strong>
+        <div class="choices">
+            a) [1, 2, 3]<br>
+            b) (1, 2, 3)<br>
+            c) {1, 2, 3}<br>
+            d) &lt;1, 2, 3&gt;
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>9. What is the output of: print(7 // 2)?</strong>
+        <div class="choices">
+            a) 3.5<br>
+            b) 3<br>
+            c) 4<br>
+            d) 3.0
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>10. What does "Hello" + "World" produce?</strong>
+        <div class="choices">
+            a) "Hello World"<br>
+            b) "HelloWorld"<br>
+            c) Error<br>
+            d) "Hello + World"
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>11. Given x = 5 and y = 10, what is x < y?</strong>
+        <div class="choices">
+            a) True<br>
+            b) False<br>
+            c) 5<br>
+            d) 10
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>12. What is the result of: True or False?</strong>
+        <div class="choices">
+            a) True<br>
+            b) False<br>
+            c) Error<br>
+            d) None
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>13. What will print?</strong>
+        <pre><code class="language-python">age = 20
+if age >= 18:
+    print("Adult")</code></pre>
+        <div class="choices">
+            a) "Adult"<br>
+            b) Nothing<br>
+            c) Error<br>
+            d) 20
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>14. Given numbers = [5, 10, 15], what is numbers[2]?</strong>
+        <div class="choices">
+            a) 5<br>
+            b) 10<br>
+            c) 15<br>
+            d) Error
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>15. What does range(5) produce?</strong>
+        <div class="choices">
+            a) [1, 2, 3, 4, 5]<br>
+            b) [0, 1, 2, 3, 4]<br>
+            c) [0, 1, 2, 3, 4, 5]<br>
+            d) 5
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>16. What is the output?</strong>
+        <pre><code class="language-python">for i in range(3):
+    print(i)</code></pre>
+        <div class="choices">
+            a) 1 2 3<br>
+            b) 0 1 2<br>
+            c) 0 1 2 3<br>
+            d) 3
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>17. Given text = "Python", what is text[-1]?</strong>
+        <div class="choices">
+            a) "P"<br>
+            b) "n"<br>
+            c) "o"<br>
+            d) Error
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>18. What does "hello".upper() return?</strong>
+        <div class="choices">
+            a) "Hello"<br>
+            b) "HELLO"<br>
+            c) "hello"<br>
+            d) Error
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>19. Which comparison operator means "not equal"?</strong>
+        <div class="choices">
+            a) !=<br>
+            b) ==<br>
+            c) &lt;&gt;<br>
+            d) =/=
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>20. What is the output of: print(not False)?</strong>
+        <div class="choices">
+            a) True<br>
+            b) False<br>
+            c) 0<br>
+            d) 1
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>21. What does "Python"[1:4] return?</strong>
+        <div class="choices">
+            a) "Pyt"<br>
+            b) "yth"<br>
+            c) "ytho"<br>
+            d) Error
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>22. What is the output?</strong>
+        <pre><code class="language-python">score = 75
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+else:
+    print("F")</code></pre>
+        <div class="choices">
+            a) "A"<br>
+            b) "B"<br>
+            c) "C"<br>
+            d) "F"
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>23. Given fruits = ["apple", "banana"], what does fruits.append("cherry") return?</strong>
+        <div class="choices">
+            a) ["apple", "banana", "cherry"]<br>
+            b) None<br>
+            c) 3<br>
+            d) "cherry"
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>24. What is the result of: True and False?</strong>
+        <div class="choices">
+            a) True<br>
+            b) False<br>
+            c) Error<br>
+            d) None
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>25. What does [1, 2, 3] * 2 produce?</strong>
+        <div class="choices">
+            a) [2, 4, 6]<br>
+            b) [1, 2, 3, 1, 2, 3]<br>
+            c) [1, 2, 3, 2]<br>
+            d) Error
+        </div>
+    </div>
+
+    <h2>Part 2: Fill in the Code</h2>
+
+    <div class="question">
+        <strong>26. Convert this string to an integer:</strong>
+        <pre><code class="language-python">age_text = "25"
+age_number = _______(age_text)</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>27. Create a boolean variable set to True:</strong>
+        <pre><code class="language-python">is_valid = _______</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>28. Get the length of a list:</strong>
+        <pre><code class="language-python">scores = [85, 90, 78]
+count = _______(scores)</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>29. Add an item to the end of a list:</strong>
+        <pre><code class="language-python">fruits = ["apple", "banana"]
+fruits._______("cherry")</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>30. Access the last element using negative indexing:</strong>
+        <pre><code class="language-python">numbers = [10, 20, 30, 40]
+last = numbers[_______]</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>31. Create a for loop that runs 5 times:</strong>
+        <pre><code class="language-python">for i in _______(5):
+    print(i)</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>32. Get a slice from index 1 to 3 (not including 3):</strong>
+        <pre><code class="language-python">letters = ["a", "b", "c", "d", "e"]
+subset = letters[_______:_______]</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>33. Convert user input to an integer:</strong>
+        <pre><code class="language-python">age = _______(input("Enter age: "))</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>34. Remove the last item from a list:</strong>
+        <pre><code class="language-python">items = [1, 2, 3, 4]
+items._______()</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>35. Check if a value is in a list:</strong>
+        <pre><code class="language-python">numbers = [5, 10, 15]
+if 10 _______ numbers:
+    print("Found")</code></pre>
+    </div>
+
+    <h2>Part 3: Fix the Errors</h2>
+
+    <div class="question">
+        <strong>36. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">user_age = "30"
+next_year = user_age + 1
+print(next_year)</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>37. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">name = "Alice
+print(name)</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>38. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">student name = "Bob"
+print(student name)</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>39. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">if score >= 60
+    print("Pass")</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>40. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">numbers = [1, 2, 3]
+print(numbers[3])</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>41. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">for i in range(3)
+print(i)</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>42. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">fruits = ["apple", "banana"]
+fruits.append "cherry"</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>43. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">if age >= 18:
+print("Adult")</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>44. Fix this code so it prints the sorted list:</strong>
+        <pre><code class="language-python">numbers = [15, 5, 10]
+sorted_numbers = numbers.sort()
+print(sorted_numbers)</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>45. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">word = "hello"
+print(word.Upper())</code></pre>
+    </div>
+
+    <h2>Part 4: Code Reading & Output Prediction</h2>
+
+    <div class="question">
+        <strong>46. What is the final value of count?</strong>
+        <pre><code class="language-python">count = 0
+for i in range(4):
+    count = count + 2
+print(count)</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>47. What will this print?</strong>
+        <pre><code class="language-python">numbers = [10, 20, 30]
+numbers.append(40)
+print(len(numbers))</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>48. What is the output?</strong>
+        <pre><code class="language-python">x = 15
+if x > 10 and x < 20:
+    print("Yes")
+else:
+    print("No")</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>49. What will this print?</strong>
+        <pre><code class="language-python">text = "Python"
+print(text[0] + text[-1])</code></pre>
+    </div>
+
+    <div class="question">
+        <strong>50. What is the final value of total?</strong>
+        <pre><code class="language-python">numbers = [5, 10, 15, 20]
+total = 0
+for num in numbers:
+    total = total + num
+print(total)</code></pre>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>

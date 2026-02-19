@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3: String Operations &amp; Debugging</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --sage: #7d8c6e;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --code-border: #c08b5c;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--latte);
+            color: var(--espresso);
+        }
+
+        .slide {
+            width: 960px;
+            height: 540px;
+            margin: 24px auto;
+            padding: 44px 52px;
+            background: var(--warm-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 16px rgba(60, 42, 26, 0.1), 0 1px 4px rgba(60, 42, 26, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            border: 1px solid rgba(192, 139, 92, 0.15);
+        }
+        .slide.center { align-items: center; text-align: center; }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--caramel), var(--amber), var(--toffee));
+            border-radius: 8px 8px 0 0;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 2.2em;
+            color: var(--espresso);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.55em;
+            color: var(--dark-roast);
+            margin-bottom: 14px;
+            font-weight: 400;
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+        .two-col h2 {
+            font-size: 1.3em;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 8px;
+        }
+        h3 {
+            font-size: 1em;
+            color: var(--medium-roast);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 0.88em;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: var(--espresso);
+        }
+        ul {
+            font-size: 0.86em;
+            line-height: 1.55;
+            margin-left: 22px;
+            margin-bottom: 10px;
+            color: #4a3728;
+        }
+        li { margin-bottom: 3px; }
+        li::marker { color: var(--caramel); }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.78em;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 6px 0;
+            border-left: 3px solid var(--code-border);
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        pre code.hljs {
+            background: var(--code-bg);
+            padding: 10px 14px;
+            border-radius: 6px;
+        }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        .ic {
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            font-size: 0.88em;
+            color: var(--dark-roast);
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 0.82em;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 6px 14px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+
+        .subtitle {
+            font-size: 1.05em;
+            color: var(--medium-roast);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .two-col { display: flex; gap: 32px; }
+        .two-col > div { flex: 1; }
+        .section-label {
+            font-size: 0.65em;
+            color: var(--toffee);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .slide-num {
+            position: absolute;
+            bottom: 12px;
+            right: 18px;
+            font-size: 0.6em;
+            color: var(--table-border);
+            font-weight: 500;
+        }
+        .img-placeholder {
+            background: var(--latte);
+            border: 2px dashed var(--caramel);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            color: var(--toffee);
+            font-size: 0.75em;
+            font-style: italic;
+            margin: 8px 0;
+        }
+        .slide img {
+            max-width: 100%;
+            flex: 1 1 0;
+            min-height: 0;
+            object-fit: contain;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        strong { color: var(--rust); font-weight: 600; }
+        em { color: var(--sage); }
+
+        .slide.title-slide {
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 50%, var(--latte) 100%);
+        }
+        .slide.title-slide::before {
+            height: 6px;
+        }
+        .slide.title-slide h1 {
+            font-size: 2.6em;
+            margin-bottom: 12px;
+        }
+
+        body.presenting { background: var(--espresso); overflow: hidden; }
+        body.presenting .slide {
+            display: none;
+            width: 960px;
+            height: 540px;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            padding: 44px 52px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+        }
+        body.presenting .slide.active { display: flex; }
+        body.presenting .controls { display: none; }
+
+        .controls {
+            text-align: center;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            background: var(--cream);
+            z-index: 10;
+            border-bottom: 1px solid var(--table-border);
+            font-size: 0.8em;
+            color: var(--medium-roast);
+        }
+        .controls button {
+            background: var(--caramel);
+            color: var(--warm-white);
+            border: none;
+            padding: 5px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-left: 8px;
+            transition: background 0.2s;
+        }
+        .controls button:hover { background: var(--amber); }
+
+        @media print {
+            @page { size: landscape; margin: 0; }
+            body { background: white; margin: 0; padding: 0; }
+            .controls { display: none; }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                width: 100%;
+                height: 100vh;
+                padding: 44px 52px;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .slide::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    Scroll to browse &middot;
+    <button onclick="enterPresentation()">Present (F5)</button>
+    <button onclick="window.print()">Print / PDF</button>
+</div>
+
+<!-- SLIDE 1 -->
+<div class="slide center title-slide">
+    <img src="../images/title_banner.png" alt="Week 3 title banner">
+    <h1>Week 3: String Operations &amp; Debugging</h1>
+    <p class="subtitle">CSC-125-201 &middot; Spring 2026</p>
+    <div class="slide-num">1</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+    <h2>Agenda</h2>
+    <table>
+        <tr><th>#</th><th>Section</th></tr>
+        <tr><td>1</td><td>Week 2 Review</td></tr>
+        <tr><td>2</td><td>Lecture Slides</td></tr>
+        <tr><td>3</td><td>Code Lecture Part 1</td></tr>
+        <tr><td>-</td><td>Break</td></tr>
+        <tr><td>4</td><td>Code Lecture Part 2</td></tr>
+    </table>
+    <div class="slide-num">2</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+    <div class="section-label">Section 1</div>
+    <h2>Week 2 Review</h2>
+    <ul>
+        <li>Variables store data in labeled containers</li>
+        <li>Four types: <span class="ic">str</span>, <span class="ic">int</span>, <span class="ic">float</span>, <span class="ic">bool</span></li>
+        <li><span class="ic">type()</span> checks a variable's type</li>
+        <li><span class="ic">input()</span> always returns a string</li>
+        <li>Convert types with <span class="ic">int()</span>, <span class="ic">float()</span>, <span class="ic">str()</span></li>
+    </ul>
+    <p style="margin-top: 12px;">This week we focus on <strong>strings</strong> - the most common data type you will work with.</p>
+    <div class="slide-num">3</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+    <div class="section-label">Section 1 &middot; Context</div>
+    <h2>Why Learn the Fundamentals?</h2>
+    <p>Personal example: I want to build a mobile app with a React Native frontend. I plan to use AI to help me build it. But before I do any of that, I am working through a tutorial like <a href="https://javascript.info/variables" target="_blank" style="color: var(--caramel);">javascript.info/variables</a> to learn the basics on my own.</p>
+    <p>The reason is simple. If I skip straight to AI, I cannot tell when it gives me something wrong. I cannot design the system. I cannot spot bad patterns. The AI becomes useless if I do not have the knowledge to evaluate what it produces.</p>
+    <p>Same idea here. We build up the fundamentals first so that when you do use AI tools, you know enough to <strong>work with them</strong> instead of just copying and hoping.</p>
+    <div class="slide-num">4</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>String Methods</h2>
+    <p>Built-in tools for cleaning and modifying text. Methods are called with <strong>dot notation</strong>:</p>
+    <pre><code class="language-python">text = "  HELLO world  "
+text.strip()    # removes leading/trailing spaces
+text.upper()    # all uppercase
+text.lower()    # all lowercase
+text.title()    # capitalize each word</code></pre>
+    <p>Methods return a <strong>new string</strong> - the original is unchanged.</p>
+    <div class="slide-num">5</div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Method Chaining &amp; replace()</h2>
+    <div class="two-col">
+        <div>
+            <h2>Chaining</h2>
+            <p>Apply multiple methods in sequence:</p>
+            <pre><code class="language-python">name = "  alice JOHNSON  "
+clean = name.strip().title()
+# "Alice Johnson"</code></pre>
+        </div>
+        <div>
+            <h2>replace()</h2>
+            <p>Swap text within a string:</p>
+            <pre><code class="language-python">msg = "I want EXTRA cheese"
+msg.replace("EXTRA", "extra")
+# "I want extra cheese"</code></pre>
+        </div>
+    </div>
+    <div class="slide-num">6</div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>String Indexing</h2>
+    <p>Each character has a numbered position, starting at <strong>0</strong>:</p>
+    <img src="images/string_indexing_diagram.png" alt="String indexing diagram showing positions 0-5 for 'Python'">
+    <pre><code class="language-python">word = "Python"
+word[0]   # "P"  (first character)
+word[5]   # "n"  (last character)
+word[-1]  # "n"  (last, counting from end)
+word[-2]  # "o"  (second to last)</code></pre>
+    <div class="slide-num">7</div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>String Slicing</h2>
+    <p>Extract multiple characters with <span class="ic">[start:end]</span>. The end index is <strong>not included</strong>.</p>
+    <img src="images/string_slicing_diagram.png" alt="String slicing diagram for 'Hello World'">
+    <pre><code class="language-python">sentence = "Hello World"
+sentence[0:5]   # "Hello"
+sentence[6:11]  # "World"
+sentence[:5]    # "Hello"  (from start)
+sentence[6:]    # "World"  (to end)</code></pre>
+    <div class="slide-num">8</div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Practical Slicing</h2>
+    <p>Use <span class="ic">.index()</span> to find positions, then slice:</p>
+    <pre><code class="language-python"># Extract parts of an email
+email = "student@college.edu"
+at_pos = email.index("@")
+username = email[:at_pos]       # "student"
+domain = email[at_pos + 1:]     # "college.edu"</code></pre>
+    <pre><code class="language-python"># Get initials from a name
+name = "Alice Johnson"
+space = name.index(" ")
+initials = name[0] + "." + name[space + 1] + "."  # "A.J."</code></pre>
+    <div class="slide-num">9</div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>F-String Formatting</h2>
+    <p>Insert variables directly into strings with <span class="ic">f"..."</span> syntax:</p>
+    <div class="two-col">
+        <div>
+            <h3>Old way (concatenation)</h3>
+            <pre><code class="language-python">name = "Alice"
+age = 22
+msg = "I am " + name + ", age " + str(age)</code></pre>
+        </div>
+        <div>
+            <h3>Modern way (f-strings)</h3>
+            <pre><code class="language-python">name = "Alice"
+age = 22
+msg = f"I am {name}, age {age}"</code></pre>
+        </div>
+    </div>
+    <p>F-strings can contain <strong>expressions</strong>: <span class="ic">f"Next year: {age + 1}"</span></p>
+    <div class="slide-num">10</div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>F-Strings with Methods &amp; Formatting</h2>
+    <pre><code class="language-python"># Call methods inside f-strings
+name = "alice"
+print(f"Hello {name.title()}")   # "Hello Alice"
+print(f"HELLO {name.upper()}")   # "HELLO ALICE"</code></pre>
+    <pre><code class="language-python"># Format decimal places with :.2f
+price = 19.99
+tax = price * 0.08
+print(f"Tax: ${tax:.2f}")        # "Tax: $1.60"
+print(f"Total: ${price + tax:.2f}")  # "Total: $21.59"</code></pre>
+    <div class="slide-num">11</div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Reading Error Messages</h2>
+    <p>Error messages tell you <strong>three things</strong>:</p>
+    <ul>
+        <li><strong>Error type</strong> - what went wrong (last line)</li>
+        <li><strong>Location</strong> - which line (the arrow <span class="ic">----></span>)</li>
+        <li><strong>Description</strong> - details about the problem</li>
+    </ul>
+    <img src="images/error_message_anatomy.png" alt="Anatomy of a Python error message">
+    <div class="slide-num">12</div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Common String Errors</h2>
+    <table>
+        <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+        <tr><td>IndexError</td><td>Index beyond string length</td><td>Check <span class="ic">len()</span> first</td></tr>
+        <tr><td>AttributeError</td><td>Wrong method name (<span class="ic">.Upper()</span>)</td><td>Use lowercase methods</td></tr>
+        <tr><td>NameError</td><td>Typo in variable name</td><td>Check spelling</td></tr>
+        <tr><td>TypeError</td><td>Mixing string + number</td><td>Convert types or use f-strings</td></tr>
+    </table>
+    <p><strong>Debugging tip:</strong> Use <span class="ic">print()</span> and <span class="ic">type()</span> to inspect variables step by step.</p>
+    <div class="slide-num">13</div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Debugging Strategies</h2>
+    <ul>
+        <li><strong>Step 1:</strong> Read the error message (last line first)</li>
+        <li><strong>Step 2:</strong> Find the line number indicated by the arrow</li>
+        <li><strong>Step 3:</strong> Add <span class="ic">print()</span> statements to check values</li>
+        <li><strong>Step 4:</strong> Test with simple inputs before complex ones</li>
+    </ul>
+    <pre><code class="language-python"># Debugging example
+email = "student@college.edu"
+print(f"Length: {len(email)}")      # check length
+print(f"Type: {type(email)}")       # check type
+at_pos = email.index("@")
+print(f"@ at position: {at_pos}")   # check intermediate value</code></pre>
+    <div class="slide-num">14</div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide">
+    <h2>Summary</h2>
+    <ul>
+        <li>String methods: <span class="ic">.strip()</span>, <span class="ic">.upper()</span>, <span class="ic">.lower()</span>, <span class="ic">.title()</span>, <span class="ic">.replace()</span></li>
+        <li>Methods return new strings and can be chained</li>
+        <li>Indexing: <span class="ic">string[0]</span> (first), <span class="ic">string[-1]</span> (last)</li>
+        <li>Slicing: <span class="ic">string[start:end]</span> (end not included)</li>
+        <li>F-strings: <span class="ic">f"Hello {name}"</span> for clean formatting</li>
+        <li>Read error messages: type, location, description</li>
+        <li>Debug with <span class="ic">print()</span> and <span class="ic">type()</span></li>
+    </ul>
+    <div class="slide-num">15</div>
+</div>
+
+<!-- SLIDE 16 -->
+<div class="slide">
+    <h2>Homework and Next Week</h2>
+    <p><strong>Homework 3</strong> - available on Moodle, due Monday 11:59 PM</p>
+    <p>Reference sheet posted to help with the assignment.</p>
+    <br>
+    <p><strong>Next week (Week 4):</strong> Math Operations and Operators - Virtual</p>
+    <p>Forum discussion prompt will be posted on Moodle.</p>
+    <div class="slide-num">16</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let presenting = false;
+
+    function updateScale() {
+        const scaleX = window.innerWidth / 960;
+        const scaleY = window.innerHeight / 540;
+        const scale = Math.min(scaleX, scaleY);
+        slides.forEach(s => {
+            s.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        });
+    }
+
+    function enterPresentation() {
+        presenting = true;
+        document.body.classList.add('presenting');
+        slides[current].classList.add('active');
+        updateScale();
+        document.documentElement.requestFullscreen?.();
+    }
+
+    function exitPresentation() {
+        presenting = false;
+        document.body.classList.remove('presenting');
+        slides.forEach(s => {
+            s.classList.remove('active');
+            s.style.transform = '';
+        });
+    }
+
+    function showSlide(n) {
+        if (!presenting) return;
+        slides[current].classList.remove('active');
+        current = Math.max(0, Math.min(n, slides.length - 1));
+        slides[current].classList.add('active');
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F5') { e.preventDefault(); enterPresentation(); return; }
+        if (e.key === 'Escape') { exitPresentation(); return; }
+        if (!presenting) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); showSlide(current - 1); }
+        if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+        if (e.key === 'End') { e.preventDefault(); showSlide(slides.length - 1); }
+    });
+
+    window.addEventListener('resize', () => { if (presenting) updateScale(); });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && presenting) exitPresentation();
+        else if (presenting) updateScale();
+    });
+</script>
+</body>
+</html>

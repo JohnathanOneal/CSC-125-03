@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5 Reference Sheet: Conditional Logic</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            line-height: 1.4;
+            color: var(--espresso);
+            font-size: 13px;
+            background: var(--warm-white);
+        }
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--espresso);
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 4px;
+            margin: 8px 0 4px 0;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--dark-roast);
+            margin: 12px 0 4px 0;
+            border-left: 3px solid var(--caramel);
+            padding-left: 10px;
+            font-size: 15px;
+            font-weight: 400;
+        }
+        h3 {
+            color: var(--medium-roast);
+            margin: 10px 0 2px 0;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        p { margin: 4px 0; }
+        ul { margin: 2px 0; padding-left: 20px; }
+        li { margin-bottom: 1px; }
+        li::marker { color: var(--caramel); }
+        strong { color: var(--rust); font-weight: 600; }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: var(--dark-roast);
+        }
+        pre {
+            margin: 4px 0;
+            border-radius: 6px;
+            border-left: 3px solid var(--caramel);
+            overflow-x: auto;
+        }
+        pre code, pre code.hljs {
+            background: var(--code-bg);
+            border: none;
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            line-height: 1.5;
+            display: block;
+        }
+        .homework-topics {
+            background: var(--latte);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        .homework-topics h2 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+        }
+        .homework-topics ul { margin: 0; }
+        .resource {
+            margin: 6px 0;
+            padding: 6px 10px;
+            border: 1px solid var(--table-border);
+            border-radius: 6px;
+            background: var(--cream);
+        }
+        .resource-title {
+            font-weight: 600;
+            color: var(--dark-roast);
+            margin-bottom: 2px;
+        }
+        .resource a {
+            color: var(--caramel);
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 12px;
+        }
+        .resource a:hover { text-decoration: underline; color: var(--amber); }
+        .resource ul { margin: 2px 0 0 0; }
+        .quick-ref {
+            background: var(--cream);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .quick-ref h2 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+            color: var(--dark-roast);
+        }
+        .code-section { margin: 8px 0; }
+        .code-title {
+            font-weight: 600;
+            color: var(--dark-roast);
+            margin-bottom: 2px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 4px 0;
+            font-size: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 3px 8px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+    </style>
+</head>
+<body>
+
+    <h1>Week 5 Reference Sheet: Conditional Logic</h1>
+    <p><strong>CSC-125-201 | Use this as a reference when completing Homework 5</strong></p>
+
+    <div class="homework-topics">
+        <h2>Homework Topics</h2>
+        <ul>
+            <li>Basic <code>if</code> statements (syntax, colon, indentation)</li>
+            <li><code>if-else</code> statements (two-way decisions)</li>
+            <li><code>if-elif-else</code> chains (multiple options, first <code>True</code> wins)</li>
+            <li>Logical operators: <code>and</code>, <code>or</code>, <code>not</code></li>
+            <li>Combining conditions in <code>if</code> statements</li>
+            <li>Nested conditionals</li>
+            <li>Python indentation rules</li>
+            <li>Common conditional errors</li>
+        </ul>
+    </div>
+
+    <div class="quick-ref">
+        <h2>Quick Reference</h2>
+
+        <div class="code-section">
+            <div class="code-title">Basic if Statement</div>
+            <p>An <code>if</code> statement runs its indented block only when the condition is <code>True</code>. The condition line must end with a colon, and the body must be indented by 4 spaces.</p>
+            <pre><code class="language-python">temperature = 95
+
+if temperature > 90:
+    print("It is hot outside")
+
+print("Have a good day")  # Always runs (not indented under if)</code></pre>
+            <p>Any code that is not indented under the <code>if</code> block will always run, regardless of whether the condition was <code>True</code> or <code>False</code>.</p>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">if-else Statement</div>
+            <p>An <code>if-else</code> provides two branches. Exactly one block always runs: the <code>if</code> block when the condition is <code>True</code>, or the <code>else</code> block when it is <code>False</code>.</p>
+            <pre><code class="language-python">number = 7
+
+if number % 2 == 0:
+    print(f"{number} is even")
+else:
+    print(f"{number} is odd")</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">if-elif-else Chain</div>
+            <p>Use <code>elif</code> (short for "else if") to check multiple conditions in sequence. Python evaluates each condition from top to bottom and runs the first block whose condition is <code>True</code>. All remaining branches are skipped.</p>
+            <pre><code class="language-python">score = 85
+
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+elif score >= 60:
+    grade = "D"
+else:
+    grade = "F"
+
+print(f"Your grade is {grade}")  # Your grade is B</code></pre>
+            <p>The <code>else</code> block at the end is optional but acts as a catch-all for any value that did not match an earlier condition. Order matters: place the most specific conditions first.</p>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Logical Operators</div>
+            <p>Logical operators combine or modify boolean expressions.</p>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td><code>and</code></td>
+                    <td>Both must be <code>True</code></td>
+                    <td><code>True and False</code></td>
+                    <td><code>False</code></td>
+                </tr>
+                <tr>
+                    <td><code>or</code></td>
+                    <td>At least one must be <code>True</code></td>
+                    <td><code>True or False</code></td>
+                    <td><code>True</code></td>
+                </tr>
+                <tr>
+                    <td><code>not</code></td>
+                    <td>Reverses <code>True</code>/<code>False</code></td>
+                    <td><code>not True</code></td>
+                    <td><code>False</code></td>
+                </tr>
+            </table>
+
+            <h3>Truth Table</h3>
+            <table>
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>A and B</th>
+                    <th>A or B</th>
+                    <th>not A</th>
+                </tr>
+                <tr>
+                    <td><code>True</code></td>
+                    <td><code>True</code></td>
+                    <td><code>True</code></td>
+                    <td><code>True</code></td>
+                    <td><code>False</code></td>
+                </tr>
+                <tr>
+                    <td><code>True</code></td>
+                    <td><code>False</code></td>
+                    <td><code>False</code></td>
+                    <td><code>True</code></td>
+                    <td><code>False</code></td>
+                </tr>
+                <tr>
+                    <td><code>False</code></td>
+                    <td><code>True</code></td>
+                    <td><code>False</code></td>
+                    <td><code>True</code></td>
+                    <td><code>True</code></td>
+                </tr>
+                <tr>
+                    <td><code>False</code></td>
+                    <td><code>False</code></td>
+                    <td><code>False</code></td>
+                    <td><code>False</code></td>
+                    <td><code>True</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Combining Conditions</div>
+            <p>Use logical operators inside <code>if</code> statements to test multiple conditions at once. Parentheses improve readability in complex expressions.</p>
+            <pre><code class="language-python">age = 25
+income = 50000
+
+# and: both conditions must be True
+if age >= 18 and income >= 30000:
+    print("Eligible for credit card")
+
+# or: at least one condition must be True
+day = "Saturday"
+if day == "Saturday" or day == "Sunday":
+    print("It is the weekend")
+
+# not: reverses the result
+logged_in = False
+if not logged_in:
+    print("Please log in to continue")
+
+# Parentheses for clarity in complex conditions
+temperature = 72
+humidity = 40
+if (temperature >= 65 and temperature <= 80) and (humidity < 60):
+    print("The weather is pleasant")</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Nested Conditionals</div>
+            <p>A nested conditional places one <code>if</code> statement inside another. Use this when a second decision depends on the result of the first. Each level adds 4 more spaces of indentation.</p>
+            <pre><code class="language-python">has_ticket = True
+age = 15
+
+if has_ticket:
+    if age >= 18:
+        print("Welcome to the R-rated movie")
+    else:
+        print("You need a parent for this movie")
+else:
+    print("Please purchase a ticket first")</code></pre>
+            <p>Tip: keep nesting to 2-3 levels at most. Deeply nested code becomes difficult to read and debug. Consider combining conditions with <code>and</code> as an alternative when possible.</p>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Indentation Rules</div>
+            <ul>
+                <li>Use <strong>4 spaces</strong> per indentation level (not tabs)</li>
+                <li>A <strong>colon</strong> (<code>:</code>) is required after every <code>if</code>, <code>elif</code>, and <code>else</code></li>
+                <li>All lines in the same block must have the <strong>same indentation</strong></li>
+                <li>Empty lines are allowed within blocks without affecting indentation</li>
+                <li>Code that should run after a conditional block must return to the <strong>previous indentation level</strong></li>
+            </ul>
+            <pre><code class="language-python">x = 10
+if x > 5:
+    print("x is large")     # 4 spaces - inside if block
+    print("still inside")   # 4 spaces - same block
+
+print("always runs")        # 0 spaces - outside if block</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Common Errors</div>
+            <table>
+                <tr>
+                    <th>Error</th>
+                    <th>Cause</th>
+                    <th>Fix</th>
+                </tr>
+                <tr>
+                    <td><code>SyntaxError</code>: missing colon</td>
+                    <td>Forgot <code>:</code> after condition</td>
+                    <td>Add <code>:</code> at end of <code>if</code>/<code>elif</code>/<code>else</code></td>
+                </tr>
+                <tr>
+                    <td><code>IndentationError</code>: unexpected indent</td>
+                    <td>Inconsistent spacing</td>
+                    <td>Use 4 spaces consistently per level</td>
+                </tr>
+                <tr>
+                    <td>Logic error: always <code>True</code>/<code>False</code></td>
+                    <td>Using <code>=</code> instead of <code>==</code></td>
+                    <td>Use <code>==</code> for comparison, <code>=</code> for assignment</td>
+                </tr>
+                <tr>
+                    <td>Logic error: wrong branch runs</td>
+                    <td><code>elif</code> order checks lower threshold first</td>
+                    <td>Order conditions from most specific to least</td>
+                </tr>
+            </table>
+            <pre><code class="language-python"># Wrong: checks lower threshold first
+if score >= 60:
+    grade = "D"   # score of 95 would get "D"
+elif score >= 90:
+    grade = "A"   # This never runs for 95
+
+# Correct: check highest threshold first
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 60:
+    grade = "D"</code></pre>
+        </div>
+    </div>
+
+    <h2>Additional Resources</h2>
+
+    <div class="resource">
+        <div class="resource-title">Corey Schafer - Python Conditionals and Booleans</div>
+        <a href="https://www.youtube.com/watch?v=DZwmZ8Usvnk" target="_blank">https://www.youtube.com/watch?v=DZwmZ8Usvnk</a>
+        <ul>
+            <li>Video tutorial covering if, elif, else statements and boolean logic</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Python If...Else</div>
+        <a href="https://www.w3schools.com/python/python_conditions.asp" target="_blank">https://www.w3schools.com/python/python_conditions.asp</a>
+        <ul>
+            <li>Reference with interactive examples for all conditional statement types</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">LearnPython.org - Conditions</div>
+        <a href="https://www.learnpython.org/en/Conditions" target="_blank">https://www.learnpython.org/en/Conditions</a>
+        <ul>
+            <li>Interactive exercises for practicing conditional logic in the browser</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Real Python - Conditional Statements in Python</div>
+        <a href="https://realpython.com/python-conditional-statements/" target="_blank">https://realpython.com/python-conditional-statements/</a>
+        <ul>
+            <li>In-depth guide to conditional logic, including nested and chained conditionals</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Programiz - Python if...elif...else</div>
+        <a href="https://www.programiz.com/python-programming/if-elif-else" target="_blank">https://www.programiz.com/python-programming/if-elif-else</a>
+        <ul>
+            <li>Step-by-step tutorial with flowchart diagrams and practice examples</li>
+        </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body>
+</html>

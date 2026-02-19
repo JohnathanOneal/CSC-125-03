@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2: Variables and Data Types</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --sage: #7d8c6e;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --code-border: #c08b5c;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--latte);
+            color: var(--espresso);
+        }
+
+        .slide {
+            width: 960px;
+            height: 540px;
+            margin: 24px auto;
+            padding: 44px 52px;
+            background: var(--warm-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 16px rgba(60, 42, 26, 0.1), 0 1px 4px rgba(60, 42, 26, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            border: 1px solid rgba(192, 139, 92, 0.15);
+        }
+        .slide.center { align-items: center; text-align: center; }
+
+        /* Warm decorative top bar on each slide */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--caramel), var(--amber), var(--toffee));
+            border-radius: 8px 8px 0 0;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 2.2em;
+            color: var(--espresso);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.55em;
+            color: var(--dark-roast);
+            margin-bottom: 14px;
+            font-weight: 400;
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+        /* Remove underline for h2 inside two-col so it doesn't look odd */
+        .two-col h2 {
+            font-size: 1.3em;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 8px;
+        }
+        h3 {
+            font-size: 1em;
+            color: var(--medium-roast);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 0.88em;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: var(--espresso);
+        }
+        ul {
+            font-size: 0.86em;
+            line-height: 1.55;
+            margin-left: 22px;
+            margin-bottom: 10px;
+            color: #4a3728;
+        }
+        li { margin-bottom: 3px; }
+        li::marker { color: var(--caramel); }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.78em;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 6px 0;
+            border-left: 3px solid var(--code-border);
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        pre code.hljs {
+            background: var(--code-bg);
+            padding: 10px 14px;
+            border-radius: 6px;
+        }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        .ic {
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            font-size: 0.88em;
+            color: var(--dark-roast);
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 0.82em;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 6px 14px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+
+        .subtitle {
+            font-size: 1.05em;
+            color: var(--medium-roast);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .two-col { display: flex; gap: 32px; }
+        .two-col > div { flex: 1; }
+        .section-label {
+            font-size: 0.65em;
+            color: var(--toffee);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .slide-num {
+            position: absolute;
+            bottom: 12px;
+            right: 18px;
+            font-size: 0.6em;
+            color: var(--table-border);
+            font-weight: 500;
+        }
+        .img-placeholder {
+            background: var(--latte);
+            border: 2px dashed var(--caramel);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            color: var(--toffee);
+            font-size: 0.75em;
+            font-style: italic;
+            margin: 8px 0;
+        }
+        .slide img {
+            max-width: 100%;
+            flex: 1 1 0;
+            min-height: 0;
+            object-fit: contain;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        strong { color: var(--rust); font-weight: 600; }
+        em { color: var(--sage); }
+
+        /* Title slide special treatment */
+        .slide.title-slide {
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 50%, var(--latte) 100%);
+        }
+        .slide.title-slide::before {
+            height: 6px;
+        }
+        .slide.title-slide h1 {
+            font-size: 2.6em;
+            margin-bottom: 12px;
+        }
+
+        /* Presentation mode - scale slides to fill viewport */
+        body.presenting { background: var(--espresso); overflow: hidden; }
+        body.presenting .slide {
+            display: none;
+            width: 960px;
+            height: 540px;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            padding: 44px 52px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+        }
+        body.presenting .slide.active { display: flex; }
+        body.presenting .controls { display: none; }
+
+        /* Controls */
+        .controls {
+            text-align: center;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            background: var(--cream);
+            z-index: 10;
+            border-bottom: 1px solid var(--table-border);
+            font-size: 0.8em;
+            color: var(--medium-roast);
+        }
+        .controls button {
+            background: var(--caramel);
+            color: var(--warm-white);
+            border: none;
+            padding: 5px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-left: 8px;
+            transition: background 0.2s;
+        }
+        .controls button:hover { background: var(--amber); }
+
+        /* Print/PDF */
+        @media print {
+            @page { size: landscape; margin: 0; }
+            body { background: white; margin: 0; padding: 0; }
+            .controls { display: none; }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                width: 100%;
+                height: 100vh;
+                padding: 44px 52px;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .slide::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    Scroll to browse &middot;
+    <button onclick="enterPresentation()">Present (F5)</button>
+    <button onclick="window.print()">Print / PDF</button>
+</div>
+
+<!-- SLIDE 1 -->
+<div class="slide center title-slide">
+    <img src="../images/title_banner.png" alt="Week 2 title banner">
+    <h1>Week 2: Variables and Data Types</h1>
+    <p class="subtitle">CSC-125-201 &middot; Spring 2026</p>
+    <div class="slide-num">1</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+    <h2>Agenda</h2>
+    <table>
+        <tr><th>#</th><th>Section</th></tr>
+        <tr><td>1</td><td>Forum Overview</td></tr>
+        <tr><td>2</td><td>Lecture Slides</td></tr>
+        <tr><td>3</td><td>Week 1 Review</td></tr>
+        <tr><td>4</td><td>Code Lecture Part 1</td></tr>
+        <tr><td>-</td><td>Break</td></tr>
+        <tr><td>5</td><td>Code Lecture Part 2</td></tr>
+    </table>
+    <div class="slide-num">2</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+    <div class="section-label">Section 1</div>
+    <h2>Forum Discussions</h2>
+    <ul>
+        <li>Bi-weekly forums on Moodle (Weeks 2, 4, 6, 8, 10, 12, 14)</li>
+        <li>Part of your participation grade</li>
+        <li>Prompt posted on Moodle each virtual week</li>
+        <li>Due the following Monday at 11:59 PM</li>
+        <li>Quality over quantity - thoughtful, substantive contributions</li>
+    </ul>
+    <div class="slide-num">3</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>What is a Variable?</h2>
+    <p>A variable stores data in your program. Think of it as a <strong>labeled box</strong>:</p>
+    <ul>
+        <li>The box = memory space</li>
+        <li>The label = variable name</li>
+        <li>What's inside = the value</li>
+    </ul>
+    <img src="images/variable_box_diagram.png" alt="Variable as labeled box">
+    <div class="slide-num">4</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Why Variables Matter</h2>
+    <ul>
+        <li><strong>Reusability</strong> - use the same value in multiple places</li>
+        <li><strong>Flexibility</strong> - change it once, updates everywhere</li>
+        <li><strong>Readability</strong> - descriptive names make code clear</li>
+    </ul>
+    <pre><code class="language-python">hero_name = "Spider-Man"
+city = "New York"
+
+print("The amazing", hero_name, "protects", city)
+print(hero_name, "swings through", city)</code></pre>
+    <div class="slide-num">5</div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>The Four Data Types</h2>
+    <table>
+        <tr><th>Type</th><th>Stores</th><th>Example</th><th>Python Name</th></tr>
+        <tr><td>String</td><td>Text</td><td><code>"Hello"</code></td><td><code>str</code></td></tr>
+        <tr><td>Integer</td><td>Whole numbers</td><td><code>42</code></td><td><code>int</code></td></tr>
+        <tr><td>Float</td><td>Decimal numbers</td><td><code>3.14</code></td><td><code>float</code></td></tr>
+        <tr><td>Boolean</td><td>True/False</td><td><code>True</code></td><td><code>bool</code></td></tr>
+    </table>
+    <p>Use <span class="ic">type()</span> to check any variable's type:</p>
+    <pre><code class="language-python">print(type("Hello"))   # &lt;class 'str'&gt;
+print(type(42))        # &lt;class 'int'&gt;</code></pre>
+    <div class="slide-num">6</div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <div class="two-col">
+        <div>
+            <h2>Strings</h2>
+            <p>Text in quotes (single or double)</p>
+            <pre><code class="language-python">name = "Alice"
+message = 'Hello'
+number_as_text = "123"  # still a string</code></pre>
+        </div>
+        <div>
+            <h2>Integers</h2>
+            <p>Whole numbers, no decimal</p>
+            <pre><code class="language-python">age = 25
+temperature = -5
+score = 0</code></pre>
+        </div>
+    </div>
+    <div class="slide-num">7</div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <div class="two-col">
+        <div>
+            <h2>Floats</h2>
+            <p>Numbers with a decimal point</p>
+            <pre><code class="language-python">pi = 3.14159
+price = 19.99
+exact_zero = 0.0  # float, not int</code></pre>
+        </div>
+        <div>
+            <h2>Booleans</h2>
+            <p>True or False (capital letters)</p>
+            <pre><code class="language-python">is_student = True
+has_license = False
+can_vote = age >= 18  # comparison</code></pre>
+        </div>
+    </div>
+    <div class="slide-num">8</div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Variable Naming Rules</h2>
+    <img src="images/naming_rules.png" alt="Variable naming rules infographic">
+    <div class="two-col">
+        <div>
+            <h3>Required</h3>
+            <ul>
+                <li>Start with a letter or underscore</li>
+                <li>Cannot start with a number</li>
+                <li>Only letters, numbers, underscores</li>
+                <li>No spaces, no dashes</li>
+                <li>Cannot use Python keywords</li>
+                <li>Case sensitive</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Examples</h3>
+            <table>
+                <tr><th>Valid</th><th>Invalid</th></tr>
+                <tr><td><code>user_name</code></td><td><code>user name</code></td></tr>
+                <tr><td><code>age2</code></td><td><code>2age</code></td></tr>
+                <tr><td><code>is_valid</code></td><td><code>is-valid</code></td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="slide-num">9</div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Naming Best Practices</h2>
+    <ul>
+        <li>Descriptive: <span class="ic">student_grade</span> not <span class="ic">sg</span></li>
+        <li>snake_case: <span class="ic">first_name</span> not <span class="ic">firstName</span></li>
+        <li>Lowercase for variables, UPPERCASE for constants</li>
+        <li>Booleans: prefix with <span class="ic">is_</span> or <span class="ic">has_</span></li>
+    </ul>
+    <pre><code class="language-python">student_name = "Alice"
+final_grade = 87.5
+is_passing = True
+MAX_STUDENTS = 30</code></pre>
+    <div class="slide-num">10</div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Type Conversion</h2>
+    <p>Convert between types with <span class="ic">int()</span>, <span class="ic">float()</span>, <span class="ic">str()</span></p>
+    <div class="two-col">
+        <div>
+            <h3>This works</h3>
+            <pre><code class="language-python">text = "25"
+number = int(text)  # 25
+number + 5          # 30</code></pre>
+        </div>
+        <div>
+            <h3>This breaks</h3>
+            <pre><code class="language-python">text = "25"
+text + 1      # TypeError</code></pre>
+            <pre><code class="language-python">int("Hello")  # ValueError</code></pre>
+        </div>
+    </div>
+    <div class="slide-num">11</div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>The input() Function</h2>
+    <p><span class="ic">input()</span> asks the user for information. It <strong>always returns a string</strong>.</p>
+    <pre><code class="language-python">name = input("What's your name? ")
+print("Hello,", name)</code></pre>
+    <p>For numbers, convert the result:</p>
+    <pre><code class="language-python">age = int(input("Enter your age: "))
+height = float(input("Enter height: "))
+print("Next year:", age + 1)</code></pre>
+    <div class="slide-num">12</div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Common Errors</h2>
+    <table>
+        <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+        <tr><td>SyntaxError</td><td>Missing quotes or parentheses</td><td>Check syntax</td></tr>
+        <tr><td>NameError</td><td>Typo in variable name</td><td>Check spelling</td></tr>
+        <tr><td>TypeError</td><td>Wrong type for operation</td><td>Convert types</td></tr>
+        <tr><td>ValueError</td><td>Invalid conversion</td><td>Validate input</td></tr>
+    </table>
+    <p>Reading errors: look at the <strong>last line</strong> for the type, the <strong>arrow</strong> for the location.</p>
+    <img src="images/error_message_example.png" alt="Python error message anatomy">
+    <div class="slide-num">13</div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide">
+    <div class="section-label">Section 3</div>
+    <h2>Week 1 Review</h2>
+    <ul>
+        <li><span class="ic">print()</span> displays output</li>
+        <li>Math operators: <span class="ic">+</span> <span class="ic">-</span> <span class="ic">*</span> <span class="ic">/</span> <span class="ic">**</span></li>
+        <li>Text in quotes is a string: <span class="ic">"Hello"</span></li>
+        <li>Error messages tell you the type and location of the problem</li>
+    </ul>
+    <p style="margin-top: 16px;">Now we add: storing values in variables, data types, conversion, and user input.</p>
+    <div class="slide-num">14</div>
+</div>
+
+<!-- SLIDE 15 - Summary -->
+<div class="slide">
+    <h2>Summary</h2>
+    <ul>
+        <li>Variables store data in labeled containers</li>
+        <li>Four types: str, int, float, bool</li>
+        <li><span class="ic">type()</span> checks a variable's type</li>
+        <li>Naming: letters/underscores, no spaces/dashes</li>
+        <li><span class="ic">int()</span>, <span class="ic">float()</span>, <span class="ic">str()</span> convert between types</li>
+        <li><span class="ic">input()</span> always returns a string</li>
+        <li>Read error messages: type, location, description</li>
+    </ul>
+    <div class="slide-num">15</div>
+</div>
+
+<!-- SLIDE 16 -->
+<div class="slide">
+    <h2>Homework and Forum</h2>
+    <p><strong>Homework 2</strong> - available on Moodle, due Monday 11:59 PM</p>
+    <p>Reference sheet posted to help with the assignment.</p>
+    <br>
+    <p><strong>Forum Discussion</strong> - prompt on Moodle, due Monday 11:59 PM</p>
+    <br>
+    <p><strong>Next week (Week 3):</strong> String Operations and Debugging - In-Person</p>
+    <div class="slide-num">16</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let presenting = false;
+
+    function updateScale() {
+        const scaleX = window.innerWidth / 960;
+        const scaleY = window.innerHeight / 540;
+        const scale = Math.min(scaleX, scaleY);
+        slides.forEach(s => {
+            s.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        });
+    }
+
+    function enterPresentation() {
+        presenting = true;
+        document.body.classList.add('presenting');
+        slides[current].classList.add('active');
+        updateScale();
+        document.documentElement.requestFullscreen?.();
+    }
+
+    function exitPresentation() {
+        presenting = false;
+        document.body.classList.remove('presenting');
+        slides.forEach(s => {
+            s.classList.remove('active');
+            s.style.transform = '';
+        });
+    }
+
+    function showSlide(n) {
+        if (!presenting) return;
+        slides[current].classList.remove('active');
+        current = Math.max(0, Math.min(n, slides.length - 1));
+        slides[current].classList.add('active');
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F5') { e.preventDefault(); enterPresentation(); return; }
+        if (e.key === 'Escape') { exitPresentation(); return; }
+        if (!presenting) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); showSlide(current - 1); }
+        if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+        if (e.key === 'End') { e.preventDefault(); showSlide(slides.length - 1); }
+    });
+
+    window.addEventListener('resize', () => { if (presenting) updateScale(); });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && presenting) exitPresentation();
+        else if (presenting) updateScale();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4: Math Operations and Operators</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --sage: #7d8c6e;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --code-border: #c08b5c;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--latte);
+            color: var(--espresso);
+        }
+
+        .slide {
+            width: 960px;
+            height: 540px;
+            margin: 24px auto;
+            padding: 44px 52px;
+            background: var(--warm-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 16px rgba(60, 42, 26, 0.1), 0 1px 4px rgba(60, 42, 26, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            border: 1px solid rgba(192, 139, 92, 0.15);
+        }
+        .slide.center { align-items: center; text-align: center; }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--caramel), var(--amber), var(--toffee));
+            border-radius: 8px 8px 0 0;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 2.2em;
+            color: var(--espresso);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.55em;
+            color: var(--dark-roast);
+            margin-bottom: 14px;
+            font-weight: 400;
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+        .two-col h2 {
+            font-size: 1.3em;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 8px;
+        }
+        h3 {
+            font-size: 1em;
+            color: var(--medium-roast);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 0.88em;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: var(--espresso);
+        }
+        ul {
+            font-size: 0.86em;
+            line-height: 1.55;
+            margin-left: 22px;
+            margin-bottom: 10px;
+            color: #4a3728;
+        }
+        li { margin-bottom: 3px; }
+        li::marker { color: var(--caramel); }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.78em;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 6px 0;
+            border-left: 3px solid var(--code-border);
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        pre code.hljs {
+            background: var(--code-bg);
+            padding: 10px 14px;
+            border-radius: 6px;
+        }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        .ic {
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            font-size: 0.88em;
+            color: var(--dark-roast);
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 0.82em;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 6px 14px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+
+        .subtitle {
+            font-size: 1.05em;
+            color: var(--medium-roast);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .two-col { display: flex; gap: 32px; }
+        .two-col > div { flex: 1; }
+        .section-label {
+            font-size: 0.65em;
+            color: var(--toffee);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .slide-num {
+            position: absolute;
+            bottom: 12px;
+            right: 18px;
+            font-size: 0.6em;
+            color: var(--table-border);
+            font-weight: 500;
+        }
+        .img-placeholder {
+            background: var(--latte);
+            border: 2px dashed var(--caramel);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            color: var(--toffee);
+            font-size: 0.75em;
+            font-style: italic;
+            margin: 8px 0;
+        }
+        .slide img {
+            max-width: 100%;
+            flex: 1 1 0;
+            min-height: 0;
+            object-fit: contain;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        strong { color: var(--rust); font-weight: 600; }
+        em { color: var(--sage); }
+
+        .slide.title-slide {
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 50%, var(--latte) 100%);
+        }
+        .slide.title-slide::before {
+            height: 6px;
+        }
+        .slide.title-slide h1 {
+            font-size: 2.6em;
+            margin-bottom: 12px;
+        }
+
+        body.presenting { background: var(--espresso); overflow: hidden; }
+        body.presenting .slide {
+            display: none;
+            width: 960px;
+            height: 540px;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            padding: 44px 52px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+        }
+        body.presenting .slide.active { display: flex; }
+        body.presenting .controls { display: none; }
+
+        .controls {
+            text-align: center;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            background: var(--cream);
+            z-index: 10;
+            border-bottom: 1px solid var(--table-border);
+            font-size: 0.8em;
+            color: var(--medium-roast);
+        }
+        .controls button {
+            background: var(--caramel);
+            color: var(--warm-white);
+            border: none;
+            padding: 5px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-left: 8px;
+            transition: background 0.2s;
+        }
+        .controls button:hover { background: var(--amber); }
+
+        @media print {
+            @page { size: landscape; margin: 0; }
+            body { background: white; margin: 0; padding: 0; }
+            .controls { display: none; }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                width: 100%;
+                height: 100vh;
+                padding: 44px 52px;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .slide::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    Scroll to browse &middot;
+    <button onclick="enterPresentation()">Present (F5)</button>
+    <button onclick="window.print()">Print / PDF</button>
+</div>
+
+<!-- SLIDE 1 -->
+<div class="slide center title-slide">
+    <img src="../images/title_banner.png" alt="Week 4 title banner">
+    <h1>Week 4: Math Operations and Operators</h1>
+    <p class="subtitle">CSC-125-201 &middot; Spring 2026</p>
+    <div class="slide-num">1</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+    <h2>Agenda</h2>
+    <table>
+        <tr><th>#</th><th>Section</th></tr>
+        <tr><td>1</td><td>Forum Overview</td></tr>
+        <tr><td>2</td><td>Week 3 Review</td></tr>
+        <tr><td>3</td><td>Lecture Slides</td></tr>
+        <tr><td>4</td><td>Code Lecture Part 1</td></tr>
+        <tr><td>-</td><td>Break</td></tr>
+        <tr><td>5</td><td>Code Lecture Part 2</td></tr>
+    </table>
+    <div class="slide-num">2</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+    <div class="section-label">Section 1</div>
+    <h2>Week 3 Review</h2>
+    <ul>
+        <li>String methods: <span class="ic">.strip()</span>, <span class="ic">.upper()</span>, <span class="ic">.lower()</span>, <span class="ic">.title()</span>, <span class="ic">.replace()</span></li>
+        <li>Indexing: <span class="ic">string[0]</span> for the first character, <span class="ic">string[-1]</span> for the last</li>
+        <li>Slicing: <span class="ic">string[start:end]</span> extracts a substring (end not included)</li>
+        <li>F-strings: <span class="ic">f"Hello {name}"</span> for embedding variables in text</li>
+        <li>Format specifiers: <span class="ic">:.2f</span> for controlling decimal places</li>
+        <li>Debugging: read error messages bottom-up, use <span class="ic">print()</span> to inspect values</li>
+    </ul>
+    <p style="margin-top: 12px;">This week we focus on <strong>math operations</strong> and the operators Python provides for calculations and comparisons.</p>
+    <div class="slide-num">3</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Arithmetic Operators</h2>
+    <p>Python provides <strong>seven arithmetic operators</strong>. Given <span class="ic">a = 17</span> and <span class="ic">b = 5</span>:</p>
+    <table>
+        <tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
+        <tr><td><span class="ic">+</span></td><td>Addition</td><td><span class="ic">a + b</span></td><td>22</td></tr>
+        <tr><td><span class="ic">-</span></td><td>Subtraction</td><td><span class="ic">a - b</span></td><td>12</td></tr>
+        <tr><td><span class="ic">*</span></td><td>Multiplication</td><td><span class="ic">a * b</span></td><td>85</td></tr>
+        <tr><td><span class="ic">/</span></td><td>Division</td><td><span class="ic">a / b</span></td><td>3.4</td></tr>
+        <tr><td><span class="ic">//</span></td><td>Floor Division</td><td><span class="ic">a // b</span></td><td>3</td></tr>
+        <tr><td><span class="ic">%</span></td><td>Modulo</td><td><span class="ic">a % b</span></td><td>2</td></tr>
+        <tr><td><span class="ic">**</span></td><td>Exponentiation</td><td><span class="ic">a ** b</span></td><td>1419857</td></tr>
+    </table>
+    <div class="slide-num">4</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Floor Division &amp; Modulo</h2>
+    <p><strong>Floor division</strong> (<span class="ic">//</span>) gives the whole number part. <strong>Modulo</strong> (<span class="ic">%</span>) gives the remainder.</p>
+    <pre><code class="language-python"># Convert total minutes to hours and minutes
+total_minutes = 135
+hours = total_minutes // 60    # 2
+minutes = total_minutes % 60   # 15
+print(f"{hours}h {minutes}m")  # "2h 15m"</code></pre>
+    <pre><code class="language-python"># Even/odd check - the result is True or False
+number = 14
+is_even = number % 2 == 0      # True
+
+number = 7
+is_even = number % 2 == 0      # False</code></pre>
+    <div class="slide-num">5</div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Division Types Compared</h2>
+    <div class="two-col">
+        <div>
+            <h2>True Division <span class="ic">/</span></h2>
+            <p>Always returns a <strong>float</strong>, even when dividing evenly:</p>
+            <pre><code class="language-python">10 / 5     # 2.0
+10 / 3     # 3.3333...
+7 / 2      # 3.5
+1 / 4      # 0.25</code></pre>
+        </div>
+        <div>
+            <h2>Floor Division <span class="ic">//</span></h2>
+            <p>Returns an <strong>int</strong> for int inputs (rounds down):</p>
+            <pre><code class="language-python">10 // 5    # 2
+10 // 3    # 3
+7 // 2     # 3
+1 // 4     # 0</code></pre>
+        </div>
+    </div>
+    <p style="margin-top: 10px;">Use <span class="ic">/</span> when you need precision. Use <span class="ic">//</span> when you need a whole number.</p>
+    <div class="slide-num">6</div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Operator Precedence</h2>
+    <p>Python follows <strong>PEMDAS</strong> rules. Operations higher in the table are evaluated first:</p>
+    <img src="images/operator_precedence_pyramid.png" alt="PEMDAS pyramid: Parentheses at top, then Exponents, then Multiplication/Division/Floor Division/Modulo, then Addition/Subtraction at bottom">
+    <pre><code class="language-python"># Multiplication happens before addition
+result = 2 + 3 * 4       # 14  (not 20)
+
+# Exponents happen before multiplication
+result = 2 * 3 ** 2      # 18  (not 36)</code></pre>
+    <div class="slide-num">7</div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Parentheses for Clarity</h2>
+    <p>Use parentheses to <strong>control order</strong> and make your intent obvious:</p>
+    <pre><code class="language-python"># Calculate the average of three temperatures
+temp1 = 72
+temp2 = 68
+temp3 = 75
+average = (temp1 + temp2 + temp3) / 3    # 71.666...
+
+# Apply tax to a price
+price = 49.99
+tax_rate = 0.08
+total = price * (1 + tax_rate)           # 53.9892</code></pre>
+    <p>Even when not strictly required, parentheses improve <strong>readability</strong>:</p>
+    <pre><code class="language-python"># Both produce the same result, but the second is clearer
+result = a + b * c / d
+result = a + ((b * c) / d)</code></pre>
+    <div class="slide-num">8</div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Comparison Operators</h2>
+    <p>Comparisons evaluate to <span class="ic">True</span> or <span class="ic">False</span> (boolean values):</p>
+    <table>
+        <tr><th>Operator</th><th>Meaning</th><th>Example</th><th>Result</th></tr>
+        <tr><td><span class="ic">==</span></td><td>Equal to</td><td><span class="ic">5 == 5</span></td><td>True</td></tr>
+        <tr><td><span class="ic">!=</span></td><td>Not equal to</td><td><span class="ic">5 != 3</span></td><td>True</td></tr>
+        <tr><td><span class="ic">&lt;</span></td><td>Less than</td><td><span class="ic">3 &lt; 5</span></td><td>True</td></tr>
+        <tr><td><span class="ic">&gt;</span></td><td>Greater than</td><td><span class="ic">3 &gt; 5</span></td><td>False</td></tr>
+        <tr><td><span class="ic">&lt;=</span></td><td>Less than or equal</td><td><span class="ic">5 &lt;= 5</span></td><td>True</td></tr>
+        <tr><td><span class="ic">&gt;=</span></td><td>Greater than or equal</td><td><span class="ic">3 &gt;= 5</span></td><td>False</td></tr>
+    </table>
+    <p>These operators work with <span class="ic">int</span>, <span class="ic">float</span>, and <span class="ic">str</span> values.</p>
+    <div class="slide-num">9</div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Boolean Expressions</h2>
+    <p>Comparison results can be <strong>stored in variables</strong> for later use:</p>
+    <pre><code class="language-python">age = 20
+can_vote = age >= 18          # True
+is_teen = 13 <= age <= 19     # False (chained comparison)</code></pre>
+    <pre><code class="language-python">temperature = 98.6
+has_fever = temperature > 100.4    # False
+
+price = 29.99
+is_affordable = price < 50.00     # True</code></pre>
+    <p>Boolean variables are useful for tracking the state of a condition. We will use them with <strong>conditional logic</strong> next week.</p>
+    <div class="slide-num">10</div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Assignment Operators</h2>
+    <p>Shorthand operators update a variable using its current value:</p>
+    <table>
+        <tr><th>Operator</th><th>Equivalent</th><th>Example</th></tr>
+        <tr><td><span class="ic">+=</span></td><td><span class="ic">x = x + n</span></td><td>Add to current value</td></tr>
+        <tr><td><span class="ic">-=</span></td><td><span class="ic">x = x - n</span></td><td>Subtract from current value</td></tr>
+        <tr><td><span class="ic">*=</span></td><td><span class="ic">x = x * n</span></td><td>Multiply current value</td></tr>
+        <tr><td><span class="ic">/=</span></td><td><span class="ic">x = x / n</span></td><td>Divide current value</td></tr>
+    </table>
+    <pre><code class="language-python">score = 0
+score += 100    # score is now 100
+score += 50     # score is now 150
+score *= 2      # score is now 300
+score -= 75     # score is now 225</code></pre>
+    <div class="slide-num">11</div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Common Mistakes</h2>
+    <div class="two-col">
+        <div>
+            <h2><span class="ic">=</span> vs <span class="ic">==</span></h2>
+            <pre><code class="language-python"># Assignment (sets a value)
+x = 10
+
+# Comparison (checks equality)
+x == 10    # True</code></pre>
+            <p><span class="ic">=</span> stores a value. <span class="ic">==</span> checks if two values are equal.</p>
+        </div>
+        <div>
+            <h2>Precedence &amp; Types</h2>
+            <pre><code class="language-python"># Precedence trap
+result = 10 + 5 * 2   # 20, not 30
+
+# Type mixing
+age = "25"
+check = age > 18  # TypeError</code></pre>
+            <p>Convert strings to numbers before comparing: <span class="ic">int(age) > 18</span></p>
+        </div>
+    </div>
+    <div class="slide-num">12</div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide">
+    <h2>Summary</h2>
+    <ul>
+        <li>Seven arithmetic operators: <span class="ic">+</span> <span class="ic">-</span> <span class="ic">*</span> <span class="ic">/</span> <span class="ic">//</span> <span class="ic">%</span> <span class="ic">**</span></li>
+        <li>Floor division (<span class="ic">//</span>) returns whole numbers; modulo (<span class="ic">%</span>) returns remainders</li>
+        <li>True division (<span class="ic">/</span>) always returns a float</li>
+        <li>PEMDAS governs operator precedence; use parentheses for clarity</li>
+        <li>Six comparison operators: <span class="ic">==</span> <span class="ic">!=</span> <span class="ic">&lt;</span> <span class="ic">&gt;</span> <span class="ic">&lt;=</span> <span class="ic">&gt;=</span></li>
+        <li>Comparisons return <span class="ic">True</span> or <span class="ic">False</span> and can be stored in variables</li>
+        <li>Assignment operators (<span class="ic">+=</span>, <span class="ic">-=</span>, etc.) update variables in place</li>
+        <li>Watch out for <span class="ic">=</span> vs <span class="ic">==</span> and type mismatches</li>
+    </ul>
+    <div class="slide-num">13</div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide">
+    <h2>Homework, Forum, and Next Week</h2>
+    <p><strong>Homework 4</strong> - available on Moodle, due Monday 11:59 PM</p>
+    <br>
+    <p><strong>Forum Discussion</strong> - prompt posted on Moodle. Respond to the prompt and reply to at least one classmate.</p>
+    <br>
+    <p><strong>Next week (Week 5):</strong> Conditional Logic - In-Person</p>
+    <p>We will use the boolean expressions from this week to make decisions in code with <span class="ic">if</span>, <span class="ic">elif</span>, and <span class="ic">else</span>.</p>
+    <div class="slide-num">14</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let presenting = false;
+
+    function updateScale() {
+        const scaleX = window.innerWidth / 960;
+        const scaleY = window.innerHeight / 540;
+        const scale = Math.min(scaleX, scaleY);
+        slides.forEach(s => {
+            s.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        });
+    }
+
+    function enterPresentation() {
+        presenting = true;
+        document.body.classList.add('presenting');
+        slides[current].classList.add('active');
+        updateScale();
+        document.documentElement.requestFullscreen?.();
+    }
+
+    function exitPresentation() {
+        presenting = false;
+        document.body.classList.remove('presenting');
+        slides.forEach(s => {
+            s.classList.remove('active');
+            s.style.transform = '';
+        });
+    }
+
+    function showSlide(n) {
+        if (!presenting) return;
+        slides[current].classList.remove('active');
+        current = Math.max(0, Math.min(n, slides.length - 1));
+        slides[current].classList.add('active');
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F5') { e.preventDefault(); enterPresentation(); return; }
+        if (e.key === 'Escape') { exitPresentation(); return; }
+        if (!presenting) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); showSlide(current - 1); }
+        if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+        if (e.key === 'End') { e.preventDefault(); showSlide(slides.length - 1); }
+    });
+
+    window.addEventListener('resize', () => { if (presenting) updateScale(); });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && presenting) exitPresentation();
+        else if (presenting) updateScale();
+    });
+</script>
+</body>
+</html>

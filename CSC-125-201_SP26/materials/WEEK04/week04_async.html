@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4 Asynchronous Materials Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        .homework-topics {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .homework-topics ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .resource {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            background: #ffffff;
+        }
+        .resource-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .start-here {
+            background: #fff3cd;
+            border-color: #ffeaa7;
+        }
+        .video-resource {
+            background: #e8f5e8;
+            border-color: #4caf50;
+        }
+        .resource a {
+            color: #3498db;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .resource a:hover {
+            text-decoration: underline;
+        }
+        .resource ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+        }
+        .quick-ref {
+            background: #f1f3f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .quick-ref h3 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+        .precedence-section {
+            background: #fff2f2;
+            border: 2px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .precedence-section h3 {
+            color: #d63384;
+            margin-top: 0;
+        }
+        .operator-table {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .operator-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+        .operator-table th, .operator-table td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .operator-table th {
+            background: #e9ecef;
+            font-weight: bold;
+        }
+        pre {
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .code-section {
+            margin: 15px 0;
+        }
+        .code-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .diagram {
+            background: #f8f9fa;
+            border: 2px dashed #6c757d;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .diagram h4 {
+            margin-top: 0;
+            color: #495057;
+        }
+        .example-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 4 Asynchronous Materials Guide</h1>
+    <p><strong>Math Operations and Operators</strong></p>
+
+    <div class="homework-topics">
+        <h2>This Week's Topics Overview</h2>
+        <p>Building on Week 3's string operations, you'll now learn to:</p>
+        <ul>
+            <li>Use all arithmetic operators: +, -, *, /, //, %, **</li>
+            <li>Understand operator precedence (order of operations)</li>
+            <li>Use comparison operators: ==, !=, <, >, <=, >=</li>
+            <li>Work with assignment operators: =, +=, -=, *=, /=</li>
+            <li>Create and evaluate boolean expressions</li>
+            <li>Combine operators in complex expressions</li>
+        </ul>
+    </div>
+
+    <h2>Start Here: Video Tutorial</h2>
+
+    <div class="resource video-resource start-here">
+        <div class="resource-title">Python Operators Tutorial</div>
+        <a href="https://www.youtube.com/watch?v=v5MR5JnKcZI">Python Tutorial for Beginners 4: Operators and Expressions</a>
+        <ul>
+            <li><strong>Duration:</strong> 11 minutes</li>
+            <li><strong>What you will learn:</strong> All types of operators and how to use them</li>
+            <li><strong>Why this helps:</strong> Visual examples of operator precedence and comparison</li>
+            <li><strong>Study approach:</strong> Pause and try each example yourself</li>
+        </ul>
+    </div>
+
+    <h2>Arithmetic Operators</h2>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools Python Operators</div>
+        <a href="https://www.w3schools.com/python/python_operators.asp">https://www.w3schools.com/python/python_operators.asp</a>
+        <ul>
+            <li>Complete guide to all operator types</li>
+            <li>Examples you can test immediately</li>
+            <li>Clear explanation of each operator's purpose</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">LearnPython.org Basic Operators</div>
+        <a href="https://www.learnpython.org/en/Basic_Operators">https://www.learnpython.org/en/Basic_Operators</a>
+        <ul>
+            <li>Interactive tutorial with exercises</li>
+            <li>Covers arithmetic and comparison operators</li>
+            <li>Complete the exercise at the end</li>
+        </ul>
+    </div>
+
+    <div class="operator-table">
+        <h4>Arithmetic Operators Reference</h4>
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Name</th>
+                <th>Example</th>
+                <th>Result</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>Addition</td>
+                <td>5 + 3</td>
+                <td>8</td>
+                <td>Also concatenates strings</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>Subtraction</td>
+                <td>5 - 3</td>
+                <td>2</td>
+                <td>Also negation: -5</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>Multiplication</td>
+                <td>5 * 3</td>
+                <td>15</td>
+                <td>Also repeats strings</td>
+            </tr>
+            <tr>
+                <td>/</td>
+                <td>Division</td>
+                <td>5 / 3</td>
+                <td>1.6666...</td>
+                <td>Always returns float</td>
+            </tr>
+            <tr>
+                <td>//</td>
+                <td>Floor Division</td>
+                <td>5 // 3</td>
+                <td>1</td>
+                <td>Rounds down to whole number</td>
+            </tr>
+            <tr>
+                <td>%</td>
+                <td>Modulo</td>
+                <td>5 % 3</td>
+                <td>2</td>
+                <td>Remainder after division</td>
+            </tr>
+            <tr>
+                <td>**</td>
+                <td>Exponentiation</td>
+                <td>5 ** 3</td>
+                <td>125</td>
+                <td>5 to the power of 3</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Arithmetic Examples</div>
+        <pre><code class="language-python"># Basic arithmetic
+a = 10
+b = 3
+
+print(f"a + b = {a + b}")    # 13
+print(f"a - b = {a - b}")    # 7
+print(f"a * b = {a * b}")    # 30
+print(f"a / b = {a / b}")    # 3.3333...
+print(f"a // b = {a // b}")  # 3 (floor division)
+print(f"a % b = {a % b}")    # 1 (remainder)
+print(f"a ** b = {a ** b}")  # 1000 (10^3)
+
+# Practical examples
+price = 19.99
+quantity = 3
+total = price * quantity
+print(f"Total: ${total}")
+
+# Checking if number is even or odd
+number = 17
+if number % 2 == 0:
+    print(f"{number} is even")
+else:
+    print(f"{number} is odd")
+
+# Converting minutes to hours and minutes
+total_minutes = 125
+hours = total_minutes // 60  # 2
+minutes = total_minutes % 60  # 5
+print(f"{total_minutes} minutes = {hours} hours and {minutes} minutes")</code></pre>
+    </div>
+
+    <h2>Comparison Operators</h2>
+
+    <div class="resource">
+        <div class="resource-title">Real Python Comparison Operators</div>
+        <a href="https://realpython.com/python-operators-expressions/#comparison-operators">https://realpython.com/python-operators-expressions/#comparison-operators</a>
+        <ul>
+            <li>Detailed explanation of each comparison operator</li>
+            <li>Examples with different data types</li>
+            <li>Understanding when comparisons return True or False</li>
+        </ul>
+    </div>
+
+    <div class="operator-table">
+        <h4>Comparison Operators Reference</h4>
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Name</th>
+                <th>Example</th>
+                <th>Result</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>==</td>
+                <td>Equal to</td>
+                <td>5 == 5</td>
+                <td>True</td>
+                <td>Checks if values are the same</td>
+            </tr>
+            <tr>
+                <td>!=</td>
+                <td>Not equal to</td>
+                <td>5 != 3</td>
+                <td>True</td>
+                <td>Checks if values are different</td>
+            </tr>
+            <tr>
+                <td>&lt;</td>
+                <td>Less than</td>
+                <td>3 &lt; 5</td>
+                <td>True</td>
+                <td>Strict inequality</td>
+            </tr>
+            <tr>
+                <td>&gt;</td>
+                <td>Greater than</td>
+                <td>5 &gt; 3</td>
+                <td>True</td>
+                <td>Strict inequality</td>
+            </tr>
+            <tr>
+                <td>&lt;=</td>
+                <td>Less than or equal</td>
+                <td>3 &lt;= 5</td>
+                <td>True</td>
+                <td>Includes equality</td>
+            </tr>
+            <tr>
+                <td>&gt;=</td>
+                <td>Greater than or equal</td>
+                <td>5 &gt;= 5</td>
+                <td>True</td>
+                <td>Includes equality</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Comparison Examples</div>
+        <pre><code class="language-python"># Basic comparisons
+age = 20
+voting_age = 18
+
+print(f"age == voting_age: {age == voting_age}")  # False
+print(f"age >= voting_age: {age >= voting_age}")  # True
+print(f"age != voting_age: {age != voting_age}")  # True
+
+# Comparing strings
+name1 = "Alice"
+name2 = "alice"
+print(f"name1 == name2: {name1 == name2}")  # False (case sensitive)
+print(f"name1.lower() == name2: {name1.lower() == name2}")  # True
+
+# Grade checking
+score = 85
+print(f"A grade (>=90): {score >= 90}")  # False
+print(f"B grade (>=80): {score >= 80}")  # True
+print(f"Passing (>=60): {score >= 60}")  # True
+
+# Price comparison
+original_price = 29.99
+sale_price = 19.99
+savings = original_price - sale_price
+print(f"On sale: {sale_price < original_price}")  # True
+print(f"Good deal (>$5 off): {savings > 5}")  # True</code></pre>
+    </div>
+
+    <h2>Assignment Operators</h2>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools Assignment Operators</div>
+        <a href="https://www.w3schools.com/python/python_operators.asp">https://www.w3schools.com/python/python_operators.asp</a>
+        <ul>
+            <li>Scroll to "Assignment Operators" section</li>
+            <li>Shows shorthand ways to modify variables</li>
+            <li>Useful for counters and accumulating values</li>
+        </ul>
+    </div>
+
+    <div class="operator-table">
+        <h4>Assignment Operators Reference</h4>
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Example</th>
+                <th>Equivalent To</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>=</td>
+                <td>x = 5</td>
+                <td>x = 5</td>
+                <td>Assign value</td>
+            </tr>
+            <tr>
+                <td>+=</td>
+                <td>x += 3</td>
+                <td>x = x + 3</td>
+                <td>Add and assign</td>
+            </tr>
+            <tr>
+                <td>-=</td>
+                <td>x -= 3</td>
+                <td>x = x - 3</td>
+                <td>Subtract and assign</td>
+            </tr>
+            <tr>
+                <td>*=</td>
+                <td>x *= 3</td>
+                <td>x = x * 3</td>
+                <td>Multiply and assign</td>
+            </tr>
+            <tr>
+                <td>/=</td>
+                <td>x /= 3</td>
+                <td>x = x / 3</td>
+                <td>Divide and assign</td>
+            </tr>
+            <tr>
+                <td>%=</td>
+                <td>x %= 3</td>
+                <td>x = x % 3</td>
+                <td>Modulo and assign</td>
+            </tr>
+            <tr>
+                <td>**=</td>
+                <td>x **= 3</td>
+                <td>x = x ** 3</td>
+                <td>Exponent and assign</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Assignment Operator Examples</div>
+        <pre><code class="language-python"># Basic assignment
+score = 0
+print(f"Starting score: {score}")
+
+# Adding points (shorthand)
+score += 10  # Same as: score = score + 10
+print(f"After bonus: {score}")
+
+score += 25  # Add more points
+print(f"After level complete: {score}")
+
+# Other operations
+health = 100
+health -= 15  # Take damage
+print(f"Health after damage: {health}")
+
+multiplier = 2
+multiplier *= 3  # Triple the multiplier
+print(f"New multiplier: {multiplier}")
+
+# Practical example: Shopping cart
+cart_total = 0.0
+cart_total += 19.99  # Add first item
+cart_total += 25.50  # Add second item
+cart_total += 12.99  # Add third item
+print(f"Cart total: ${cart_total}")
+
+# Apply discount
+cart_total *= 0.9  # 10% discount
+print(f"After 10% discount: ${cart_total:.2f}")
+
+# Counter example
+page_views = 0
+page_views += 1  # Someone visits
+page_views += 1  # Another visit
+page_views += 1  # Another visit
+print(f"Total page views: {page_views}")</code></pre>
+    </div>
+
+    <div class="precedence-section">
+        <h3>Understanding Operator Precedence - VERY IMPORTANT</h3>
+        
+        <p>Just like in math class, Python follows a specific order when evaluating expressions with multiple operators. This is called <strong>operator precedence</strong>.</p>
+
+        <div class="example-box">
+            <h4>Remember PEMDAS from Math Class?</h4>
+            <p><strong>P</strong>arentheses, <strong>E</strong>xponents, <strong>M</strong>ultiplication and <strong>D</strong>ivision, <strong>A</strong>ddition and <strong>S</strong>ubtraction</p>
+            <p>Python follows a similar order!</p>
+        </div>
+
+        <div class="operator-table">
+            <h4>Operator Precedence (Highest to Lowest)</h4>
+            <table>
+                <tr>
+                    <th>Precedence</th>
+                    <th>Operators</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>1 (Highest)</td>
+                    <td>()</td>
+                    <td>Parentheses</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>**</td>
+                    <td>Exponentiation</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>*, /, //, %</td>
+                    <td>Multiplication, Division, Floor Division, Modulo</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>+, -</td>
+                    <td>Addition, Subtraction</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>&lt;, &lt;=, &gt;, &gt;=, ==, !=</td>
+                    <td>Comparison operators</td>
+                </tr>
+                <tr>
+                    <td>6 (Lowest)</td>
+                    <td>=, +=, -=, etc.</td>
+                    <td>Assignment operators</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Precedence Examples</div>
+            <pre><code class="language-python"># Without parentheses - follows precedence rules
+result1 = 2 + 3 * 4  # Multiplication first: 2 + 12 = 14
+print(f"2 + 3 * 4 = {result1}")
+
+# With parentheses - overrides precedence
+result2 = (2 + 3) * 4  # Addition first: 5 * 4 = 20
+print(f"(2 + 3) * 4 = {result2}")
+
+# More complex example
+result3 = 10 + 2 ** 3 * 4 / 2  # 10 + 8 * 4 / 2 = 10 + 32 / 2 = 10 + 16 = 26
+print(f"10 + 2 ** 3 * 4 / 2 = {result3}")
+
+# Step by step breakdown:
+# 1. 2 ** 3 = 8     (exponentiation first)
+# 2. 8 * 4 = 32     (multiplication)  
+# 3. 32 / 2 = 16    (division)
+# 4. 10 + 16 = 26   (addition last)
+
+# Using parentheses for clarity
+result4 = 10 + ((2 ** 3) * 4) / 2  # Same result, but clearer
+print(f"With parentheses: {result4}")
+
+# Comparison with arithmetic
+age = 25
+is_adult = age >= 18  # Comparison happens after variable lookup
+print(f"Is adult: {is_adult}")
+
+# Complex expression
+x = 5
+y = 3
+z = 2
+complex_result = x + y * z ** 2 > 10  # 5 + 3 * 4 > 10 = 17 > 10 = True
+print(f"Complex expression result: {complex_result}")
+# Step by step: z**2=4, y*4=12, x+12=17, 17>10=True</code></pre>
+        </div>
+
+        <div class="warning-box">
+            <h4>When in Doubt, Use Parentheses!</h4>
+            <p>If you're not sure about precedence, use parentheses to make your intentions clear. It's better to be explicit than to rely on precedence rules that others might not remember.</p>
+            <pre><code class="language-python"># Less clear
+result = a + b * c / d
+
+# More clear
+result = a + ((b * c) / d)</code></pre>
+        </div>
+    </div>
+
+    <h2>Boolean Expressions</h2>
+
+    <div class="resource">
+        <div class="resource-title">Python Boolean Logic</div>
+        <a href="https://realpython.com/python-boolean/">https://realpython.com/python-boolean/</a>
+        <ul>
+            <li>Understanding True and False values</li>
+            <li>How comparisons create boolean results</li>
+            <li>Boolean operators: and, or, not (next week's topic)</li>
+        </ul>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Boolean Expression Examples</div>
+        <pre><code class="language-python"># Simple boolean expressions
+age = 22
+has_license = True
+gpa = 3.7
+
+# Single comparisons
+can_vote = age >= 18
+print(f"Can vote: {can_vote}")
+
+is_honor_student = gpa >= 3.5
+print(f"Honor student: {is_honor_student}")
+
+is_teenager = 13 <= age <= 19  # Chained comparison (Python specialty!)
+print(f"Is teenager: {is_teenager}")
+
+# Using boolean variables
+can_drive = has_license and age >= 16
+print(f"Can drive: {can_drive}")
+
+# Complex expressions for real-world logic
+price = 29.99
+is_member = True
+order_amount = 50.00
+
+# Discount eligibility
+gets_discount = is_member or order_amount >= 25
+print(f"Gets discount: {gets_discount}")
+
+# Final price calculation
+if gets_discount:
+    final_price = price * 0.9  # 10% discount
+else:
+    final_price = price
+
+print(f"Final price: ${final_price:.2f}")
+
+# Grade calculation
+test_score = 87
+assignment_score = 92
+participation = 95
+
+average = (test_score + assignment_score + participation) / 3
+letter_grade = "A" if average >= 90 else "B" if average >= 80 else "C"
+print(f"Average: {average:.1f}, Grade: {letter_grade}")</code></pre>
+    </div>
+
+    <div class="quick-ref">
+        <h2>Quick Reference</h2>
+
+        <div class="code-section">
+            <div class="code-title">Operator Cheat Sheet</div>
+            <pre><code class="language-python"># Arithmetic operators
++   # Addition
+-   # Subtraction  
+*   # Multiplication
+/   # Division (always returns float)
+//  # Floor division (rounds down)
+%   # Modulo (remainder)
+**  # Exponentiation (power)
+
+# Comparison operators  
+==  # Equal to
+!=  # Not equal to
+<   # Less than
+>   # Greater than
+<=  # Less than or equal
+>=  # Greater than or equal
+
+# Assignment operators
+=   # Assign
++=  # Add and assign
+-=  # Subtract and assign
+*=  # Multiply and assign
+/=  # Divide and assign</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Common Patterns</div>
+            <pre><code class="language-python"># Counter
+count = 0
+count += 1  # Increment by 1
+
+# Accumulator
+total = 0
+total += value  # Add to running total
+
+# Even/odd check
+is_even = number % 2 == 0
+
+# Range checking
+is_valid_grade = 0 <= grade <= 100
+
+# Price calculation
+subtotal = quantity * price
+tax = subtotal * tax_rate
+total = subtotal + tax
+
+# Discount application
+discounted_price = original_price * (1 - discount_rate)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Precedence Reminder</div>
+            <pre><code class="language-python"># Order of operations (PEMDAS-like):
+# 1. Parentheses ()
+# 2. Exponentiation **
+# 3. Multiplication *, Division /, Floor //, Modulo %
+# 4. Addition +, Subtraction -
+# 5. Comparisons <, <=, >, >=, ==, !=
+# 6. Assignment =, +=, -=, etc.
+
+# Examples:
+2 + 3 * 4        # = 14 (not 20)
+(2 + 3) * 4      # = 20
+2 ** 3 * 4       # = 32 (8 * 4)
+2 ** (3 * 4)     # = 4096 (2^12)</code></pre>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>

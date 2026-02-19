@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2 Reference Sheet - Variables and Data Types</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            line-height: 1.4;
+            color: var(--espresso);
+            font-size: 13px;
+            background: var(--warm-white);
+        }
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--espresso);
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 4px;
+            margin: 8px 0 4px 0;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--dark-roast);
+            margin: 12px 0 4px 0;
+            border-left: 3px solid var(--caramel);
+            padding-left: 10px;
+            font-size: 15px;
+            font-weight: 400;
+        }
+        h3 {
+            color: var(--medium-roast);
+            margin: 10px 0 2px 0;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        p { margin: 4px 0; }
+        ul { margin: 2px 0; padding-left: 20px; }
+        li { margin-bottom: 1px; }
+        li::marker { color: var(--caramel); }
+        strong { color: var(--rust); font-weight: 600; }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: var(--dark-roast);
+        }
+        pre {
+            margin: 4px 0;
+            border-radius: 6px;
+            border-left: 3px solid var(--caramel);
+            overflow-x: auto;
+        }
+        pre code, pre code.hljs {
+            background: var(--code-bg);
+            border: none;
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            line-height: 1.5;
+            display: block;
+        }
+        .homework-topics {
+            background: var(--latte);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        .homework-topics h2 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+        }
+        .homework-topics ul { margin: 0; }
+        .resource {
+            margin: 6px 0;
+            padding: 6px 10px;
+            border: 1px solid var(--table-border);
+            border-radius: 6px;
+            background: var(--cream);
+        }
+        .resource-title {
+            font-weight: 600;
+            color: var(--dark-roast);
+            margin-bottom: 2px;
+        }
+        .resource a {
+            color: var(--caramel);
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 12px;
+        }
+        .resource a:hover { text-decoration: underline; color: var(--amber); }
+        .resource ul { margin: 2px 0 0 0; }
+        .quick-ref {
+            background: var(--cream);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .quick-ref h2 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+            color: var(--dark-roast);
+        }
+        .code-section { margin: 8px 0; }
+        .code-title {
+            font-weight: 600;
+            color: var(--dark-roast);
+            margin-bottom: 2px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 4px 0;
+            font-size: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 3px 8px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+    </style>
+</head>
+<body>
+    <h1>Week 2 Reference Sheet: Variables and Data Types</h1>
+    <p><strong>CSC-125-201 | Use this as a reference when completing Homework 2</strong></p>
+
+    <div class="homework-topics">
+        <h2 style="margin-top: 0; border-left: none; padding-left: 0;">Homework Topics</h2>
+        <ul>
+            <li>Creating variables with different data types</li>
+            <li>Variable naming rules</li>
+            <li>Checking types with <code>type()</code></li>
+            <li>Type conversion: <code>int()</code>, <code>float()</code>, <code>str()</code></li>
+            <li>User input with <code>input()</code></li>
+            <li>Basic arithmetic operations</li>
+            <li>Debugging common errors</li>
+        </ul>
+    </div>
+
+    <div class="quick-ref">
+        <h2>Quick Reference</h2>
+
+        <div class="code-section">
+            <div class="code-title">Variables</div>
+            <pre><code class="language-python"># Creating variables
+hero_name = "Spider-Man"        # string
+power_level = 8.5              # float
+years_active = 10              # integer
+from_outer_space = True        # boolean
+
+# Check data type
+print(type(hero_name))         # &lt;class 'str'&gt;
+print(type(power_level))       # &lt;class 'float'&gt;</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">The Four Data Types</div>
+            <table>
+                <tr><th>Type</th><th>Stores</th><th>Example</th></tr>
+                <tr><td>String (<code>str</code>)</td><td>Text in quotes</td><td><code>"Hello"</code>, <code>'blue'</code></td></tr>
+                <tr><td>Integer (<code>int</code>)</td><td>Whole numbers</td><td><code>42</code>, <code>-5</code>, <code>0</code></td></tr>
+                <tr><td>Float (<code>float</code>)</td><td>Decimal numbers</td><td><code>3.14</code>, <code>19.99</code></td></tr>
+                <tr><td>Boolean (<code>bool</code>)</td><td>True/False</td><td><code>True</code>, <code>False</code></td></tr>
+            </table>
+            <p><strong>Note:</strong> <code>"100"</code> (with quotes) is a string. <code>100</code> is an integer. <code>100.0</code> is a float.</p>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Variable Naming Rules</div>
+            <pre><code class="language-python"># Valid names
+my_variable = 5
+user_age = 25
+hero_name = "Batman"
+is_valid = True
+
+# Invalid names (will cause errors)
+# 2nd_variable = 5        # cannot start with number
+# my-variable = 5         # no dashes
+# my variable = 5         # no spaces</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Type Conversion</div>
+            <pre><code class="language-python"># String to number
+age_text = "25"
+age_number = int(age_text)      # 25 (integer)
+price_text = "19.99"
+price_number = float(price_text) # 19.99 (float)
+
+# Number to string
+score = 100
+score_text = str(score)         # "100" (string)
+
+# Important: not all conversions work
+# int("Hello") will cause a ValueError</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">User Input</div>
+            <pre><code class="language-python"># Getting text input
+name = input("What's your name? ")
+
+# Getting number input (must convert)
+age = int(input("Enter your age: "))
+height = float(input("Enter height: "))
+
+# Using the input
+print("Hello", name)
+print("Next year you'll be", age + 1)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Basic Arithmetic</div>
+            <pre><code class="language-python">x = 10
+y = 3
+
+addition = x + y        # 13
+subtraction = x - y     # 7
+multiplication = x * y  # 30
+division = x / y        # 3.333...</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Common Errors</div>
+            <table>
+                <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+                <tr><td>SyntaxError</td><td>Missing quotes, parentheses</td><td>Check syntax carefully</td></tr>
+                <tr><td>NameError</td><td>Typo or undefined variable</td><td>Check variable spelling</td></tr>
+                <tr><td>TypeError</td><td>Adding string + number</td><td>Convert types first</td></tr>
+                <tr><td>ValueError</td><td>Invalid conversion</td><td>Ensure string is a valid number</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <h2>Additional Resources</h2>
+
+    <h3>Variables and Data Types</h3>
+    <div class="resource">
+        <div class="resource-title">LearnPython.org - Variables and Types</div>
+        <a href="https://www.learnpython.org/en/Variables_and_Types">https://www.learnpython.org/en/Variables_and_Types</a>
+        <ul>
+            <li>Interactive tutorial with in-browser exercises</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Python Variables</div>
+        <a href="https://www.w3schools.com/python/python_variables.asp">https://www.w3schools.com/python/python_variables.asp</a>
+        <ul>
+            <li>Variable creation, naming rules, and <code>type()</code></li>
+        </ul>
+    </div>
+
+    <h3>Type Conversion</h3>
+    <div class="resource">
+        <div class="resource-title">W3Schools - Python Casting</div>
+        <a href="https://www.w3schools.com/python/python_casting.asp">https://www.w3schools.com/python/python_casting.asp</a>
+        <ul>
+            <li>Using <code>int()</code>, <code>float()</code>, <code>str()</code></li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Programiz - Type Conversion</div>
+        <a href="https://www.programiz.com/python-programming/type-conversion-and-casting">https://www.programiz.com/python-programming/type-conversion-and-casting</a>
+        <ul>
+            <li>Explains implicit vs explicit type conversion</li>
+        </ul>
+    </div>
+
+    <h3>User Input</h3>
+    <div class="resource">
+        <div class="resource-title">W3Schools - Python User Input</div>
+        <a href="https://www.w3schools.com/python/python_user_input.asp">https://www.w3schools.com/python/python_user_input.asp</a>
+        <ul>
+            <li><code>input()</code> always returns a string</li>
+            <li>Combining <code>input()</code> with type conversion</li>
+        </ul>
+    </div>
+
+    <h3>Naming Conventions</h3>
+    <div class="resource">
+        <div class="resource-title">Real Python - PEP 8 Guide</div>
+        <a href="https://realpython.com/python-pep8/">https://realpython.com/python-pep8/</a>
+        <ul>
+            <li>Python's official style guide for naming</li>
+        </ul>
+    </div>
+
+    <h3>Debugging</h3>
+    <div class="resource">
+        <div class="resource-title">15 Common Python Errors - Better Stack</div>
+        <a href="https://betterstack.com/community/guides/scaling-python/python-errors/">https://betterstack.com/community/guides/scaling-python/python-errors/</a>
+        <ul>
+            <li>Focus on the first 8 error types for this week</li>
+        </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

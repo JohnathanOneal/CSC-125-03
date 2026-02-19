@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5: Conditional Logic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --sage: #7d8c6e;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --code-border: #c08b5c;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--latte);
+            color: var(--espresso);
+        }
+
+        .slide {
+            width: 960px;
+            height: 540px;
+            margin: 24px auto;
+            padding: 44px 52px;
+            background: var(--warm-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 16px rgba(60, 42, 26, 0.1), 0 1px 4px rgba(60, 42, 26, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            border: 1px solid rgba(192, 139, 92, 0.15);
+        }
+        .slide.center { align-items: center; text-align: center; }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--caramel), var(--amber), var(--toffee));
+            border-radius: 8px 8px 0 0;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 2.2em;
+            color: var(--espresso);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.55em;
+            color: var(--dark-roast);
+            margin-bottom: 14px;
+            font-weight: 400;
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+        .two-col h2 {
+            font-size: 1.3em;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 8px;
+        }
+        h3 {
+            font-size: 1em;
+            color: var(--medium-roast);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 0.88em;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: var(--espresso);
+        }
+        ul {
+            font-size: 0.86em;
+            line-height: 1.55;
+            margin-left: 22px;
+            margin-bottom: 10px;
+            color: #4a3728;
+        }
+        li { margin-bottom: 3px; }
+        li::marker { color: var(--caramel); }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.78em;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 6px 0;
+            border-left: 3px solid var(--code-border);
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        pre code.hljs {
+            background: var(--code-bg);
+            padding: 10px 14px;
+            border-radius: 6px;
+        }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        .ic {
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            font-size: 0.88em;
+            color: var(--dark-roast);
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 0.82em;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 6px 14px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+
+        .subtitle {
+            font-size: 1.05em;
+            color: var(--medium-roast);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .two-col { display: flex; gap: 32px; }
+        .two-col > div { flex: 1; }
+        .section-label {
+            font-size: 0.65em;
+            color: var(--toffee);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .slide-num {
+            position: absolute;
+            bottom: 12px;
+            right: 18px;
+            font-size: 0.6em;
+            color: var(--table-border);
+            font-weight: 500;
+        }
+        .img-placeholder {
+            background: var(--latte);
+            border: 2px dashed var(--caramel);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            color: var(--toffee);
+            font-size: 0.75em;
+            font-style: italic;
+            margin: 8px 0;
+        }
+        .slide img {
+            max-width: 100%;
+            flex: 1 1 0;
+            min-height: 0;
+            object-fit: contain;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        strong { color: var(--rust); font-weight: 600; }
+        em { color: var(--sage); }
+
+        .slide.title-slide {
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 50%, var(--latte) 100%);
+        }
+        .slide.title-slide::before {
+            height: 6px;
+        }
+        .slide.title-slide h1 {
+            font-size: 2.6em;
+            margin-bottom: 12px;
+        }
+
+        body.presenting { background: var(--espresso); overflow: hidden; }
+        body.presenting .slide {
+            display: none;
+            width: 960px;
+            height: 540px;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            padding: 44px 52px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+        }
+        body.presenting .slide.active { display: flex; }
+        body.presenting .controls { display: none; }
+
+        .controls {
+            text-align: center;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            background: var(--cream);
+            z-index: 10;
+            border-bottom: 1px solid var(--table-border);
+            font-size: 0.8em;
+            color: var(--medium-roast);
+        }
+        .controls button {
+            background: var(--caramel);
+            color: var(--warm-white);
+            border: none;
+            padding: 5px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-left: 8px;
+            transition: background 0.2s;
+        }
+        .controls button:hover { background: var(--amber); }
+
+        @media print {
+            @page { size: landscape; margin: 0; }
+            body { background: white; margin: 0; padding: 0; }
+            .controls { display: none; }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                width: 100%;
+                height: 100vh;
+                padding: 44px 52px;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .slide::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    Scroll to browse &middot;
+    <button onclick="enterPresentation()">Present (F5)</button>
+    <button onclick="window.print()">Print / PDF</button>
+</div>
+
+<!-- SLIDE 1 -->
+<div class="slide center title-slide">
+    <img src="../images/title_banner.png" alt="Week 5 title banner">
+    <h1>Week 5: Conditional Logic</h1>
+    <p class="subtitle">CSC-125-201 &middot; Spring 2026</p>
+    <div class="slide-num">1</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+    <h2>Agenda</h2>
+    <table>
+        <tr><th>#</th><th>Section</th></tr>
+        <tr><td>1</td><td>Week 4 Review</td></tr>
+        <tr><td>2</td><td>Lecture Slides</td></tr>
+        <tr><td>3</td><td>Code Lecture Part 1</td></tr>
+        <tr><td>-</td><td>Break</td></tr>
+        <tr><td>4</td><td>Code Lecture Part 2</td></tr>
+    </table>
+    <div class="slide-num">2</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+    <div class="section-label">Section 1</div>
+    <h2>Week 4 Review</h2>
+    <ul>
+        <li>Arithmetic operators: <span class="ic">+</span> <span class="ic">-</span> <span class="ic">*</span> <span class="ic">/</span> <span class="ic">//</span> <span class="ic">%</span> <span class="ic">**</span></li>
+        <li>Operator precedence follows <strong>PEMDAS</strong> (parentheses first)</li>
+        <li>Comparison operators return <strong>booleans</strong>: <span class="ic">==</span> <span class="ic">!=</span> <span class="ic">&lt;</span> <span class="ic">&gt;</span> <span class="ic">&lt;=</span> <span class="ic">&gt;=</span></li>
+        <li>Assignment operators: <span class="ic">+=</span> <span class="ic">-=</span> <span class="ic">*=</span> <span class="ic">/=</span></li>
+    </ul>
+    <pre><code class="language-python">score = 85
+passing = score >= 70    # True
+perfect = score == 100   # False</code></pre>
+    <p>This week we use those booleans to <strong>make decisions</strong> in our programs.</p>
+    <div class="slide-num">3</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Why Programs Need Decisions</h2>
+    <p>So far, every line of code runs <strong>every time</strong>. Real programs need to choose different actions based on conditions.</p>
+    <ul>
+        <li>Is the user old enough to vote?</li>
+        <li>Did the student pass or fail?</li>
+        <li>Is the password correct?</li>
+    </ul>
+    <p>Python uses <span class="ic">if</span> statements to run code <strong>only when a condition is True</strong>.</p>
+    <div class="slide-num">4</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>The if Statement</h2>
+    <p>The <span class="ic">if</span> keyword tests a condition. If <span class="ic">True</span>, the indented block runs.</p>
+    <pre><code class="language-python">age = 18
+
+if age >= 18:
+    print("You can vote")
+
+print("Program continues")</code></pre>
+    <ul>
+        <li>The condition must end with a <strong>colon</strong> <span class="ic">:</span></li>
+        <li>The body is indented by <strong>4 spaces</strong></li>
+        <li>Code after the block (unindented) <strong>always runs</strong></li>
+    </ul>
+    <div class="slide-num">5</div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>if-else: Two-Way Decisions</h2>
+    <p>Use <span class="ic">else</span> to handle the case when the condition is <span class="ic">False</span>. Exactly <strong>one block</strong> always runs.</p>
+    <pre><code class="language-python">number = 7
+
+if number % 2 == 0:
+    print("Even")
+else:
+    print("Odd")</code></pre>
+    <ul>
+        <li><span class="ic">else</span> does not have a condition - it catches everything the <span class="ic">if</span> missed</li>
+        <li><span class="ic">else</span> also needs a <strong>colon</strong> and an indented body</li>
+    </ul>
+    <div class="slide-num">6</div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>if-elif-else: Multiple Options</h2>
+    <p>Use <span class="ic">elif</span> (short for "else if") to check multiple conditions. The <strong>first True</strong> branch wins.</p>
+    <pre><code class="language-python">score = 85
+
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+elif score >= 60:
+    grade = "D"
+else:
+    grade = "F"</code></pre>
+    <p><strong>Order matters</strong> - check from highest to lowest. Python stops at the first match.</p>
+    <div class="slide-num">7</div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Logical Operators</h2>
+    <p>Combine conditions with <span class="ic">and</span>, <span class="ic">or</span>, and <span class="ic">not</span>:</p>
+    <div class="two-col">
+        <div>
+            <table>
+                <tr><th>A</th><th>B</th><th>A and B</th><th>A or B</th></tr>
+                <tr><td>True</td><td>True</td><td>True</td><td>True</td></tr>
+                <tr><td>True</td><td>False</td><td>False</td><td>True</td></tr>
+                <tr><td>False</td><td>True</td><td>False</td><td>True</td></tr>
+                <tr><td>False</td><td>False</td><td>False</td><td>False</td></tr>
+            </table>
+        </div>
+        <div>
+            <pre><code class="language-python"># and: BOTH must be True
+# or:  at least ONE True
+# not: flips the value
+
+x = True
+print(not x)  # False</code></pre>
+        </div>
+    </div>
+    <div class="slide-num">8</div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Combining Conditions</h2>
+    <p>Use logical operators inside <span class="ic">if</span> statements to test multiple things at once:</p>
+    <pre><code class="language-python"># Both conditions must be True
+age = 20
+has_license = True
+
+if age >= 16 and has_license:
+    print("You can drive")</code></pre>
+    <pre><code class="language-python"># At least one condition must be True
+is_weekend = False
+is_holiday = True
+
+if is_weekend or is_holiday:
+    print("Day off")</code></pre>
+    <div class="slide-num">9</div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Nested Conditionals</h2>
+    <p>Place an <span class="ic">if</span> inside another <span class="ic">if</span> for decisions within decisions. Each level adds <strong>4 more spaces</strong>.</p>
+    <pre><code class="language-python">age = 25
+is_student = True
+
+if age >= 18:
+    if is_student:
+        price = 8.00
+    else:
+        price = 12.00
+else:
+    price = 5.00
+
+print(f"Ticket: ${price:.2f}")</code></pre>
+    <p>Keep nesting to <strong>two levels</strong> when possible - deeper nesting gets hard to read.</p>
+    <div class="slide-num">10</div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Indentation Rules</h2>
+    <div class="two-col">
+        <div>
+            <h3>Correct</h3>
+            <pre><code class="language-python">if temperature > 90:
+    print("It is hot")
+    print("Stay hydrated")
+
+if temperature < 32:
+    print("Freezing")</code></pre>
+        </div>
+        <div>
+            <h3>Incorrect</h3>
+            <pre><code class="language-python"># Missing colon
+if temperature > 90
+    print("It is hot")
+
+# Inconsistent indent
+if temperature < 32:
+    print("Freezing")
+      print("Wear a coat")</code></pre>
+        </div>
+    </div>
+    <ul>
+        <li>Always use <strong>4 spaces</strong> per indentation level</li>
+        <li>Every <span class="ic">if</span>, <span class="ic">elif</span>, and <span class="ic">else</span> line must end with a <strong>colon</strong></li>
+        <li>All lines in the same block must have the <strong>same indentation</strong></li>
+    </ul>
+    <div class="slide-num">11</div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Common Conditional Errors</h2>
+    <table>
+        <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+        <tr><td>SyntaxError</td><td>Missing colon after condition</td><td>Add <span class="ic">:</span> at end of <span class="ic">if</span>/<span class="ic">elif</span>/<span class="ic">else</span></td></tr>
+        <tr><td>IndentationError</td><td>Wrong or inconsistent spacing</td><td>Use exactly 4 spaces per level</td></tr>
+        <tr><td>Logic error</td><td>Using <span class="ic">=</span> instead of <span class="ic">==</span></td><td><span class="ic">=</span> assigns, <span class="ic">==</span> compares</td></tr>
+        <tr><td>Logic error</td><td>Wrong <span class="ic">elif</span> order</td><td>Check from highest to lowest</td></tr>
+    </table>
+    <pre><code class="language-python"># Wrong order - every score >= 70 also >= 60
+if score >= 60:    # This catches 85 first
+    grade = "D"    # Bug: 85 gets "D" not "B"
+elif score >= 70:
+    grade = "C"    # Never reached for 85</code></pre>
+    <div class="slide-num">12</div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide">
+    <h2>Summary</h2>
+    <ul>
+        <li><span class="ic">if</span> runs code only when a condition is <span class="ic">True</span></li>
+        <li><span class="ic">if-else</span> provides a two-way choice - exactly one block runs</li>
+        <li><span class="ic">if-elif-else</span> handles multiple options - first <span class="ic">True</span> wins</li>
+        <li><span class="ic">and</span>, <span class="ic">or</span>, <span class="ic">not</span> combine conditions</li>
+        <li>Nested <span class="ic">if</span> statements handle decisions within decisions</li>
+        <li>Every condition line ends with a <strong>colon</strong></li>
+        <li>Indentation is <strong>4 spaces</strong> per level - consistency is required</li>
+    </ul>
+    <div class="slide-num">13</div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide">
+    <h2>Homework and Next Week</h2>
+    <p><strong>Homework 5</strong> - available on Moodle, due Monday 11:59 PM</p>
+    <p>Reference sheet posted to help with the assignment.</p>
+    <br>
+    <p><strong>Next week (Week 6):</strong> Lists and Tuples - Virtual</p>
+    <p>Forum discussion prompt will be posted on Moodle.</p>
+    <div class="slide-num">14</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let presenting = false;
+
+    function updateScale() {
+        const scaleX = window.innerWidth / 960;
+        const scaleY = window.innerHeight / 540;
+        const scale = Math.min(scaleX, scaleY);
+        slides.forEach(s => {
+            s.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        });
+    }
+
+    function enterPresentation() {
+        presenting = true;
+        document.body.classList.add('presenting');
+        slides[current].classList.add('active');
+        updateScale();
+        document.documentElement.requestFullscreen?.();
+    }
+
+    function exitPresentation() {
+        presenting = false;
+        document.body.classList.remove('presenting');
+        slides.forEach(s => {
+            s.classList.remove('active');
+            s.style.transform = '';
+        });
+    }
+
+    function showSlide(n) {
+        if (!presenting) return;
+        slides[current].classList.remove('active');
+        current = Math.max(0, Math.min(n, slides.length - 1));
+        slides[current].classList.add('active');
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F5') { e.preventDefault(); enterPresentation(); return; }
+        if (e.key === 'Escape') { exitPresentation(); return; }
+        if (!presenting) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); showSlide(current - 1); }
+        if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+        if (e.key === 'End') { e.preventDefault(); showSlide(slides.length - 1); }
+    });
+
+    window.addEventListener('resize', () => { if (presenting) updateScale(); });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && presenting) exitPresentation();
+        else if (presenting) updateScale();
+    });
+</script>
+</body>
+</html>

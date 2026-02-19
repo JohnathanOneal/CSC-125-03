@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5 Asynchronous Materials Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        .homework-topics {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .homework-topics ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .resource {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            background: #ffffff;
+        }
+        .resource-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .start-here {
+            background: #fff3cd;
+            border-color: #ffeaa7;
+        }
+        .video-resource {
+            background: #e8f5e8;
+            border-color: #4caf50;
+        }
+        .resource a {
+            color: #3498db;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .resource a:hover {
+            text-decoration: underline;
+        }
+        .resource ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+        }
+        .quick-ref {
+            background: #f1f3f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .quick-ref h3 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+        .indentation-section {
+            background: #fff2f2;
+            border: 2px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .indentation-section h3 {
+            color: #d63384;
+            margin-top: 0;
+        }
+        .flowchart {
+            background: #f8f9fa;
+            border: 2px dashed #6c757d;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .flowchart h4 {
+            margin-top: 0;
+            color: #495057;
+        }
+        .logic-table {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .logic-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+        .logic-table th, .logic-table td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .logic-table th {
+            background: #e9ecef;
+            font-weight: bold;
+        }
+        pre {
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .code-section {
+            margin: 15px 0;
+        }
+        .code-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .example-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .common-pattern {
+            background: #f0f8f0;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 5 Asynchronous Materials Guide</h1>
+    <p><strong>Conditional Logic</strong></p>
+
+    <div class="homework-topics">
+        <h2>This Week's Topics Overview</h2>
+        <p>Building on Week 4's boolean expressions and operators, you'll now learn to:</p>
+        <ul>
+            <li>Use basic if statements to execute code conditionally</li>
+            <li>Handle two-way decisions with if-else statements</li>
+            <li>Create multiple branches with if-elif-else chains</li>
+            <li>Combine conditions using logical operators (and, or, not)</li>
+            <li>Nest conditionals for complex decision-making</li>
+            <li>Understand Python's indentation requirements</li>
+        </ul>
+    </div>
+
+    <h2>Start Here: Video Tutorial</h2>
+
+    <div class="resource video-resource start-here">
+        <div class="resource-title">Corey Schafer Python Conditionals Tutorial</div>
+        <a href="https://www.youtube.com/watch?v=DZwmZ8Usvnk">Python Tutorial: Conditionals and Booleans - If, Elif, Else Statements</a>
+        <ul>
+            <li><strong>Duration:</strong> 16 minutes</li>
+            <li><strong>What you will learn:</strong> If, elif, else statements and boolean logic</li>
+            <li><strong>Why this helps:</strong> Clear explanations with practical coding examples</li>
+            <li><strong>Study approach:</strong> Pause and code along with each example</li>
+        </ul>
+    </div>
+
+    <h2>Basic If Statements</h2>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools Python If Statements</div>
+        <a href="https://www.w3schools.com/python/python_conditions.asp">https://www.w3schools.com/python/python_conditions.asp</a>
+        <ul>
+            <li>Basic if statement syntax and structure</li>
+            <li>Understanding indentation requirements</li>
+            <li>Simple examples you can test immediately</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">LearnPython.org Conditions</div>
+        <a href="https://www.learnpython.org/en/Conditions">https://www.learnpython.org/en/Conditions</a>
+        <ul>
+            <li>Interactive tutorial with exercises</li>
+            <li>Covers if, elif, and else statements</li>
+            <li>Complete the exercise at the end</li>
+        </ul>
+    </div>
+
+    <div class="flowchart">
+        <h4>How If Statements Work</h4>
+        <div style="font-family: monospace; line-height: 1.8;">
+            <div>Start Program</div>
+            <div>↓</div>
+            <div>Check Condition (True or False?)</div>
+            <div>↓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</div>
+            <div>True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;False</div>
+            <div>↓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</div>
+            <div>Execute if block&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Skip if block</div>
+            <div>↓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</div>
+            <div>Continue Program ← ← ← ← ← ← ←</div>
+        </div>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Basic If Statement Examples</div>
+        <pre><code class="language-python"># Simple if statement
+age = 20
+if age >= 18:
+    print("You can vote!")
+    print("You are an adult.")
+
+print("This always runs regardless of age")
+
+# Multiple separate if statements
+temperature = 85
+if temperature > 80:
+    print("It's hot outside!")
+if temperature > 90:
+    print("It's very hot!")
+if temperature < 32:
+    print("It's freezing!")
+
+# Using boolean variables
+has_license = True
+is_adult = age >= 18
+
+if has_license and is_adult:
+    print("You can drive legally!")
+
+# Common pattern: validating input
+user_name = input("Enter your name: ")
+if len(user_name) >= 2:
+    print("Name length is acceptable")
+if user_name.isalpha():
+    print("Name contains only letters")
+if user_name.istitle():
+    print("Name is properly capitalized")</code></pre>
+    </div>
+
+    <h2>If-Else Statements</h2>
+
+    <div class="resource">
+        <div class="resource-title">Real Python Conditional Statements</div>
+        <a href="https://realpython.com/python-conditional-statements/">https://realpython.com/python-conditional-statements/</a>
+        <ul>
+            <li>Comprehensive guide to all conditional statements</li>
+            <li>Advanced examples and best practices</li>
+            <li>Read sections on "if" and "if...else" statements</li>
+        </ul>
+    </div>
+
+    <div class="flowchart">
+        <h4>How If-Else Statements Work</h4>
+        <div style="font-family: monospace; line-height: 1.8;">
+            <div>Check Condition</div>
+            <div>↓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</div>
+            <div>True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;False</div>
+            <div>↓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</div>
+            <div>Execute if block&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Execute else block</div>
+            <div>↓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓</div>
+            <div>Continue Program ← ← ← ← ← ← ←</div>
+        </div>
+        <p><strong>Key Point:</strong> Exactly one block always executes - either if or else, never both, never neither.</p>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">If-Else Examples</div>
+        <pre><code class="language-python"># Basic if-else
+number = 17
+if number % 2 == 0:
+    print(f"{number} is even")
+else:
+    print(f"{number} is odd")
+
+# Grade checker
+score = 72
+if score >= 60:
+    print("You passed!")
+    status = "PASS"
+else:
+    print("You failed.")
+    status = "FAIL"
+print(f"Final status: {status}")
+
+# Store hours checker
+current_hour = 14  # 2 PM
+if 9 <= current_hour <= 21:  # Using chained comparison
+    print("Store is open")
+    print("Come on in!")
+else:
+    print("Store is closed")
+    print("Please come back during business hours: 9 AM - 9 PM")
+
+# User authentication
+username = input("Enter username: ")
+expected_user = "admin"
+
+if username == expected_user:
+    print("Login successful!")
+    print("Welcome to the admin panel")
+else:
+    print("Invalid username")
+    print("Access denied")</code></pre>
+    </div>
+
+    <h2>If-Elif-Else Chains</h2>
+
+    <div class="resource">
+        <div class="resource-title">Python elif Statements</div>
+        <a href="https://www.programiz.com/python-programming/if-elif-else">https://www.programiz.com/python-programming/if-elif-else</a>
+        <ul>
+            <li>When to use elif instead of multiple if statements</li>
+            <li>Order of evaluation in elif chains</li>
+            <li>Examples with multiple conditions</li>
+        </ul>
+    </div>
+
+    <div class="flowchart">
+        <h4>How If-Elif-Else Works</h4>
+        <div style="font-family: monospace; line-height: 1.6; text-align: left; margin: 0 auto; display: inline-block;">
+            <div>Check first condition (if)</div>
+            <div>↓</div>
+            <div>True? → Execute if block → Continue</div>
+            <div>↓ False</div>
+            <div>Check second condition (elif)</div>
+            <div>↓</div>
+            <div>True? → Execute elif block → Continue</div>
+            <div>↓ False</div>
+            <div>Check third condition (elif)</div>
+            <div>↓</div>
+            <div>True? → Execute elif block → Continue</div>
+            <div>↓ False</div>
+            <div>Execute else block (if present)</div>
+            <div>↓</div>
+            <div>Continue program</div>
+        </div>
+        <p><strong>Important:</strong> Only the first True condition executes. Once a condition is True, the rest are skipped.</p>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">If-Elif-Else Examples</div>
+        <pre><code class="language-python"># Grade calculator
+score = 87
+if score >= 90:
+    grade = "A"
+    print("Excellent work!")
+elif score >= 80:
+    grade = "B"
+    print("Good job!")
+elif score >= 70:
+    grade = "C"
+    print("Satisfactory")
+elif score >= 60:
+    grade = "D"
+    print("Needs improvement")
+else:
+    grade = "F"
+    print("Failed")
+
+print(f"Your grade: {grade}")
+
+# Age categorization
+age = int(input("Enter your age: "))
+if age < 0:
+    print("Invalid age")
+elif age <= 12:
+    category = "Child"
+    ticket_price = 5
+elif age <= 19:
+    category = "Teenager"
+    ticket_price = 8
+elif age <= 64:
+    category = "Adult"
+    ticket_price = 12
+else:
+    category = "Senior"
+    ticket_price = 8
+
+print(f"Category: {category}, Ticket: ${ticket_price}")
+
+# Weather clothing advisor
+temp = float(input("Enter temperature (°F): "))
+if temp >= 80:
+    print("Wear shorts and t-shirt")
+    print("Don't forget sunscreen!")
+elif temp >= 60:
+    print("Wear jeans and light jacket")
+elif temp >= 40:
+    print("Wear warm coat and layers")
+elif temp >= 20:
+    print("Wear heavy winter coat")
+else:
+    print("Extreme cold! Stay inside if possible!")
+    print("If you must go out, dress in layers")</code></pre>
+    </div>
+
+    <h2>Logical Operators</h2>
+
+    <div class="resource">
+        <div class="resource-title">Python Logical Operators</div>
+        <a href="https://www.w3schools.com/python/python_operators.asp">https://www.w3schools.com/python/python_operators.asp</a>
+        <ul>
+            <li>Scroll to "Python Logical Operators" section</li>
+            <li>Understanding and, or, not operators</li>
+            <li>Truth tables and operator precedence</li>
+        </ul>
+    </div>
+
+    <div class="logic-table">
+        <h4>Logical Operators Truth Table</h4>
+        <table>
+            <tr>
+                <th>A</th>
+                <th>B</th>
+                <th>A and B</th>
+                <th>A or B</th>
+                <th>not A</th>
+            </tr>
+            <tr>
+                <td>True</td>
+                <td>True</td>
+                <td>True</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            <tr>
+                <td>True</td>
+                <td>False</td>
+                <td>False</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            <tr>
+                <td>False</td>
+                <td>True</td>
+                <td>False</td>
+                <td>True</td>
+                <td>True</td>
+            </tr>
+            <tr>
+                <td>False</td>
+                <td>False</td>
+                <td>False</td>
+                <td>False</td>
+                <td>True</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Logical Operator Examples</div>
+        <pre><code class="language-python"># Using 'and' - both conditions must be True
+age = 25
+has_license = True
+
+if age >= 16 and has_license:
+    print("You can drive!")
+else:
+    print("You cannot drive")
+
+# Using 'or' - at least one condition must be True
+is_weekend = True
+is_holiday = False
+
+if is_weekend or is_holiday:
+    print("You don't have to work today!")
+else:
+    print("It's a work day")
+
+# Using 'not' - reverses True/False
+login_successful = False
+
+if not login_successful:
+    print("Access denied")
+    print("Please try again")
+else:
+    print("Access granted")
+
+# Complex combinations
+income = 45000
+credit_score = 680
+has_cosigner = True
+
+# Loan approval logic
+if (income >= 50000 and credit_score >= 650) or has_cosigner:
+    if income >= 100000:
+        print("Approved for premium rate!")
+    else:
+        print("Loan approved!")
+else:
+    print("Loan denied")
+
+# Event admission checker
+age = 20
+has_ticket = True
+is_vip = False
+
+if age >= 18 and has_ticket:
+    if is_vip or age >= 21:
+        print("Welcome to VIP section!")
+    else:
+        print("General admission")
+elif age >= 18:
+    print("You need a ticket")
+else:
+    print("Must be 18 or older")</code></pre>
+    </div>
+
+    <h2>Nested Conditionals</h2>
+
+    <div class="resource">
+        <div class="resource-title">Nested If Statements</div>
+        <a href="https://www.geeksforgeeks.org/nested-if-statement-in-python/">https://www.geeksforgeeks.org/nested-if-statement-in-python/</a>
+        <ul>
+            <li>When to use nested if statements</li>
+            <li>Alternative approaches using logical operators</li>
+            <li>Avoiding overly complex nesting</li>
+        </ul>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Nested Conditional Examples</div>
+        <pre><code class="language-python"># Movie ticket pricing with nested logic
+age = int(input("Enter age: "))
+is_student = input("Are you a student? (yes/no): ").lower() == "yes"
+
+if age < 18:
+    price = 8
+    print("Child ticket: $8")
+elif age >= 65:
+    price = 10
+    print("Senior ticket: $10")
+else:
+    if is_student:
+        price = 12
+        print("Student discount: $12")
+    else:
+        price = 15
+        print("Regular adult ticket: $15")
+
+print(f"Total: ${price}")
+
+# Discount calculator with nested conditions
+purchase_amount = 75
+is_member = True
+is_first_time = False
+
+if purchase_amount >= 50:
+    print("Qualifies for discount!")
+    
+    if is_member:
+        if purchase_amount >= 100:
+            discount = 0.25  # 25% off for members on large purchases
+            print("Premium member discount: 25%")
+        else:
+            discount = 0.15  # 15% off for members
+            print("Member discount: 15%")
+    else:
+        if is_first_time:
+            discount = 0.10  # 10% off for first-time customers
+            print("First-time customer discount: 10%")
+        else:
+            discount = 0.05  # 5% off for regular customers
+            print("Regular discount: 5%")
+else:
+    discount = 0
+    print("No discount available")
+
+final_price = purchase_amount * (1 - discount)
+print(f"Final price: ${final_price:.2f}")</code></pre>
+    </div>
+
+    <div class="indentation-section">
+        <h3>Python Indentation Rules - CRITICAL!</h3>
+        
+        <p>Unlike many programming languages that use braces {}, Python uses indentation (spaces) to group code blocks. This is not optional - it's how Python knows which code belongs together.</p>
+
+        <div class="warning-box">
+            <h4>Indentation Requirements:</h4>
+            <ul>
+                <li><strong>Use 4 spaces</strong> for each level of indentation (not tabs)</li>
+                <li><strong>Be consistent</strong> - all lines at the same level must have the same indentation</li>
+                <li><strong>Colon required</strong> - every if, elif, and else must end with a colon (:)</li>
+                <li><strong>Empty lines allowed</strong> within code blocks for readability</li>
+            </ul>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Correct Indentation Examples</div>
+            <pre><code class="language-python"># Correct indentation
+if age >= 18:
+    print("You are an adult")  # 4 spaces
+    print("You can vote")      # 4 spaces
+    
+    if has_license:            # 4 spaces
+        print("You can drive") # 8 spaces (nested)
+    else:                      # 4 spaces
+        print("Get a license") # 8 spaces (nested)
+        
+print("This always runs")     # 0 spaces (not in if block)
+
+# More complex nesting
+if weather == "sunny":
+    print("Great day!")
+    
+    if temperature > 75:
+        print("Perfect for the beach!")
+        print("Don't forget sunscreen")
+    else:
+        print("Nice for a walk")
+        
+elif weather == "rainy":
+    print("Stay inside")
+else:
+    print("Check the forecast")</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Common Indentation Errors</div>
+            <pre><code class="language-python"># ERROR: Missing colon
+if age >= 18
+    print("Adult")
+
+# ERROR: No indentation
+if age >= 18:
+print("Adult")
+
+# ERROR: Inconsistent indentation
+if age >= 18:
+    print("Adult")      # 4 spaces
+  print("Can vote")     # 2 spaces - ERROR!
+
+# ERROR: Mixed tabs and spaces (looks correct but isn't)
+if age >= 18:
+→   print("Adult")      # Tab character
+    print("Can vote")   # 4 spaces - ERROR!
+
+# CORRECT: Consistent 4-space indentation
+if age >= 18:
+    print("Adult")      # 4 spaces
+    print("Can vote")   # 4 spaces</code></pre>
+        </div>
+    </div>
+
+    <h2>Common Patterns and Best Practices</h2>
+
+    <div class="common-pattern">
+        <h4>Pattern 1: Input Validation</h4>
+        <pre><code class="language-python">age = int(input("Enter age: "))
+
+if age < 0 or age > 120:
+    print("Invalid age entered")
+else:
+    print(f"Age {age} is valid")</code></pre>
+    </div>
+
+    <div class="common-pattern">
+        <h4>Pattern 2: Range Checking</h4>
+        <pre><code class="language-python">score = int(input("Enter test score: "))
+
+if 0 <= score <= 100:
+    print("Valid score")
+else:
+    print("Score must be between 0 and 100")</code></pre>
+    </div>
+
+    <div class="common-pattern">
+        <h4>Pattern 3: Email Format Checking</h4>
+        <pre><code class="language-python"># Check if email looks valid
+email = input("Enter email: ")
+
+if "@" in email and "." in email:
+    if len(email) >= 5:
+        print("Email format looks valid")
+    else:
+        print("Email is too short")
+else:
+    print("Email must contain @ and .")</code></pre>
+    </div>
+
+    <div class="quick-ref">
+        <h2>Quick Reference</h2>
+
+        <div class="code-section">
+            <div class="code-title">Conditional Statement Syntax</div>
+            <pre><code class="language-python"># Basic if
+if condition:
+    # code block
+
+# If-else
+if condition:
+    # code if True
+else:
+    # code if False
+
+# If-elif-else
+if condition1:
+    # code for condition1
+elif condition2:
+    # code for condition2
+elif condition3:
+    # code for condition3
+else:
+    # code if all conditions False
+
+# Nested conditionals
+if condition1:
+    if condition2:
+        # nested code
+    else:
+        # nested else
+else:
+    # outer else</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Logical Operators</div>
+            <pre><code class="language-python"># and - both must be True
+if age >= 18 and has_license:
+    print("Can drive")
+
+# or - at least one must be True  
+if is_weekend or is_holiday:
+    print("No work today")
+
+# not - reverses True/False
+if not login_successful:
+    print("Try again")
+
+# Combining with parentheses
+if (age >= 21 or has_permission) and has_id:
+    print("Entry allowed")</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="code-title">Common Comparison Patterns</div>
+            <pre><code class="language-python"># Range checking
+if 18 <= age <= 65:
+    print("Working age")
+
+# String comparisons (case-sensitive)
+if user_input.lower() == "yes":
+    print("User agreed")
+
+# Multiple possibilities with elif
+if grade == "A":
+    print("Excellent")
+elif grade == "B":
+    print("Good")
+elif grade == "C":
+    print("Average")
+
+# Checking for empty strings
+if username != "":
+    print("Username provided")
+# or
+if len(username) > 0:
+    print("Username provided")</code></pre>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>

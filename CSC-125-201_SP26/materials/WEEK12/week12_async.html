@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 12 Asynchronous Materials Guide - Functions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        .focus {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .focus ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .resource {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            background: #ffffff;
+        }
+        .resource-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .resource a {
+            color: #3498db;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .resource a:hover {
+            text-decoration: underline;
+        }
+        .resource ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+        }
+        .quick-ref {
+            background: #f1f3f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .quick-ref h3 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+        pre {
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .code-section {
+            margin: 15px 0;
+        }
+        .code-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .example-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .lecture-review {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .critical-section {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .critical-section h3 {
+            color: #c62828;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 12 Asynchronous Materials Guide - Functions</h1>
+
+    <div class="focus">
+        <h2>This Week's Focus</h2>
+        <p><strong>Building on lecture:</strong> The lecture introduced function basics. This guide expands into variable scope, default parameters, and common patterns.</p>
+        <ul>
+            <li>Review: Creating functions, parameters, return values</li>
+            <li>New: Variable scope (local vs global)</li>
+            <li>New: Default parameter values</li>
+            <li>New: Common function patterns</li>
+        </ul>
+    </div>
+
+    <h2>Start Here - 20 Minutes</h2>
+
+    <div class="resource">
+        <div class="resource-title">Video: Python Functions</div>
+        <a href="https://www.youtube.com/watch?v=9Os0o3wzS_I">Corey Schafer - Python Functions</a>
+        <ul>
+            <li>Covers def, parameters, return values</li>
+            <li>Clear explanations with examples</li>
+        </ul>
+    </div>
+
+    <h2>Core References</h2>
+
+    <div class="resource">
+        <div class="resource-title">W3Schools - Python Functions</div>
+        <a href="https://www.w3schools.com/python/python_functions.asp">https://www.w3schools.com/python/python_functions.asp</a>
+        <ul>
+            <li>Quick reference for syntax</li>
+            <li>Interactive examples</li>
+        </ul>
+    </div>
+
+    <div class="resource">
+        <div class="resource-title">Programiz - Python Functions</div>
+        <a href="https://www.programiz.com/python-programming/function">https://www.programiz.com/python-programming/function</a>
+        <ul>
+            <li>Clear explanations with diagrams</li>
+            <li>Practice examples included</li>
+        </ul>
+    </div>
+
+    <h2>Review: Function Basics</h2>
+
+    <div class="lecture-review">
+        <p>Covered in lecture. Quick review before new material.</p>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Creating and Calling Functions</div>
+        <pre><code class="language-python"># Define a function
+def greet(name):
+    print(f"Hello, {name}")
+
+greet("Alice")
+
+# Function with return
+def add(a, b):
+    return a + b
+
+result = add(5, 3)
+print(result)  # 8</code></pre>
+    </div>
+
+    <h2>Variable Scope</h2>
+
+    <div class="lecture-review">
+        <p>Variables created inside a function only exist inside that function.</p>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Local vs Global Variables</div>
+        <pre><code class="language-python"># Local variables
+def calculate_total():
+    price = 10  # Only exists inside function
+    quantity = 5
+    total = price * quantity
+    print(f"Total: {total}")
+
+calculate_total()
+# print(price)  # Error - doesn't exist outside
+
+# Global variables
+tax_rate = 0.08
+
+def calculate_with_tax(price):
+    tax = price * tax_rate  # Can read global
+    return price + tax
+
+print(calculate_with_tax(100))</code></pre>
+    </div>
+
+    <div class="warning-box">
+        <h4>Best Practice: Pass Data as Parameters</h4>
+        <pre><code class="language-python"># Avoid relying on globals
+tax_rate = 0.08
+def calculate_total(price):
+    return price * (1 + tax_rate)
+
+# Better - explicit parameters
+def calculate_total(price, tax_rate):
+    return price * (1 + tax_rate)
+
+total = calculate_total(100, 0.08)</code></pre>
+    </div>
+
+    <h2>Default Parameter Values</h2>
+
+    <div class="code-section">
+        <div class="code-title">Using Defaults</div>
+        <pre><code class="language-python"># Default parameter
+def greet(name, greeting="Hello"):
+    print(f"{greeting}, {name}")
+
+greet("Alice")  # Uses default
+greet("Bob", "Hi")  # Custom greeting
+
+# Multiple defaults
+def calculate_price(base, tax_rate=0.08, discount=0):
+    subtotal = base * (1 + tax_rate)
+    return subtotal * (1 - discount)
+
+print(calculate_price(100))
+print(calculate_price(100, 0.10))
+print(calculate_price(100, 0.08, 0.15))</code></pre>
+    </div>
+
+    <h2>Common Function Patterns</h2>
+
+    <div class="code-section">
+        <div class="code-title">Pattern 1: Validation</div>
+        <pre><code class="language-python"># Return True/False
+def is_valid_email(email):
+    return "@" in email and "." in email
+
+def is_in_range(value, min_val, max_val):
+    return min_val <= value <= max_val
+
+# Use in conditionals
+if is_valid_email("user@example.com"):
+    print("Valid email")
+
+if is_in_range(85, 0, 100):
+    print("Valid score")</code></pre>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Pattern 2: Transform</div>
+        <pre><code class="language-python"># Take input, return transformed output
+def format_price(price):
+    return f"${price:.2f}"
+
+def celsius_to_fahrenheit(celsius):
+    return (celsius * 9/5) + 32
+
+print(format_price(19.99))
+print(celsius_to_fahrenheit(25))</code></pre>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Pattern 3: Aggregation</div>
+        <pre><code class="language-python"># Process collection, return summary
+def count_passing(grades):
+    count = 0
+    for grade in grades:
+        if grade >= 60:
+            count += 1
+    return count
+
+def find_highest(numbers):
+    highest = numbers[0]
+    for num in numbers:
+        if num > highest:
+            highest = num
+    return highest
+
+scores = [85, 55, 92, 78, 45]
+print(f"Passing: {count_passing(scores)}")</code></pre>
+    </div>
+
+    <div class="code-section">
+        <div class="code-title">Pattern 4: Filter</div>
+        <pre><code class="language-python"># Return subset based on criteria
+def get_passing_scores(scores):
+    passing = []
+    for score in scores:
+        if score >= 60:
+            passing.append(score)
+    return passing
+
+all_scores = [85, 55, 92, 78, 45, 88]
+passing = get_passing_scores(all_scores)
+print(f"Passing: {passing}")</code></pre>
+    </div>
+
+    <h2>Common Mistakes</h2>
+
+    <div class="critical-section">
+        <h3>Mistake 1: Forgetting to Return</h3>
+        <pre><code class="language-python"># WRONG - prints but doesn't return
+def add(a, b):
+    result = a + b
+    print(result)
+
+total = add(5, 3)  # total is None
+
+# CORRECT
+def add(a, b):
+    return a + b
+
+total = add(5, 3)  # total is 8</code></pre>
+    </div>
+
+    <div class="warning-box">
+        <h4>Mistake 2: Return Exits Function</h4>
+        <pre><code class="language-python"># WRONG - stops after first match
+def process_scores(scores):
+    for score in scores:
+        if score >= 90:
+            return "Found an A"
+    return "No A's"
+
+# CORRECT - collect all results
+def process_scores(scores):
+    a_grades = []
+    for score in scores:
+        if score >= 90:
+            a_grades.append(score)
+    return a_grades</code></pre>
+    </div>
+
+    <div class="quick-ref">
+        <h2>Quick Reference</h2>
+
+        <h3>Function Basics</h3>
+        <pre><code class="language-python"># Define
+def function_name(parameter1, parameter2):
+    return value
+
+# Call
+result = function_name(arg1, arg2)</code></pre>
+
+        <h3>Key Concepts</h3>
+        <pre><code class="language-python"># Local scope
+def example():
+    local_var = 10  # Only inside function
+
+# Default parameters
+def greet(name, greeting="Hello"):
+    print(f"{greeting}, {name}")
+
+# Common patterns
+def validate(value):
+    return condition
+
+def transform(input):
+    return modified
+
+def aggregate(collection):
+    # process
+    return summary
+
+def filter_items(collection):
+    filtered = []
+    for item in collection:
+        if condition:
+            filtered.append(item)
+    return filtered</code></pre>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>

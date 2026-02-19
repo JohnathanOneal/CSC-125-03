@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Indexing & Endpoints - Review Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            font-size: 14px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 25px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            font-size: 20px;
+        }
+        .mnemonic-box {
+            background: #e8f5e9;
+            border: 3px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .mnemonic-box .title {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .mnemonic-box .phrase {
+            font-size: 20px;
+            color: #1b5e20;
+            font-weight: bold;
+            margin: 10px 0;
+            text-align: center;
+            font-style: italic;
+        }
+        .key-concept {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .key-concept strong {
+            color: #856404;
+            font-size: 16px;
+        }
+        .rule-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .rule-box strong {
+            color: #0d47a1;
+        }
+        .memory-trick {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .memory-trick strong {
+            color: #6a1b9a;
+        }
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .example-card {
+            background: #ffffff;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            padding: 12px;
+        }
+        .example-card h4 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 15px;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 5px;
+        }
+        pre {
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 13px;
+            margin: 8px 0;
+            padding: 10px;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .visual-index {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: monospace;
+            text-align: center;
+        }
+        .visual-index .title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .comparison-table th {
+            background: #3498db;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-size: 14px;
+        }
+        .comparison-table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            font-size: 13px;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .comparison-table code {
+            background: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .warning-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .warning-box strong {
+            color: #721c24;
+        }
+        .tip-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .tip-box strong {
+            color: #155724;
+        }
+        .quick-quiz {
+            background: #fff9e6;
+            border: 2px dashed #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .quick-quiz strong {
+            color: #e65100;
+        }
+        @media print {
+            body {
+                font-size: 12px;
+            }
+            h2 {
+                page-break-after: avoid;
+            }
+            .example-card, .rule-box, .key-concept, .mnemonic-box {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Python Indexing & Endpoints - Review Guide</h1>
+
+    <div class="mnemonic-box">
+        <div class="title">Master Rule</div>
+        <div class="phrase">"Up to, not including"</div>
+    </div>
+
+    <h2>Key Memory Tricks</h2>
+
+    <div class="memory-trick">
+        <strong>First item is [0]</strong> not [1]
+    </div>
+
+    <div class="memory-trick">
+        <strong>[start:end]</strong> means start to end-1
+    </div>
+
+    <div class="memory-trick">
+        <strong>[-1]</strong> is the last item, [-2] is second to last
+    </div>
+
+    <div class="memory-trick">
+        <strong>Last index</strong> is always len() - 1
+    </div>
+
+    <h2>Indexing</h2>
+
+    <div class="visual-index">
+        <div class="title">Index Numbers</div>
+        <pre>String/List:  P   Y   T   H   O   N
+
+Positive:     0   1   2   3   4   5
+Negative:    -6  -5  -4  -3  -2  -1</pre>
+    </div>
+
+    <div class="example-grid">
+        <div class="example-card">
+            <h4>Getting Single Items</h4>
+            <pre><code class="language-python">word = "PYTHON"
+
+word[0]   # P (first)
+word[1]   # Y
+word[5]   # N (last)
+word[-1]  # N (last)
+word[-2]  # O (second to last)</code></pre>
+        </div>
+
+        <div class="example-card">
+            <h4>Common Error</h4>
+            <pre><code class="language-python">word = "HELLO"  # 5 letters
+
+word[5]   # ERROR! No index 5
+word[4]   # O (last = len-1)
+word[-1]  # O (easier!)</code></pre>
+        </div>
+    </div>
+
+    <h2>Slicing: Getting Multiple Items</h2>
+
+    <div class="mnemonic-box">
+        <div class="title">Slicing Rule</div>
+        <div class="phrase">[start:end] = start through end-1</div>
+    </div>
+
+    <div class="visual-index">
+        <div class="title">word[1:4] Example</div>
+        <pre>word = "PYTHON"
+       
+       P   Y   T   H   O   N
+       0   1   2   3   4   5
+    ^--------^
+    start    end
+        
+word[1:4] = "YTH" (indexes 1, 2, 3 only)</pre>
+    </div>
+
+    <div class="example-grid">
+        <div class="example-card">
+            <h4>Basic Slicing</h4>
+            <pre><code class="language-python">word = "PYTHON"
+
+word[0:3]   # "PYT"
+word[1:4]   # "YTH"
+word[2:5]   # "THO"
+word[0:1]   # "P"</code></pre>
+        </div>
+
+        <div class="example-card">
+            <h4>Slicing Shortcuts</h4>
+            <pre><code class="language-python">word = "PYTHON"
+
+word[:3]    # "PYT" 
+word[3:]    # "HON" (3 to end)
+word[:]     # "PYTHON"
+word[:-1]   # "PYTHO" 
+word[-3:]   # "HON"</code></pre>
+        </div>
+    </div>
+
+    <div class="memory-trick">
+        <strong>Key:</strong> No number after colon means "go all the way to the end"<br>
+        <code>word[2:]</code> = index 2 through the end
+    </div>
+
+    <div class="memory-trick">
+        <strong>Negative shortcuts:</strong><br>
+        <code>word[:-1]</code> = everything except last<br>
+        <code>word[-3:]</code> = last 3 items<br>
+        <code>word[1:]</code> = everything except first
+    </div>
+
+    <h2>range() Function</h2>
+
+    <div class="mnemonic-box">
+        <div class="title">Range Rule</div>
+        <div class="phrase">range() works like slicing</div>
+    </div>
+
+    <div class="memory-trick">
+        <strong>Loop from A to B:</strong> use <code>range(A, B+1)</code>
+    </div>
+
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Numbers You Get</th>
+                <th>Why</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>range(5)</code></td>
+                <td>0, 1, 2, 3, 4</td>
+                <td>Start at 0 (default), stop before 5</td>
+            </tr>
+            <tr>
+                <td><code>range(1, 5)</code></td>
+                <td>1, 2, 3, 4</td>
+                <td>Start at 1, stop before 5</td>
+            </tr>
+            <tr>
+                <td><code>range(1, 11)</code></td>
+                <td>1, 2, 3, 4, 5, 6, 7, 8, 9, 10</td>
+                <td>Start at 1, stop before 11 (gives you 1-10!)</td>
+            </tr>
+            <tr>
+                <td><code>range(0, 10, 2)</code></td>
+                <td>0, 2, 4, 6, 8</td>
+                <td>Start 0, step by 2, stop before 10</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>len() Function</h2>
+
+    <div class="mnemonic-box">
+        <div class="title">len() Rule</div>
+        <div class="phrase">Last index = len() - 1</div>
+    </div>
+
+    <div class="example-card">
+        <h4>len() Example</h4>
+        <pre><code class="language-python">word = "HELLO"
+
+len(word)           # 5
+word[0]             # H (first)
+word[4]             # O (last)
+word[5]             # ERROR!</code></pre>
+    </div>
+
+    <div class="warning-box">
+        <strong>Error:</strong> <code>word[len(word)]</code> is wrong. Use <code>word[-1]</code>
+    </div>
+
+    <h2>Side-by-Side Comparison</h2>
+
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Operation</th>
+                <th>Start Included?</th>
+                <th>End Included?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Single index <code>[i]</code></td>
+                <td colspan="2">Gets one item</td>
+            </tr>
+            <tr>
+                <td>Slice <code>[start:end]</code></td>
+                <td>YES</td>
+                <td>NO</td>
+            </tr>
+            <tr>
+                <td>Range <code>range(start, stop)</code></td>
+                <td>YES</td>
+                <td>NO</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Common Mistakes</h2>
+
+    <div class="warning-box">
+        <strong>1.</strong> First item is [0] not [1]
+    </div>
+
+    <div class="warning-box">
+        <strong>2.</strong> [1:4] gives 1,2,3 not 1,2,3,4
+    </div>
+
+    <div class="warning-box">
+        <strong>3.</strong> range(1,10) gives 1-9 not 1-10. Need range(1,11) for 1-10
+    </div>
+
+    <div class="warning-box">
+        <strong>4.</strong> word[len(word)] causes an error. Use word[-1]
+    </div>
+
+    <h2>Common Patterns</h2>
+
+    <div class="tip-box">
+        <strong>First N items:</strong> <code>my_list[:N]</code>
+    </div>
+
+    <div class="tip-box">
+        <strong>Last N items:</strong> <code>my_list[-N:]</code>
+    </div>
+
+    <div class="tip-box">
+        <strong>Skip first:</strong> <code>my_list[1:]</code>
+    </div>
+
+    <div class="tip-box">
+        <strong>Skip last:</strong> <code>my_list[:-1]</code>
+    </div>
+
+    <div class="tip-box">
+        <strong>All indexes:</strong> <code>for i in range(len(my_list)):</code>
+    </div>
+
+    <h2>Practice Problems</h2>
+
+    <div class="example-grid">
+        <div class="example-card">
+            <h4>Problem 1</h4>
+            <pre><code class="language-python">word = "CODING"
+# What is word[1:4]?</code></pre>
+            <p><strong>Answer:</strong> "ODI" (indexes 1, 2, 3)</p>
+        </div>
+
+        <div class="example-card">
+            <h4>Problem 2</h4>
+            <pre><code class="language-python"># Numbers 5 through 10
+# What range?</code></pre>
+            <p><strong>Answer:</strong> <code>range(5, 11)</code></p>
+        </div>
+
+        <div class="example-card">
+            <h4>Problem 3</h4>
+            <pre><code class="language-python">nums = [10, 20, 30, 40, 50]
+# What is nums[-2]?</code></pre>
+            <p><strong>Answer:</strong> 40</p>
+        </div>
+
+        <div class="example-card">
+            <h4>Problem 4</h4>
+            <pre><code class="language-python">text = "PYTHON"
+# Last 3 letters?</code></pre>
+            <p><strong>Answer:</strong> <code>text[-3:]</code> = "HON"</p>
+        </div>
+
+        <div class="example-card">
+            <h4>Problem 5</h4>
+            <pre><code class="language-python">word = "HELLO"
+# Last valid index?</code></pre>
+            <p><strong>Answer:</strong> 4 (len = 5, so 5-1 = 4)</p>
+        </div>
+
+        <div class="example-card">
+            <h4>Problem 6</h4>
+            <pre><code class="language-python">word = "PYTHON"
+# Skip first and last?</code></pre>
+            <p><strong>Answer:</strong> <code>word[1:-1]</code> = "YTHO"</p>
+        </div>
+    </div>
+
+    <h2>Quick Review</h2>
+
+    <div class="mnemonic-box">
+        <div class="title">Three Things to Remember</div>
+        <ol style="font-size: 16px; line-height: 1.8;">
+            <li>First index is 0, last index is len()-1</li>
+            <li>[start:end] and range(start, stop) both exclude the end</li>
+            <li>Negative indexes count from the right: [-1] is last</li>
+        </ol>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>
