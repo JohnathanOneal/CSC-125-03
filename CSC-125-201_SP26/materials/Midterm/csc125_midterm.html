@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSC-125 Midterm Exam</title>
+    <title>CSC-125-201 Midterm Exam</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -103,7 +103,6 @@
             border: 1px solid #dee2e6;
             border-radius: 3px;
             background: #ffffff;
-            min-height: 180px;
             position: relative;
         }
         .code-space::before {
@@ -116,11 +115,9 @@
             color: #495057;
             border-bottom: 1px solid #dee2e6;
         }
-        .code-space::after {
-            content: "";
-            display: block;
-            height: 220px;
-        }
+        .code-space-sm::after { content: ""; display: block; height: 80px; }
+        .code-space-md::after { content: ""; display: block; height: 130px; }
+        .code-space-lg::after { content: ""; display: block; height: 200px; }
         .hint {
             font-size: 11px;
             color: #6c757d;
@@ -128,20 +125,16 @@
             margin-top: 3px;
         }
         @media print {
-            .question {
-                page-break-inside: avoid;
-            }
-            body {
-                font-size: 11px;
-            }
+            .question { page-break-inside: avoid; }
+            body { font-size: 11px; }
         }
     </style>
 </head>
 <body>
-    <h1>CSC-125 Python Programming<br>Midterm Exam</h1>
-    
+    <h1>CSC-125-201 Python Programming<br>Midterm Exam</h1>
+
     <div class="coverage">
-        Covers Weeks 1-9: Variables, Data Types, Strings, Operators, Conditionals, Lists, Tuples, and Loops
+        Covers Weeks 1-8: Variables, Data Types, Strings, Operators, Conditionals, Lists, Tuples, and For Loops
     </div>
 
     <div class="exam-header">
@@ -149,8 +142,7 @@
         <p><strong>Instructions:</strong></p>
         <ul>
             <li>DO NOT open the midterm until instructed</li>
-            <li>This exam contains 35 questions across 5 sections</li>
-            <li>The problems will be on the following 6 pages</li>
+            <li>This exam contains 31 questions across 6 sections</li>
             <li>You have 50 minutes to complete the exam</li>
             <li>No computers, phones, or notes allowed</li>
             <li>Show all work where applicable</li>
@@ -159,309 +151,310 @@
 
     <div style="page-break-before: always;"></div>
 
-    <h2>Part 1: Multiple Choice (18 points)</h2>
+    <!-- ============================================================ -->
+    <h2>Part 1: Multiple Choice (16 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Circle the correct answer. Each question is worth 2 points.</p>
 
     <div class="question">
-        <strong>1. What data type is <code>3.14</code>?</strong>
+        <strong>1. What data type is the value <code>"3.14"</code>?</strong>
         <div class="options">
             <div>a) integer</div>
-            <div>b) string</div>
-            <div>c) float</div>
+            <div>b) float</div>
+            <div>c) string</div>
             <div>d) boolean</div>
         </div>
     </div>
 
     <div class="question">
-        <strong>2. Which is a valid variable name?</strong>
+        <strong>2. Which of the following is a valid Python variable name?</strong>
         <div class="options">
-            <div>a) 2nd_place</div>
-            <div>b) user_name</div>
-            <div>c) user-name</div>
-            <div>d) user name</div>
+            <div>a) total-cost</div>
+            <div>b) 1st_place</div>
+            <div>c) total_cost</div>
+            <div>d) total cost</div>
         </div>
     </div>
 
     <div class="question">
-        <strong>3. What does len("Python") return?</strong>
+        <strong>3. What does <code>"Hello, World".lower()</code> return?</strong>
         <div class="options">
-            <div>a) 5</div>
-            <div>b) 6</div>
-            <div>c) 7</div>
+            <div>a) "Hello, world"</div>
+            <div>b) "hello, world"</div>
+            <div>c) "HELLO, WORLD"</div>
             <div>d) Error</div>
         </div>
     </div>
 
     <div class="question">
-        <strong>4. What is the output of: print(10 // 3)?</strong>
+        <strong>4. What is the result of <code>17 // 5</code>?</strong>
         <div class="options">
-            <div>a) 3.33</div>
+            <div>a) 3.4</div>
             <div>b) 3</div>
             <div>c) 4</div>
-            <div>d) 3.0</div>
+            <div>d) 2</div>
         </div>
     </div>
 
     <div class="question">
-        <strong>5. What does "coding"[-1] return?</strong>
+        <strong>5. In the code below, what is the value of <code>result</code>?</strong>
+        <div class="code-block">temperature = 75
+result = temperature > 80</div>
         <div class="options">
-            <div>a) "c"</div>
-            <div>b) "g"</div>
-            <div>c) -1</div>
-            <div>d) Error</div>
+            <div>a) 75</div>
+            <div>b) 80</div>
+            <div>c) True</div>
+            <div>d) False</div>
         </div>
     </div>
 
     <div class="question">
-        <strong>6. What is the result of: 17 % 5?</strong>
+        <strong>6. Given <code>fruits = ["apple", "banana", "cherry", "date"]</code>, what does <code>fruits[1]</code> return?</strong>
         <div class="options">
-            <div>a) 2</div>
-            <div>b) 3</div>
-            <div>c) 3.4</div>
-            <div>d) 12</div>
+            <div>a) "apple"</div>
+            <div>b) "banana"</div>
+            <div>c) "cherry"</div>
+            <div>d) 1</div>
         </div>
     </div>
 
     <div class="question">
-        <strong>7. What does len([5, 10, 15, 20]) return?</strong>
+        <strong>7. How many times does the following loop run?</strong>
+        <div class="code-block">for i in range(4):
+    print(i)</div>
         <div class="options">
             <div>a) 3</div>
             <div>b) 4</div>
-            <div>c) 50</div>
+            <div>c) 5</div>
             <div>d) Error</div>
         </div>
     </div>
 
     <div class="question">
-        <strong>8. What does "hello".upper() return?</strong>
+        <strong>8. What does <code>range(2, 7)</code> produce?</strong>
         <div class="options">
-            <div>a) "Hello"</div>
-            <div>b) "HELLO"</div>
-            <div>c) "hello"</div>
-            <div>d) Error</div>
+            <div>a) 2, 3, 4, 5, 6</div>
+            <div>b) 2, 3, 4, 5, 6, 7</div>
+            <div>c) 1, 2, 3, 4, 5, 6, 7</div>
+            <div>d) 0, 1, 2, 3, 4, 5, 6</div>
         </div>
     </div>
 
-    <div class="question">
-        <strong>9. Given x = 8 and y = 12, what is x < y?</strong>
-        <div class="options">
-            <div>a) True</div>
-            <div>b) False</div>
-            <div>c) 8</div>
-            <div>d) 12</div>
-        </div>
-    </div>
-
-    <h2>Part 2: Fill in the Code (16 points)</h2>
+    <!-- ============================================================ -->
+    <h2>Part 2: Fill in the Code (12 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Write the missing code on each blank line. Each question is worth 2 points.</p>
 
     <div class="question">
-        <strong>10. Convert this string to a float:</strong>
-        <div class="code-block">price_text = "19.99"
-price_number = <span class="answer-space"></span>(price_text)</div>
+        <strong>9. Convert a string to a number so the addition works:</strong>
+        <div class="code-block">price_text = "24.99"
+price = <span class="answer-space"></span>(price_text)
+total = price + 5.00</div>
     </div>
 
     <div class="question">
-        <strong>11. Get the length of a string:</strong>
-        <div class="code-block">word = "programming"
-length = <span class="answer-space"></span>(word)</div>
+        <strong>10. Remove the extra spaces from the beginning and end of the text:</strong>
+        <div class="code-block">raw_name = "   Alice   "
+clean_name = raw_name.<span class="answer-space"></span>()</div>
     </div>
 
     <div class="question">
-        <strong>12. Add an item to a list:</strong>
-        <div class="code-block">colors = ["red", "blue"]
-colors.<span class="answer-space"></span>("green")</div>
+        <strong>11. Add "milk" to the end of the shopping list:</strong>
+        <div class="code-block">groceries = ["bread", "eggs"]
+groceries.<span class="answer-space"></span>("milk")</div>
     </div>
 
     <div class="question">
-        <strong>13. Access the last element using negative indexing:</strong>
-        <div class="code-block">values = [100, 200, 300, 400]
-last = values[<span class="answer-space"></span>]</div>
+        <strong>12. Get the last three items from the list using slicing:</strong>
+        <div class="code-block">scores = [88, 92, 75, 95, 81, 90]
+last_three = scores[<span class="answer-space"></span>:]</div>
     </div>
 
     <div class="question">
-        <strong>14. Create a for loop that runs 8 times:</strong>
-        <div class="code-block">for i in <span class="answer-space"></span>(8):
+        <strong>13. Fill in the blanks so this loop prints numbers 1 through 10:</strong>
+        <div class="code-block">for i in range(<span class="answer-space"></span>, <span class="answer-space"></span>):
     print(i)</div>
     </div>
 
     <div class="question">
-        <strong>15. Get a slice from index 2 to 5 (not including 5):</strong>
-        <div class="code-block">numbers = [10, 20, 30, 40, 50, 60, 70]
-subset = numbers[<span class="answer-space"></span>:<span class="answer-space"></span>]</div>
-    </div>
-
-    <div class="question">
-        <strong>16. Convert user input to an integer:</strong>
-        <div class="code-block">score = <span class="answer-space"></span>(input("Enter score: "))</div>
-    </div>
-
-    <div class="question">
-        <strong>17. Check if a value is in a list:</strong>
-        <div class="code-block">scores = [85, 90, 78, 92]
-if 90 <span class="answer-space"></span> scores:
+        <strong>14. Check if "python" is in the list of languages:</strong>
+        <div class="code-block">languages = ["java", "python", "javascript"]
+if "python" <span class="answer-space"></span> languages:
     print("Found")</div>
     </div>
 
-    <h2>Part 3: Fix the Errors (16 points)</h2>
-    <p style="font-size: 12px; margin: 5px 0;">Cross out the error and write the correction above or next to it.</p>
+    <!-- ============================================================ -->
+    <h2>Part 3: Fix the Errors (12 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Each code block has exactly one error. Cross out the error and write the fix. Each question is worth 2 points.</p>
 
     <div class="question">
-        <strong>18. Fix this code:</strong>
-        <div class="code-block">user_score = "85"
-bonus = user_score + 10
-print(bonus)</div>
+        <strong>15. Fix this code (TypeError):</strong>
+        <div class="code-block">age = "25"
+next_year = age + 1
+print(next_year)</div>
     </div>
 
     <div class="question">
-        <strong>19. Fix this code:</strong>
-        <div class="code-block">message = "Welcome
-print(message)</div>
+        <strong>16. Fix this code (SyntaxError - missing punctuation):</strong>
+        <div class="code-block">if score >= 90
+    print("A")</div>
     </div>
 
     <div class="question">
-        <strong>20. Fix this code:</strong>
-        <div class="code-block">first name = "John"
-print(first name)</div>
+        <strong>17. Fix this code (SyntaxError - string issue):</strong>
+        <div class="code-block">greeting = "Welcome to Python
+print(greeting)</div>
     </div>
 
     <div class="question">
-        <strong>21. Fix this code:</strong>
-        <div class="code-block">if total >= 100
-    print("Excellent")</div>
+        <strong>18. Fix this code (IndexError):</strong>
+        <div class="code-block">colors = ["red", "green", "blue"]
+print(colors[3])</div>
     </div>
 
     <div class="question">
-        <strong>22. Fix this code:</strong>
-        <div class="code-block">data = [5, 10, 15]
-print(data[3])</div>
+        <strong>19. Fix this code (IndentationError):</strong>
+        <div class="code-block">for item in groceries:
+print(item)</div>
     </div>
 
     <div class="question">
-        <strong>23. Fix this code:</strong>
-        <div class="code-block">for i in range(5)
-print(i)</div>
+        <strong>20. Fix this code (Logic error - wrong result):</strong>
+        <p style="font-size: 11px; color: #6c757d; margin: 2px 0;">This should print the average of three scores, but it gives the wrong number.</p>
+        <div class="code-block">s1, s2, s3 = 80, 90, 70
+average = s1 + s2 + s3 / 3
+print(average)</div>
     </div>
 
-    <div class="question">
-        <strong>24. Fix this code:</strong>
-        <div class="code-block">items = ["phone", "laptop"]
-items.append "tablet"</div>
-    </div>
+    <!-- ============================================================ -->
+    <div style="page-break-before: always;"></div>
+    <h2>Part 4: Code Reading and Output Prediction (18 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Write exactly what each code block will print. Each question is worth 3 points.</p>
 
     <div class="question">
-        <strong>25. Fix this code:</strong>
-        <div class="code-block">text = "python"
-print(text.Title())</div>
-    </div>
-
-    <h2>Part 4: Code Reading & Output Prediction (24 points)</h2>
-
-    <div class="question">
-        <strong>26. What is the final value of total?</strong>
+        <strong>21. What does this code print?</strong>
         <div class="code-block">total = 0
-for i in range(5):
-    total = total + 3
+prices = [5, 10, 15, 20]
+for price in prices:
+    total = total + price
 print(total)</div>
-        <p style="margin-top: 5px;">Answer: <span class="answer-space"></span></p>
+        <p style="margin-top: 5px;">Output: <span class="answer-space"></span></p>
     </div>
 
     <div class="question">
-        <strong>27. What will this print?</strong>
-        <div class="code-block">values = [15, 25, 35]
-values.append(45)
-print(len(values))</div>
-        <p style="margin-top: 5px;">Answer: <span class="answer-space"></span></p>
-    </div>
-
-    <div class="question">
-        <strong>28. What is the output?</strong>
-        <div class="code-block">x = 25
-if x > 20 and x < 30:
-    print("Yes")
+        <strong>22. What does this code print?</strong>
+        <div class="code-block">grade = 78
+if grade >= 90:
+    label = "A"
+elif grade >= 80:
+    label = "B"
+elif grade >= 70:
+    label = "C"
 else:
-    print("No")</div>
-        <p style="margin-top: 5px;">Answer: <span class="answer-space"></span></p>
+    label = "F"
+print(label)</div>
+        <p style="margin-top: 5px;">Output: <span class="answer-space"></span></p>
     </div>
 
     <div class="question">
-        <strong>29. What will this print?</strong>
-        <div class="code-block">word = "Code"
-print(word[0] + word[-1])</div>
-        <p style="margin-top: 5px;">Answer: <span class="answer-space"></span></p>
+        <strong>23. What does this code print?</strong>
+        <div class="code-block">name = "Python"
+print(name[0] + name[-1])</div>
+        <p style="margin-top: 5px;">Output: <span class="answer-space"></span></p>
     </div>
 
     <div class="question">
-        <strong>30. What is the final value of result?</strong>
-        <div class="code-block">numbers = [8, 12, 16, 20]
-result = 0
-for num in numbers:
-    result = result + num
-print(result)</div>
-        <p style="margin-top: 5px;">Answer: <span class="answer-space"></span></p>
+        <strong>24. What does this code print?</strong>
+        <div class="code-block">items = [10, 20, 30]
+items.append(40)
+items[0] = 99
+print(items)
+print(len(items))</div>
+        <p style="margin-top: 5px;">Output line 1: <span class="answer-space" style="min-width: 250px;"></span></p>
+        <p>Output line 2: <span class="answer-space"></span></p>
     </div>
 
     <div class="question">
-        <strong>31. What will this code print?</strong>
-        <div class="code-block">score = 68
-if score >= 90:
-    print("A")
-elif score >= 80:
-    print("B")
-elif score >= 70:
-    print("C")
-elif score >= 60:
-    print("D")
+        <strong>25. What does this code print?</strong>
+        <div class="code-block">x = 15
+y = 8
+if x > 10 and y > 10:
+    print("Both high")
+elif x > 10 or y > 10:
+    print("One high")
 else:
-    print("F")</div>
-        <p style="margin-top: 5px;">Answer: <span class="answer-space"></span></p>
+    print("Neither")</div>
+        <p style="margin-top: 5px;">Output: <span class="answer-space"></span></p>
     </div>
 
     <div class="question">
-        <strong>32. What is the output?</strong>
-        <div class="code-block">text = "Python"
-print(text[1:4])</div>
-        <p style="margin-top: 5px;">Answer: <span class="answer-space"></span></p>
-    </div>
-
-    <div class="question">
-        <strong>33. What will this print?</strong>
-        <div class="code-block">count = 10
-for i in range(3):
-    count = count - 2
+        <strong>26. What does this code print?</strong>
+        <div class="code-block">count = 0
+for i in range(1, 6):
+    if i % 2 == 0:
+        count = count + 1
 print(count)</div>
-        <p style="margin-top: 5px;">Answer: <span class="answer-space"></span></p>
+        <p style="margin-top: 5px;">Output: <span class="answer-space"></span></p>
     </div>
 
-    <h2>Part 5: Write Complete Programs (26 points)</h2>
-    <p style="font-size: 12px; margin: 5px 0;">Write complete Python programs in the spaces provided. Show all your code.</p>
+    <!-- ============================================================ -->
+    <div style="page-break-before: always;"></div>
+    <h2>Part 5: Short Code Writing (15 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Write 3-5 lines of Python code to solve each problem. Each question is worth 5 points.</p>
 
     <div class="question">
-        <strong>34. Distance Converter (12 points)</strong>
+        <strong>27. Write a for loop that goes through the list of prices and builds a new list containing only prices under $10. Print the new list.</strong>
+        <div class="code-block">prices = [5.99, 12.50, 8.75, 22.00, 3.25]</div>
+        <div class="code-space code-space-sm"></div>
+        <div class="hint">Expected result: [5.99, 8.75, 3.25]</div>
+    </div>
+
+    <div class="question">
+        <strong>28. Write an if-elif-else chain that prints the shipping method based on the weight variable. Under 1 lb prints "Letter". 1 to 5 lbs (inclusive) prints "Package". Over 5 lbs prints "Freight".</strong>
+        <div class="code-block">weight = 3.5</div>
+        <div class="code-space code-space-sm"></div>
+        <div class="hint">Expected result: Package</div>
+    </div>
+
+    <div class="question">
+        <strong>29. Write a for loop using <code>range(len())</code> that prints each student paired with their score from the two lists.</strong>
+        <div class="code-block">students = ["Alice", "Bob", "Charlie"]
+scores = [88, 95, 72]</div>
+        <div class="code-space code-space-sm"></div>
+        <div class="hint">Expected: Alice: 88 / Bob: 95 / Charlie: 72 (one per line)</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Part 6: Write Complete Programs (27 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Write complete Python programs. Show all code.</p>
+
+    <div class="question">
+        <strong>30. Tip Calculator (12 points)</strong>
         <div class="task-description">
-            Write a program that converts a distance from miles to kilometers. Your program should:
+            Write a program that calculates a restaurant tip. Your program should:
             <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
-                <li>Ask the user to enter a distance in miles</li>
-                <li>Convert it to kilometers using the formula: km = miles * 1.60934</li>
-                <li>Print the result with a descriptive message</li>
+                <li>Ask the user to enter the bill amount</li>
+                <li>Ask the user to enter the tip percentage (as a whole number, like 20)</li>
+                <li>Calculate the tip amount and the total bill</li>
+                <li>Print the tip amount and total, both formatted to 2 decimal places</li>
             </ul>
-            <div class="hint">Hint: Remember to convert the input to a float!</div>
+            <div class="hint">Hint: Convert inputs with float() and int(). Divide the percentage by 100.</div>
         </div>
-        <div class="code-space"></div>
+        <div class="code-space code-space-lg"></div>
     </div>
 
     <div class="question">
-        <strong>35. Quiz Score Analyzer (14 points)</strong>
+        <strong>31. Grade Report (15 points)</strong>
         <div class="task-description">
-            Write a program that analyzes a list of quiz scores. Your program should:
+            Write a program that analyzes a list of test scores. Your program should:
             <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
-                <li>Create a list: scores = [78, 85, 92, 88, 95, 82]</li>
+                <li>Start with the list: <code>scores = [82, 91, 67, 75, 88, 94, 71]</code></li>
                 <li>Use a for loop to calculate the total of all scores</li>
-                <li>Calculate the average score (total divided by number of scores)</li>
-                <li>Count how many scores are 90 or above</li>
-                <li>Print the total, average, and count of high scores</li>
+                <li>Calculate the average (total divided by number of scores)</li>
+                <li>Use a for loop to count how many scores are 80 or above</li>
+                <li>Print the average (1 decimal place) and the count of high scores</li>
             </ul>
-            <div class="hint">Hint: Start with total = 0 and count = 0, then use a for loop</div>
+            <div class="hint">Hint: Start with total = 0 and count = 0 before the loop(s).</div>
         </div>
-        <div class="code-space"></div>
+        <div class="code-space code-space-lg"></div>
     </div>
 
 </body>

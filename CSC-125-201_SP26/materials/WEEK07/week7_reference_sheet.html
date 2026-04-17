@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 7 Reference Sheet: Advanced List Operations</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            line-height: 1.3;
+            color: var(--espresso);
+            font-size: 12px;
+            background: var(--warm-white);
+        }
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--espresso);
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 4px;
+            margin: 8px 0 4px 0;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--dark-roast);
+            margin: 10px 0 3px 0;
+            border-left: 3px solid var(--caramel);
+            padding-left: 10px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        p { margin: 3px 0; }
+        ul { margin: 2px 0; padding-left: 18px; }
+        li { margin-bottom: 1px; }
+        li::marker { color: var(--caramel); }
+        strong { color: var(--rust); font-weight: 600; }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 0px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+            color: var(--dark-roast);
+        }
+        pre {
+            margin: 3px 0;
+            border-radius: 5px;
+            border-left: 3px solid var(--caramel);
+            overflow-x: auto;
+        }
+        pre code, pre code.hljs {
+            background: var(--code-bg);
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+            line-height: 1.4;
+            display: block;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 3px 0;
+            font-size: 11px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 2px 6px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+        .homework-topics {
+            background: var(--latte);
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin: 6px 0;
+        }
+        .homework-topics h2 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+        }
+        .homework-topics ul {
+            columns: 2;
+            margin: 0;
+        }
+        .resources { margin-top: 8px; }
+        .resources ul { padding-left: 18px; }
+        .resources a {
+            color: var(--caramel);
+            text-decoration: none;
+            font-size: 11px;
+        }
+        .resources a:hover { text-decoration: underline; color: var(--amber); }
+
+        @media print {
+            @page { margin: 0.5in; }
+            body { font-size: 11px; padding: 0; }
+            code { font-size: 10px; }
+            pre code, pre code.hljs { font-size: 10px; }
+            table { font-size: 10px; }
+            h1 { font-size: 16px; margin-top: 0; }
+            h2 { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Week 7 Reference Sheet: Advanced List Operations</h1>
+    <p><strong>CSC-125-201 | Use this as a reference when completing Homework 7</strong></p>
+
+    <div class="homework-topics">
+        <h2>Homework Topics</h2>
+        <ul>
+            <li>Slicing with step parameter</li>
+            <li>Reversing lists</li>
+            <li>Sorting: .sort() vs sorted()</li>
+            <li>Membership: in / not in</li>
+            <li>.index() and .count()</li>
+            <li>.insert() and .extend()</li>
+            <li>Copying lists</li>
+            <li>split() and join()</li>
+            <li>Nested lists</li>
+            <li>Modify-in-place vs return value</li>
+        </ul>
+    </div>
+
+    <h2>Advanced Slicing</h2>
+    <p><code>list[start:end:step]</code> - step controls how many items to skip.</p>
+    <table>
+        <tr><th>Expression</th><th>Given <code>n = [0, 10, 20, 30, 40, 50]</code></th><th>Result</th></tr>
+        <tr><td><code>n[::2]</code></td><td>Every other item</td><td><code>[0, 20, 40]</code></td></tr>
+        <tr><td><code>n[::3]</code></td><td>Every third item</td><td><code>[0, 30]</code></td></tr>
+        <tr><td><code>n[1::2]</code></td><td>Every other, starting at 1</td><td><code>[10, 30, 50]</code></td></tr>
+        <tr><td><code>n[::-1]</code></td><td>Reversed copy</td><td><code>[50, 40, 30, 20, 10, 0]</code></td></tr>
+        <tr><td><code>n[4:1:-1]</code></td><td>Backward from index 4 to 2</td><td><code>[40, 30, 20]</code></td></tr>
+    </table>
+
+    <h2>Sorting</h2>
+    <p>Two approaches with different behavior.</p>
+    <table>
+        <tr><th>Method</th><th>Modifies original?</th><th>Returns</th><th>Example</th></tr>
+        <tr><td><code>.sort()</code></td><td>Yes</td><td><code>None</code></td><td><code>nums.sort()</code></td></tr>
+        <tr><td><code>sorted()</code></td><td>No</td><td>New sorted list</td><td><code>result = sorted(nums)</code></td></tr>
+        <tr><td><code>.sort(reverse=True)</code></td><td>Yes</td><td><code>None</code></td><td><code>nums.sort(reverse=True)</code></td></tr>
+        <tr><td><code>sorted(reverse=True)</code></td><td>No</td><td>New list (descending)</td><td><code>result = sorted(nums, reverse=True)</code></td></tr>
+    </table>
+    <p>Never write <code>x = list.sort()</code> - that stores <code>None</code>.</p>
+
+    <h2>Reversing</h2>
+    <table>
+        <tr><th>Method</th><th>Modifies original?</th><th>Returns</th></tr>
+        <tr><td><code>[::-1]</code></td><td>No</td><td>New reversed list</td></tr>
+        <tr><td><code>.reverse()</code></td><td>Yes</td><td><code>None</code></td></tr>
+    </table>
+
+    <h2>Membership Testing</h2>
+    <table>
+        <tr><th>Expression</th><th>Given <code>m = ["a", "b", "c"]</code></th><th>Result</th></tr>
+        <tr><td><code>"a" in m</code></td><td>Is "a" in the list?</td><td><code>True</code></td></tr>
+        <tr><td><code>"z" in m</code></td><td>Is "z" in the list?</td><td><code>False</code></td></tr>
+        <tr><td><code>"z" not in m</code></td><td>Is "z" absent?</td><td><code>True</code></td></tr>
+    </table>
+
+    <h2>Finding and Counting</h2>
+    <table>
+        <tr><th>Method</th><th>What it does</th><th>Example</th><th>Result</th></tr>
+        <tr><td><code>.index(x)</code></td><td>Position of first x</td><td><code>["a","b","a"].index("a")</code></td><td><code>0</code></td></tr>
+        <tr><td><code>.count(x)</code></td><td>How many times x appears</td><td><code>["a","b","a"].count("a")</code></td><td><code>2</code></td></tr>
+    </table>
+    <p>Check with <code>in</code> before <code>.index()</code> to avoid <code>ValueError</code>.</p>
+
+    <h2>Growing and Combining</h2>
+    <table>
+        <tr><th>Method</th><th>What it does</th><th>Example</th><th>Result</th></tr>
+        <tr><td><code>.insert(i, x)</code></td><td>Add x at index i</td><td><code>lst.insert(0, "z")</code></td><td><code>["z", "a", "b"]</code></td></tr>
+        <tr><td><code>.extend(list2)</code></td><td>Add all items from list2</td><td><code>[1,2].extend([3,4])</code></td><td><code>[1, 2, 3, 4]</code></td></tr>
+        <tr><td><code>list1 + list2</code></td><td>New combined list</td><td><code>[1,2] + [3,4]</code></td><td><code>[1, 2, 3, 4]</code></td></tr>
+    </table>
+    <p><code>.extend()</code> modifies in place. <code>+</code> creates a new list.</p>
+
+    <h2>Copying Lists</h2>
+    <p><code>copy = original</code> creates a reference, not a copy. Both names point to the same list.</p>
+    <pre><code class="language-python">safe = original.copy()   # Independent copy
+safe = original[:]        # Also independent
+safe = list(original)     # Also independent</code></pre>
+
+    <h2>String-List Conversion</h2>
+    <table>
+        <tr><th>Method</th><th>Direction</th><th>Example</th><th>Result</th></tr>
+        <tr><td><code>.split()</code></td><td>String to list</td><td><code>"a b c".split()</code></td><td><code>["a", "b", "c"]</code></td></tr>
+        <tr><td><code>.split(",")</code></td><td>String to list</td><td><code>"a,b,c".split(",")</code></td><td><code>["a", "b", "c"]</code></td></tr>
+        <tr><td><code>" ".join(lst)</code></td><td>List to string</td><td><code>" ".join(["a","b"])</code></td><td><code>"a b"</code></td></tr>
+        <tr><td><code>",".join(lst)</code></td><td>List to string</td><td><code>",".join(["a","b"])</code></td><td><code>"a,b"</code></td></tr>
+    </table>
+    <p><code>.join()</code> requires all items to be strings. Convert numbers with <code>str()</code> first.</p>
+
+    <h2>Nested Lists</h2>
+    <p>Lists inside lists. Use double indexing: <code>grid[row][col]</code>.</p>
+    <pre><code class="language-python">grid = [[1, 2], [3, 4], [5, 6]]
+row = grid[0]       # [1, 2]
+item = grid[0][1]   # 2</code></pre>
+
+    <h2>Modify vs Return Summary</h2>
+    <table>
+        <tr><th>Modifies list (returns None)</th><th>Returns a value (list unchanged)</th></tr>
+        <tr><td><code>.append(x)</code>, <code>.insert(i, x)</code>, <code>.extend(lst)</code></td><td><code>len(lst)</code>, <code>sum(lst)</code>, <code>max(lst)</code>, <code>min(lst)</code></td></tr>
+        <tr><td><code>.remove(x)</code>, <code>.pop()</code>, <code>.clear()</code></td><td><code>sorted(lst)</code>, <code>.copy()</code></td></tr>
+        <tr><td><code>.sort()</code>, <code>.reverse()</code></td><td><code>.index(x)</code>, <code>.count(x)</code></td></tr>
+    </table>
+
+    <h2>Common Errors</h2>
+    <table>
+        <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+        <tr><td><code>None</code> instead of list</td><td><code>x = lst.sort()</code></td><td>Use <code>x = sorted(lst)</code></td></tr>
+        <tr><td><code>ValueError</code></td><td><code>.index()</code> on missing item</td><td>Check with <code>in</code> first</td></tr>
+        <tr><td><code>TypeError</code></td><td><code>.join()</code> on non-strings</td><td>Convert items with <code>str()</code></td></tr>
+        <tr><td>Unintended shared changes</td><td><code>copy = original</code></td><td>Use <code>.copy()</code> or <code>[:]</code></td></tr>
+        <tr><td>Nested list via append</td><td><code>lst.append([1,2])</code></td><td>Use <code>.extend([1,2])</code></td></tr>
+    </table>
+
+    <div class="resources">
+        <h2>Resources</h2>
+        <ul>
+            <li><a href="https://www.w3schools.com/python/python_lists_methods.asp" target="_blank">W3Schools - Python List Methods</a></li>
+            <li><a href="https://www.learnpython.org/en/Lists" target="_blank">LearnPython.org - Interactive List Tutorial</a></li>
+            <li><a href="https://realpython.com/python-split-join/" target="_blank">Real Python - Split, Concatenate, and Join Strings</a></li>
+        </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body>
+</html>

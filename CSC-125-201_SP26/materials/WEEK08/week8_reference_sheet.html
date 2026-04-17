@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 8 Reference Sheet: For Loops</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            line-height: 1.3;
+            color: var(--espresso);
+            font-size: 12px;
+            background: var(--warm-white);
+        }
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--espresso);
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 4px;
+            margin: 8px 0 4px 0;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--dark-roast);
+            margin: 10px 0 3px 0;
+            border-left: 3px solid var(--caramel);
+            padding-left: 10px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        p { margin: 3px 0; }
+        ul { margin: 2px 0; padding-left: 18px; }
+        li { margin-bottom: 1px; }
+        li::marker { color: var(--caramel); }
+        strong { color: var(--rust); font-weight: 600; }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 0px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+            color: var(--dark-roast);
+        }
+        pre {
+            margin: 3px 0;
+            border-radius: 5px;
+            border-left: 3px solid var(--caramel);
+            overflow-x: auto;
+        }
+        pre code, pre code.hljs {
+            background: var(--code-bg);
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+            line-height: 1.4;
+            display: block;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 3px 0;
+            font-size: 11px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 2px 6px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+        .homework-topics {
+            background: var(--latte);
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin: 6px 0;
+        }
+        .homework-topics h2 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+        }
+        .homework-topics ul {
+            columns: 2;
+            margin: 0;
+        }
+        .resources { margin-top: 8px; }
+        .resources ul { padding-left: 18px; }
+        .resources a {
+            color: var(--caramel);
+            text-decoration: none;
+            font-size: 11px;
+        }
+        .resources a:hover { text-decoration: underline; color: var(--amber); }
+
+        @media print {
+            @page { margin: 0.5in; }
+            body { font-size: 11px; padding: 0; }
+            code { font-size: 10px; }
+            pre code, pre code.hljs { font-size: 10px; }
+            table { font-size: 10px; }
+            h1 { font-size: 16px; margin-top: 0; }
+            h2 { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Week 8 Reference Sheet: For Loops</h1>
+    <p><strong>CSC-125-201 | Use this as a reference when completing Homework 8</strong></p>
+
+    <div class="homework-topics">
+        <h2>Homework Topics</h2>
+        <ul>
+            <li>Basic for loop syntax</li>
+            <li>Iterating through lists</li>
+            <li>Building new lists in loops</li>
+            <li>The range() function (3 forms)</li>
+            <li>Index-based loops with range(len())</li>
+            <li>Looping through strings</li>
+            <li>Accumulating totals</li>
+            <li>Counting and filtering</li>
+            <li>Parallel list processing</li>
+            <li>Nested loops</li>
+        </ul>
+    </div>
+
+    <h2>Basic For Loop</h2>
+    <p>Repeats code once for each item in a sequence. Uses colon and indentation.</p>
+    <pre><code class="language-python">for item in sequence:
+    # runs once per item
+# code here runs after loop finishes</code></pre>
+
+    <h2>The range() Function</h2>
+    <table>
+        <tr><th>Form</th><th>Produces</th><th>Example</th><th>Output</th></tr>
+        <tr><td><code>range(stop)</code></td><td>0 to stop - 1</td><td><code>range(5)</code></td><td>0, 1, 2, 3, 4</td></tr>
+        <tr><td><code>range(start, stop)</code></td><td>start to stop - 1</td><td><code>range(1, 6)</code></td><td>1, 2, 3, 4, 5</td></tr>
+        <tr><td><code>range(start, stop, step)</code></td><td>start to stop - 1 by step</td><td><code>range(0, 10, 2)</code></td><td>0, 2, 4, 6, 8</td></tr>
+        <tr><td><code>range(start, stop, step)</code></td><td>Negative step counts down</td><td><code>range(5, 0, -1)</code></td><td>5, 4, 3, 2, 1</td></tr>
+    </table>
+    <p>Stops <strong>before</strong> the stop number. To include 5, use <code>range(1, 6)</code>.</p>
+
+    <h2>Direct Iteration vs Index-Based</h2>
+    <table>
+        <tr><th>Approach</th><th>When to use</th><th>Syntax</th></tr>
+        <tr><td>Direct</td><td>You just need each value</td><td><code>for item in my_list:</code></td></tr>
+        <tr><td>Index-based</td><td>Need position, modification, or parallel lists</td><td><code>for i in range(len(my_list)):</code></td></tr>
+    </table>
+
+    <h2>Common Loop Patterns</h2>
+
+    <pre><code class="language-python"># Accumulate a total
+total = 0
+for price in prices:
+    total = total + price
+
+# Count matches
+count = 0
+for score in scores:
+    if score >= 90:
+        count = count + 1
+
+# Filter into a new list
+result = []
+for num in numbers:
+    if num > 10:
+        result.append(num)
+
+# Build a transformed list
+doubled = []
+for num in numbers:
+    doubled.append(num * 2)</code></pre>
+
+    <h2>Finding Max/Min with Position</h2>
+    <pre><code class="language-python">best = scores[0]
+best_index = 0
+for i in range(len(scores)):
+    if scores[i] > best:
+        best = scores[i]
+        best_index = i</code></pre>
+
+    <h2>Parallel Lists</h2>
+    <p>Two lists share the same indexes, so <code>names[i]</code> and <code>scores[i]</code> refer to the same person.</p>
+    <pre><code class="language-python">names = ["Alice", "Bob"]
+scores = [85, 92]
+for i in range(len(names)):
+    print(f"{names[i]}: {scores[i]}")</code></pre>
+
+    <h2>String Iteration</h2>
+    <pre><code class="language-python"># Count vowels
+count = 0
+for char in text:
+    if char.lower() in "aeiou":
+        count = count + 1
+
+# Build new string (filter characters)
+result = ""
+for char in text:
+    if char.isalpha():
+        result = result + char</code></pre>
+
+    <h2>Nested Loops</h2>
+    <p>Inner loop runs fully for each outer iteration. 3 outer x 4 inner = 12 runs.</p>
+    <pre><code class="language-python">for row in range(3):
+    for col in range(4):
+        print(f"({row},{col})", end=" ")
+    print()  # new line after each row</code></pre>
+
+    <h2>Common Errors</h2>
+    <table>
+        <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+        <tr><td><code>IndentationError</code></td><td>Loop body not indented</td><td>Indent 4 spaces after <code>for</code></td></tr>
+        <tr><td>Off-by-one</td><td><code>range(1, 5)</code> excludes 5</td><td>Use <code>range(1, 6)</code> to include 5</td></tr>
+        <tr><td>Skipped items</td><td>Modifying list while looping</td><td>Build a new list instead</td></tr>
+        <tr><td>Wrong print placement</td><td>Print inside loop instead of after</td><td>Check indentation level</td></tr>
+        <tr><td><code>IndexError</code></td><td><code>range(len(list) + 1)</code></td><td>Use <code>range(len(list))</code></td></tr>
+    </table>
+
+    <div class="resources">
+        <h2>Resources</h2>
+        <ul>
+            <li><a href="https://www.w3schools.com/python/python_for_loops.asp" target="_blank">W3Schools - Python For Loops</a></li>
+            <li><a href="https://www.learnpython.org/en/Loops" target="_blank">LearnPython.org - Interactive Loop Tutorial</a></li>
+            <li><a href="https://realpython.com/python-for-loop/" target="_blank">Real Python - For Loops Guide</a></li>
+            <li><a href="https://www.w3schools.com/python/ref_func_range.asp" target="_blank">W3Schools - range() Function</a></li>
+        </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body>
+</html>

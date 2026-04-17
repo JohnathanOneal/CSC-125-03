@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSC-125-201 Midterm Practice Exam</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px;
+            line-height: 1.3;
+            color: #333;
+            font-size: 13px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 6px;
+            text-align: center;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 15px;
+            border-left: 3px solid #3498db;
+            padding-left: 10px;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .exam-header {
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border: 1px solid #dee2e6;
+            font-size: 12px;
+        }
+        .exam-header ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+        .exam-header li {
+            margin: 2px 0;
+        }
+        .coverage {
+            background: #e7f3ff;
+            border: 1px solid #2196f3;
+            padding: 6px;
+            margin: 10px 0;
+            border-radius: 3px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 13px;
+        }
+        .question {
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px solid #e9ecef;
+            border-radius: 3px;
+            background: #ffffff;
+            page-break-inside: avoid;
+        }
+        .question strong {
+            font-size: 13px;
+        }
+        .options {
+            margin: 5px 0 5px 20px;
+        }
+        .options div {
+            margin: 3px 0;
+            font-size: 12px;
+        }
+        .code-block {
+            background: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 3px;
+            padding: 8px;
+            margin: 5px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 11px;
+            white-space: pre;
+        }
+        .answer-space {
+            border-bottom: 1px solid #333;
+            display: inline-block;
+            min-width: 150px;
+            margin: 0 5px;
+        }
+        .task-description {
+            margin: 5px 0;
+            padding: 5px;
+            background: #f8f9fa;
+            border-left: 3px solid #28a745;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .code-space {
+            margin: 8px 0;
+            padding: 0;
+            border: 1px solid #dee2e6;
+            border-radius: 3px;
+            background: #ffffff;
+            position: relative;
+        }
+        .code-space::before {
+            content: "Write your code here:";
+            display: block;
+            padding: 4px 8px;
+            background: #e9ecef;
+            font-size: 11px;
+            font-weight: bold;
+            color: #495057;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .code-space-sm::after { content: ""; display: block; height: 80px; }
+        .code-space-md::after { content: ""; display: block; height: 130px; }
+        .code-space-lg::after { content: ""; display: block; height: 200px; }
+        .hint {
+            font-size: 11px;
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 3px;
+        }
+        @media print {
+            .question { page-break-inside: avoid; }
+            body { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSC-125-201 Python Programming<br>Midterm Practice Exam</h1>
+
+    <div class="coverage">
+        Covers Weeks 1-8: Variables, Data Types, Strings, Operators, Conditionals, Lists, Tuples, and For Loops
+    </div>
+
+    <div class="exam-header">
+        <p><strong>Name:</strong> _________________________ <strong>Date:</strong> _____________</p>
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li>This practice exam matches the format of the actual midterm</li>
+            <li>This exam contains 31 questions across 6 sections</li>
+            <li>You have 50 minutes to complete the exam</li>
+            <li>No computers, phones, or notes allowed</li>
+            <li>Show all work where applicable</li>
+        </ul>
+    </div>
+
+    <div style="page-break-before: always;"></div>
+
+    <!-- ============================================================ -->
+    <h2>Part 1: Multiple Choice (16 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Circle the correct answer. Each question is worth 2 points.</p>
+
+    <div class="question">
+        <strong>1. What data type is the value <code>True</code>?</strong>
+        <div class="options">
+            <div>a) integer</div>
+            <div>b) string</div>
+            <div>c) float</div>
+            <div>d) boolean</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>2. Which of the following is NOT a valid Python variable name?</strong>
+        <div class="options">
+            <div>a) my_var</div>
+            <div>b) _count</div>
+            <div>c) class</div>
+            <div>d) x1</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>3. What does <code>"Python Programming"[7:]</code> return?</strong>
+        <div class="options">
+            <div>a) "Program"</div>
+            <div>b) "Programming"</div>
+            <div>c) "rogramming"</div>
+            <div>d) Error</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>4. What is the result of <code>20 % 6</code>?</strong>
+        <div class="options">
+            <div>a) 3</div>
+            <div>b) 2</div>
+            <div>c) 3.33</div>
+            <div>d) 14</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>5. What does <code>input()</code> always return?</strong>
+        <div class="options">
+            <div>a) integer</div>
+            <div>b) float</div>
+            <div>c) string</div>
+            <div>d) depends on what the user types</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>6. Given <code>nums = [5, 10, 15, 20]</code>, what does <code>nums[-2]</code> return?</strong>
+        <div class="options">
+            <div>a) 10</div>
+            <div>b) 15</div>
+            <div>c) 20</div>
+            <div>d) -2</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>7. What does the <code>.append()</code> method return?</strong>
+        <div class="options">
+            <div>a) the updated list</div>
+            <div>b) None</div>
+            <div>c) the new length of the list</div>
+            <div>d) Error</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>8. What values does <code>range(0, 8, 2)</code> produce?</strong>
+        <div class="options">
+            <div>a) 0, 2, 4, 6</div>
+            <div>b) 0, 2, 4, 6, 8</div>
+            <div>c) 2, 4, 6, 8</div>
+            <div>d) 0, 1, 2, 3</div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Part 2: Fill in the Code (12 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Write the missing code on each blank line. Each question is worth 2 points.</p>
+
+    <div class="question">
+        <strong>9. Convert a string to an integer so the addition works:</strong>
+        <div class="code-block">age_text = "30"
+age = <span class="answer-space"></span>(age_text)
+next_year = age + 1</div>
+    </div>
+
+    <div class="question">
+        <strong>10. Make the string all uppercase:</strong>
+        <div class="code-block">message = "hello world"
+loud = message.<span class="answer-space"></span>()</div>
+    </div>
+
+    <div class="question">
+        <strong>11. Remove the last item from the list:</strong>
+        <div class="code-block">items = ["pen", "paper", "eraser"]
+items.<span class="answer-space"></span>()</div>
+    </div>
+
+    <div class="question">
+        <strong>12. Get items at index 1 and 2 from the list using slicing:</strong>
+        <div class="code-block">data = [10, 20, 30, 40, 50]
+middle = data[<span class="answer-space"></span>:<span class="answer-space"></span>]</div>
+    </div>
+
+    <div class="question">
+        <strong>13. Fill in the blanks so this loop counts from 5 down to 1:</strong>
+        <div class="code-block">for i in range(<span class="answer-space"></span>, <span class="answer-space"></span>, <span class="answer-space"></span>):
+    print(i)</div>
+    </div>
+
+    <div class="question">
+        <strong>14. Convert the user input to a float:</strong>
+        <div class="code-block">height = <span class="answer-space"></span>(input("Enter height: "))</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Part 3: Fix the Errors (12 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Each code block has exactly one error. Cross out the error and write the fix. Each question is worth 2 points.</p>
+
+    <div class="question">
+        <strong>15. Fix this code (Logic error - wrong type):</strong>
+        <p style="font-size: 11px; color: #6c757d; margin: 2px 0;">This should print 180, but it prints "9090" instead.</p>
+        <div class="code-block">score = "90"
+doubled = score * 2
+print(doubled)</div>
+    </div>
+
+    <div class="question">
+        <strong>16. Fix this code (SyntaxError - missing punctuation):</strong>
+        <div class="code-block">for num in numbers
+    print(num)</div>
+    </div>
+
+    <div class="question">
+        <strong>17. Fix this code (SyntaxError - string issue):</strong>
+        <div class="code-block">name = 'It's a test'
+print(name)</div>
+    </div>
+
+    <div class="question">
+        <strong>18. Fix this code (IndexError):</strong>
+        <div class="code-block">letters = ["a", "b", "c"]
+print(letters[3])</div>
+    </div>
+
+    <div class="question">
+        <strong>19. Fix this code (IndentationError):</strong>
+        <div class="code-block">if temperature > 100:
+print("Too hot")</div>
+    </div>
+
+    <div class="question">
+        <strong>20. Fix this code (Logic error - wrong result):</strong>
+        <p style="font-size: 11px; color: #6c757d; margin: 2px 0;">This should store the sorted version of numbers, but sorted_list ends up as None.</p>
+        <div class="code-block">numbers = [5, 2, 8, 1]
+sorted_list = numbers.sort()
+print(sorted_list)</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <div style="page-break-before: always;"></div>
+    <h2>Part 4: Code Reading and Output Prediction (18 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Write exactly what each code block will print. Each question is worth 3 points.</p>
+
+    <div class="question">
+        <strong>21. What does this code print?</strong>
+        <div class="code-block">total = 0
+for n in [3, 6, 9]:
+    total = total + n
+print(total)</div>
+        <p style="margin-top: 5px;">Output: <span class="answer-space"></span></p>
+    </div>
+
+    <div class="question">
+        <strong>22. What does this code print?</strong>
+        <div class="code-block">score = 85
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+else:
+    grade = "F"
+print(grade)</div>
+        <p style="margin-top: 5px;">Output: <span class="answer-space"></span></p>
+    </div>
+
+    <div class="question">
+        <strong>23. What does this code print?</strong>
+        <div class="code-block">word = "Coding"
+print(word[1:4])</div>
+        <p style="margin-top: 5px;">Output: <span class="answer-space"></span></p>
+    </div>
+
+    <div class="question">
+        <strong>24. What does this code print?</strong>
+        <div class="code-block">data = [1, 2, 3]
+data.append(4)
+data.remove(2)
+print(data)
+print(len(data))</div>
+        <p style="margin-top: 5px;">Output line 1: <span class="answer-space" style="min-width: 250px;"></span></p>
+        <p>Output line 2: <span class="answer-space"></span></p>
+    </div>
+
+    <div class="question">
+        <strong>25. What does this code print?</strong>
+        <div class="code-block">a = True
+b = False
+if a and b:
+    print("Both")
+elif a or b:
+    print("One")
+else:
+    print("None")</div>
+        <p style="margin-top: 5px;">Output: <span class="answer-space"></span></p>
+    </div>
+
+    <div class="question">
+        <strong>26. What does this code print?</strong>
+        <div class="code-block">result = 1
+for i in range(4):
+    result = result * 2
+print(result)</div>
+        <p style="margin-top: 5px;">Output: <span class="answer-space"></span></p>
+    </div>
+
+    <!-- ============================================================ -->
+    <div style="page-break-before: always;"></div>
+    <h2>Part 5: Short Code Writing (15 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Write 3-5 lines of Python code to solve each problem. Each question is worth 5 points.</p>
+
+    <div class="question">
+        <strong>27. Write a for loop that goes through the list of scores and builds a new list containing only scores of 80 or above. Print the new list.</strong>
+        <div class="code-block">scores = [72, 85, 68, 91, 77, 80]</div>
+        <div class="code-space code-space-sm"></div>
+        <div class="hint">Expected result: [85, 91, 80]</div>
+    </div>
+
+    <div class="question">
+        <strong>28. Write an if-elif-else chain that prints the age category based on the age variable. Under 13 prints "Child". 13 to 17 prints "Teen". 18 or older prints "Adult".</strong>
+        <div class="code-block">age = 16</div>
+        <div class="code-space code-space-sm"></div>
+        <div class="hint">Expected result: Teen</div>
+    </div>
+
+    <div class="question">
+        <strong>29. Write a for loop using <code>range(len())</code> that prints each city paired with its population from the two lists.</strong>
+        <div class="code-block">cities = ["Boston", "Miami"]
+pops = [700000, 450000]</div>
+        <div class="code-space code-space-sm"></div>
+        <div class="hint">Expected: Boston: 700000 / Miami: 450000 (one per line)</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Part 6: Write Complete Programs (27 points)</h2>
+    <p style="font-size: 12px; margin: 3px 0;">Write complete Python programs. Show all code.</p>
+
+    <div class="question">
+        <strong>30. BMI Calculator (12 points)</strong>
+        <div class="task-description">
+            Write a program that calculates BMI (Body Mass Index). Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Ask the user to enter their weight in pounds</li>
+                <li>Ask the user to enter their height in inches</li>
+                <li>Calculate BMI using the formula: (weight / height**2) * 703</li>
+                <li>Print the BMI formatted to 1 decimal place</li>
+                <li>If BMI is less than 25, print "Healthy range". Otherwise, print "Above healthy range".</li>
+            </ul>
+            <div class="hint">Hint: Convert inputs with float(). Use ** for exponents.</div>
+        </div>
+        <div class="code-space code-space-lg"></div>
+    </div>
+
+    <div class="question">
+        <strong>31. Expense Report (15 points)</strong>
+        <div class="task-description">
+            Write a program that analyzes a list of expenses. Your program should:
+            <ul style="margin: 3px 0; padding-left: 20px; font-size: 11px;">
+                <li>Start with the list: <code>expenses = [12.50, 45.00, 8.75, 67.30, 23.99]</code></li>
+                <li>Use a for loop to calculate the total of all expenses</li>
+                <li>Calculate the average expense (total divided by number of expenses)</li>
+                <li>Use a for loop to count how many expenses are over $20</li>
+                <li>Print the total (2 decimal places), average (2 decimal places), and count of expenses over $20</li>
+            </ul>
+            <div class="hint">Hint: Start with total = 0 and count = 0 before the loop(s).</div>
+        </div>
+        <div class="code-space code-space-lg"></div>
+    </div>
+
+</body>
+</html>

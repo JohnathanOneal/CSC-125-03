@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 9: While Loops &amp; Advanced Debugging</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --sage: #7d8c6e;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --code-border: #c08b5c;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--latte);
+            color: var(--espresso);
+        }
+
+        .slide {
+            width: 960px;
+            height: 540px;
+            margin: 24px auto;
+            padding: 44px 52px;
+            background: var(--warm-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 16px rgba(60, 42, 26, 0.1), 0 1px 4px rgba(60, 42, 26, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            border: 1px solid rgba(192, 139, 92, 0.15);
+        }
+        .slide.center { align-items: center; text-align: center; }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--caramel), var(--amber), var(--toffee));
+            border-radius: 8px 8px 0 0;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 2.2em;
+            color: var(--espresso);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.55em;
+            color: var(--dark-roast);
+            margin-bottom: 14px;
+            font-weight: 400;
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+        .two-col h2 {
+            font-size: 1.3em;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 8px;
+        }
+        h3 {
+            font-size: 1em;
+            color: var(--medium-roast);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 0.88em;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: var(--espresso);
+        }
+        ul {
+            font-size: 0.86em;
+            line-height: 1.55;
+            margin-left: 22px;
+            margin-bottom: 10px;
+            color: #4a3728;
+        }
+        li { margin-bottom: 3px; }
+        li::marker { color: var(--caramel); }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.78em;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 6px 0;
+            border-left: 3px solid var(--code-border);
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        pre code.hljs {
+            background: var(--code-bg);
+            padding: 0;
+            border-radius: 6px;
+        }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        .ic {
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            font-size: 0.88em;
+            color: var(--dark-roast);
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 0.82em;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 6px 14px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+
+        .subtitle {
+            font-size: 1.05em;
+            color: var(--medium-roast);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .two-col { display: flex; gap: 32px; }
+        .two-col > div { flex: 1; }
+        .section-label {
+            font-size: 0.65em;
+            color: var(--toffee);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .slide-num {
+            position: absolute;
+            bottom: 12px;
+            right: 18px;
+            font-size: 0.6em;
+            color: var(--table-border);
+            font-weight: 500;
+        }
+        .img-placeholder {
+            background: var(--latte);
+            border: 2px dashed var(--caramel);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            color: var(--toffee);
+            font-size: 0.75em;
+            font-style: italic;
+            margin: 8px 0;
+        }
+        .slide img {
+            max-width: 100%;
+            flex: 1 1 0;
+            min-height: 0;
+            object-fit: contain;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        strong { color: var(--rust); font-weight: 600; }
+        em { color: var(--sage); }
+
+        .slide.title-slide {
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 50%, var(--latte) 100%);
+        }
+        .slide.title-slide::before {
+            height: 6px;
+        }
+        .slide.title-slide h1 {
+            font-size: 2.6em;
+            margin-bottom: 12px;
+        }
+
+        body.presenting { background: var(--espresso); overflow: hidden; }
+        body.presenting .slide {
+            display: none;
+            width: 960px;
+            height: 540px;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            padding: 44px 52px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+        }
+        body.presenting .slide.active { display: flex; }
+        body.presenting .controls { display: none; }
+
+        .controls {
+            text-align: center;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            background: var(--cream);
+            z-index: 10;
+            border-bottom: 1px solid var(--table-border);
+            font-size: 0.8em;
+            color: var(--medium-roast);
+        }
+        .controls button {
+            background: var(--caramel);
+            color: var(--warm-white);
+            border: none;
+            padding: 5px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-left: 8px;
+            transition: background 0.2s;
+        }
+        .controls button:hover { background: var(--amber); }
+
+        @media print {
+            @page { size: landscape; margin: 0; }
+            body { background: white; margin: 0; padding: 0; }
+            .controls { display: none; }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                width: 100%;
+                height: 100vh;
+                padding: 44px 52px;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .slide::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    Scroll to browse &middot;
+    <button onclick="enterPresentation()">Present (F5)</button>
+    <button onclick="window.print()">Print / PDF</button>
+</div>
+
+<!-- SLIDE 1 -->
+<div class="slide center title-slide">
+    <img src="../images/title_banner.png" alt="Week 9 title banner">
+    <h1>Week 9: While Loops &amp; Advanced Debugging</h1>
+    <p class="subtitle">CSC-125-201 &middot; Spring 2026</p>
+    <div class="slide-num">1</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+    <h2>Agenda</h2>
+    <table>
+        <tr><th>#</th><th>Section</th></tr>
+        <tr><td>1</td><td>Forum Overview</td></tr>
+        <tr><td>2</td><td>Week 8 Review</td></tr>
+        <tr><td>3</td><td>Lecture Slides</td></tr>
+        <tr><td>-</td><td>Break</td></tr>
+        <tr><td>4</td><td>Code Lecture</td></tr>
+    </table>
+    <div class="slide-num">2</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+    <div class="section-label">Section 2</div>
+    <h2>Week 8 Review</h2>
+    <ul>
+        <li>Last week: <strong>for loops</strong> automate repetitive tasks by processing each item in a sequence</li>
+        <li><span class="ic">for item in list:</span> visits each item one at a time, like a conveyor belt</li>
+        <li><span class="ic">range()</span> generates numbers: <span class="ic">range(5)</span> gives 0-4, <span class="ic">range(1, 6)</span> gives 1-5</li>
+        <li><span class="ic">range(len(list))</span> provides indices when you need positions or in-place changes</li>
+        <li>Common patterns: accumulate totals, count matches, filter into new lists, nested loops</li>
+    </ul>
+    <p>This week: what happens when you <strong>don't know in advance</strong> how many times to repeat?</p>
+    <div class="slide-num">3</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>The Waiting Problem</h2>
+    <p>A <strong>for loop</strong> is like a to-do list with a fixed number of items. You know exactly how many times you will repeat. But some situations do not have a known count.</p>
+    <ul>
+        <li>Waiting for water to boil: you check every minute, but you do not know how many minutes it will take</li>
+        <li>Asking a user for a password: they might get it right on the first try, or the fifth</li>
+        <li>Searching for a parking spot: you drive around until one opens up</li>
+    </ul>
+    <p>In all of these, you repeat <strong>until a condition changes</strong>, not for a fixed number of times. This is the problem a <strong>while loop</strong> solves.</p>
+    <div class="slide-num">4</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>How a while Loop Works</h2>
+    <p>A while loop checks a condition <strong>before</strong> each repetition. If the condition is True, the body runs. Then it checks again. When the condition becomes False, the loop stops.</p>
+    <img src="images/while_loop_flow.svg" alt="Flow diagram: start, check condition, if True run body and loop back, if False continue to code after loop">
+    <p><strong>Common misconception:</strong> the condition is <strong>not</strong> checked continuously while the body runs. Think of a gatekeeper who checks your ticket at the door. Once you are inside, the gatekeeper does not follow you around. They only check again when you come back to the entrance.</p>
+    <div class="slide-num">5</div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>For Loops vs While Loops</h2>
+    <p>Both repeat code, but they answer different questions.</p>
+    <div class="two-col">
+        <div>
+            <h2>for loop</h2>
+            <ul>
+                <li>"Do this for <strong>each item</strong>"</li>
+                <li>You know the count or have a sequence</li>
+                <li>Automatically moves to the next item</li>
+                <li>Cannot accidentally run forever</li>
+            </ul>
+        </div>
+        <div>
+            <h2>while loop</h2>
+            <ul>
+                <li>"<strong>Keep going while</strong> this is true"</li>
+                <li>You do not know how many times</li>
+                <li>You must update the condition yourself</li>
+                <li>Can run forever if condition never changes</li>
+            </ul>
+        </div>
+    </div>
+    <p><strong>Tricky phrasing:</strong> students often think "stop when X" and write <span class="ic">while X</span>. But the condition describes when to <strong>keep going</strong>, not when to stop. "Stop when count reaches 5" becomes <span class="ic">while count < 5</span>.</p>
+    <div class="slide-num">6</div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>The Infinite Loop Trap</h2>
+    <p>Imagine a thermostat set to turn off the heater when the room reaches 72 degrees. But the thermometer is broken and always reads 65. The heater <strong>never turns off</strong>. That is an infinite loop.</p>
+    <ul>
+        <li>The condition <strong>never becomes False</strong> because nothing inside the loop changes it</li>
+        <li>The program freezes, printing forever or doing nothing visible</li>
+        <li>Fix: <strong>always make sure something inside the loop moves toward making the condition False</strong></li>
+    </ul>
+    <pre><code class="language-python">count = 1
+while count <= 5:
+    print(count)
+    count = count + 1  # This line prevents an infinite loop</code></pre>
+    <div class="slide-num">7</div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>break: The Emergency Exit</h2>
+    <p>Sometimes a loop needs to stop before the condition naturally becomes False. <span class="ic">break</span> is the emergency exit: it ends the loop immediately, no matter what the condition says.</p>
+    <ul>
+        <li>Searching a list: once you find what you need, there is no reason to keep looking</li>
+        <li>User types "quit": stop the loop right away without finishing the current iteration</li>
+        <li>After a break, Python jumps to the first line <strong>after</strong> the loop</li>
+    </ul>
+    <p>Think of pulling the fire alarm in a building. Everyone exits immediately. You do not wait for the end of the workday.</p>
+    <div class="slide-num">8</div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>continue: Skip This Lap</h2>
+    <p>Where <span class="ic">break</span> ends the whole loop, <span class="ic">continue</span> skips just the rest of the <strong>current</strong> iteration and jumps back to the condition check.</p>
+    <img src="images/break_continue_flow.svg" alt="Flow diagram showing break exiting the loop entirely and continue jumping back to the condition check">
+    <p>Think of running laps on a track. You trip and decide to skip the rest of this lap, but you do not leave the track. You walk back to the start line and run the next lap normally.</p>
+    <div class="slide-num">9</div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide">
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>Input Validation: The Gatekeeper</h2>
+    <p>Think of a bouncer at a venue checking IDs. If your ID is not valid, you go back to the end of the line and try again. You only get in once you show a valid one.</p>
+    <ul>
+        <li>Ask the user for input</li>
+        <li>Check if the input meets your requirements</li>
+        <li>If it does not, tell them what is wrong and ask again</li>
+        <li>Only proceed once the input is acceptable</li>
+    </ul>
+    <p>This is one of the most practical uses of a while loop. You cannot know in advance how many bad attempts the user will make, so a for loop would not work here.</p>
+    <div class="slide-num">10</div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide">
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>When Code Goes Wrong</h2>
+    <p>Every programmer makes mistakes. Python helps by giving you <strong>error messages</strong>. They look intimidating, but they follow a consistent format. Read from the <strong>bottom up</strong>.</p>
+    <img src="images/traceback_anatomy.svg" alt="Annotated Python error message showing the file/line, the broken code, and the error type with description. Reading order: 1. error type, 2. file and line, 3. the code">
+    <p>Three categories: <strong>syntax errors</strong> (Python cannot parse the instruction), <strong>runtime errors</strong> (code made sense but failed during execution), and <strong>logic errors</strong> (no crash, but wrong answer).</p>
+    <div class="slide-num">11</div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide">
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>try/except: The Safety Net</h2>
+    <p>Some errors are predictable. A user might type "abc" when you need a number, or divide by zero. Instead of letting the program crash, you can <strong>catch</strong> the error and handle it gracefully.</p>
+    <ul>
+        <li>Think of a trapeze artist with a safety net. They still perform, but if they fall, they land safely instead of hitting the ground.</li>
+        <li><span class="ic">try</span> wraps the code that <strong>might</strong> fail</li>
+        <li><span class="ic">except</span> says what to do <strong>if</strong> it fails</li>
+        <li>If nothing goes wrong, the except block is skipped entirely</li>
+    </ul>
+    <p>This is especially powerful combined with while loops: catch the error, tell the user, and loop back to ask again.</p>
+    <div class="slide-num">12</div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide">
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>Debugging as a Process</h2>
+    <p>Most beginners debug by randomly changing things until the error goes away. That rarely works. Instead, follow a <strong>systematic process</strong>, like a doctor diagnosing a patient.</p>
+    <ul>
+        <li><strong>Step 1: Reproduce.</strong> Can you make the bug happen again? What input triggers it?</li>
+        <li><strong>Step 2: Read.</strong> Read the traceback bottom-up. What error type? What line?</li>
+        <li><strong>Step 3: Hypothesize.</strong> Based on the error and the line, what do you think went wrong?</li>
+        <li><strong>Step 4: Test.</strong> Add a <span class="ic">print()</span> before that line to check variable values. Is the variable what you expected?</li>
+        <li><strong>Step 5: Fix and verify.</strong> Make one small change, then run the code again to confirm.</li>
+    </ul>
+    <p>The key habit: <strong>compare what you expect to what actually happens.</strong> The gap between those two is the bug.</p>
+    <div class="slide-num">13</div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide">
+    <h2>Summary</h2>
+    <ul>
+        <li><span class="ic">while condition:</span> repeats as long as the condition is True</li>
+        <li>Use <span class="ic">for</span> when you have a sequence or known count. Use <span class="ic">while</span> when you are waiting for a condition to change.</li>
+        <li>Always make sure something inside the loop moves toward ending it. Otherwise: <strong>infinite loop</strong>.</li>
+        <li><span class="ic">break</span> exits the loop immediately. <span class="ic">continue</span> skips to the next iteration.</li>
+        <li><strong>Input validation:</strong> use a while loop to keep asking until you get valid input</li>
+        <li>Read tracebacks <strong>bottom up</strong>: error type first, then file/line, then the code</li>
+        <li><span class="ic">try</span>/<span class="ic">except</span> catches predictable errors instead of crashing</li>
+        <li>Debug logic errors systematically: reproduce, read, hypothesize, test with print statements, fix</li>
+    </ul>
+    <div class="slide-num">14</div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide center">
+    <h2>Homework 9</h2>
+    <p>Available on Moodle, due Monday 11:59 PM.</p>
+    <p>This week: practice <strong>while loops</strong>, <strong>input validation</strong>, and <strong>try/except</strong>.</p>
+    <p>Reference sheet posted on Moodle to help with the assignment.</p>
+    <p style="margin-top: 12px;"><strong>Forum Discussion (Optional)</strong> - this week's forum is optional. Use it to ask questions about the upcoming midterm.</p>
+    <p><strong>Next week (Week 10):</strong> Midterm + Project Planning - In-Person</p>
+    <div class="slide-num">15</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let presenting = false;
+
+    function updateScale() {
+        const scaleX = window.innerWidth / 960;
+        const scaleY = window.innerHeight / 540;
+        const scale = Math.min(scaleX, scaleY);
+        slides.forEach(s => {
+            s.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        });
+    }
+
+    function enterPresentation() {
+        presenting = true;
+        document.body.classList.add('presenting');
+        slides[current].classList.add('active');
+        updateScale();
+        document.documentElement.requestFullscreen?.();
+    }
+
+    function exitPresentation() {
+        presenting = false;
+        document.body.classList.remove('presenting');
+        slides.forEach(s => {
+            s.classList.remove('active');
+            s.style.transform = '';
+        });
+    }
+
+    function showSlide(n) {
+        if (!presenting) return;
+        slides[current].classList.remove('active');
+        current = Math.max(0, Math.min(n, slides.length - 1));
+        slides[current].classList.add('active');
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F5') { e.preventDefault(); enterPresentation(); return; }
+        if (e.key === 'Escape') { exitPresentation(); return; }
+        if (!presenting) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); showSlide(current - 1); }
+        if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+        if (e.key === 'End') { e.preventDefault(); showSlide(slides.length - 1); }
+    });
+
+    window.addEventListener('resize', () => { if (presenting) updateScale(); });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && presenting) exitPresentation();
+        else if (presenting) updateScale();
+    });
+</script>
+</body>
+</html>

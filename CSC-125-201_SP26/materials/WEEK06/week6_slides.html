@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6: Lists and Tuples</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --sage: #7d8c6e;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --code-border: #c08b5c;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--latte);
+            color: var(--espresso);
+        }
+
+        .slide {
+            width: 960px;
+            height: 540px;
+            margin: 24px auto;
+            padding: 44px 52px;
+            background: var(--warm-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 16px rgba(60, 42, 26, 0.1), 0 1px 4px rgba(60, 42, 26, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            border: 1px solid rgba(192, 139, 92, 0.15);
+        }
+        .slide.center { align-items: center; text-align: center; }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--caramel), var(--amber), var(--toffee));
+            border-radius: 8px 8px 0 0;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 2.2em;
+            color: var(--espresso);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.55em;
+            color: var(--dark-roast);
+            margin-bottom: 14px;
+            font-weight: 400;
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+        .two-col h2 {
+            font-size: 1.3em;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 8px;
+        }
+        h3 {
+            font-size: 1em;
+            color: var(--medium-roast);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 0.88em;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: var(--espresso);
+        }
+        ul {
+            font-size: 0.86em;
+            line-height: 1.55;
+            margin-left: 22px;
+            margin-bottom: 10px;
+            color: #4a3728;
+        }
+        li { margin-bottom: 3px; }
+        li::marker { color: var(--caramel); }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.78em;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 6px 0;
+            border-left: 3px solid var(--code-border);
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        pre code.hljs {
+            background: var(--code-bg);
+            padding: 0;
+            border-radius: 6px;
+        }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        .ic {
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            font-size: 0.88em;
+            color: var(--dark-roast);
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 0.82em;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 6px 14px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+
+        .subtitle {
+            font-size: 1.05em;
+            color: var(--medium-roast);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .two-col { display: flex; gap: 32px; }
+        .two-col > div { flex: 1; }
+        .section-label {
+            font-size: 0.65em;
+            color: var(--toffee);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .slide-num {
+            position: absolute;
+            bottom: 12px;
+            right: 18px;
+            font-size: 0.6em;
+            color: var(--table-border);
+            font-weight: 500;
+        }
+        .img-placeholder {
+            background: var(--latte);
+            border: 2px dashed var(--caramel);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            color: var(--toffee);
+            font-size: 0.75em;
+            font-style: italic;
+            margin: 8px 0;
+        }
+        .slide img {
+            max-width: 100%;
+            flex: 1 1 0;
+            min-height: 0;
+            object-fit: contain;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        strong { color: var(--rust); font-weight: 600; }
+        em { color: var(--sage); }
+
+        .slide.title-slide {
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 50%, var(--latte) 100%);
+        }
+        .slide.title-slide::before {
+            height: 6px;
+        }
+        .slide.title-slide h1 {
+            font-size: 2.6em;
+            margin-bottom: 12px;
+        }
+
+        body.presenting { background: var(--espresso); overflow: hidden; }
+        body.presenting .slide {
+            display: none;
+            width: 960px;
+            height: 540px;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            padding: 44px 52px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+        }
+        body.presenting .slide.active { display: flex; }
+        body.presenting .controls { display: none; }
+
+        .controls {
+            text-align: center;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            background: var(--cream);
+            z-index: 10;
+            border-bottom: 1px solid var(--table-border);
+            font-size: 0.8em;
+            color: var(--medium-roast);
+        }
+        .controls button {
+            background: var(--caramel);
+            color: var(--warm-white);
+            border: none;
+            padding: 5px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-left: 8px;
+            transition: background 0.2s;
+        }
+        .controls button:hover { background: var(--amber); }
+
+        @media print {
+            @page { size: landscape; margin: 0; }
+            body { background: white; margin: 0; padding: 0; }
+            .controls { display: none; }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                width: 100%;
+                height: 100vh;
+                padding: 44px 52px;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .slide::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    Scroll to browse &middot;
+    <button onclick="enterPresentation()">Present (F5)</button>
+    <button onclick="window.print()">Print / PDF</button>
+</div>
+
+<!-- SLIDE 1 -->
+<div class="slide center title-slide">
+    <img src="../images/title_banner.png" alt="Week 6 title banner">
+    <h1>Week 6: Lists and Tuples</h1>
+    <p class="subtitle">CSC-125-201 &middot; Spring 2026</p>
+    <div class="slide-num">1</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+    <h2>Agenda</h2>
+    <table>
+        <tr><th>#</th><th>Section</th></tr>
+        <tr><td>1</td><td>Week 5 Review</td></tr>
+        <tr><td>2</td><td>Lecture Slides</td></tr>
+        <tr><td>-</td><td>Break</td></tr>
+        <tr><td>3</td><td>Code Lecture</td></tr>
+    </table>
+    <div class="slide-num">2</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+    <div class="section-label">Section 1</div>
+    <h2>Week 5 Review</h2>
+    <ul>
+        <li>Last week: making decisions with <span class="ic">if</span>, <span class="ic">elif</span>, and <span class="ic">else</span></li>
+        <li><span class="ic">if</span> checks a condition, <span class="ic">elif</span> adds more options, <span class="ic">else</span> catches the rest</li>
+        <li>Logical operators <span class="ic">and</span>, <span class="ic">or</span>, <span class="ic">not</span> combine multiple conditions</li>
+    </ul>
+    <pre><code class="language-python">temperature = 32
+if temperature <= 32:
+    status = "freezing"</code></pre>
+    <p>This week: we learn to store and organize <strong>collections of data</strong>.</p>
+    <div class="slide-num">3</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>The Coffee Shop Problem</h2>
+    <p>Imagine you track daily coffee orders. One variable per order? That works for three, but not for fifty or five hundred. A <strong>list</strong> is like a clipboard with a numbered sheet: one place to hold all related items.</p>
+    <pre><code class="language-python">order1 = "latte"
+order2 = "mocha"
+order3 = "espresso"</code></pre>
+    <p>Instead of a separate variable for each, a list keeps them together:</p>
+    <pre><code class="language-python">orders = ["latte", "mocha", "espresso"]</code></pre>
+    <div class="slide-num">4</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Anatomy of a List</h2>
+    <ul>
+        <li>Square brackets <span class="ic">[]</span> are the container, commas separate items</li>
+        <li>Lists can hold any type: strings, numbers, booleans, or a mix</li>
+    </ul>
+    <pre><code class="language-python">fruits = ["apple", "banana", "cherry"]
+count = len(fruits)  # 3</code></pre>
+    <p><span class="ic">len(fruits)</span> returns <span class="ic">3</span>, telling you how many items are inside.</p>
+    <p>An empty list <span class="ic">[]</span> is a blank container, ready to be filled.</p>
+    <div class="slide-num">5</div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Every Item Has an Address</h2>
+    <p>Like apartments in a building, every item has a number starting at 0. The index measures distance from the start. The first item is 0 steps away.</p>
+    <ul>
+        <li><strong>Positive:</strong> count from the front (0, 1, 2)</li>
+        <li><strong>Negative:</strong> count from the back (-1, -2, -3)</li>
+    </ul>
+    <pre><code class="language-python">name = fruits[0]    # "apple"
+last = fruits[-1]   # "cherry"</code></pre>
+    <img src="images/list_indexing.svg" alt="List with index numbers 0-4 above and -5 to -1 below each item">
+    <div class="slide-num">6</div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Taking a Portion</h2>
+    <p>Slicing is like cutting slices from a loaf of bread. You choose where to start and stop.</p>
+    <ul>
+        <li>Syntax: <span class="ic">list[start:end]</span>. The <span class="ic">end</span> index is <strong>not included</strong> (the knife cuts before it).</li>
+        <li>Omit <span class="ic">start</span> to begin from the front, omit <span class="ic">end</span> to go to the back.</li>
+    </ul>
+    <pre><code class="language-python">numbers = [10, 20, 30, 40, 50]
+middle = numbers[1:4]  # [20, 30, 40]</code></pre>
+    <div class="slide-num">7</div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Lists are Like a Whiteboard</h2>
+    <p>A whiteboard lets you erase and rewrite at any time. Lists work the same way. Change any item by assigning to its index.</p>
+    <pre><code class="language-python">fruits[1] = "mango"  # was "banana"
+print(fruits)  # ["apple", "mango", "cherry"]</code></pre>
+    <p>This ability to change is called <strong>mutability</strong>. Later we will see tuples, which are like a printed poster: once printed, the content is fixed.</p>
+    <div class="slide-num">8</div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Your List Toolkit</h2>
+    <p>Lists come with built-in tools:</p>
+    <ul>
+        <li><span class="ic">.append(item)</span> adds to the end (writing the next line on your clipboard)</li>
+        <li><span class="ic">.remove(item)</span> removes the first match (erasing a specific entry)</li>
+        <li><span class="ic">.pop()</span> removes and returns the last item (pulling the bottom card from a stack)</li>
+        <li><span class="ic">len(list)</span> counts items</li>
+    </ul>
+    <pre><code class="language-python">cart = ["milk", "eggs"]
+cart.append("bread")  # ["milk", "eggs", "bread"]</code></pre>
+    <div class="slide-num">9</div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>The Sealed Envelope</h2>
+    <p>A tuple is like a sealed envelope. Once sealed, the contents cannot be changed. Created with parentheses: <span class="ic">point = (10, 20)</span></p>
+    <ul>
+        <li>Indexing works the same way: <span class="ic">point[0]</span> returns <span class="ic">10</span></li>
+        <li>You cannot add, remove, or change items. Python raises an error if you try.</li>
+        <li>Why use them? When data must stay fixed: coordinates, colors, dates.</li>
+    </ul>
+    <pre><code class="language-python">point = (10, 20)
+x, y = point  # x is 10, y is 20</code></pre>
+    <p>Unpacking lets you split a tuple into separate variables in one line.</p>
+    <div class="slide-num">10</div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Choosing the Right Container</h2>
+    <div class="two-col">
+        <div>
+            <h2>Lists []</h2>
+            <ul>
+                <li>Mutable (changeable)</li>
+                <li>Use when items may change</li>
+                <li>Shopping cart, game scores, to-do items</li>
+                <li>Many methods: append, remove, sort</li>
+            </ul>
+        </div>
+        <div>
+            <h2>Tuples ()</h2>
+            <ul>
+                <li>Immutable (fixed)</li>
+                <li>Use when data should stay locked</li>
+                <li>Coordinates, colors, dates</li>
+                <li>Only count and index</li>
+            </ul>
+        </div>
+    </div>
+    <p>Quick rule: if items will change, use a list. If they should stay fixed, use a tuple.</p>
+    <div class="slide-num">11</div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Planning Before Building</h2>
+    <p>Before building a house, an architect draws a blueprint. Pseudocode is your blueprint for code. It describes your program's logic in plain, structured English.</p>
+    <ul>
+        <li>No syntax rules. No colons or indentation required. Just clear, numbered steps.</li>
+        <li>It helps you think through the logic before worrying about Python's rules.</li>
+    </ul>
+    <p>Example: <span class="ic">1. GET the user's name</span> becomes <span class="ic">name = input("Enter name: ")</span></p>
+    <div class="slide-num">12</div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>From English to Python</h2>
+    <p>Start each step with an action verb: GET, SET, CALCULATE, DISPLAY, IF, FOR. Number your steps for order. Use language a non-programmer would understand.</p>
+    <pre style="font-size: 0.78em; font-family: 'JetBrains Mono', monospace; background: var(--latte); color: var(--espresso); border-left: 3px solid var(--caramel); padding: 10px 14px; border-radius: 6px;">1. GET the list of test scores
+2. CALCULATE the average
+3. IF average >= 70
+4.     DISPLAY "Passing"
+5. ELSE
+6.     DISPLAY "Not passing"</pre>
+    <p>Pseudocode is about thinking, not typing. Get the logic right first, then translate to Python.</p>
+    <div class="slide-num">13</div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide">
+    <h2>Summary</h2>
+    <ul>
+        <li>Lists <span class="ic">[]</span> store multiple items in one variable</li>
+        <li>Indexing starts at <span class="ic">0</span> (positive) or <span class="ic">-1</span> (from the end)</li>
+        <li>Slicing <span class="ic">[start:end]</span> extracts a portion (end not included)</li>
+        <li>Lists are <strong>mutable</strong> (whiteboard), tuples are <strong>immutable</strong> (sealed envelope)</li>
+        <li><span class="ic">.append()</span>, <span class="ic">.remove()</span>, <span class="ic">.pop()</span> modify lists</li>
+        <li>Pseudocode plans your logic in plain English before coding</li>
+    </ul>
+    <div class="slide-num">14</div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide center">
+    <h2>Homework 6</h2>
+    <p>Available on Moodle, due Monday 11:59 PM.</p>
+    <p>This week: <strong>Pseudocode Project</strong>. Design an algorithm using lists and pseudocode.</p>
+    <p>Reference sheet posted on Moodle to help with the assignment.</p>
+    <p style="margin-top: 16px;"><strong>Next week (Week 7):</strong> Advanced List Operations (slicing, sorting, more methods) - Virtual</p>
+    <div class="slide-num">15</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let presenting = false;
+
+    function updateScale() {
+        const scaleX = window.innerWidth / 960;
+        const scaleY = window.innerHeight / 540;
+        const scale = Math.min(scaleX, scaleY);
+        slides.forEach(s => {
+            s.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        });
+    }
+
+    function enterPresentation() {
+        presenting = true;
+        document.body.classList.add('presenting');
+        slides[current].classList.add('active');
+        updateScale();
+        document.documentElement.requestFullscreen?.();
+    }
+
+    function exitPresentation() {
+        presenting = false;
+        document.body.classList.remove('presenting');
+        slides.forEach(s => {
+            s.classList.remove('active');
+            s.style.transform = '';
+        });
+    }
+
+    function showSlide(n) {
+        if (!presenting) return;
+        slides[current].classList.remove('active');
+        current = Math.max(0, Math.min(n, slides.length - 1));
+        slides[current].classList.add('active');
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F5') { e.preventDefault(); enterPresentation(); return; }
+        if (e.key === 'Escape') { exitPresentation(); return; }
+        if (!presenting) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); showSlide(current - 1); }
+        if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+        if (e.key === 'End') { e.preventDefault(); showSlide(slides.length - 1); }
+    });
+
+    window.addEventListener('resize', () => { if (presenting) updateScale(); });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && presenting) exitPresentation();
+        else if (presenting) updateScale();
+    });
+</script>
+</body>
+</html>

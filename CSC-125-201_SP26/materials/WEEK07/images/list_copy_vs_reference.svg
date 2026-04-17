@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 220" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- Title -->
+  <text x="410" y="22" text-anchor="middle" font-size="14" fill="#7a5c4f" font-weight="bold">Reference vs Copy</text>
+
+  <!-- LEFT SIDE: Reference -->
+  <text x="195" y="52" text-anchor="middle" font-size="13" fill="#b85c38" font-weight="bold">Reference (same list)</text>
+
+  <!-- Variable: original -->
+  <rect x="30" y="68" width="120" height="34" rx="4" fill="#f3ece1" stroke="#c08b5c" stroke-width="1.5"/>
+  <text x="90" y="90" text-anchor="middle" font-size="12" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">original</text>
+
+  <!-- Variable: reference -->
+  <rect x="30" y="118" width="120" height="34" rx="4" fill="#f3ece1" stroke="#c08b5c" stroke-width="1.5"/>
+  <text x="90" y="140" text-anchor="middle" font-size="12" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">reference</text>
+
+  <!-- Shared list -->
+  <rect x="220" y="80" width="55" height="34" rx="3" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1.2"/>
+  <text x="247" y="102" text-anchor="middle" font-size="13" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">1</text>
+  <rect x="275" y="80" width="55" height="34" rx="3" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1.2"/>
+  <text x="302" y="102" text-anchor="middle" font-size="13" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">2</text>
+  <rect x="330" y="80" width="55" height="34" rx="3" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1.2"/>
+  <text x="357" y="102" text-anchor="middle" font-size="13" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">3</text>
+
+  <!-- Arrows to shared list -->
+  <line x1="150" y1="85" x2="218" y2="93" stroke="#b85c38" stroke-width="1.8" marker-end="url(#arrowRed)"/>
+  <line x1="150" y1="135" x2="218" y2="107" stroke="#b85c38" stroke-width="1.8" marker-end="url(#arrowRed)"/>
+
+  <!-- Warning label -->
+  <text x="195" y="185" text-anchor="middle" font-size="11" fill="#b85c38" font-style="italic">Both point to the same list.</text>
+  <text x="195" y="200" text-anchor="middle" font-size="11" fill="#b85c38" font-style="italic">Changing one changes the other.</text>
+
+  <!-- Divider -->
+  <line x1="410" y1="40" x2="410" y2="210" stroke="#d9cfc2" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- RIGHT SIDE: Copy -->
+  <text x="625" y="52" text-anchor="middle" font-size="13" fill="#7d8c6e" font-weight="bold">Copy (independent lists)</text>
+
+  <!-- Variable: original -->
+  <rect x="450" y="68" width="120" height="34" rx="4" fill="#f3ece1" stroke="#c08b5c" stroke-width="1.5"/>
+  <text x="510" y="90" text-anchor="middle" font-size="12" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">original</text>
+
+  <!-- Variable: safe_copy -->
+  <rect x="450" y="118" width="120" height="34" rx="4" fill="#f3ece1" stroke="#c08b5c" stroke-width="1.5"/>
+  <text x="510" y="140" text-anchor="middle" font-size="12" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">safe_copy</text>
+
+  <!-- List 1 (original's) -->
+  <rect x="640" y="68" width="48" height="34" rx="3" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1.2"/>
+  <text x="664" y="90" text-anchor="middle" font-size="13" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">1</text>
+  <rect x="688" y="68" width="48" height="34" rx="3" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1.2"/>
+  <text x="712" y="90" text-anchor="middle" font-size="13" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">2</text>
+  <rect x="736" y="68" width="48" height="34" rx="3" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1.2"/>
+  <text x="760" y="90" text-anchor="middle" font-size="13" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">3</text>
+
+  <!-- List 2 (copy's) -->
+  <rect x="640" y="118" width="48" height="34" rx="3" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1.2"/>
+  <text x="664" y="140" text-anchor="middle" font-size="13" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">1</text>
+  <rect x="688" y="118" width="48" height="34" rx="3" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1.2"/>
+  <text x="712" y="140" text-anchor="middle" font-size="13" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">2</text>
+  <rect x="736" y="118" width="48" height="34" rx="3" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1.2"/>
+  <text x="760" y="140" text-anchor="middle" font-size="13" fill="#3c2a1a" font-family="'Consolas', 'Courier New', monospace">3</text>
+
+  <!-- Arrows to separate lists -->
+  <line x1="570" y1="85" x2="638" y2="85" stroke="#7d8c6e" stroke-width="1.8" marker-end="url(#arrowGreen)"/>
+  <line x1="570" y1="135" x2="638" y2="135" stroke="#7d8c6e" stroke-width="1.8" marker-end="url(#arrowGreen)"/>
+
+  <!-- Safe label -->
+  <text x="625" y="185" text-anchor="middle" font-size="11" fill="#7d8c6e" font-style="italic">Each has its own list.</text>
+  <text x="625" y="200" text-anchor="middle" font-size="11" fill="#7d8c6e" font-style="italic">Changing one does not affect the other.</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowRed" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#b85c38"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#7d8c6e"/>
+    </marker>
+  </defs>
+</svg>

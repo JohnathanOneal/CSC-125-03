@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weeks 3-5 Practice Quiz: Strings, Math, and Conditionals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 13px;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.5;
+            color: #333;
+        }
+        h2 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #34495e;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        .quiz-header {
+            background: #f8f9fa;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+        .quiz-header p { margin: 3px 0; }
+        .quiz-header ul { margin: 3px 0; padding-left: 18px; }
+        .quiz-header li { margin: 1px 0; }
+        .question {
+            margin: 10px 0;
+            padding: 8px 12px;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            background: #ffffff;
+            font-size: 13px;
+        }
+        .question strong {
+            font-size: 13px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .choices {
+            margin: 5px 0 0 0;
+            padding-left: 18px;
+            line-height: 1.7;
+        }
+        pre {
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 5px 0;
+            padding: 5px 8px;
+            background: #f8f9fa;
+        }
+        code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 12px;
+            line-height: 1.4;
+            padding: 0;
+            background: none;
+        }
+        :not(pre) > code {
+            background: #f0f0f0;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        @media print {
+            @page { size: letter; margin: 0.65in 0.75in; }
+            body { font-size: 10.5px; max-width: 100%; padding: 0; color: #000; }
+            h2 { font-size: 12px; margin-top: 10px; margin-bottom: 4px; padding-left: 8px; border-left-width: 3px; }
+            .quiz-header { padding: 5px 8px; margin: 6px 0; font-size: 10.5px; }
+            .question { margin: 5px 0; padding: 5px 8px; font-size: 10.5px; page-break-inside: avoid; }
+            .question strong { font-size: 10.5px; margin-bottom: 3px; }
+            pre { margin: 3px 0; padding: 3px 5px; }
+            code { font-size: 9.5px; }
+            :not(pre) > code { font-size: 9.5px; }
+            .choices { line-height: 1.5; padding-left: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <h2>Weeks 3-5 Practice Quiz: Strings, Math, and Conditionals</h2>
+
+    <div class="quiz-header">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+                <p><strong>Name:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> _____________</p>
+                <p><strong>Instructions:</strong></p>
+                <ul>
+                    <li>10-minute practice quiz</li>
+                    <li>This is for practice - the real quiz will be similar format</li>
+                </ul>
+            </div>
+            <div style="border: 2px solid #333; padding: 6px 12px; background: #fff; margin-left: 20px; white-space: nowrap;">
+                <strong>Score: _____ / 30</strong>
+            </div>
+        </div>
+    </div>
+
+    <h2>Part 1: Multiple Choice (4 points each)</h2>
+
+    <!-- Q1 -->
+    <div class="question">
+        <strong>1. What is printed?</strong>
+        <pre><code class="language-python">seconds = 200
+minutes = seconds // 60
+remaining = seconds % 60
+print(f"{minutes}m {remaining}s")</code></pre>
+        <div class="choices">
+            a) 3m 20s<br>
+            b) 3.33m 0s<br>
+            c) 3m 0s<br>
+            d) 200m 60s
+        </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+        <strong>2. What is printed?</strong>
+        <pre><code class="language-python">text = "  BOB smith  "
+result = text.strip().lower()
+print(result)</code></pre>
+        <div class="choices">
+            a) bob smith<br>
+            b) BOB smith<br>
+            c) Bob Smith<br>
+            d) &nbsp;&nbsp;bob smith&nbsp;&nbsp;
+        </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+        <strong>3. What is printed?</strong>
+        <pre><code class="language-python">age = 20
+has_ticket = False
+if age &gt;= 18 or has_ticket:
+    print("Admitted")
+else:
+    print("Denied")</code></pre>
+        <div class="choices">
+            a) Admitted<br>
+            b) Denied<br>
+            c) True<br>
+            d) Error
+        </div>
+    </div>
+
+    <h2>Part 2: Fill in the Code (3 points each)</h2>
+
+    <!-- Q4 -->
+    <div class="question">
+        <strong>4. Fill in the blank so the output matches the comment:</strong>
+        <pre><code class="language-python">score = 100
+score _______ 15
+print(score)
+# Output: 85</code></pre>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+        <strong>5. Fill in the blank so the output matches the comment:</strong>
+        <pre><code class="language-python">name = "Alice"
+age = 25
+print(_______ "Name: {name}, Age: {age}")
+# Output: Name: Alice, Age: 25</code></pre>
+    </div>
+
+    <h2>Part 3: Fix the Errors (4 points each)</h2>
+
+    <!-- Q6 -->
+    <div class="question">
+        <strong>6. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">message = "Hello"
+print(mesage)</code></pre>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+        <strong>7. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">score = 85
+if score &gt;= 70:
+print("You passed")</code></pre>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+        <strong>8. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">x = 10
+if x = 10:
+    print("Ten")</code></pre>
+    </div>
+
+    <hr style="margin: 30px 0;">
+    <h2 style="color: #c0392b; border-left-color: #c0392b;">Answers</h2>
+    <ol>
+        <li><strong>Q1:</strong> a) 3m 20s - floor division (<code>//</code>) gives the whole number of minutes (200 // 60 = 3), and modulo (<code>%</code>) gives the remaining seconds (200 % 60 = 20).</li>
+        <li><strong>Q2:</strong> a) bob smith - <code>.strip()</code> removes the leading and trailing spaces first, then <code>.lower()</code> converts all letters to lowercase.</li>
+        <li><strong>Q3:</strong> a) Admitted - the <code>or</code> operator only needs one condition to be True. Since <code>age &gt;= 18</code> is True (20 &gt;= 18), the entire condition is True regardless of <code>has_ticket</code>.</li>
+        <li><strong>Q4:</strong> <code>-=</code> - the assignment operator <code>-=</code> subtracts 15 from the current value of score (100 - 15 = 85).</li>
+        <li><strong>Q5:</strong> <code>f</code> - the <code>f</code> prefix before a string makes it an f-string, which allows variables inside curly braces to be replaced with their values.</li>
+        <li><strong>Q6:</strong> Cross out <code>mesage</code>, write <code>message</code> - NameError: the variable name is misspelled. Python treats <code>mesage</code> as a different, undefined variable.</li>
+        <li><strong>Q7:</strong> Indent <code>print("You passed")</code> by 4 spaces so it is inside the <code>if</code> block - IndentationError: Python requires the code inside an <code>if</code> statement to be indented. Without indentation, Python does not know which code belongs to the condition.</li>
+        <li><strong>Q8:</strong> Cross out <code>=</code>, write <code>==</code> - SyntaxError: a single <code>=</code> is assignment (storing a value), while <code>==</code> is comparison (asking if two values are equal). Conditions require <code>==</code>.</li>
+    </ol>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>

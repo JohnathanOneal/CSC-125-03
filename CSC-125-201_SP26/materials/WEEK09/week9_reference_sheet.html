@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 9 Reference Sheet: While Loops &amp; Advanced Debugging</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            line-height: 1.3;
+            color: var(--espresso);
+            font-size: 12px;
+            background: var(--warm-white);
+        }
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--espresso);
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 4px;
+            margin: 8px 0 4px 0;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            color: var(--dark-roast);
+            margin: 10px 0 3px 0;
+            border-left: 3px solid var(--caramel);
+            padding-left: 10px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        p { margin: 3px 0; }
+        ul { margin: 2px 0; padding-left: 18px; }
+        li { margin-bottom: 1px; }
+        li::marker { color: var(--caramel); }
+        strong { color: var(--rust); font-weight: 600; }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 0px 3px;
+            border-radius: 3px;
+            font-size: 11px;
+            color: var(--dark-roast);
+        }
+        pre {
+            margin: 3px 0;
+            border-radius: 5px;
+            border-left: 3px solid var(--caramel);
+            overflow-x: auto;
+        }
+        pre code, pre code.hljs {
+            background: var(--code-bg);
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+            line-height: 1.4;
+            display: block;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 3px 0;
+            font-size: 11px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 2px 6px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+        .homework-topics {
+            background: var(--latte);
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin: 6px 0;
+        }
+        .homework-topics h2 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+        }
+        .homework-topics ul {
+            columns: 2;
+            margin: 0;
+        }
+        .resources { margin-top: 8px; }
+        .resources ul { padding-left: 18px; }
+        .resources a {
+            color: var(--caramel);
+            text-decoration: none;
+            font-size: 11px;
+        }
+        .resources a:hover { text-decoration: underline; color: var(--amber); }
+
+        @media print {
+            @page { margin: 0.5in; }
+            body { font-size: 11px; padding: 0; }
+            code { font-size: 10px; }
+            pre code, pre code.hljs { font-size: 10px; }
+            table { font-size: 10px; }
+            h1 { font-size: 16px; margin-top: 0; }
+            h2 { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Week 9 Reference Sheet: While Loops &amp; Advanced Debugging</h1>
+    <p><strong>CSC-125-201 | Use this as a reference when completing Homework 9</strong></p>
+
+    <div class="homework-topics">
+        <h2>Homework Topics</h2>
+        <ul>
+            <li>Basic while loop syntax</li>
+            <li>While loop with counters</li>
+            <li>Infinite loop prevention</li>
+            <li>break and continue</li>
+            <li>Input validation pattern</li>
+            <li>Sentinel values</li>
+            <li>Common error types</li>
+            <li>Reading tracebacks</li>
+            <li>try/except basics</li>
+            <li>Print debugging</li>
+        </ul>
+    </div>
+
+    <h2>Basic While Loop</h2>
+    <p>Repeats code as long as the condition is True. The condition is checked <strong>only at the top</strong>, not during the body.</p>
+    <pre><code class="language-python">count = 1
+while count <= 5:
+    print(count)
+    count = count + 1  # Must update to avoid infinite loop</code></pre>
+
+    <h2>For vs While</h2>
+    <table>
+        <tr><th>Use <code>for</code> when</th><th>Use <code>while</code> when</th></tr>
+        <tr><td>You have a list or sequence</td><td>You do not know how many repetitions</td></tr>
+        <tr><td>You know the count: <code>range(10)</code></td><td>You are waiting for a condition to change</td></tr>
+        <tr><td>Processing each item</td><td>User input, searching, games</td></tr>
+    </table>
+
+    <h2>Condition Phrasing</h2>
+    <p>The condition describes when to <strong>keep going</strong>, not when to stop.</p>
+    <table>
+        <tr><th>You want</th><th>Wrong</th><th>Right</th></tr>
+        <tr><td>Stop at 5</td><td><code>while count == 5</code></td><td><code>while count < 5</code></td></tr>
+        <tr><td>Stop when empty</td><td><code>while len(items) == 0</code></td><td><code>while len(items) > 0</code></td></tr>
+        <tr><td>Stop on "quit"</td><td><code>while answer == "quit"</code></td><td><code>while answer != "quit"</code></td></tr>
+    </table>
+
+    <h2>break and continue</h2>
+    <table>
+        <tr><th>Keyword</th><th>Effect</th><th>Use when</th></tr>
+        <tr><td><code>break</code></td><td>Exit the loop entirely</td><td>Found what you need, user typed "quit"</td></tr>
+        <tr><td><code>continue</code></td><td>Skip rest of current iteration</td><td>Skip invalid data, move to next item</td></tr>
+    </table>
+    <p>With <code>continue</code> in a while loop, update the loop variable <strong>before</strong> the continue to avoid infinite loops.</p>
+
+    <h2>Input Validation Pattern</h2>
+    <pre><code class="language-python">valid = False
+while not valid:
+    response = get_input()  # Get user input
+    if meets_requirements(response):
+        valid = True
+    else:
+        print("Invalid. Try again.")</code></pre>
+
+    <h2>Sentinel Value Pattern</h2>
+    <pre><code class="language-python">value = get_first_input()
+while value != -1:        # -1 is the sentinel
+    process(value)
+    value = get_next_input()</code></pre>
+
+    <h2>Common Error Types</h2>
+    <table>
+        <tr><th>Error</th><th>Cause</th><th>Example</th></tr>
+        <tr><td><code>SyntaxError</code></td><td>Invalid Python syntax</td><td>Missing colon, bad indentation</td></tr>
+        <tr><td><code>NameError</code></td><td>Variable not defined</td><td>Typo in variable name</td></tr>
+        <tr><td><code>TypeError</code></td><td>Wrong type for operation</td><td><code>"age: " + 25</code></td></tr>
+        <tr><td><code>ValueError</code></td><td>Wrong value for operation</td><td><code>int("abc")</code></td></tr>
+        <tr><td><code>IndexError</code></td><td>Index out of range</td><td><code>list[5]</code> on a 5-item list</td></tr>
+        <tr><td><code>ZeroDivisionError</code></td><td>Dividing by zero</td><td><code>10 / 0</code></td></tr>
+    </table>
+
+    <h2>Reading Tracebacks (Bottom-Up)</h2>
+    <p><strong>1.</strong> Last line: error type and description. <strong>2.</strong> Line above: the code that failed. <strong>3.</strong> Above that: file and line number.</p>
+
+    <h2>try/except</h2>
+    <pre><code class="language-python"># Catch a specific error
+try:
+    number = int(user_input)
+except ValueError:
+    print("Not a valid number.")
+
+# Catch multiple errors
+try:
+    result = int(val) / int(other)
+except ValueError:
+    print("Not a number.")
+except ZeroDivisionError:
+    print("Cannot divide by zero.")
+
+# Catch any error (debugging only)
+try:
+    risky_code()
+except Exception as e:
+    print(f"Error: {e}")</code></pre>
+
+    <h2>5-Step Debugging Process</h2>
+    <p><strong>1. Reproduce</strong> the error. <strong>2. Read</strong> the traceback bottom-up. <strong>3. Hypothesize</strong> what went wrong. <strong>4. Test</strong> with a print statement. <strong>5. Fix</strong> one thing, then re-run.</p>
+
+    <h2>Common While Loop Errors</h2>
+    <table>
+        <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+        <tr><td>Infinite loop</td><td>Loop variable never changes</td><td>Add update line inside the loop</td></tr>
+        <tr><td>Off-by-one</td><td><code>&lt;=</code> instead of <code>&lt;</code></td><td>Trace the last iteration by hand</td></tr>
+        <tr><td>Never enters loop</td><td>Condition is False from the start</td><td>Check initial variable value</td></tr>
+        <tr><td>Infinite with continue</td><td>Update line is after continue</td><td>Move update before the continue</td></tr>
+    </table>
+
+    <div class="resources">
+        <h2>Resources</h2>
+        <ul>
+            <li><a href="https://www.w3schools.com/python/python_while_loops.asp" target="_blank">W3Schools - Python While Loops</a></li>
+            <li><a href="https://www.learnpython.org/en/Loops" target="_blank">LearnPython.org - Interactive Loop Tutorial</a></li>
+            <li><a href="https://realpython.com/python-while-loop/" target="_blank">Real Python - While Loops Guide</a></li>
+            <li><a href="https://www.w3schools.com/python/python_try_except.asp" target="_blank">W3Schools - Try/Except</a></li>
+            <li><a href="https://realpython.com/python-traceback/" target="_blank">Real Python - Understanding Tracebacks</a></li>
+        </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body>
+</html>

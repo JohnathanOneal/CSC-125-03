@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 195" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- Forward direction label -->
+  <text x="340" y="20" text-anchor="middle" font-size="13" fill="#7a5c4f" font-style="italic">Forward direction indexing</text>
+
+  <!-- Forward index boxes (top row) -->
+  <g transform="translate(80, 30)">
+    <rect x="0" y="0" width="110" height="38" rx="3" fill="#f0f0f0" stroke="#666" stroke-width="1"/>
+    <text x="55" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#3c2a1a">0</text>
+
+    <rect x="120" y="0" width="110" height="38" rx="3" fill="#f0f0f0" stroke="#666" stroke-width="1"/>
+    <text x="175" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#3c2a1a">1</text>
+
+    <rect x="240" y="0" width="110" height="38" rx="3" fill="#f0f0f0" stroke="#666" stroke-width="1"/>
+    <text x="295" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#3c2a1a">2</text>
+
+    <rect x="360" y="0" width="110" height="38" rx="3" fill="#f0f0f0" stroke="#666" stroke-width="1"/>
+    <text x="415" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#3c2a1a">3</text>
+
+    <rect x="480" y="0" width="110" height="38" rx="3" fill="#f0f0f0" stroke="#666" stroke-width="1"/>
+    <text x="535" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#3c2a1a">4</text>
+  </g>
+
+  <!-- List label -->
+  <text x="68" y="100" text-anchor="end" font-size="14" font-weight="bold" fill="#333">List</text>
+
+  <!-- Item boxes (middle row) -->
+  <g transform="translate(80, 75)">
+    <rect x="0" y="0" width="110" height="38" rx="3" fill="#dce6f0" stroke="#666" stroke-width="1.2"/>
+    <text x="55" y="25" text-anchor="middle" font-size="12" fill="#333" font-family="'Consolas', 'Courier New', monospace">"apple"</text>
+
+    <rect x="120" y="0" width="110" height="38" rx="3" fill="#dce6f0" stroke="#666" stroke-width="1.2"/>
+    <text x="175" y="25" text-anchor="middle" font-size="12" fill="#333" font-family="'Consolas', 'Courier New', monospace">"banana"</text>
+
+    <rect x="240" y="0" width="110" height="38" rx="3" fill="#dce6f0" stroke="#666" stroke-width="1.2"/>
+    <text x="295" y="25" text-anchor="middle" font-size="12" fill="#333" font-family="'Consolas', 'Courier New', monospace">"cherry"</text>
+
+    <rect x="360" y="0" width="110" height="38" rx="3" fill="#dce6f0" stroke="#666" stroke-width="1.2"/>
+    <text x="415" y="25" text-anchor="middle" font-size="12" fill="#333" font-family="'Consolas', 'Courier New', monospace">"mango"</text>
+
+    <rect x="480" y="0" width="110" height="38" rx="3" fill="#dce6f0" stroke="#666" stroke-width="1.2"/>
+    <text x="535" y="25" text-anchor="middle" font-size="12" fill="#333" font-family="'Consolas', 'Courier New', monospace">"grape"</text>
+  </g>
+
+  <!-- Backward index boxes (bottom row) -->
+  <g transform="translate(80, 120)">
+    <rect x="0" y="0" width="110" height="38" rx="3" fill="#f0f0f0" stroke="#666" stroke-width="1"/>
+    <text x="55" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#3c2a1a">-5</text>
+
+    <rect x="120" y="0" width="110" height="38" rx="3" fill="#f0f0f0" stroke="#666" stroke-width="1"/>
+    <text x="175" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#3c2a1a">-4</text>
+
+    <rect x="240" y="0" width="110" height="38" rx="3" fill="#f0f0f0" stroke="#666" stroke-width="1"/>
+    <text x="295" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#3c2a1a">-3</text>
+
+    <rect x="360" y="0" width="110" height="38" rx="3" fill="#f0f0f0" stroke="#666" stroke-width="1"/>
+    <text x="415" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#3c2a1a">-2</text>
+
+    <rect x="480" y="0" width="110" height="38" rx="3" fill="#f0f0f0" stroke="#666" stroke-width="1"/>
+    <text x="535" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#3c2a1a">-1</text>
+  </g>
+
+  <!-- Backward direction label -->
+  <text x="340" y="185" text-anchor="middle" font-size="13" fill="#7a5c4f" font-style="italic">Backward direction indexing</text>
+</svg>

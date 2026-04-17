@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 7: Advanced List Operations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --sage: #7d8c6e;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --code-border: #c08b5c;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--latte);
+            color: var(--espresso);
+        }
+
+        .slide {
+            width: 960px;
+            height: 540px;
+            margin: 24px auto;
+            padding: 44px 52px;
+            background: var(--warm-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 16px rgba(60, 42, 26, 0.1), 0 1px 4px rgba(60, 42, 26, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            border: 1px solid rgba(192, 139, 92, 0.15);
+        }
+        .slide.center { align-items: center; text-align: center; }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--caramel), var(--amber), var(--toffee));
+            border-radius: 8px 8px 0 0;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 2.2em;
+            color: var(--espresso);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.55em;
+            color: var(--dark-roast);
+            margin-bottom: 14px;
+            font-weight: 400;
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+        .two-col h2 {
+            font-size: 1.3em;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 8px;
+        }
+        h3 {
+            font-size: 1em;
+            color: var(--medium-roast);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 0.88em;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: var(--espresso);
+        }
+        ul {
+            font-size: 0.86em;
+            line-height: 1.55;
+            margin-left: 22px;
+            margin-bottom: 10px;
+            color: #4a3728;
+        }
+        li { margin-bottom: 3px; }
+        li::marker { color: var(--caramel); }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.78em;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 6px 0;
+            border-left: 3px solid var(--code-border);
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        pre code.hljs {
+            background: var(--code-bg);
+            padding: 0;
+            border-radius: 6px;
+        }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        .ic {
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            font-size: 0.88em;
+            color: var(--dark-roast);
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 0.82em;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 6px 14px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+
+        .subtitle {
+            font-size: 1.05em;
+            color: var(--medium-roast);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .two-col { display: flex; gap: 32px; }
+        .two-col > div { flex: 1; }
+        .section-label {
+            font-size: 0.65em;
+            color: var(--toffee);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .slide-num {
+            position: absolute;
+            bottom: 12px;
+            right: 18px;
+            font-size: 0.6em;
+            color: var(--table-border);
+            font-weight: 500;
+        }
+        .img-placeholder {
+            background: var(--latte);
+            border: 2px dashed var(--caramel);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            color: var(--toffee);
+            font-size: 0.75em;
+            font-style: italic;
+            margin: 8px 0;
+        }
+        .slide img {
+            max-width: 100%;
+            flex: 1 1 0;
+            min-height: 0;
+            object-fit: contain;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        strong { color: var(--rust); font-weight: 600; }
+        em { color: var(--sage); }
+
+        .slide.title-slide {
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 50%, var(--latte) 100%);
+        }
+        .slide.title-slide::before {
+            height: 6px;
+        }
+        .slide.title-slide h1 {
+            font-size: 2.6em;
+            margin-bottom: 12px;
+        }
+
+        body.presenting { background: var(--espresso); overflow: hidden; }
+        body.presenting .slide {
+            display: none;
+            width: 960px;
+            height: 540px;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            padding: 44px 52px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+        }
+        body.presenting .slide.active { display: flex; }
+        body.presenting .controls { display: none; }
+
+        .controls {
+            text-align: center;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            background: var(--cream);
+            z-index: 10;
+            border-bottom: 1px solid var(--table-border);
+            font-size: 0.8em;
+            color: var(--medium-roast);
+        }
+        .controls button {
+            background: var(--caramel);
+            color: var(--warm-white);
+            border: none;
+            padding: 5px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-left: 8px;
+            transition: background 0.2s;
+        }
+        .controls button:hover { background: var(--amber); }
+
+        @media print {
+            @page { size: landscape; margin: 0; }
+            body { background: white; margin: 0; padding: 0; }
+            .controls { display: none; }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                width: 100%;
+                height: 100vh;
+                padding: 44px 52px;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .slide::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    Scroll to browse &middot;
+    <button onclick="enterPresentation()">Present (F5)</button>
+    <button onclick="window.print()">Print / PDF</button>
+</div>
+
+<!-- SLIDE 1 -->
+<div class="slide center title-slide">
+    <img src="../images/title_banner.png" alt="Week 7 title banner">
+    <h1>Week 7: Advanced List Operations</h1>
+    <p class="subtitle">CSC-125-201 &middot; Spring 2026</p>
+    <div class="slide-num">1</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+    <h2>Agenda</h2>
+    <table>
+        <tr><th>#</th><th>Section</th></tr>
+        <tr><td>1</td><td>Week 6 Review</td></tr>
+        <tr><td>2</td><td>Lecture Slides</td></tr>
+        <tr><td>-</td><td>Break</td></tr>
+        <tr><td>3</td><td>Code Lecture</td></tr>
+    </table>
+    <div class="slide-num">2</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+    <div class="section-label">Section 1</div>
+    <h2>Week 6 Review</h2>
+    <ul>
+        <li>Last week: storing collections with <strong>lists</strong> <span class="ic">[]</span> and <strong>tuples</strong> <span class="ic">()</span></li>
+        <li>Indexing starts at <span class="ic">0</span>. Negative indices count from the end (<span class="ic">-1</span>).</li>
+        <li>Lists are <strong>mutable</strong> (like a whiteboard). Tuples are <strong>immutable</strong> (sealed envelope).</li>
+        <li>Key methods: <span class="ic">.append()</span>, <span class="ic">.remove()</span>, <span class="ic">.pop()</span></li>
+        <li>Pseudocode: planning logic in plain English before writing code</li>
+    </ul>
+    <p>This week: we unlock more powerful ways to <strong>slice, sort, search, and combine</strong> lists.</p>
+    <div class="slide-num">3</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Slicing with a Step</h2>
+    <p>Last week we sliced with <span class="ic">list[start:end]</span>. There is a third option: the <strong>step</strong>. Think of stepping stones across a pond. A step of 2 means you land on every other stone.</p>
+    <ul>
+        <li><span class="ic">list[start:end:step]</span> picks every <em>step</em>-th item</li>
+        <li>Omit start and end to step through the whole list</li>
+        <li>A negative step walks backward through the list</li>
+    </ul>
+    <pre><code class="language-python">numbers = [10, 20, 30, 40, 50, 60]
+evens = numbers[::2]   # [10, 30, 50]</code></pre>
+    <div class="slide-num">4</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Reversing a List</h2>
+    <p>Sometimes you need data in the opposite order: newest first instead of oldest, highest to lowest, or simply reading backward. Python gives you two approaches.</p>
+    <ul>
+        <li><span class="ic">[::-1]</span> creates a <strong>new reversed copy</strong> (the original stays the same)</li>
+        <li><span class="ic">.reverse()</span> flips the list <strong>in place</strong> (changes the original, returns None)</li>
+    </ul>
+    <pre><code class="language-python">letters = ["a", "b", "c", "d"]
+backward = letters[::-1]  # ["d", "c", "b", "a"]</code></pre>
+    <p>Choose based on whether you still need the original order.</p>
+    <div class="slide-num">5</div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Why Sort?</h2>
+    <p>Imagine a bookshelf where books are placed randomly. Finding a specific title means checking every single book. Sorting puts them in order so you (or your program) can find things faster and spot patterns like the highest or lowest values.</p>
+    <ul>
+        <li>Sorted data is easier to read, compare, and analyze</li>
+        <li>Finding the top 3 scores? Sort and take the last three.</li>
+        <li>Looking for duplicates? Sorted data puts them side by side.</li>
+    </ul>
+    <p>Python provides two ways to sort, and choosing the right one matters.</p>
+    <div class="slide-num">6</div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>.sort() vs sorted()</h2>
+    <p>This is one of the most common beginner mistakes. Both sort data, but they work very differently.</p>
+    <div class="two-col">
+        <div>
+            <h2>.sort()</h2>
+            <ul>
+                <li>Changes the list in place</li>
+                <li>Returns <span class="ic">None</span></li>
+                <li>The original order is gone</li>
+            </ul>
+            <pre><code class="language-python">scores = [88, 72, 95]
+scores.sort()</code></pre>
+        </div>
+        <div>
+            <h2>sorted()</h2>
+            <ul>
+                <li>Creates a new sorted list</li>
+                <li>Returns the new list</li>
+                <li>The original is preserved</li>
+            </ul>
+            <pre><code class="language-python">scores = [88, 72, 95]
+ranked = sorted(scores)</code></pre>
+        </div>
+    </div>
+    <p>Never write <span class="ic">x = scores.sort()</span>. That stores <span class="ic">None</span>, not a sorted list.</p>
+    <div class="slide-num">7</div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Is It in the List?</h2>
+    <p>Before searching a filing cabinet, you first ask: "Is the file even in here?" The <span class="ic">in</span> keyword answers that question for lists. It returns <span class="ic">True</span> or <span class="ic">False</span>.</p>
+    <ul>
+        <li><span class="ic">in</span> checks if a value exists in a list</li>
+        <li><span class="ic">not in</span> checks the opposite</li>
+        <li>Combine with <span class="ic">if</span> to make decisions based on membership</li>
+    </ul>
+    <pre><code class="language-python">menu = ["coffee", "tea", "juice"]
+has_coffee = "coffee" in menu  # True</code></pre>
+    <div class="slide-num">8</div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Finding Where and How Many</h2>
+    <p>Once you know an item is in the list, you might need to know <strong>where</strong> it sits or <strong>how many times</strong> it appears. Two methods handle this.</p>
+    <ul>
+        <li><span class="ic">.index(value)</span> returns the position of the first match (like finding a page number in a table of contents)</li>
+        <li><span class="ic">.count(value)</span> returns how many times the value appears</li>
+        <li><span class="ic">.index()</span> raises an error if the value is missing, so check with <span class="ic">in</span> first</li>
+    </ul>
+    <pre><code class="language-python">colors = ["red", "blue", "red", "green"]
+pos = colors.index("blue")   # 1
+qty = colors.count("red")    # 2</code></pre>
+    <div class="slide-num">9</div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Growing and Combining Lists</h2>
+    <p>You already know <span class="ic">.append()</span> adds one item. But what if you need to add an item at a specific position, or merge two lists together?</p>
+    <ul>
+        <li><span class="ic">.insert(index, value)</span> places an item at a specific position (like cutting in line)</li>
+        <li><span class="ic">.extend(other_list)</span> adds all items from another list to the end (merging two guest lists into one)</li>
+        <li>The <span class="ic">+</span> operator also joins lists, but creates a new one instead of modifying the original</li>
+    </ul>
+    <pre><code class="language-python">tasks = ["email", "report"]
+tasks.insert(0, "coffee")  # ["coffee", "email", "report"]</code></pre>
+    <div class="slide-num">10</div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Copies: Shallow Traps</h2>
+    <p>If you write <span class="ic">copy = original</span>, both names point to the <strong>same list</strong>. Changing one changes the other, like two name tags on the same person.</p>
+    <ul>
+        <li><span class="ic">.copy()</span> or <span class="ic">[:]</span> creates an <strong>independent copy</strong></li>
+        <li>Without a proper copy, edits to one variable affect the other</li>
+    </ul>
+    <pre><code class="language-python">original = [1, 2, 3]
+safe_copy = original.copy()  # independent</code></pre>
+    <img src="images/list_copy_vs_reference.svg" alt="Diagram showing two variables pointing to same list vs independent copies">
+    <div class="slide-num">11</div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Strings and Lists</h2>
+    <p>A sentence is just words joined by spaces. Python can split a string into a list of parts, or join a list of parts back into a string. These two operations are like taking apart a LEGO set and rebuilding it.</p>
+    <ul>
+        <li><span class="ic">.split(separator)</span> breaks a string into a list of pieces</li>
+        <li><span class="ic">separator.join(list)</span> glues a list of strings back into one</li>
+    </ul>
+    <pre><code class="language-python">words = "hello world python".split()
+# ["hello", "world", "python"]</code></pre>
+    <div class="slide-num">12</div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Lists Inside Lists</h2>
+    <p>A list can hold any type of data, including other lists. Think of a spreadsheet: each row is a list, and the whole table is a list of rows.</p>
+    <ul>
+        <li><strong>First index</strong> selects the inner list (the row)</li>
+        <li><strong>Second index</strong> selects the item within it (the column)</li>
+        <li>Useful for grids, tables, and organizing multi-category data</li>
+    </ul>
+    <pre><code class="language-python">grades = [[85, 90], [78, 92], [95, 88]]
+first_student = grades[0]      # [85, 90]
+specific = grades[0][1]        # 90</code></pre>
+    <div class="slide-num">13</div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide">
+    <h2>Summary</h2>
+    <ul>
+        <li>Step slicing <span class="ic">[::2]</span> picks every Nth item. <span class="ic">[::-1]</span> reverses.</li>
+        <li><span class="ic">.sort()</span> changes the list in place (returns None). <span class="ic">sorted()</span> returns a new list.</li>
+        <li><span class="ic">in</span> and <span class="ic">not in</span> test membership. <span class="ic">.index()</span> finds position. <span class="ic">.count()</span> tallies occurrences.</li>
+        <li><span class="ic">.insert()</span> adds at a position. <span class="ic">.extend()</span> merges lists.</li>
+        <li><span class="ic">.copy()</span> or <span class="ic">[:]</span> creates an independent duplicate.</li>
+        <li><span class="ic">.split()</span> and <span class="ic">.join()</span> convert between strings and lists.</li>
+        <li>Nested lists hold lists inside lists, accessed with double indexing.</li>
+    </ul>
+    <div class="slide-num">14</div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide center">
+    <h2>Homework 7</h2>
+    <p>Available on Moodle, due Monday 11:59 PM.</p>
+    <p>This week: practice <strong>advanced list operations</strong> including slicing, sorting, and searching.</p>
+    <p>Reference sheet posted on Moodle to help with the assignment.</p>
+    <p style="margin-top: 16px;"><strong>Next week (Week 8):</strong> For Loops - In-Person</p>
+    <div class="slide-num">15</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let presenting = false;
+
+    function updateScale() {
+        const scaleX = window.innerWidth / 960;
+        const scaleY = window.innerHeight / 540;
+        const scale = Math.min(scaleX, scaleY);
+        slides.forEach(s => {
+            s.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        });
+    }
+
+    function enterPresentation() {
+        presenting = true;
+        document.body.classList.add('presenting');
+        slides[current].classList.add('active');
+        updateScale();
+        document.documentElement.requestFullscreen?.();
+    }
+
+    function exitPresentation() {
+        presenting = false;
+        document.body.classList.remove('presenting');
+        slides.forEach(s => {
+            s.classList.remove('active');
+            s.style.transform = '';
+        });
+    }
+
+    function showSlide(n) {
+        if (!presenting) return;
+        slides[current].classList.remove('active');
+        current = Math.max(0, Math.min(n, slides.length - 1));
+        slides[current].classList.add('active');
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F5') { e.preventDefault(); enterPresentation(); return; }
+        if (e.key === 'Escape') { exitPresentation(); return; }
+        if (!presenting) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); showSlide(current - 1); }
+        if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+        if (e.key === 'End') { e.preventDefault(); showSlide(slides.length - 1); }
+    });
+
+    window.addEventListener('resize', () => { if (presenting) updateScale(); });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && presenting) exitPresentation();
+        else if (presenting) updateScale();
+    });
+</script>
+</body>
+</html>

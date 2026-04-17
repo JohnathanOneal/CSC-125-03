@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weeks 3-5 Quiz: Strings, Math, and Conditionals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 13px;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.5;
+            color: #333;
+        }
+        h2 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #34495e;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+        .quiz-header {
+            background: #f8f9fa;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+        .quiz-header p { margin: 3px 0; }
+        .quiz-header ul { margin: 3px 0; padding-left: 18px; }
+        .quiz-header li { margin: 1px 0; }
+        .question {
+            margin: 10px 0;
+            padding: 8px 12px;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            background: #ffffff;
+            font-size: 13px;
+        }
+        .question strong {
+            font-size: 13px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .choices {
+            margin: 5px 0 0 0;
+            padding-left: 18px;
+            line-height: 1.7;
+        }
+        pre {
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 5px 0;
+            padding: 5px 8px;
+            background: #f8f9fa;
+        }
+        code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 12px;
+            line-height: 1.4;
+            padding: 0;
+            background: none;
+        }
+        :not(pre) > code {
+            background: #f0f0f0;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        @media print {
+            @page { size: letter; margin: 0.65in 0.75in; }
+            body { font-size: 10.5px; max-width: 100%; padding: 0; color: #000; }
+            h2 { font-size: 12px; margin-top: 10px; margin-bottom: 4px; padding-left: 8px; border-left-width: 3px; }
+            .quiz-header { padding: 5px 8px; margin: 6px 0; font-size: 10.5px; }
+            .question { margin: 5px 0; padding: 5px 8px; font-size: 10.5px; page-break-inside: avoid; }
+            .question strong { font-size: 10.5px; margin-bottom: 3px; }
+            pre { margin: 3px 0; padding: 3px 5px; }
+            code { font-size: 9.5px; }
+            :not(pre) > code { font-size: 9.5px; }
+            .choices { line-height: 1.5; padding-left: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <h2>Weeks 3-5 Quiz: Strings, Math, and Conditionals</h2>
+
+    <div class="quiz-header">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+                <p><strong>Name:</strong> _________________________ &nbsp;&nbsp; <strong>Date:</strong> _____________</p>
+                <p><strong>Instructions:</strong></p>
+                <ul>
+                    <li>10-minute quiz on paper</li>
+                    <li>No computers, phones, or notes allowed</li>
+                </ul>
+            </div>
+            <div style="border: 2px solid #333; padding: 6px 12px; background: #fff; margin-left: 20px; white-space: nowrap;">
+                <strong>Score: _____ / 30</strong>
+            </div>
+        </div>
+    </div>
+
+    <h2>Part 1: Multiple Choice (4 points each)</h2>
+
+    <!-- Q1 -->
+    <div class="question">
+        <strong>1. What is printed?</strong>
+        <pre><code class="language-python">city = "new york"
+city.upper()
+print(city)</code></pre>
+        <div class="choices">
+            a) NEW YORK<br>
+            b) new york<br>
+            c) New York<br>
+            d) Error
+        </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+        <strong>2. What is printed?</strong>
+        <pre><code class="language-python">result = 2 + 3 * 4
+print(result)</code></pre>
+        <div class="choices">
+            a) 20<br>
+            b) 14<br>
+            c) 24<br>
+            d) Error
+        </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+        <strong>3. What is printed?</strong>
+        <pre><code class="language-python">temp = 85
+if temp &gt;= 60:
+    label = "warm"
+elif temp &gt;= 80:
+    label = "hot"
+else:
+    label = "cold"
+print(label)</code></pre>
+        <div class="choices">
+            a) warm<br>
+            b) hot<br>
+            c) cold<br>
+            d) Error
+        </div>
+    </div>
+
+    <h2>Part 2: Fill in the Code (3 points each)</h2>
+
+    <!-- Q4 -->
+    <div class="question">
+        <strong>4. Fill in the blank so the output matches the comment:</strong>
+        <pre><code class="language-python">text = "  Hello World  "
+clean = text._______()
+print(clean)
+# Output: Hello World</code></pre>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+        <strong>5. Fill in the blank so the output matches the comment:</strong>
+        <pre><code class="language-python">age = 15
+has_id = True
+if age &gt;= 18 _______ has_id:
+    print("Entry allowed")
+else:
+    print("Entry denied")
+# Output: Entry denied</code></pre>
+    </div>
+
+    <h2>Part 3: Fix the Errors (4 points each)</h2>
+
+    <!-- Q6 -->
+    <div class="question">
+        <strong>6. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">name = "alice"
+upper_name = name.Upper()
+print(upper_name)</code></pre>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+        <strong>7. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">score = 85
+if score &gt;= 70
+    print("You passed")</code></pre>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+        <strong>8. Fix this code by crossing out the error and writing the correction:</strong>
+        <pre><code class="language-python">word = "Hello"
+last = word[5]
+print(last)</code></pre>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>

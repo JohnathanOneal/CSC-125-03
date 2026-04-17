@@ -301,249 +301,227 @@
     <h2>Agenda</h2>
     <table>
         <tr><th>#</th><th>Section</th></tr>
-        <tr><td>1</td><td>Week 4 Review</td></tr>
-        <tr><td>2</td><td>Lecture Slides</td></tr>
-        <tr><td>3</td><td>Code Lecture Part 1</td></tr>
+        <tr><td>1</td><td>Forum Overview</td></tr>
+        <tr><td>2</td><td>Week 4 Review</td></tr>
+        <tr><td>3</td><td>Lecture Slides</td></tr>
         <tr><td>-</td><td>Break</td></tr>
-        <tr><td>4</td><td>Code Lecture Part 2</td></tr>
+        <tr><td>4</td><td>Code Lecture</td></tr>
     </table>
     <div class="slide-num">2</div>
 </div>
 
 <!-- SLIDE 3 -->
 <div class="slide">
-    <div class="section-label">Section 1</div>
+    <div class="section-label">Section 2</div>
     <h2>Week 4 Review</h2>
     <ul>
         <li>Arithmetic operators: <span class="ic">+</span> <span class="ic">-</span> <span class="ic">*</span> <span class="ic">/</span> <span class="ic">//</span> <span class="ic">%</span> <span class="ic">**</span></li>
         <li>Operator precedence follows <strong>PEMDAS</strong> (parentheses first)</li>
         <li>Comparison operators return <strong>booleans</strong>: <span class="ic">==</span> <span class="ic">!=</span> <span class="ic">&lt;</span> <span class="ic">&gt;</span> <span class="ic">&lt;=</span> <span class="ic">&gt;=</span></li>
-        <li>Assignment operators: <span class="ic">+=</span> <span class="ic">-=</span> <span class="ic">*=</span> <span class="ic">/=</span></li>
+        <li>Assignment operators update a variable: <span class="ic">+=</span> <span class="ic">-=</span> <span class="ic">*=</span> <span class="ic">/=</span></li>
     </ul>
     <pre><code class="language-python">score = 85
-passing = score >= 70    # True
-perfect = score == 100   # False</code></pre>
-    <p>This week we use those booleans to <strong>make decisions</strong> in our programs.</p>
+is_passing = score >= 70  # True</code></pre>
+    <p>This week: we use those True/False values to <strong>make decisions</strong> in our programs.</p>
     <div class="slide-num">3</div>
 </div>
 
 <!-- SLIDE 4 -->
 <div class="slide">
-    <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Why Programs Need Decisions</h2>
-    <p>So far, every line of code runs <strong>every time</strong>. Real programs need to choose different actions based on conditions.</p>
-    <ul>
-        <li>Is the user old enough to vote?</li>
-        <li>Did the student pass or fail?</li>
-        <li>Is the password correct?</li>
-    </ul>
-    <p>Python uses <span class="ic">if</span> statements to run code <strong>only when a condition is True</strong>.</p>
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>The PB&amp;J Challenge</h2>
+    <p>Here is a jar of peanut butter, a jar of jelly, a loaf of bread, and a knife.</p>
+    <p><strong>Your task:</strong> write me instructions to make a peanut butter and jelly sandwich.</p>
+    <p>The catch: I will follow your instructions <strong>exactly as written</strong>. I have no common sense. I will not assume anything you do not explicitly state.</p>
+    <p style="margin-top: 12px;">This is exactly how a computer reads your code - literally, one instruction at a time, with zero assumptions.</p>
     <div class="slide-num">4</div>
 </div>
 
 <!-- SLIDE 5 -->
 <div class="slide">
-    <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>The if Statement</h2>
-    <p>The <span class="ic">if</span> keyword tests a condition. If <span class="ic">True</span>, the indented block runs.</p>
-    <pre><code class="language-python">age = 18
-
-if age >= 18:
-    print("You can vote")
-
-print("Program continues")</code></pre>
-    <ul>
-        <li>The condition must end with a <strong>colon</strong> <span class="ic">:</span></li>
-        <li>The body is indented by <strong>4 spaces</strong></li>
-        <li>Code after the block (unindented) <strong>always runs</strong></li>
-    </ul>
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>Attempt 1: "Put Peanut Butter on the Bread"</h2>
+    <div class="two-col">
+        <div>
+            <img src="images/pbj_bread_in_bag.jpg" alt="PB&J attempted with bread still in the bag">
+        </div>
+        <div>
+            <p><strong>What went wrong?</strong></p>
+            <ul>
+                <li>The bread is still in the bag</li>
+                <li>The jar is still sealed</li>
+                <li>No one said to use a knife</li>
+                <li>"Put" could mean anything</li>
+            </ul>
+            <p style="margin-top: 10px;">We <strong>assumed</strong> things that were never stated. The literal instruction-follower did exactly what we said.</p>
+        </div>
+    </div>
     <div class="slide-num">5</div>
 </div>
 
 <!-- SLIDE 6 -->
 <div class="slide">
-    <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>if-else: Two-Way Decisions</h2>
-    <p>Use <span class="ic">else</span> to handle the case when the condition is <span class="ic">False</span>. Exactly <strong>one block</strong> always runs.</p>
-    <pre><code class="language-python">number = 7
-
-if number % 2 == 0:
-    print("Even")
-else:
-    print("Odd")</code></pre>
-    <ul>
-        <li><span class="ic">else</span> does not have a condition - it catches everything the <span class="ic">if</span> missed</li>
-        <li><span class="ic">else</span> also needs a <strong>colon</strong> and an indented body</li>
-    </ul>
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>Attempt 2: "Open the Jar, Spread It on the Bread"</h2>
+    <div class="two-col">
+        <div>
+            <img src="images/pbj_jar.jpg" alt="Peanut butter jar smeared directly on bread">
+        </div>
+        <div>
+            <p><strong>Better, but still wrong:</strong></p>
+            <ul>
+                <li>"Spread it" - spread <em>what</em>? The jar itself?</li>
+                <li>We never said to use a knife to scoop</li>
+                <li>We never said how much</li>
+                <li>We never said which side of the bread</li>
+            </ul>
+            <p style="margin-top: 10px;">Every unstated assumption is a potential failure point.</p>
+        </div>
+    </div>
     <div class="slide-num">6</div>
 </div>
 
 <!-- SLIDE 7 -->
 <div class="slide">
-    <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>if-elif-else: Multiple Options</h2>
-    <p>Use <span class="ic">elif</span> (short for "else if") to check multiple conditions. The <strong>first True</strong> branch wins.</p>
-    <pre><code class="language-python">score = 85
-
-if score >= 90:
-    grade = "A"
-elif score >= 80:
-    grade = "B"
-elif score >= 70:
-    grade = "C"
-elif score >= 60:
-    grade = "D"
-else:
-    grade = "F"</code></pre>
-    <p><strong>Order matters</strong> - check from highest to lowest. Python stops at the first match.</p>
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>What the PB&amp;J Teaches Us</h2>
+    <p>Every failure was a <strong>missing check</strong>: a condition we assumed but never stated.</p>
+    <ul>
+        <li><strong>IF</strong> the bread is in a bag &rarr; take it out first</li>
+        <li><strong>IF</strong> the jar is closed &rarr; remove the lid</li>
+        <li><strong>IF</strong> you need to spread &rarr; pick up the knife first</li>
+        <li><strong>IF</strong> one side is done &rarr; move on to the jelly</li>
+    </ul>
+    <p>These "IF" checks are <strong>conditional logic</strong>. A computer needs every condition spelled out explicitly, just like our literal sandwich-maker.</p>
+    <p>Today we learn to write these checks in Python.</p>
     <div class="slide-num">7</div>
 </div>
 
 <!-- SLIDE 8 -->
 <div class="slide">
-    <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Logical Operators</h2>
-    <p>Combine conditions with <span class="ic">and</span>, <span class="ic">or</span>, and <span class="ic">not</span>:</p>
-    <div class="two-col">
-        <div>
-            <table>
-                <tr><th>A</th><th>B</th><th>A and B</th><th>A or B</th></tr>
-                <tr><td>True</td><td>True</td><td>True</td><td>True</td></tr>
-                <tr><td>True</td><td>False</td><td>False</td><td>True</td></tr>
-                <tr><td>False</td><td>True</td><td>False</td><td>True</td></tr>
-                <tr><td>False</td><td>False</td><td>False</td><td>False</td></tr>
-            </table>
-        </div>
-        <div>
-            <pre><code class="language-python"># and: BOTH must be True
-# or:  at least ONE True
-# not: flips the value
-
-x = True
-print(not x)  # False</code></pre>
-        </div>
-    </div>
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>The if Statement</h2>
+    <p>The <span class="ic">if</span> keyword tests a condition. If the answer is <span class="ic">True</span>, the indented block runs. If <span class="ic">False</span>, Python skips it entirely. Think of it like a bouncer checking your ID at the door.</p>
+    <pre><code class="language-python">age = 18
+if age >= 18:
+    print("You can vote")</code></pre>
+    <ul>
+        <li>The condition line must end with a <strong>colon</strong> <span class="ic">:</span></li>
+        <li>The body is indented by <strong>4 spaces</strong></li>
+        <li>Code after the block (unindented) <strong>always runs</strong> regardless of the condition</li>
+    </ul>
     <div class="slide-num">8</div>
 </div>
 
 <!-- SLIDE 9 -->
 <div class="slide">
-    <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Combining Conditions</h2>
-    <p>Use logical operators inside <span class="ic">if</span> statements to test multiple things at once:</p>
-    <pre><code class="language-python"># Both conditions must be True
-age = 20
-has_license = True
-
-if age >= 16 and has_license:
-    print("You can drive")</code></pre>
-    <pre><code class="language-python"># At least one condition must be True
-is_weekend = False
-is_holiday = True
-
-if is_weekend or is_holiday:
-    print("Day off")</code></pre>
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>if-else: A Fork in the Road</h2>
+    <p>Sometimes you need two paths: one for True, one for False. Like a fork in the road: you <strong>must</strong> take one path or the other. Never both, never neither.</p>
+    <pre><code class="language-python">number = 7
+if number % 2 == 0:
+    print("Even")
+else:
+    print("Odd")</code></pre>
+    <ul>
+        <li><span class="ic">else</span> has no condition. It catches everything the <span class="ic">if</span> missed</li>
+        <li><span class="ic">else</span> also needs a <strong>colon</strong> and an indented body</li>
+        <li>Exactly <strong>one block</strong> always runs</li>
+    </ul>
     <div class="slide-num">9</div>
 </div>
 
 <!-- SLIDE 10 -->
 <div class="slide">
-    <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Nested Conditionals</h2>
-    <p>Place an <span class="ic">if</span> inside another <span class="ic">if</span> for decisions within decisions. Each level adds <strong>4 more spaces</strong>.</p>
-    <pre><code class="language-python">age = 25
-is_student = True
-
-if age >= 18:
-    if is_student:
-        price = 8.00
-    else:
-        price = 12.00
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>if-elif-else: The Vending Machine</h2>
+    <p>A vending machine checks buttons top to bottom. You press one button, you get one item. It stops checking after the first match. That is how <span class="ic">elif</span> works.</p>
+    <pre><code class="language-python">if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
 else:
-    price = 5.00
-
-print(f"Ticket: ${price:.2f}")</code></pre>
-    <p>Keep nesting to <strong>two levels</strong> when possible - deeper nesting gets hard to read.</p>
+    grade = "C or below"</code></pre>
+    <p><strong>Order matters:</strong> check from highest to lowest. The first <span class="ic">True</span> condition wins and all remaining branches are skipped.</p>
     <div class="slide-num">10</div>
 </div>
 
 <!-- SLIDE 11 -->
 <div class="slide">
-    <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Indentation Rules</h2>
-    <div class="two-col">
-        <div>
-            <h3>Correct</h3>
-            <pre><code class="language-python">if temperature > 90:
-    print("It is hot")
-    print("Stay hydrated")
-
-if temperature < 32:
-    print("Freezing")</code></pre>
-        </div>
-        <div>
-            <h3>Incorrect</h3>
-            <pre><code class="language-python"># Missing colon
-if temperature > 90
-    print("It is hot")
-
-# Inconsistent indent
-if temperature < 32:
-    print("Freezing")
-      print("Wear a coat")</code></pre>
-        </div>
-    </div>
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>Combining Conditions: and, or, not</h2>
+    <p>Sometimes one check is not enough. Python lets you combine conditions:</p>
     <ul>
-        <li>Always use <strong>4 spaces</strong> per indentation level</li>
-        <li>Every <span class="ic">if</span>, <span class="ic">elif</span>, and <span class="ic">else</span> line must end with a <strong>colon</strong></li>
-        <li>All lines in the same block must have the <strong>same indentation</strong></li>
+        <li><span class="ic">and</span>: <strong>both</strong> must be True (need a ticket AND be 18+ to enter)</li>
+        <li><span class="ic">or</span>: <strong>at least one</strong> must be True (weekend OR holiday = day off)</li>
+        <li><span class="ic">not</span>: <strong>flips</strong> the value (door is NOT locked, so you can enter)</li>
     </ul>
+    <pre><code class="language-python">if age >= 16 and has_license:
+    print("You can drive")</code></pre>
+    <p>Back to our sandwich: "IF the jar is closed AND you have hands &rarr; twist the lid." Multiple conditions, one decision.</p>
     <div class="slide-num">11</div>
 </div>
 
 <!-- SLIDE 12 -->
 <div class="slide">
-    <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Common Conditional Errors</h2>
-    <table>
-        <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
-        <tr><td>SyntaxError</td><td>Missing colon after condition</td><td>Add <span class="ic">:</span> at end of <span class="ic">if</span>/<span class="ic">elif</span>/<span class="ic">else</span></td></tr>
-        <tr><td>IndentationError</td><td>Wrong or inconsistent spacing</td><td>Use exactly 4 spaces per level</td></tr>
-        <tr><td>Logic error</td><td>Using <span class="ic">=</span> instead of <span class="ic">==</span></td><td><span class="ic">=</span> assigns, <span class="ic">==</span> compares</td></tr>
-        <tr><td>Logic error</td><td>Wrong <span class="ic">elif</span> order</td><td>Check from highest to lowest</td></tr>
-    </table>
-    <pre><code class="language-python"># Wrong order - every score >= 70 also >= 60
-if score >= 60:    # This catches 85 first
-    grade = "D"    # Bug: 85 gets "D" not "B"
-elif score >= 70:
-    grade = "C"    # Never reached for 85</code></pre>
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>Decisions Within Decisions</h2>
+    <p>Sometimes one answer leads to another question, like a flowchart. You ask "do you have a ticket?" and only <em>then</em> ask "how old are you?"</p>
+    <pre><code class="language-python">if has_ticket:
+    if age >= 18:
+        price = 12.00
+    else:
+        price = 8.00</code></pre>
+    <p>Each level adds <strong>4 more spaces</strong>. Tip: keep nesting to 2 levels. Deeper nesting gets hard to read and debug.</p>
     <div class="slide-num">12</div>
 </div>
 
 <!-- SLIDE 13 -->
 <div class="slide">
-    <h2>Summary</h2>
-    <ul>
-        <li><span class="ic">if</span> runs code only when a condition is <span class="ic">True</span></li>
-        <li><span class="ic">if-else</span> provides a two-way choice - exactly one block runs</li>
-        <li><span class="ic">if-elif-else</span> handles multiple options - first <span class="ic">True</span> wins</li>
-        <li><span class="ic">and</span>, <span class="ic">or</span>, <span class="ic">not</span> combine conditions</li>
-        <li>Nested <span class="ic">if</span> statements handle decisions within decisions</li>
-        <li>Every condition line ends with a <strong>colon</strong></li>
-        <li>Indentation is <strong>4 spaces</strong> per level - consistency is required</li>
-    </ul>
+    <div class="section-label">Section 3 &middot; Lecture</div>
+    <h2>Two Common Mistakes</h2>
+    <div class="two-col">
+        <div>
+            <h2><span class="ic">=</span> vs <span class="ic">==</span></h2>
+            <p>Single equals <strong>stores</strong> a value.</p>
+            <p>Double equals <strong>asks a question</strong>.</p>
+            <p>Think: one = is a command ("put this here"). Two == is a question ("are these the same?").</p>
+        </div>
+        <div>
+            <h2>elif order</h2>
+            <p>Always check the <strong>highest threshold first</strong>.</p>
+            <p>Wrong: <span class="ic">if score >= 60</span> catches a score of 95 before you ever check for 90.</p>
+            <p>Right: start with <span class="ic">if score >= 90</span>, then work down.</p>
+        </div>
+    </div>
     <div class="slide-num">13</div>
 </div>
 
 <!-- SLIDE 14 -->
 <div class="slide">
-    <h2>Homework and Next Week</h2>
-    <p><strong>Homework 5</strong> - available on Moodle, due Monday 11:59 PM</p>
-    <p>Reference sheet posted to help with the assignment.</p>
-    <br>
-    <p><strong>Next week (Week 6):</strong> Lists and Tuples - Virtual</p>
-    <p>Forum discussion prompt will be posted on Moodle.</p>
+    <h2>Summary</h2>
+    <ul>
+        <li><span class="ic">if</span> runs code only when a condition is <span class="ic">True</span></li>
+        <li><span class="ic">if-else</span> provides a two-way choice. Exactly one block runs</li>
+        <li><span class="ic">if-elif-else</span> handles multiple options. First <span class="ic">True</span> wins</li>
+        <li><span class="ic">and</span>, <span class="ic">or</span>, <span class="ic">not</span> combine multiple conditions</li>
+        <li>Nested <span class="ic">if</span> statements handle decisions within decisions</li>
+        <li>Every condition line ends with a <strong>colon</strong>, body indented <strong>4 spaces</strong></li>
+        <li>Like the PB&amp;J: spell out every condition. A computer assumes nothing</li>
+    </ul>
     <div class="slide-num">14</div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide center">
+    <h2>Even with Perfect Logic...</h2>
+    <p>You can check every condition, handle every edge case, and write flawless code. And then...</p>
+    <img src="images/pbj_long.png" alt="PB&J sandwich made on a sub roll">
+    <p>There will always be something you did not think of. That is programming, and that is why we test.</p>
+    <p style="margin-top: 16px;"><strong>Homework 5</strong> - available on Moodle, due Monday 11:59 PM</p>
+    <p><strong>Forum Discussion</strong> - prompt posted on Moodle. Respond to the prompt and reply to at least one classmate.</p>
+    <p><strong>Next week (Week 6):</strong> Lists and Tuples - In-Person</p>
+    <div class="slide-num">15</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>

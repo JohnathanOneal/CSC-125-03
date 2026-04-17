@@ -304,9 +304,9 @@
         <tr><td>1</td><td>Forum Overview</td></tr>
         <tr><td>2</td><td>Week 3 Review</td></tr>
         <tr><td>3</td><td>Lecture Slides</td></tr>
-        <tr><td>4</td><td>Code Lecture Part 1</td></tr>
-        <tr><td>-</td><td>Break</td></tr>
-        <tr><td>5</td><td>Code Lecture Part 2</td></tr>
+	<tr><td>-</td><td>Break</td></tr>
+        <tr><td>4</td><td>Code Lecture</td></tr>
+	<tr><td>5</td><td>Quiz (leave when you finish)</td></tr>
     </table>
     <div class="slide-num">2</div>
 </div>
@@ -316,216 +316,229 @@
     <div class="section-label">Section 1</div>
     <h2>Week 3 Review</h2>
     <ul>
-        <li>String methods: <span class="ic">.strip()</span>, <span class="ic">.upper()</span>, <span class="ic">.lower()</span>, <span class="ic">.title()</span>, <span class="ic">.replace()</span></li>
-        <li>Indexing: <span class="ic">string[0]</span> for the first character, <span class="ic">string[-1]</span> for the last</li>
-        <li>Slicing: <span class="ic">string[start:end]</span> extracts a substring (end not included)</li>
-        <li>F-strings: <span class="ic">f"Hello {name}"</span> for embedding variables in text</li>
-        <li>Format specifiers: <span class="ic">:.2f</span> for controlling decimal places</li>
-        <li>Debugging: read error messages bottom-up, use <span class="ic">print()</span> to inspect values</li>
+        <li>String methods (<span class="ic">.strip()</span>, <span class="ic">.upper()</span>, etc.) return <strong>new strings</strong> - always save the result</li>
+        <li>Indexing lets you grab a single character by position (<span class="ic">[0]</span> is first)</li>
+        <li>Slicing extracts a piece of a string (<span class="ic">[start:end]</span>)</li>
+        <li>F-strings embed variables directly in text: <span class="ic">f"Hello {name}"</span></li>
+        <li>Debugging: read the error type first, then find the line number</li>
     </ul>
-    <p style="margin-top: 12px;">This week we focus on <strong>math operations</strong> and the operators Python provides for calculations and comparisons.</p>
+    <p style="margin-top: 12px;">This week: Python as a <strong>calculator</strong> - how it handles math, comparisons, and keeping a running tally.</p>
     <div class="slide-num">3</div>
 </div>
 
 <!-- SLIDE 4 -->
 <div class="slide">
     <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Arithmetic Operators</h2>
-    <p>Python provides <strong>seven arithmetic operators</strong>. Given <span class="ic">a = 17</span> and <span class="ic">b = 5</span>:</p>
-    <table>
-        <tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
-        <tr><td><span class="ic">+</span></td><td>Addition</td><td><span class="ic">a + b</span></td><td>22</td></tr>
-        <tr><td><span class="ic">-</span></td><td>Subtraction</td><td><span class="ic">a - b</span></td><td>12</td></tr>
-        <tr><td><span class="ic">*</span></td><td>Multiplication</td><td><span class="ic">a * b</span></td><td>85</td></tr>
-        <tr><td><span class="ic">/</span></td><td>Division</td><td><span class="ic">a / b</span></td><td>3.4</td></tr>
-        <tr><td><span class="ic">//</span></td><td>Floor Division</td><td><span class="ic">a // b</span></td><td>3</td></tr>
-        <tr><td><span class="ic">%</span></td><td>Modulo</td><td><span class="ic">a % b</span></td><td>2</td></tr>
-        <tr><td><span class="ic">**</span></td><td>Exponentiation</td><td><span class="ic">a ** b</span></td><td>1419857</td></tr>
-    </table>
+    <h2>Python as a Calculator</h2>
+    <p>You already know basic math symbols from school. Python uses the same ones, plus a few extras.</p>
+    <p>Think of it like a calculator that <strong>remembers its answers</strong>. You type an expression, Python evaluates it, and you can store the result in a variable for later.</p>
+    <ul>
+        <li>The familiar four: <span class="ic">+</span> <span class="ic">-</span> <span class="ic">*</span> <span class="ic">/</span> (add, subtract, multiply, divide)</li>
+        <li>Three new ones: <span class="ic">//</span> (floor division), <span class="ic">%</span> (remainder), <span class="ic">**</span> (power)</li>
+    </ul>
+    <p>The first four work exactly like you expect. The interesting ones are the last three - let's focus on those.</p>
     <div class="slide-num">4</div>
 </div>
 
 <!-- SLIDE 5 -->
 <div class="slide">
     <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Floor Division &amp; Modulo</h2>
-    <p><strong>Floor division</strong> (<span class="ic">//</span>) gives the whole number part. <strong>Modulo</strong> (<span class="ic">%</span>) gives the remainder.</p>
-    <pre><code class="language-python"># Convert total minutes to hours and minutes
-total_minutes = 135
-hours = total_minutes // 60    # 2
-minutes = total_minutes % 60   # 15
-print(f"{hours}h {minutes}m")  # "2h 15m"</code></pre>
-    <pre><code class="language-python"># Even/odd check - the result is True or False
-number = 14
-is_even = number % 2 == 0      # True
-
-number = 7
-is_even = number % 2 == 0      # False</code></pre>
+    <h2>The Pizza Problem: Floor Division and Remainder</h2>
+    <p>Imagine you have <strong>17 slices of pizza</strong> and <strong>5 people</strong>. Two questions come up:</p>
+    <ul>
+        <li><strong>How many full slices does each person get?</strong> That is floor division: <span class="ic">17 // 5</span> gives <strong>3</strong></li>
+        <li><strong>How many slices are left over?</strong> That is the remainder (modulo): <span class="ic">17 % 5</span> gives <strong>2</strong></li>
+    </ul>
+    <svg viewBox="0 0 780 110" style="max-width: 720px; margin: 6px auto; display: block;" xmlns="http://www.w3.org/2000/svg">
+        <!-- 17 slices shown as triangles -->
+        <!-- Person 1: slices 1-3 -->
+        <rect x="8" y="8" width="130" height="60" rx="6" fill="#f3ece1" stroke="#c08b5c" stroke-width="1.5"/>
+        <text x="73" y="32" text-anchor="middle" font-size="22">&#127829;&#127829;&#127829;</text>
+        <text x="73" y="55" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#5c3d2e">Person 1</text>
+        <!-- Person 2: slices 4-6 -->
+        <rect x="148" y="8" width="130" height="60" rx="6" fill="#f3ece1" stroke="#c08b5c" stroke-width="1.5"/>
+        <text x="213" y="32" text-anchor="middle" font-size="22">&#127829;&#127829;&#127829;</text>
+        <text x="213" y="55" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#5c3d2e">Person 2</text>
+        <!-- Person 3: slices 7-9 -->
+        <rect x="288" y="8" width="130" height="60" rx="6" fill="#f3ece1" stroke="#c08b5c" stroke-width="1.5"/>
+        <text x="353" y="32" text-anchor="middle" font-size="22">&#127829;&#127829;&#127829;</text>
+        <text x="353" y="55" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#5c3d2e">Person 3</text>
+        <!-- Person 4: slices 10-12 -->
+        <rect x="428" y="8" width="130" height="60" rx="6" fill="#f3ece1" stroke="#c08b5c" stroke-width="1.5"/>
+        <text x="493" y="32" text-anchor="middle" font-size="22">&#127829;&#127829;&#127829;</text>
+        <text x="493" y="55" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#5c3d2e">Person 4</text>
+        <!-- Person 5: slices 13-15 -->
+        <rect x="568" y="8" width="130" height="60" rx="6" fill="#f3ece1" stroke="#c08b5c" stroke-width="1.5"/>
+        <text x="633" y="32" text-anchor="middle" font-size="22">&#127829;&#127829;&#127829;</text>
+        <text x="633" y="55" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#5c3d2e">Person 5</text>
+        <!-- Labels below -->
+        <text x="280" y="85" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="13" fill="#5c3d2e">17 // 5 = <tspan font-weight="600" fill="#b85c38">3 each</tspan></text>
+        <!-- Leftover -->
+        <rect x="710" y="8" width="64" height="60" rx="6" fill="#faf6f0" stroke="#b85c38" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <text x="742" y="34" text-anchor="middle" font-size="22">&#127829;&#127829;</text>
+        <text x="742" y="55" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#b85c38">left over</text>
+        <text x="580" y="85" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="13" fill="#5c3d2e">17 % 5 = <tspan font-weight="600" fill="#b85c38">2 remaining</tspan></text>
+    </svg>
+    <p>These two operators always work as a pair. Together they answer: "how many whole groups, and what is left?"</p>
     <div class="slide-num">5</div>
 </div>
 
 <!-- SLIDE 6 -->
 <div class="slide">
     <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Division Types Compared</h2>
-    <div class="two-col">
-        <div>
-            <h2>True Division <span class="ic">/</span></h2>
-            <p>Always returns a <strong>float</strong>, even when dividing evenly:</p>
-            <pre><code class="language-python">10 / 5     # 2.0
-10 / 3     # 3.3333...
-7 / 2      # 3.5
-1 / 4      # 0.25</code></pre>
-        </div>
-        <div>
-            <h2>Floor Division <span class="ic">//</span></h2>
-            <p>Returns an <strong>int</strong> for int inputs (rounds down):</p>
-            <pre><code class="language-python">10 // 5    # 2
-10 // 3    # 3
-7 // 2     # 3
-1 // 4     # 0</code></pre>
-        </div>
-    </div>
-    <p style="margin-top: 10px;">Use <span class="ic">/</span> when you need precision. Use <span class="ic">//</span> when you need a whole number.</p>
+    <h2>Where You See This in Real Life</h2>
+    <p>Floor division and remainder show up everywhere once you know to look for them:</p>
+    <ul>
+        <li><strong>Time conversion:</strong> 135 minutes is how many hours and minutes? <span class="ic">135 // 60</span> = 2 hours, <span class="ic">135 % 60</span> = 15 minutes</li>
+        <li><strong>Making change:</strong> How many quarters fit in 87 cents? <span class="ic">87 // 25</span> = 3, with <span class="ic">87 % 25</span> = 12 cents left</li>
+        <li><strong>Even or odd:</strong> Any number <span class="ic">% 2</span> gives 0 if even, 1 if odd</li>
+    </ul>
+    <p>The pattern is always the same: you are splitting a total into <strong>groups</strong> and asking what <strong>remains</strong>.</p>
     <div class="slide-num">6</div>
 </div>
 
 <!-- SLIDE 7 -->
 <div class="slide">
     <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Operator Precedence</h2>
-    <p>Python follows <strong>PEMDAS</strong> rules. Operations higher in the table are evaluated first:</p>
-    <img src="images/operator_precedence_pyramid.png" alt="PEMDAS pyramid: Parentheses at top, then Exponents, then Multiplication/Division/Floor Division/Modulo, then Addition/Subtraction at bottom">
-    <pre><code class="language-python"># Multiplication happens before addition
-result = 2 + 3 * 4       # 14  (not 20)
-
-# Exponents happen before multiplication
-result = 2 * 3 ** 2      # 18  (not 36)</code></pre>
+    <h2>Two Kinds of Division</h2>
+    <p>A common source of confusion: Python has <strong>two</strong> division operators that behave differently.</p>
+    <div class="two-col">
+        <div>
+            <h2>Regular <span class="ic">/</span></h2>
+            <p>Works like a calculator. <strong>Always gives a decimal</strong> (float), even when it divides evenly.</p>
+            <p><span class="ic">10 / 5</span> gives <strong>2.0</strong> (not 2)</p>
+            <p>Use when you need <strong>precise answers</strong>.</p>
+        </div>
+        <div>
+            <h2>Floor <span class="ic">//</span></h2>
+            <p>Rounds down and <strong>drops the decimal</strong>. Gives a whole number.</p>
+            <p><span class="ic">10 // 3</span> gives <strong>3</strong> (not 3.33)</p>
+            <p>Use when you need <strong>whole groups</strong>.</p>
+        </div>
+    </div>
+    <p style="margin-top: 8px;">Tip: if your math result unexpectedly has <span class="ic">.0</span> at the end, you probably used <span class="ic">/</span> when you meant <span class="ic">//</span>, or vice versa.</p>
     <div class="slide-num">7</div>
 </div>
 
 <!-- SLIDE 8 -->
 <div class="slide">
     <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Parentheses for Clarity</h2>
-    <p>Use parentheses to <strong>control order</strong> and make your intent obvious:</p>
-    <pre><code class="language-python"># Calculate the average of three temperatures
-temp1 = 72
-temp2 = 68
-temp3 = 75
-average = (temp1 + temp2 + temp3) / 3    # 71.666...
-
-# Apply tax to a price
-price = 49.99
-tax_rate = 0.08
-total = price * (1 + tax_rate)           # 53.9892</code></pre>
-    <p>Even when not strictly required, parentheses improve <strong>readability</strong>:</p>
-    <pre><code class="language-python"># Both produce the same result, but the second is clearer
-result = a + b * c / d
-result = a + ((b * c) / d)</code></pre>
+    <h2>Order of Operations: PEMDAS</h2>
+    <p>Python follows the <strong>same rules you learned in math class</strong>. It does not just read left to right.</p>
+    <svg viewBox="0 0 700 130" style="max-width: 640px; margin: 6px auto; display: block;" xmlns="http://www.w3.org/2000/svg">
+        <!-- Priority bars - widest at top (highest priority) to narrowest at bottom -->
+        <!-- Level 1: Parentheses -->
+        <rect x="50" y="6" width="600" height="26" rx="5" fill="#b85c38"/>
+        <text x="350" y="24" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#fefcf9">( ) Parentheses</text>
+        <text x="670" y="24" text-anchor="start" font-family="Inter, sans-serif" font-size="11" fill="#b85c38">1st</text>
+        <!-- Level 2: Exponents -->
+        <rect x="100" y="36" width="500" height="26" rx="5" fill="#c08b5c"/>
+        <text x="350" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#fefcf9">** Exponents</text>
+        <text x="620" y="54" text-anchor="start" font-family="Inter, sans-serif" font-size="11" fill="#c08b5c">2nd</text>
+        <!-- Level 3: Multiply / Divide / Floor Div / Modulo -->
+        <rect x="150" y="66" width="400" height="26" rx="5" fill="#d4913d"/>
+        <text x="350" y="84" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#fefcf9">* &nbsp; / &nbsp; // &nbsp; % &nbsp; Multiply / Divide</text>
+        <text x="570" y="84" text-anchor="start" font-family="Inter, sans-serif" font-size="11" fill="#d4913d">3rd</text>
+        <!-- Level 4: Add / Subtract -->
+        <rect x="200" y="96" width="300" height="26" rx="5" fill="#a67b5b"/>
+        <text x="350" y="114" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#fefcf9">+ &nbsp; - &nbsp; Add / Subtract</text>
+        <text x="520" y="114" text-anchor="start" font-family="Inter, sans-serif" font-size="11" fill="#a67b5b">4th</text>
+    </svg>
+    <p>This means <span class="ic">2 + 3 * 4</span> is <strong>14</strong>, not 20. Python multiplies first (3 * 4 = 12), then adds (2 + 12 = 14).</p>
+    <p>If that is not what you intended, <strong>parentheses override everything</strong>: <span class="ic">(2 + 3) * 4</span> gives <strong>20</strong>.</p>
     <div class="slide-num">8</div>
 </div>
 
 <!-- SLIDE 9 -->
 <div class="slide">
     <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Comparison Operators</h2>
-    <p>Comparisons evaluate to <span class="ic">True</span> or <span class="ic">False</span> (boolean values):</p>
-    <table>
-        <tr><th>Operator</th><th>Meaning</th><th>Example</th><th>Result</th></tr>
-        <tr><td><span class="ic">==</span></td><td>Equal to</td><td><span class="ic">5 == 5</span></td><td>True</td></tr>
-        <tr><td><span class="ic">!=</span></td><td>Not equal to</td><td><span class="ic">5 != 3</span></td><td>True</td></tr>
-        <tr><td><span class="ic">&lt;</span></td><td>Less than</td><td><span class="ic">3 &lt; 5</span></td><td>True</td></tr>
-        <tr><td><span class="ic">&gt;</span></td><td>Greater than</td><td><span class="ic">3 &gt; 5</span></td><td>False</td></tr>
-        <tr><td><span class="ic">&lt;=</span></td><td>Less than or equal</td><td><span class="ic">5 &lt;= 5</span></td><td>True</td></tr>
-        <tr><td><span class="ic">&gt;=</span></td><td>Greater than or equal</td><td><span class="ic">3 &gt;= 5</span></td><td>False</td></tr>
-    </table>
-    <p>These operators work with <span class="ic">int</span>, <span class="ic">float</span>, and <span class="ic">str</span> values.</p>
+    <h2>The Average Trap</h2>
+    <p>One of the most common beginner mistakes involves calculating an average. Suppose you have three test scores and want their average:</p>
+    <pre><code class="language-python">wrong_avg = 72 + 85 + 68 / 3    # 179.67 - only 68 gets divided
+right_avg = (72 + 85 + 68) / 3  # 75.0   - all three are added first</code></pre>
+    <p>Without parentheses, Python divides <strong>only the last number</strong> by 3 (because division has higher precedence than addition). The parentheses force the addition to happen first.</p>
+    <p><strong>Rule of thumb:</strong> when in doubt, add parentheses. They never hurt and they make your intent clear to anyone reading your code.</p>
     <div class="slide-num">9</div>
 </div>
 
 <!-- SLIDE 10 -->
 <div class="slide">
     <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Boolean Expressions</h2>
-    <p>Comparison results can be <strong>stored in variables</strong> for later use:</p>
-    <pre><code class="language-python">age = 20
-can_vote = age >= 18          # True
-is_teen = 13 <= age <= 19     # False (chained comparison)</code></pre>
-    <pre><code class="language-python">temperature = 98.6
-has_fever = temperature > 100.4    # False
-
-price = 29.99
-is_affordable = price < 50.00     # True</code></pre>
-    <p>Boolean variables are useful for tracking the state of a condition. We will use them with <strong>conditional logic</strong> next week.</p>
+    <h2>Asking Yes-or-No Questions: Comparisons</h2>
+    <p>Sometimes you do not need a number - you need a <strong>yes or no answer</strong>. Python calls these <span class="ic">True</span> and <span class="ic">False</span>.</p>
+    <p>Think of comparisons like questions you ask Python:</p>
+    <ul>
+        <li>"Is this person old enough to vote?" &rarr; <span class="ic">age >= 18</span></li>
+        <li>"Did the student pass?" &rarr; <span class="ic">score >= 70</span></li>
+        <li>"Are these two names the same?" &rarr; <span class="ic">name1 == name2</span></li>
+        <li>"Is the price within my budget?" &rarr; <span class="ic">price &lt;= budget</span></li>
+    </ul>
+    <p>Each of these gives back <span class="ic">True</span> or <span class="ic">False</span>. There are six comparison operators: <span class="ic">==</span> <span class="ic">!=</span> <span class="ic">&lt;</span> <span class="ic">&gt;</span> <span class="ic">&lt;=</span> <span class="ic">&gt;=</span></p>
     <div class="slide-num">10</div>
 </div>
 
 <!-- SLIDE 11 -->
 <div class="slide">
     <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Assignment Operators</h2>
-    <p>Shorthand operators update a variable using its current value:</p>
-    <table>
-        <tr><th>Operator</th><th>Equivalent</th><th>Example</th></tr>
-        <tr><td><span class="ic">+=</span></td><td><span class="ic">x = x + n</span></td><td>Add to current value</td></tr>
-        <tr><td><span class="ic">-=</span></td><td><span class="ic">x = x - n</span></td><td>Subtract from current value</td></tr>
-        <tr><td><span class="ic">*=</span></td><td><span class="ic">x = x * n</span></td><td>Multiply current value</td></tr>
-        <tr><td><span class="ic">/=</span></td><td><span class="ic">x = x / n</span></td><td>Divide current value</td></tr>
-    </table>
-    <pre><code class="language-python">score = 0
-score += 100    # score is now 100
-score += 50     # score is now 150
-score *= 2      # score is now 300
-score -= 75     # score is now 225</code></pre>
+    <h2>Saving Answers for Later</h2>
+    <p>Just like you store numbers in variables, you can <strong>store True/False answers</strong> in variables. This makes your code read like English:</p>
+    <pre><code class="language-python">can_vote = age >= 18
+is_passing = score >= 70</code></pre>
+    <p>Now instead of repeating the comparison everywhere, you just check <span class="ic">can_vote</span> or <span class="ic">is_passing</span>. Naming your booleans with <span class="ic">is_</span>, <span class="ic">has_</span>, or <span class="ic">can_</span> makes them read naturally.</p>
+    <p>Next week, we will use these True/False values to make <strong>decisions</strong> in our code with <span class="ic">if</span> statements. This is the foundation for that.</p>
     <div class="slide-num">11</div>
 </div>
 
 <!-- SLIDE 12 -->
 <div class="slide">
     <div class="section-label">Section 2 &middot; Lecture</div>
-    <h2>Common Mistakes</h2>
-    <div class="two-col">
-        <div>
-            <h2><span class="ic">=</span> vs <span class="ic">==</span></h2>
-            <pre><code class="language-python"># Assignment (sets a value)
-x = 10
-
-# Comparison (checks equality)
-x == 10    # True</code></pre>
-            <p><span class="ic">=</span> stores a value. <span class="ic">==</span> checks if two values are equal.</p>
-        </div>
-        <div>
-            <h2>Precedence &amp; Types</h2>
-            <pre><code class="language-python"># Precedence trap
-result = 10 + 5 * 2   # 20, not 30
-
-# Type mixing
-age = "25"
-check = age > 18  # TypeError</code></pre>
-            <p>Convert strings to numbers before comparing: <span class="ic">int(age) > 18</span></p>
-        </div>
-    </div>
+    <h2>Keeping a Running Tally: Assignment Operators</h2>
+    <p>Imagine you are keeping score in a game. Every round, you need to <strong>update the score based on what it already is</strong>. Python has shortcuts for this:</p>
+    <ul>
+        <li><span class="ic">score += 10</span> means "add 10 to the current score" (same as <span class="ic">score = score + 10</span>)</li>
+        <li><span class="ic">score -= 5</span> means "subtract 5 from it"</li>
+        <li><span class="ic">score *= 2</span> means "double it"</li>
+    </ul>
+    <p>Think of it like a cash register: you start at zero and keep adding items. The running total updates each time. We will use these heavily when we learn loops.</p>
     <div class="slide-num">12</div>
 </div>
 
 <!-- SLIDE 13 -->
 <div class="slide">
-    <h2>Summary</h2>
-    <ul>
-        <li>Seven arithmetic operators: <span class="ic">+</span> <span class="ic">-</span> <span class="ic">*</span> <span class="ic">/</span> <span class="ic">//</span> <span class="ic">%</span> <span class="ic">**</span></li>
-        <li>Floor division (<span class="ic">//</span>) returns whole numbers; modulo (<span class="ic">%</span>) returns remainders</li>
-        <li>True division (<span class="ic">/</span>) always returns a float</li>
-        <li>PEMDAS governs operator precedence; use parentheses for clarity</li>
-        <li>Six comparison operators: <span class="ic">==</span> <span class="ic">!=</span> <span class="ic">&lt;</span> <span class="ic">&gt;</span> <span class="ic">&lt;=</span> <span class="ic">&gt;=</span></li>
-        <li>Comparisons return <span class="ic">True</span> or <span class="ic">False</span> and can be stored in variables</li>
-        <li>Assignment operators (<span class="ic">+=</span>, <span class="ic">-=</span>, etc.) update variables in place</li>
-        <li>Watch out for <span class="ic">=</span> vs <span class="ic">==</span> and type mismatches</li>
-    </ul>
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Two Common Pitfalls</h2>
+    <div class="two-col">
+        <div>
+            <h2><span class="ic">=</span> vs <span class="ic">==</span></h2>
+            <p>Single equals <strong>stores</strong> a value.<br>Double equals <strong>asks a question</strong>.</p>
+            <p>Think: one equals sign is a <strong>command</strong> ("put this here"). Two equals signs is a <strong>question</strong> ("are these the same?").</p>
+        </div>
+        <div>
+            <h2>Strings are not numbers</h2>
+            <p><span class="ic">input()</span> always gives you a <strong>string</strong>. You cannot do math on a string.</p>
+            <p><span class="ic">"25" + 10</span> causes an error. You need to convert first: <span class="ic">int("25") + 10</span></p>
+            <p>This came up in Week 2 - same rule applies here.</p>
+        </div>
+    </div>
     <div class="slide-num">13</div>
 </div>
 
 <!-- SLIDE 14 -->
+<div class="slide">
+    <h2>Summary</h2>
+    <ul>
+        <li>Python has 7 arithmetic operators - the 4 familiar ones plus <span class="ic">//</span>, <span class="ic">%</span>, and <span class="ic">**</span></li>
+        <li>Floor division and modulo split things into <strong>whole groups</strong> and <strong>leftovers</strong></li>
+        <li>Regular division (<span class="ic">/</span>) always gives a decimal; floor division (<span class="ic">//</span>) gives a whole number</li>
+        <li>PEMDAS controls order - use <strong>parentheses</strong> when in doubt</li>
+        <li>Comparisons ask <strong>yes/no questions</strong> and give <span class="ic">True</span> or <span class="ic">False</span></li>
+        <li>Store booleans in descriptive variables (<span class="ic">is_passing</span>, <span class="ic">can_vote</span>)</li>
+        <li>Assignment operators (<span class="ic">+=</span>, <span class="ic">-=</span>) update a variable based on its current value</li>
+    </ul>
+    <div class="slide-num">14</div>
+</div>
+
+<!-- SLIDE 15 -->
 <div class="slide">
     <h2>Homework, Forum, and Next Week</h2>
     <p><strong>Homework 4</strong> - available on Moodle, due Monday 11:59 PM</p>
@@ -533,8 +546,8 @@ check = age > 18  # TypeError</code></pre>
     <p><strong>Forum Discussion</strong> - prompt posted on Moodle. Respond to the prompt and reply to at least one classmate.</p>
     <br>
     <p><strong>Next week (Week 5):</strong> Conditional Logic - In-Person</p>
-    <p>We will use the boolean expressions from this week to make decisions in code with <span class="ic">if</span>, <span class="ic">elif</span>, and <span class="ic">else</span>.</p>
-    <div class="slide-num">14</div>
+    <p>We will use the boolean expressions from this week to make <strong>decisions</strong> in code with <span class="ic">if</span>, <span class="ic">elif</span>, and <span class="ic">else</span>.</p>
+    <div class="slide-num">15</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>

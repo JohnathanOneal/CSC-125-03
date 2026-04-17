@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 8: For Loops</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream: #faf6f0;
+            --latte: #f3ece1;
+            --warm-white: #fefcf9;
+            --espresso: #3c2a1a;
+            --dark-roast: #5c3d2e;
+            --medium-roast: #7a5c4f;
+            --caramel: #c08b5c;
+            --toffee: #a67b5b;
+            --amber: #d4913d;
+            --rust: #b85c38;
+            --sage: #7d8c6e;
+            --code-bg: #2c2118;
+            --code-text: #e8ddd0;
+            --code-border: #c08b5c;
+            --table-head: #e8ddd0;
+            --table-row: #f8f3ec;
+            --table-border: #d9cfc2;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--latte);
+            color: var(--espresso);
+        }
+
+        .slide {
+            width: 960px;
+            height: 540px;
+            margin: 24px auto;
+            padding: 44px 52px;
+            background: var(--warm-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 16px rgba(60, 42, 26, 0.1), 0 1px 4px rgba(60, 42, 26, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            border: 1px solid rgba(192, 139, 92, 0.15);
+        }
+        .slide.center { align-items: center; text-align: center; }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--caramel), var(--amber), var(--toffee));
+            border-radius: 8px 8px 0 0;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 2.2em;
+            color: var(--espresso);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.55em;
+            color: var(--dark-roast);
+            margin-bottom: 14px;
+            font-weight: 400;
+            border-bottom: 2px solid var(--caramel);
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+        .two-col h2 {
+            font-size: 1.3em;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 8px;
+        }
+        h3 {
+            font-size: 1em;
+            color: var(--medium-roast);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 0.88em;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: var(--espresso);
+        }
+        ul {
+            font-size: 0.86em;
+            line-height: 1.55;
+            margin-left: 22px;
+            margin-bottom: 10px;
+            color: #4a3728;
+        }
+        li { margin-bottom: 3px; }
+        li::marker { color: var(--caramel); }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.78em;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 6px 0;
+            border-left: 3px solid var(--code-border);
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        pre code.hljs {
+            background: var(--code-bg);
+            padding: 0;
+            border-radius: 6px;
+        }
+        code {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        .ic {
+            background: var(--latte);
+            border: 1px solid var(--table-border);
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            font-size: 0.88em;
+            color: var(--dark-roast);
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 0.82em;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 6px 14px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-head);
+            color: var(--dark-roast);
+            font-weight: 600;
+        }
+        td { background: var(--table-row); }
+
+        .subtitle {
+            font-size: 1.05em;
+            color: var(--medium-roast);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .two-col { display: flex; gap: 32px; }
+        .two-col > div { flex: 1; }
+        .section-label {
+            font-size: 0.65em;
+            color: var(--toffee);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .slide-num {
+            position: absolute;
+            bottom: 12px;
+            right: 18px;
+            font-size: 0.6em;
+            color: var(--table-border);
+            font-weight: 500;
+        }
+        .img-placeholder {
+            background: var(--latte);
+            border: 2px dashed var(--caramel);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            color: var(--toffee);
+            font-size: 0.75em;
+            font-style: italic;
+            margin: 8px 0;
+        }
+        .slide img {
+            max-width: 100%;
+            flex: 1 1 0;
+            min-height: 0;
+            object-fit: contain;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        strong { color: var(--rust); font-weight: 600; }
+        em { color: var(--sage); }
+
+        .slide.title-slide {
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 50%, var(--latte) 100%);
+        }
+        .slide.title-slide::before {
+            height: 6px;
+        }
+        .slide.title-slide h1 {
+            font-size: 2.6em;
+            margin-bottom: 12px;
+        }
+
+        body.presenting { background: var(--espresso); overflow: hidden; }
+        body.presenting .slide {
+            display: none;
+            width: 960px;
+            height: 540px;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            padding: 44px 52px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+        }
+        body.presenting .slide.active { display: flex; }
+        body.presenting .controls { display: none; }
+
+        .controls {
+            text-align: center;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            background: var(--cream);
+            z-index: 10;
+            border-bottom: 1px solid var(--table-border);
+            font-size: 0.8em;
+            color: var(--medium-roast);
+        }
+        .controls button {
+            background: var(--caramel);
+            color: var(--warm-white);
+            border: none;
+            padding: 5px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-left: 8px;
+            transition: background 0.2s;
+        }
+        .controls button:hover { background: var(--amber); }
+
+        @media print {
+            @page { size: landscape; margin: 0; }
+            body { background: white; margin: 0; padding: 0; }
+            .controls { display: none; }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                width: 100%;
+                height: 100vh;
+                padding: 44px 52px;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .slide::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    Scroll to browse &middot;
+    <button onclick="enterPresentation()">Present (F5)</button>
+    <button onclick="window.print()">Print / PDF</button>
+</div>
+
+<!-- SLIDE 1 -->
+<div class="slide center title-slide">
+    <img src="../images/title_banner.png" alt="Week 8 title banner">
+    <h1>Week 8: For Loops</h1>
+    <p class="subtitle">CSC-125-201 &middot; Spring 2026</p>
+    <div class="slide-num">1</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+    <h2>Agenda</h2>
+    <table>
+        <tr><th>#</th><th>Section</th></tr>
+        <tr><td>1</td><td>Week 7 Review</td></tr>
+        <tr><td>2</td><td>Lecture Slides</td></tr>
+        <tr><td>-</td><td>Break</td></tr>
+        <tr><td>3</td><td>Code Lecture</td></tr>
+    </table>
+    <div class="slide-num">2</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+    <div class="section-label">Section 1</div>
+    <h2>Week 7 Review</h2>
+    <ul>
+        <li>Last week: <strong>advanced list operations</strong> for slicing, sorting, searching, and combining lists</li>
+        <li>Step slicing <span class="ic">[::2]</span> picks every Nth item. <span class="ic">[::-1]</span> reverses.</li>
+        <li><span class="ic">.sort()</span> modifies in place (returns None). <span class="ic">sorted()</span> returns a new list.</li>
+        <li><span class="ic">in</span> / <span class="ic">not in</span> test membership. <span class="ic">.index()</span> finds position. <span class="ic">.count()</span> tallies.</li>
+        <li><span class="ic">.split()</span> and <span class="ic">.join()</span> convert between strings and lists</li>
+    </ul>
+    <p>This week: we teach the computer to <strong>repeat work automatically</strong>.</p>
+    <div class="slide-num">3</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>The Repetition Problem</h2>
+    <p>Imagine you are a teacher printing certificates for 30 students. Without automation, you write each name by hand, one at a time. What about 1,000 students?</p>
+    <ul>
+        <li>Writing <span class="ic">print()</span> once per student does not scale</li>
+        <li>Copy-paste code breaks the moment the list changes</li>
+        <li>Real programs process hundreds or thousands of items</li>
+    </ul>
+    <p>We need a way to say: <strong>"do this once for every item."</strong> That is exactly what a <strong>for loop</strong> does. It is the single most useful tool for working with lists.</p>
+    <div class="slide-num">4</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>How a for Loop Works</h2>
+    <p>Think of a <strong>conveyor belt</strong> in a factory. Items travel down the belt one at a time. A worker performs the same action on each one. When the belt is empty, the work stops.</p>
+    <img src="images/for_loop_flow.svg" alt="Flow diagram: list items picked one at a time, processed by the loop body, then loop goes back for the next item">
+    <p>The <strong>list</strong> is the belt, the <strong>loop body</strong> is the worker, and the <strong>loop variable</strong> holds whichever item is currently being processed.</p>
+    <div class="slide-num">5</div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Anatomy of a for Loop</h2>
+    <p>Every for loop has three parts: the <strong>keyword</strong> <span class="ic">for</span>, a <strong>loop variable</strong> that holds the current item, and the <strong>sequence</strong> to iterate through. The colon and indentation work just like <span class="ic">if</span> statements.</p>
+    <pre><code class="language-python">for name in names:
+    print(f"Hello, {name}")</code></pre>
+    <ul>
+        <li>Step 1: pick the first item from the list</li>
+        <li>Step 2: run the indented body using that item</li>
+        <li>Step 3: go back for the next item. Repeat until the list is empty.</li>
+        <li>Code <strong>after</strong> the loop (not indented) runs once, when all items are done</li>
+    </ul>
+    <div class="slide-num">6</div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Building New Lists</h2>
+    <p>One of the most common loop patterns: start with an <strong>empty bag</strong> and drop items into it as you go. Each trip through the loop adds one item to the result.</p>
+    <ul>
+        <li>Create an empty list <strong>before</strong> the loop</li>
+        <li>Use <span class="ic">.append()</span> <strong>inside</strong> the loop to add each result</li>
+        <li>After the loop, the new list is complete</li>
+    </ul>
+    <p>This replaces the manual, item-by-item approach from Week 7. Instead of writing <span class="ic">.append()</span> once per item, the loop does it automatically for every item in the source list, no matter how large.</p>
+    <pre><code class="language-python">with_tax = []
+for price in prices:
+    with_tax.append(price * 1.08)</code></pre>
+    <div class="slide-num">7</div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>The range() Counting Machine</h2>
+    <p>Sometimes you need to count rather than iterate through a list. <span class="ic">range()</span> is like a <strong>number dispenser</strong> at a deli counter: it hands out numbers one at a time. It has three forms.</p>
+    <img src="images/range_number_line.svg" alt="Number line showing range(5), range(1,6), and range(0,10,2) with included and excluded values highlighted">
+    <p>Key rule: range <strong>stops before</strong> the stop number. To include 5, write <span class="ic">range(1, 6)</span>.</p>
+    <div class="slide-num">8</div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>When You Need Position Numbers</h2>
+    <p>Direct iteration (<span class="ic">for item in list</span>) gives you the value but not its location. Sometimes you need to know <strong>where</strong> an item sits, or you need to <strong>change</strong> the original list. That is when you use <span class="ic">range(len(list))</span> to loop through indices instead.</p>
+    <ul>
+        <li><strong>Numbering items:</strong> "Student 1: Alice, Student 2: Bob"</li>
+        <li><strong>Modifying in place:</strong> add bonus points to every score directly</li>
+        <li><strong>Parallel lists:</strong> use the same index to match names to scores</li>
+    </ul>
+    <p>Rule of thumb: use direct iteration unless you specifically need the index number.</p>
+    <div class="slide-num">9</div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Strings Are Sequences Too</h2>
+    <p>A string is a sequence of characters, just like a list is a sequence of items. A for loop walks through each character one at a time. This connects back to Week 3 (string operations) and Week 5 (conditionals).</p>
+    <ul>
+        <li><span class="ic">for char in text:</span> visits every character</li>
+        <li>Combine with <span class="ic">if</span> to count vowels, filter out digits, or check character types</li>
+        <li>Build new strings by starting with <span class="ic">""</span> and concatenating inside the loop</li>
+    </ul>
+    <p>Anywhere you have been manually indexing characters one by one, a loop can do it for you automatically.</p>
+    <div class="slide-num">10</div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Pattern: The Running Total</h2>
+    <p>Think of a <strong>cash register</strong>. You start at $0.00. Each item scanned adds to the running total. At the end, the register shows the sum of everything. The same logic works in code.</p>
+    <ul>
+        <li>Create a variable set to <span class="ic">0</span> <strong>before</strong> the loop</li>
+        <li>Add each value <strong>inside</strong> the loop</li>
+        <li>After the loop, the variable holds the total</li>
+    </ul>
+    <p>The same structure works for <strong>counting</strong>: start at 0, add 1 each time a condition is true. Both patterns follow the "accumulator" idea: build up a result one step at a time.</p>
+    <div class="slide-num">11</div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Pattern: Counting and Filtering</h2>
+    <p><strong>Counting</strong> is like a bouncer with a clicker at the door. Start at 0, click once for each person who meets the criteria. <strong>Filtering</strong> is like sorting mail into piles: one pile for keepers, and the rest is discarded.</p>
+    <div class="two-col">
+        <div>
+            <h2>Counting</h2>
+            <ul>
+                <li>Start a counter at 0</li>
+                <li>Check each item with <span class="ic">if</span></li>
+                <li>Add 1 when condition is true</li>
+            </ul>
+        </div>
+        <div>
+            <h2>Filtering</h2>
+            <ul>
+                <li>Start with an empty list</li>
+                <li>Check each item with <span class="ic">if</span></li>
+                <li>Append matches to the new list</li>
+            </ul>
+        </div>
+    </div>
+    <p>Both patterns combine loops with the conditionals you learned in Week 5.</p>
+    <div class="slide-num">12</div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide">
+    <div class="section-label">Section 2 &middot; Lecture</div>
+    <h2>Nested Loops</h2>
+    <p>A nested loop is a loop inside another loop. Think of a <strong>spreadsheet</strong>: the outer loop picks the row, and the inner loop walks across every column in that row before moving to the next one.</p>
+    <img src="images/nested_loop_grid.svg" alt="Grid showing 3 rows by 4 columns, with outer loop controlling rows and inner loop controlling columns, totaling 12 executions">
+    <p>The inner loop runs <strong>completely</strong> for each step of the outer loop.</p>
+    <div class="slide-num">13</div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide">
+    <h2>Summary</h2>
+    <ul>
+        <li><span class="ic">for item in list:</span> processes each item automatically, like a conveyor belt</li>
+        <li><span class="ic">range()</span> generates number sequences (stops <strong>before</strong> the stop value)</li>
+        <li><span class="ic">range(len(list))</span> gives indices when you need positions or modification</li>
+        <li>Strings are iterable: <span class="ic">for char in text:</span></li>
+        <li><strong>Running total:</strong> start at 0, add inside the loop</li>
+        <li><strong>Counting:</strong> start at 0, add 1 when condition is true</li>
+        <li><strong>Filtering:</strong> start with empty list, append matches</li>
+        <li><strong>Nested loops:</strong> inner loop runs fully for each outer iteration</li>
+    </ul>
+    <div class="slide-num">14</div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide center">
+    <h2>Homework 8</h2>
+    <p>Available on Moodle, due Monday 11:59 PM.</p>
+    <p>This week: practice <strong>for loops</strong>, <strong>range()</strong>, and common loop patterns.</p>
+    <p>Reference sheet posted on Moodle to help with the assignment.</p>
+    <p style="margin-top: 16px;"><strong>Next week (Week 9):</strong> While Loops &amp; Advanced Debugging - Virtual + Forum</p>
+    <div class="slide-num">15</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let presenting = false;
+
+    function updateScale() {
+        const scaleX = window.innerWidth / 960;
+        const scaleY = window.innerHeight / 540;
+        const scale = Math.min(scaleX, scaleY);
+        slides.forEach(s => {
+            s.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        });
+    }
+
+    function enterPresentation() {
+        presenting = true;
+        document.body.classList.add('presenting');
+        slides[current].classList.add('active');
+        updateScale();
+        document.documentElement.requestFullscreen?.();
+    }
+
+    function exitPresentation() {
+        presenting = false;
+        document.body.classList.remove('presenting');
+        slides.forEach(s => {
+            s.classList.remove('active');
+            s.style.transform = '';
+        });
+    }
+
+    function showSlide(n) {
+        if (!presenting) return;
+        slides[current].classList.remove('active');
+        current = Math.max(0, Math.min(n, slides.length - 1));
+        slides[current].classList.add('active');
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F5') { e.preventDefault(); enterPresentation(); return; }
+        if (e.key === 'Escape') { exitPresentation(); return; }
+        if (!presenting) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); showSlide(current - 1); }
+        if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+        if (e.key === 'End') { e.preventDefault(); showSlide(slides.length - 1); }
+    });
+
+    window.addEventListener('resize', () => { if (presenting) updateScale(); });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && presenting) exitPresentation();
+        else if (presenting) updateScale();
+    });
+</script>
+</body>
+</html>

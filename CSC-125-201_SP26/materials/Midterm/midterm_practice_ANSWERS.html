@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSC-125-201 Midterm Practice Exam - Answer Key</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px;
+            line-height: 1.4;
+            color: #333;
+            font-size: 13px;
+        }
+        h1 {
+            color: #1b5e20;
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 6px;
+            text-align: center;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        h2 {
+            color: #2e7d32;
+            margin-top: 18px;
+            border-left: 3px solid #28a745;
+            padding-left: 10px;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .answer-key-banner {
+            background: #e8f5e9;
+            border: 2px solid #28a745;
+            padding: 8px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+            color: #1b5e20;
+        }
+        .answer {
+            margin: 8px 0;
+            padding: 8px;
+            border: 1px solid #c8e6c9;
+            border-radius: 3px;
+            background: #f1f8e9;
+            page-break-inside: avoid;
+        }
+        .answer strong {
+            font-size: 13px;
+        }
+        .correct {
+            color: #1b5e20;
+            font-weight: bold;
+        }
+        .explanation {
+            font-size: 12px;
+            color: #555;
+            margin-top: 3px;
+        }
+        .code-block {
+            background: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 3px;
+            padding: 8px;
+            margin: 5px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 11px;
+            white-space: pre;
+        }
+        @media print {
+            .answer { page-break-inside: avoid; }
+            body { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSC-125-201 Python Programming<br>Midterm Practice Exam - Answer Key</h1>
+
+    <div class="answer-key-banner">
+        ANSWER KEY - For instructor use and student self-study
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Part 1: Multiple Choice (16 points)</h2>
+
+    <div class="answer">
+        <strong>1.</strong> <span class="correct">d) boolean</span>
+        <div class="explanation"><code>True</code> and <code>False</code> are the two boolean values in Python.</div>
+    </div>
+
+    <div class="answer">
+        <strong>2.</strong> <span class="correct">c) class</span>
+        <div class="explanation"><code>class</code> is a reserved keyword in Python and cannot be used as a variable name. The others are all valid.</div>
+    </div>
+
+    <div class="answer">
+        <strong>3.</strong> <span class="correct">b) "Programming"</span>
+        <div class="explanation">"Python Programming" has index 7 at the "P" in "Programming". <code>[7:]</code> slices from index 7 to the end.</div>
+    </div>
+
+    <div class="answer">
+        <strong>4.</strong> <span class="correct">b) 2</span>
+        <div class="explanation">The modulo operator <code>%</code> returns the remainder. 20 divided by 6 is 3 with a remainder of 2.</div>
+    </div>
+
+    <div class="answer">
+        <strong>5.</strong> <span class="correct">c) string</span>
+        <div class="explanation"><code>input()</code> always returns a string, even if the user types a number. You must convert it with <code>int()</code> or <code>float()</code>.</div>
+    </div>
+
+    <div class="answer">
+        <strong>6.</strong> <span class="correct">b) 15</span>
+        <div class="explanation">Negative indexing counts from the end. <code>nums[-1]</code> is 20, <code>nums[-2]</code> is 15.</div>
+    </div>
+
+    <div class="answer">
+        <strong>7.</strong> <span class="correct">b) None</span>
+        <div class="explanation"><code>.append()</code> modifies the list in place and returns <code>None</code>. This is a common source of bugs when students write <code>x = list.append(item)</code>.</div>
+    </div>
+
+    <div class="answer">
+        <strong>8.</strong> <span class="correct">a) 0, 2, 4, 6</span>
+        <div class="explanation"><code>range(0, 8, 2)</code> starts at 0, increments by 2, and stops before 8. So: 0, 2, 4, 6.</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Part 2: Fill in the Code (12 points)</h2>
+
+    <div class="answer">
+        <strong>9.</strong> <span class="correct">int</span>
+        <div class="explanation"><code>int("30")</code> converts the string "30" to the integer 30, allowing <code>age + 1</code> to work.</div>
+    </div>
+
+    <div class="answer">
+        <strong>10.</strong> <span class="correct">upper</span>
+        <div class="explanation"><code>.upper()</code> returns a new string with all characters converted to uppercase.</div>
+    </div>
+
+    <div class="answer">
+        <strong>11.</strong> <span class="correct">pop</span>
+        <div class="explanation"><code>.pop()</code> removes and returns the last item from the list.</div>
+    </div>
+
+    <div class="answer">
+        <strong>12.</strong> <span class="correct">1 : 3</span>
+        <div class="explanation">Slicing is <code>[start:end]</code> where end is excluded. To get indices 1 and 2, use <code>data[1:3]</code>.</div>
+    </div>
+
+    <div class="answer">
+        <strong>13.</strong> <span class="correct">5 , 0 , -1</span>
+        <div class="explanation"><code>range(5, 0, -1)</code> counts from 5 down to 1 (stops before 0). The negative step makes it count backward.</div>
+    </div>
+
+    <div class="answer">
+        <strong>14.</strong> <span class="correct">float</span>
+        <div class="explanation"><code>float(input(...))</code> converts the string input to a decimal number.</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Part 3: Fix the Errors (12 points)</h2>
+
+    <div class="answer">
+        <strong>15. Logic error (wrong type):</strong> <span class="correct">Change <code>score = "90"</code> to <code>score = 90</code></span>
+        <div class="explanation">With quotes, <code>"90" * 2</code> repeats the string, producing "9090". Without quotes, <code>90 * 2</code> does math, producing 180. Alternative fix: <code>doubled = int(score) * 2</code>.</div>
+    </div>
+
+    <div class="answer">
+        <strong>16. SyntaxError:</strong> <span class="correct">Add a colon: <code>for num in numbers:</code></span>
+        <div class="explanation">Python requires a colon at the end of <code>for</code>, <code>if</code>, <code>elif</code>, <code>else</code>, and <code>while</code> lines.</div>
+    </div>
+
+    <div class="answer">
+        <strong>17. SyntaxError:</strong> <span class="correct">Use double quotes: <code>name = "It's a test"</code></span>
+        <div class="explanation">The apostrophe in "It's" closes the single-quoted string early. Using double quotes avoids the conflict. Alternative: <code>name = 'It\'s a test'</code>.</div>
+    </div>
+
+    <div class="answer">
+        <strong>18. IndexError:</strong> <span class="correct">Change <code>letters[3]</code> to <code>letters[2]</code></span>
+        <div class="explanation">A list with 3 items has valid indices 0, 1, 2. Index 3 is out of range.</div>
+    </div>
+
+    <div class="answer">
+        <strong>19. IndentationError:</strong> <span class="correct">Indent the print line: <code>    print("Too hot")</code></span>
+        <div class="explanation">The code block under an <code>if</code> statement must be indented (4 spaces).</div>
+    </div>
+
+    <div class="answer">
+        <strong>20. Logic error:</strong> <span class="correct">Change <code>numbers.sort()</code> to <code>sorted(numbers)</code></span>
+        <div class="explanation"><code>.sort()</code> modifies the list in place and returns <code>None</code>. <code>sorted()</code> returns a new sorted list. The fix: <code>sorted_list = sorted(numbers)</code>.</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Part 4: Code Reading and Output Prediction (18 points)</h2>
+
+    <div class="answer">
+        <strong>21.</strong> <span class="correct">18</span>
+        <div class="explanation">The loop adds 3 + 6 + 9 = 18 to <code>total</code>.</div>
+    </div>
+
+    <div class="answer">
+        <strong>22.</strong> <span class="correct">B</span>
+        <div class="explanation">85 is not >= 90 (skip A). 85 >= 80 is True, so <code>grade = "B"</code>. The elif chain stops at the first true condition.</div>
+    </div>
+
+    <div class="answer">
+        <strong>23.</strong> <span class="correct">odi</span>
+        <div class="explanation">"Coding" indices: C(0) o(1) d(2) i(3) n(4) g(5). <code>[1:4]</code> gives characters at index 1, 2, 3 = "odi".</div>
+    </div>
+
+    <div class="answer">
+        <strong>24.</strong> <span class="correct">Line 1: [1, 3, 4]<br>Line 2: 3</span>
+        <div class="explanation"><code>[1,2,3]</code> -> <code>append(4)</code> -> <code>[1,2,3,4]</code> -> <code>remove(2)</code> -> <code>[1,3,4]</code>. Length is 3.</div>
+    </div>
+
+    <div class="answer">
+        <strong>25.</strong> <span class="correct">One</span>
+        <div class="explanation"><code>True and False</code> = False (both must be true). <code>True or False</code> = True (at least one). So the elif branch prints "One".</div>
+    </div>
+
+    <div class="answer">
+        <strong>26.</strong> <span class="correct">16</span>
+        <div class="explanation"><code>result</code> starts at 1. The loop runs 4 times (range(4) = 0,1,2,3), doubling each time: 1->2->4->8->16.</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Part 5: Short Code Writing (15 points)</h2>
+
+    <div class="answer">
+        <strong>27. Filter a list:</strong>
+        <div class="code-block">scores = [72, 85, 68, 91, 77, 80]
+high_scores = []
+for score in scores:
+    if score >= 80:
+        high_scores.append(score)
+print(high_scores)</div>
+        <div class="explanation">Output: <span class="correct">[85, 91, 80]</span> - The loop checks each score and only appends those that are 80 or above.</div>
+    </div>
+
+    <div class="answer">
+        <strong>28. Age category:</strong>
+        <div class="code-block">age = 16
+if age < 13:
+    print("Child")
+elif age <= 17:
+    print("Teen")
+else:
+    print("Adult")</div>
+        <div class="explanation">Output: <span class="correct">Teen</span> (16 is not under 13, but 16 <= 17 is True)</div>
+    </div>
+
+    <div class="answer">
+        <strong>29. Parallel lists with range(len()):</strong>
+        <div class="code-block">cities = ["Boston", "Miami"]
+pops = [700000, 450000]
+for i in range(len(cities)):
+    print(f"{cities[i]}: {pops[i]}")</div>
+        <div class="explanation">Output:<br><span class="correct">Boston: 700000<br>Miami: 450000</span></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Part 6: Write Complete Programs (27 points)</h2>
+
+    <div class="answer">
+        <strong>30. BMI Calculator (12 points):</strong>
+        <div class="code-block">weight = float(input("Enter weight in pounds: "))
+height = float(input("Enter height in inches: "))
+
+bmi = (weight / height ** 2) * 703
+print(f"BMI: {bmi:.1f}")
+
+if bmi < 25:
+    print("Healthy range")
+else:
+    print("Above healthy range")</div>
+        <div class="explanation">Scoring: input with conversion (3 pts), BMI formula (3 pts), formatted print (2 pts), if-else conditional (4 pts).</div>
+    </div>
+
+    <div class="answer">
+        <strong>31. Expense Report (15 points):</strong>
+        <div class="code-block">expenses = [12.50, 45.00, 8.75, 67.30, 23.99]
+
+total = 0
+for expense in expenses:
+    total = total + expense
+
+average = total / len(expenses)
+
+count = 0
+for expense in expenses:
+    if expense > 20:
+        count = count + 1
+
+print(f"Total: ${total:.2f}")
+print(f"Average: ${average:.2f}")
+print(f"Expenses over $20: {count}")</div>
+        <div class="explanation">Output:<br><span class="correct">Total: $157.54<br>Average: $31.51<br>Expenses over $20: 3</span><br><br>Scoring: list and total loop (3 pts), average calculation (2 pts), counting loop with condition (4 pts), formatted output (3 pts), overall correctness (3 pts).</div>
+    </div>
+
+</body>
+</html>

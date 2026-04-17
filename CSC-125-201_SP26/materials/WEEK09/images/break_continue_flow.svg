@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" font-family="'Segoe UI', Arial, sans-serif">
+  <text x="400" y="18" text-anchor="middle" font-size="14" fill="#7a5c4f" font-weight="bold">break and continue in a Loop</text>
+
+  <!-- Condition diamond -->
+  <polygon points="120,80 200,115 120,150 40,115" fill="#fff3cd" stroke="#d4913d" stroke-width="1.5"/>
+  <text x="120" y="112" text-anchor="middle" font-size="10" fill="#3c2a1a" font-weight="bold">Loop</text>
+  <text x="120" y="124" text-anchor="middle" font-size="10" fill="#3c2a1a" font-weight="bold">Condition</text>
+
+  <!-- Arrow: Condition to Body -->
+  <line x1="200" y1="115" x2="260" y2="115" stroke="#c08b5c" stroke-width="2" marker-end="url(#arrowCar)"/>
+  <text x="230" y="107" text-anchor="middle" font-size="9" fill="#7d8c6e" font-weight="bold">True</text>
+
+  <!-- Body box -->
+  <rect x="265" y="90" width="150" height="50" rx="6" fill="#2c2118" stroke="#c08b5c" stroke-width="1.5"/>
+  <text x="340" y="112" text-anchor="middle" font-size="11" fill="#e8ddd0" font-weight="bold">Loop Body</text>
+  <text x="340" y="128" text-anchor="middle" font-size="10" fill="#c08b5c" font-style="italic">Your code here</text>
+
+  <!-- Normal flow: Body back to condition -->
+  <path d="M 340 140 L 340 170 L 120 170 L 120 150" fill="none" stroke="#c08b5c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowCar)"/>
+  <text x="230" y="185" text-anchor="middle" font-size="9" fill="#7a5c4f">Normal: next iteration</text>
+
+  <!-- CONTINUE arrow -->
+  <rect x="470" y="45" width="120" height="36" rx="6" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1.5"/>
+  <text x="530" y="60" text-anchor="middle" font-size="11" fill="#3c2a1a" font-weight="bold">continue</text>
+  <text x="530" y="74" text-anchor="middle" font-size="9" fill="#7a5c4f">Skip rest of body</text>
+
+  <!-- Arrow from continue box back to condition -->
+  <path d="M 470 63 L 420 63 L 420 40 L 120 40 L 120 80" fill="none" stroke="#d4913d" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <text x="270" y="33" text-anchor="middle" font-size="9" fill="#d4913d" font-weight="bold">Jump back to condition check</text>
+
+  <!-- BREAK arrow -->
+  <rect x="470" y="140" width="120" height="36" rx="6" fill="#f3ece1" stroke="#b85c38" stroke-width="1.5"/>
+  <text x="530" y="155" text-anchor="middle" font-size="11" fill="#b85c38" font-weight="bold">break</text>
+  <text x="530" y="169" text-anchor="middle" font-size="9" fill="#7a5c4f">Exit loop entirely</text>
+
+  <!-- Arrow from break box to after loop -->
+  <line x1="590" y1="158" x2="660" y2="158" stroke="#b85c38" stroke-width="2" marker-end="url(#arrowRust)"/>
+
+  <!-- After loop box -->
+  <rect x="665" y="138" width="110" height="40" rx="6" fill="#e8f5e8" stroke="#7d8c6e" stroke-width="1.5"/>
+  <text x="720" y="155" text-anchor="middle" font-size="10" fill="#3c2a1a" font-weight="bold">Code after</text>
+  <text x="720" y="169" text-anchor="middle" font-size="10" fill="#3c2a1a" font-weight="bold">the loop</text>
+
+  <!-- False exit from condition -->
+  <line x1="120" y1="80" x2="120" y2="60" stroke="#7d8c6e" stroke-width="0" />
+  <path d="M 40 115 L 10 115 L 10 230 L 720 230 L 720 178" fill="none" stroke="#7d8c6e" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="30" y="205" font-size="9" fill="#b85c38" font-weight="bold">False</text>
+  <text x="365" y="245" text-anchor="middle" font-size="9" fill="#7d8c6e">Normal exit: condition became False</text>
+
+  <!-- Legend -->
+  <rect x="540" y="220" width="240" height="50" rx="4" fill="#faf6f0" stroke="#d9cfc2" stroke-width="1"/>
+  <line x1="555" y1="238" x2="585" y2="238" stroke="#d4913d" stroke-width="2"/>
+  <text x="592" y="242" font-size="9" fill="#3c2a1a">continue: skip to next iteration</text>
+  <line x1="555" y1="256" x2="585" y2="256" stroke="#b85c38" stroke-width="2"/>
+  <text x="592" y="260" font-size="9" fill="#3c2a1a">break: exit the loop entirely</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowCar" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#c08b5c"/>
+    </marker>
+    <marker id="arrowRust" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#b85c38"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#7d8c6e"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#d4913d"/>
+    </marker>
+  </defs>
+</svg>

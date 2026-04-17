@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" font-family="'Segoe UI', Arial, sans-serif">
+  <text x="400" y="22" text-anchor="middle" font-size="14" fill="#7a5c4f" font-weight="bold">Anatomy of a Python Error Message</text>
+
+  <!-- Dark code background -->
+  <rect x="30" y="40" width="530" height="160" rx="6" fill="#2c2118" stroke="#c08b5c" stroke-width="1.5"/>
+
+  <!-- Line 1: Traceback header -->
+  <text x="44" y="65" font-size="12" fill="#c08b5c" font-family="'Consolas', monospace">Traceback (most recent call last):</text>
+
+  <!-- Line 2: File and line number -->
+  <text x="44" y="90" font-size="12" fill="#e8ddd0" font-family="'Consolas', monospace">  File "main.py", line 3, in &lt;module&gt;</text>
+
+  <!-- Line 3: The code that caused the error -->
+  <text x="44" y="115" font-size="12" fill="#e8ddd0" font-family="'Consolas', monospace">    result = 10 / user_number</text>
+
+  <!-- Line 4: Error type and message -->
+  <text x="44" y="150" font-size="12" fill="#b85c38" font-family="'Consolas', monospace" font-weight="bold">ZeroDivisionError</text>
+  <text x="225" y="150" font-size="12" fill="#e8ddd0" font-family="'Consolas', monospace">: division by zero</text>
+
+  <!-- Annotation arrows and labels -->
+
+  <!-- Arrow 1: Where it happened -->
+  <rect x="590" y="68" width="185" height="36" rx="4" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1"/>
+  <text x="682" y="83" text-anchor="middle" font-size="10" fill="#3c2a1a" font-weight="bold">Where it happened</text>
+  <text x="682" y="97" text-anchor="middle" font-size="9" fill="#7a5c4f">File name and line number</text>
+  <line x1="590" y1="86" x2="545" y2="86" stroke="#5c3d2e" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+
+  <!-- Arrow 2: The broken line -->
+  <rect x="590" y="118" width="185" height="36" rx="4" fill="#dce6f0" stroke="#5c3d2e" stroke-width="1"/>
+  <text x="682" y="133" text-anchor="middle" font-size="10" fill="#3c2a1a" font-weight="bold">The broken line</text>
+  <text x="682" y="147" text-anchor="middle" font-size="9" fill="#7a5c4f">Exact code that failed</text>
+  <line x1="590" y1="136" x2="545" y2="115" stroke="#5c3d2e" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+
+  <!-- Arrow 3: What went wrong -->
+  <rect x="590" y="168" width="185" height="36" rx="4" fill="#f3ece1" stroke="#b85c38" stroke-width="1.5"/>
+  <text x="682" y="183" text-anchor="middle" font-size="10" fill="#b85c38" font-weight="bold">What went wrong</text>
+  <text x="682" y="197" text-anchor="middle" font-size="9" fill="#7a5c4f">Error type + description</text>
+  <line x1="590" y1="186" x2="545" y2="150" stroke="#b85c38" stroke-width="1.5" marker-end="url(#arrowRust)"/>
+
+  <!-- Reading order hint -->
+  <rect x="30" y="220" width="530" height="65" rx="6" fill="#faf6f0" stroke="#d9cfc2" stroke-width="1"/>
+  <text x="50" y="242" font-size="11" fill="#3c2a1a" font-weight="bold">Reading order:</text>
+  <circle cx="60" cy="260" r="10" fill="#b85c38"/>
+  <text x="60" y="264" text-anchor="middle" font-size="10" fill="white" font-weight="bold">1</text>
+  <text x="78" y="264" font-size="10" fill="#3c2a1a">Read the last line first (error type)</text>
+
+  <circle cx="290" cy="260" r="10" fill="#d4913d"/>
+  <text x="290" y="264" text-anchor="middle" font-size="10" fill="white" font-weight="bold">2</text>
+  <text x="308" y="264" font-size="10" fill="#3c2a1a">Find the file and line number</text>
+
+  <circle cx="490" cy="260" r="10" fill="#7d8c6e"/>
+  <text x="490" y="264" text-anchor="middle" font-size="10" fill="white" font-weight="bold">3</text>
+  <text x="508" y="264" font-size="10" fill="#3c2a1a">Look at the code</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowDark" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#5c3d2e"/>
+    </marker>
+    <marker id="arrowRust" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#b85c38"/>
+    </marker>
+  </defs>
+</svg>
